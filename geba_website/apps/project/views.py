@@ -83,7 +83,6 @@ class ProjectCreateGetView(TemplateView):
     success_url = '/'
 
     template_name = 'project/project_form2.html'
-    # template_name = 'project/project_form.html'
 
     def get(self, request):
         """when the user executes a get request, display blank form"""
@@ -99,7 +98,7 @@ class ProjectCreationPostView(FormView):
 
     # form_class = ProjectForm
     template_name = 'project/project_form2.html'
-    # template_name = 'project/project_form.html'
+
     success_url = '/'
 
     def post(self, request, *args, **kwargs):
@@ -157,7 +156,7 @@ class ProjectUpdateView(ProjectActionMixin, UpdateView):
     model = Project
     success_msg = 'Project Updated!'
     form_class = ProjectPostForm
-    template_name = 'project/project_form.html'
+    template_name = 'project/project_form2.html'
     success_url = reverse_lazy('project:index')
 
     def get(self, request, slug):
@@ -421,8 +420,19 @@ class ProjectPostUpdateView(ProjectActionMixin, UpdateView):
     model = ProjectPost
     success_msg = 'Post Updated!'
     form_class = ProjectPostForm
-    template_name = 'project/project_post_form.html'
+    template_name = 'project/project_post_form_update.html'
     success_url = reverse_lazy('project:index')
+
+    def get_initial(self):
+        initial = super(ProjectPostUpdateView, self).get_initial()
+        print('initial data', initial)
+
+        # retrieve current object
+        projectpost_object = self.get_object()
+
+        initial['field1'] = projectpost_object.field1
+        initial['field2'] = projectpost_object.field2
+        return initial
 
     def get(self, request, slug):
         '''when the user executes a get request, display blank registration form'''
@@ -462,7 +472,7 @@ class ProjectPostCreateView(ProjectActionMixin, CreateView):
     model = ProjectPost
     success_msg = 'Post Created!'
     form_class = ProjectPostForm
-    template_name = 'project/project_post_form.html'
+    template_name = 'project/project_post_form2.html'
     # success_url = '/'  # if no success_url is given, it will use the get_absolute_url() on the object if available
     # Don't need to specify template name due to the html file being named ModelName_form.html
 

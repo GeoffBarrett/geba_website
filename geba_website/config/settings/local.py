@@ -69,4 +69,5 @@ MEDIA_ROOT = os.path.normpath(os.path.join(DJANGO_ROOT, 'media'))
 # URL that handles the media served from MEDIA_ROOT, used for managing stored files.
 MEDIA_URL = '/media/'
 
+CACHE_TIMEOUT = 30
 
