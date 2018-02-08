@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 import os
 from sys import path
 from django.core.exceptions import ImproperlyConfigured
+from unipath import Path
 
 
 def get_env_variable(var_name):
@@ -21,20 +22,20 @@ def get_env_variable(var_name):
         error_msg = "Set the %s environment variable" % var_name
         raise ImproperlyConfigured(error_msg)
 
-CONFIG_ROOT = os.path.join(os.path.dirname(os.path.abspath("__file__")), 'config')
+DJANGO_ROOT = Path(__file__).ancestor(3)  # /geba_website/geba_website
+
+CONFIG_ROOT = DJANGO_ROOT.child("config")
 
 # Absolute filesystem path to the django repo directory:
-DJANGO_ROOT = os.path.dirname(CONFIG_ROOT)
+# DJANGO_ROOT = os.path.dirname(CONFIG_ROOT)
+# SITE_ROOT = os.path.dirname(DJANGO_ROOT)
+# SITE_NAME = os.path.basename(DJANGO_ROOT)
 
-SITE_ROOT = os.path.dirname(DJANGO_ROOT)
-
-SITE_NAME = os.path.basename(DJANGO_ROOT)
-
+APPS_DIR = DJANGO_ROOT.child("apps")
 
 # Add our project to our pythonpath, this way we don't need to type our project
 # name in our dotted import paths:
 path.append(DJANGO_ROOT)
-
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -155,9 +156,6 @@ PROJECT_APPS = (
     'apps.vote',
 )
 
-# the sub-directories of media and static files
-STATICFILES_LOCATION = 'static'
-MEDIAFILES_LOCATION = 'media'
 
 ##########################
 

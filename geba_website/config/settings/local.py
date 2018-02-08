@@ -46,3 +46,27 @@ INSTALLED_APPS += ('debug_toolbar',)
 
 MIDDLEWARE += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
 
+# STATIC FILE CONFIGURATION
+# ------------------------------------------------------------------------------
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#static-root
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.10/howto/static-files/
+# see the amazon section, if commented out
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#static-root
+# this is where all the files will be put with collectstatic
+STATIC_ROOT = os.path.normpath(os.path.join(DJANGO_ROOT, 'static'))
+
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#static-url
+STATIC_URL = '/static/'  # where you put all your webapp static files webappname/static_url/
+
+# MEDIA CONFIGURATION
+# ------------------------------------------------------------------------------
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#media-root
+# see the amazon section, if commented out
+# Absolute filesystem path to the directory that will hold user-uploaded files.
+MEDIA_ROOT = os.path.normpath(os.path.join(DJANGO_ROOT, 'media'))
+
+# URL that handles the media served from MEDIA_ROOT, used for managing stored files.
+MEDIA_URL = '/media/'
+
+

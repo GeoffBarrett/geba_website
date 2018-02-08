@@ -86,6 +86,10 @@ GOOGLE_ANALYTICS_SITE_SPEED = True
 ######## end of analytics settings ##############
 
 ################ amazon aws s3 ###########################
+# the sub-directories of media and static files
+STATICFILES_LOCATION = 'static'
+MEDIAFILES_LOCATION = 'media'
+
 S3_USE_SIGV4 = True
 
 # if False it will create unique file names for every uploaded file
