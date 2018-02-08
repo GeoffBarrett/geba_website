@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container-fluid">
+        <div class="navbar-nav">
+            <a href="#" class="navbar-brand">
+                {% load static %}
+                <img style="max-height:30px;"
+                     src="{% static 'img/GEBA_Logo_With_Name.png' %}" class="img-responsive" alt="Responsive image">
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about:detail' %}">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'blog:index' %}">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'project:index' %}">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+            <form class="form-inline mt-2 mt-md-0">
+              <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#SignUpNavBar">
+                        <span class="glyphicon glyphicon-user"></span>
+                    </button>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                           aria-haspopup="true" aria-expanded="false" id="navbarDropDown">
+                          <span class="glyphicon glyphicon-user">{{ user.username }}</span><span class="caret"></span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropDown">
+                            <a class="dropdown-item" href="#">My Account</a>
+                            {% if user.is_superuser %}
+                            <a class="dropdown-item" href="/admin">Admin</a>
+                            {% endif %}
+                            <a class="dropdown-item" href="{% url 'core:logout' %}">Logout</a>
+                        </div>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'core:signin' %}">Sign In/Register</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+
+    </div><!-- container-fluid -->
+</nav><!-- navbar navbar-default -->

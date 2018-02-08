@@ -1,0 +1,96 @@
+{% extends "core/base.html" %} <!-- extends path starting from templates directory, concatenates all contents of templates -->
+
+{% block css %}
+<!--<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" media="screen"
+ href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">-->
+
+{% endblock css %}
+
+{% block content %}
+
+    {% if messages %}
+        {% include "blog/messages.html" %}
+    {% endif %}
+
+    <div class="row">
+        <div class = "col-sm-12 col-md-7">
+            <div class="panel panel-default">
+                <div class="panel-body">
+
+                    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <!--{% include 'core/form-template.html' %}-->
+                        <!--{% load tz %}
+                        {% get_current_timezone as TIME_ZONE %}-->
+
+                        <div class="form-group">
+                            <div>
+                            <span class="text-danger small">{{ form.title.errors }}</span>
+                            </div>
+                            <label for="{{ form.title.id_for_label }}">{{ form.title.label_tag }}</label>
+                            <input type="text" name="title" placeholder="Title..." class="form-control"
+                                   id="{{ form.title.id_for_label }}">
+                        </div>
+                        <div class="form-group">
+                            <div>
+                            <span class="text-danger small">{{ form.subtitle.errors }}</span>
+                            </div>
+                            <label for="{{ form.subtitle.id_for_label }}">{{ form.subtitle.label_tag }}</label>
+                            <input type="text" name="subtitle" placeholder="Subtitle..." class="form-control"
+                                   id="{{ form.subtitle.id_for_label }}">
+                        </div>
+                        <div class="form-group">
+                            <div>
+                            <span class="text-danger small">{{ form.body.errors }}</span>
+                            </div>
+                            <label for="{{ form.body.id_for_label }}">{{ form.body.label_tag }}</label>
+                            <textarea class="form-control" name='body' placeholder='Blog text...'
+                                      id="{{ form.body.id_for_label }}" rows="10"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <div>
+                            <span class="text-danger small">{{ form.image.errors }}</span>
+                            </div>
+                            <label for="{{ form.image.id_for_label }}">{{ form.image.label_tag }}</label>
+                            <input type="file" name='image' class="form-control-file" id="{{ form.image.id_for_label }}"
+                                   aria-describedby="fileHelp">
+                            <small id="fileHelp"
+                                   class="form-text text-muted">Upload an image to represent the blog.</small>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name='draft' id="{{ form.draft.id_for_label }}"> Draft
+                            </label>
+                        </div>
+                        <!--<div class="form-group">
+                            <div>
+                            <span class="text-danger small">{{ form.publish_date.errors }}</span>
+                            </div>
+                            <label for="{{ form.publish_date.id_for_label }}">{{ form.publish_date.label_tag }}</label>
+                            <input class="form-control" name='publish_date' type="datetime-local" id="{{ form.publish_date.id_for_label }}">
+                        </div>-->
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <span class="text-danger small">{{ form.publish_date.errors }}</span>
+                            </div>
+                            <label class="control-label col-sm-2">{{ form.publish_date.label_tag }}</label>
+                            <div class="col-sm-10">{{ form.publish_date }}</div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col_sm-10">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

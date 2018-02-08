@@ -1,0 +1,207 @@
+{% extends "core/base.html" %} <!-- extends path starting from templates directory, concatenates all contents of templates -->
+
+{% block title %}GEBA - Project{% endblock title %}
+
+{% block header %}
+
+    {% load staticfiles %}
+    {% load crispy_forms_tags %}
+    {% load comment %}
+    <!--<link rel='stylesheet' href="{% static 'apps/project/css/offcanvas.css' %}"/>-->
+    <link rel='stylesheet' href="{% static 'apps/project/css/custom.css' %}"/>
+    <link rel='stylesheet' href="{% static 'apps/vote/css/vote.css' %}"/>
+    <!--<link rel='stylesheet' href="{% static 'apps/blog/css/clean-blog.min.css' %}"/>-->
+
+{% endblock header %}
+
+{% block content %}
+
+    <!-- Page Header -->
+    <header class="masthead"
+        {% if projectpost.image %}
+            style="background-image: url({{ projectpost.image }})">
+        {% else %}
+            style="background-image: url('http://placehold.it/700x300')">
+        {% endif %}
+
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="post-heading">
+              <h1>{{ projectpost.title }}
+            {% if projectpost.draft %}
+            <span style='color:red;'>| Draft </span>
+            {% endif %}
+            {% if projectpost.is_future_publication %}
+            <span style='color:red;'>| Future Post </span>
+            {% endif%}</h1>
+              <!--<span class="subheading">Have questions? I have answers (maybe).</span>-->
+              <span class="meta">Posted by <a href="#">{{ projectpost.author }},</a>
+                {% if projectpost.publish_date == projectpost.modified %}
+                Published: {{ projectpost.publish_date|timesince }} ago
+                {% else %}
+                Published: {{ projectpost.publish_date|timesince }} ago
+                (Updated: {{ projectpost.modified|timesince }} ago)
+                {% endif %}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <article>
+        <div class="container">
+
+            <div class="row">
+                <div class="col">
+                    {% if messages %}
+                        {% include "project/messages.html" %}
+                    {% endif %}
+                    {% load markdown_deux_tags %}
+
+                    {% if user.is_staff or user.is_superuser %}
+                        <a class="btn btn-default"
+                           href="{% url 'project:create_post' projectpost.get_project_slug projectpost.get_next_post_order %}"
+                           role="button">New Post</a>
+                        <a class="btn btn-default" href="{% url 'project:update_post' projectpost.slug %}" role="button">Edit Post</a>
+                        <a class="btn btn-default" href='#' type="btn btn-default"  data-toggle="modal" data-target="#DeleteProjectModal">Delete Post</a>
+                    {% endif %}
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- This div will contain the voting -->
+                <div class="col-sm-1">
+                    {% include "project/projectpost_vote.html" %}
+                </div>
+
+                <!-- this div will contain the contents of the post, including comments -->
+                <div class="col-sm-8 content-markdown">
+                    <div class="post-body">{{ projectpost.get_html }}</div>
+
+                    <div class="row">
+                        <div class="col">
+                            <a class="btn btn-default" href="#Top">Top of Page</a>
+                        </div>
+                    </div>
+
+                    <hr>
+                    <!--<br>-->
+
+                    <p class='lead'>Comments</p>
+
+                    <form method="POST" action="{% url 'project:detail' projectpost.slug %}">
+                        {% csrf_token %}
+                        {{ comment_form|crispy }}
+                        <input type="submit" value="Submit Comment" class="btn btn-default">
+                    </form>
+
+                    {% for comment in comments %}
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-1">
+                                {% include "comments/comment_vote.html" %}
+                            </div>
+                            <div class="col-sm-8">
+                                <blockquote>
+                                    <p>{{ comment.content }}</p>
+
+                                    {% children_annotate comment user.id as child_comments %}
+
+                                    {% include 'comments/comment_footer.html' %}
+
+                                    <div class="comment-reply">
+                                        <!-- toggle-able comment form -->
+
+                                        {% for child_comment in child_comments %}
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-sm-1">
+                                                    {% include "comments/child_comment_vote.html" %}
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    {% include 'comments/child_comment.html' %}
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+
+                                        <form method="POST" action="{% url 'project:detail' projectpost.slug %}">
+                                            {% csrf_token %}
+                                            {{ comment_form|crispy }}
+                                            <input type="hidden" name="parent_id" value="{{ comment.id }}">
+                                            <input type="submit" value="Reply" class="btn btn-default">
+                                        </form>
+
+                                        <!-- toggle-able help text -->
+                                        <a class="markdown-help-btn" href="#">Formatting Help</a>
+
+                                        <div class="markdown-help">
+                                            {% markdown_cheatsheet %}
+                                        </div>
+                                    </div>
+
+                                </blockquote>
+                            </div>
+                        </div>
+
+
+                    {% endfor %}
+
+                </div>
+
+                <div class="col-sm-3 ml-sm-auto">
+                    <div class="list-group">
+                        {% for post in projectpost.get_project_posts %}
+                            {% if projectpost.slug == post.slug %}
+                            <a href="#" class="list-group-item active">{{ post.title }}</a>
+                            {% else %}
+                            <a href="{% url 'project:detail' post.slug %}" class="list-group-item">{{ post.title }}</a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </article>
+
+    <div class="modal fade" id="DeleteProjectModal" tabindex="-1" role="dialog" aria-labelledby="DeleteProjectModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="DeletePostModalLabel">Delete Post</h4>
+              </div>
+              <div class="modal-body">
+                  <p>Are you sure you want to delete the following post: "{{ object }}"?</p>
+              </div>
+              <div class="modal-footer">
+                <form method="POST" action="{% url 'project:delete_post' projectpost.slug %}">
+                    {% csrf_token %}
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <input type="submit" value="Delete" class="btn btn-default"/>
+                </form>
+              </div>
+            </div>
+        </div>
+    </div>
+
+    {% include "comments/delete_comment_modal.html" %}
+
+
+{% endblock content %}
+
+{% block javascript %}
+    {% include "comments/comment_js.html" %}
+    {% include "vote/vote_js.html" %}
+{% endblock javascript %}
+

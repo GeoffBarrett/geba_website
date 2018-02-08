@@ -1,0 +1,45 @@
+{% extends "core/base.html" %} <!-- extends path starting from templates directory, concatenates all contents of templates -->
+
+{% block title %}GEBA - Home{% endblock title %}
+
+{% block css %}
+    {% load static from staticfiles %}
+    <!--From the webgl code-->
+    <!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8">-->
+    <meta name="viewport" content = "width=device-width, initial-scale=1.0"> <!-- width=device-width,initial-scale=1.0 is
+    for proper rendering and touch zooming (good for mobile)-->
+    <!--end of webgl code-->
+{% endblock css %}
+
+{% block header %}
+
+
+    <header class="intro-header" style="background-image: url('')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <iframe src="	https://s3.amazonaws.com/geba/static/WebGL/BrainBrezier/index2.html"
+                                style="border:0px #000000 none;" name="Brain Logo" scrolling="no"
+                                frameborder="1" height="600px" width="960px">
+                        </iframe>
+                        <h1>GEBA Technology!</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+{% endblock header %}
+
+{% block content %}
+    <div class="container-fluid"> <!-- this will contain the large image below the nav-bar-->
+        <div class="row">
+            <div class="col-sm-12">
+                <p> Welcome to the GeBa Technologies Home Page!</p>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+

@@ -1,0 +1,174 @@
+{% extends "core/base.html" %}
+
+{% block title %}GEBA - Blog{% endblock %}
+
+
+{% block css %}
+    {% load static %}
+    <link rel='stylesheet' href="{% static 'apps/vote/css/vote.css' %}"/>
+{% endblock css %}
+
+{% block content %}
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('http://placehold.it/700x300')">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+              <h1>Blogs</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col">
+                {% if messages %}
+                    {% include "blog/messages.html" %}
+                {% endif %}
+
+                {% if user.is_staff or user.is_superuser %}
+                    <a class="btn btn-default" href="{% url 'blog:create' %}" role="button">New Blog</a>
+                {% endif %}
+            </div>
+        </div>
+
+        <!--{% include 'blog/post_search.html' %}-->
+
+        {% if object_list|length == 0 %}
+            <h5>There are currently no active blog posts, thanks for your interest!</h5>
+        {% else %}
+            <div class="row justify-content-center">
+                <div class="col-md-11">
+                    {% load markdown_deux_tags %}
+
+                    {% for post in object_list %} <!-- object_list is returned from the ListView of objects.all()-->
+                        <div class="row">
+
+                            <div class="col-1">
+                                {% with post.unvoted_net_likes as "unvoted_likes" %}
+                                    {% if post.is_voted_up %}
+                                        <div class="link" current_class="likes">
+                                            <div class="midcol likes">
+                                                <div class="arrow up upvote-btn login-required access-required upmod"
+                                                 data-event-action="upvote" title="upvote"
+                                                 role="button" aria-label="upvote" data-object="{{ post }}"
+                                                 data-href="{% url 'blog:like_toggle_api' post.slug %}"></div>
+                                                <div class="score dislikes" title="{{ unvoted_likes|add:'-1' }}">{{ unvoted_likes|add:"-1" }}</div>
+                                                <div class="score unvoted" title="{{ unvoted_likes|add:'0' }}">{{ unvoted_likes|add:'0' }}</div>
+                                                <div class="score likes" title="{{ unvoted_likes|add:'1' }}">{{ unvoted_likes|add:"1" }}</div>
+                                                <div class="arrow down downvote-btn login-required access-required"
+                                                     data-event-action="downvote" role="button"
+                                                     aria-label="downvote" title="downvote" data-object="{{ post }}"
+                                                     data-href="{% url 'blog:dislike_toggle_api' post.slug %}"></div>
+                                            </div>
+                                        </div>
+
+                                    {% elif  post.is_voted_down %}
+                                        <div class="link" current_class="dislikes">
+                                            <div class="midcol dislikes">
+                                                <div class="arrow up upvote-btn login-required access-required"
+                                                 data-event-action="upvote" title="upvote"
+                                                 role="button" aria-label="upvote" data-object="{{ post }}"
+                                                 data-href="{% url 'blog:like_toggle_api' post.slug %}"></div>
+                                                <div class="score dislikes" title="{{ unvoted_likes|add:'-1' }}">{{ unvoted_likes|add:"-1" }}</div>
+                                                <div class="score unvoted" title="{{ unvoted_likes|add:'0' }}">{{ unvoted_likes|add:'0' }}</div>
+                                                <div class="score likes" title="{{ unvoted_likes|add:'1' }}">{{ unvoted_likes|add:"1" }}</div>
+                                                <div class="arrow down downvote-btn login-required access-required downmod"
+                                                     data-event-action="downvote" role="button"
+                                                     aria-label="downvote" title="downvote" data-object="{{ post }}"
+                                                     data-href="{% url 'blog:dislike_toggle_api' post.slug %}"></div>
+                                            </div>
+                                        </div>
+                                    {% else %}
+                                        <div class="link" current_class="unvoted">
+                                            <div class="midcol unvoted">
+                                                <div class="arrow up upvote-btn login-required access-required"
+                                                 data-event-action="upvote" title="upvote"
+                                                 role="button" aria-label="upvote" data-object="{{ post }}"
+                                                 data-href="{% url 'blog:like_toggle_api' post.slug %}"></div>
+                                                <div class="score dislikes" title="{{ unvoted_likes|add:'-1' }}">{{ unvoted_likes|add:"-1" }}</div>
+                                                <div class="score unvoted" title="{{ unvoted_likes|add:'0' }}">{{ unvoted_likes|add:'0' }}</div>
+                                                <div class="score likes" title="{{ unvoted_likes|add:'1' }}">{{ unvoted_likes|add:"1" }}</div>
+                                                <div class="arrow down downvote-btn login-required access-required"
+                                                     data-event-action="downvote" role="button"
+                                                     aria-label="downvote" title="downvote" data-object="{{ post }}"
+                                                     data-href="{% url 'blog:dislike_toggle_api' post.slug %}"></div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endwith %}
+                            </div>
+
+                            <div class="col-10">
+
+                                <div class="card mb-4">
+                                     {% if post.image %}
+                                        <img class="card-img-top" src="{{ post.image.url }}" alt="">
+                                     {% else %}
+                                        <img class="card-img-top" src="http://placehold.it/700x300" alt="">
+                                     {% endif %}
+
+                                    <!--
+                                    <div class="card-img-overlay">
+                                        <p class="card-text-right">Test</p>
+                                    </div>-->
+
+                                    <div class="card-body">
+
+                                        <h2 class="card-title">{{ post.title }}
+                                            {% if post.draft %}
+                                                <span style='color:red;'>| Draft </span>
+                                            {% endif %}
+
+                                            {% if post.is_future_publication %}
+                                                <span style='color:red;'>| Future Blog </span>
+                                            {% endif %}
+                                        </h2>
+
+                                        <p class="card-text">
+
+                                            {% if post.description %}
+                                                {{ post.description }}
+                                            {% else %}
+                                                {% if post.get_html %}
+                                                    {{ post.get_html|truncatechars_html:250 }}
+                                                {% else %}
+                                                    <span style='color:red;'> No Description! </span>
+                                                {% endif %}
+                                            {% endif %}
+
+                                        </p>
+                                        {% if post.keywords %}
+                                            <p class="card-text">Keywords: {{ post.keywords }}</p>
+                                        {% endif %}
+                                        <a class="btn btn-primary" href="{{ post.get_absolute_url }}">Read More →</a>
+                                    </div>
+
+                                    <div class="card-footer text-muted">
+                                        Published by
+                                        {% if post.author %}
+                                            <a href="#">{{ post.author }}</a>
+                                            | {{ post.publish_date|date:"m-d-Y" }}
+                                        {% else %}
+                                            <span style='color:red;'> No Authors! </span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                </div>
+            </div>
+
+        {% endif %}
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+    {% include "vote/vote_js.html" %}
+{% endblock javascript %}

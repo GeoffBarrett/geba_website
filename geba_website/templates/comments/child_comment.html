@@ -1,0 +1,11 @@
+<blockquote>
+<p>{{ child_comment.content }}</p>
+<footer>
+    by: {{ child_comment.author }} | {{ child_comment.timestamp|timesince }} ago
+    {% if request.user == child_comment.author %} |
+    <a class="" data-toggle="modal" data-target="#DeleteCommentModal" data-content="{{ child_comment.content }}"
+    data-url="{{ child_comment.get_delete_url }}" data-csrf="{% csrf_token %}">
+        <span class="fa fa-trash"></span></a> {% endif %}
+</footer>
+
+</blockquote>

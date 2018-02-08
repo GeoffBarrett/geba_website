@@ -1,0 +1,56 @@
+{% extends "core/base.html" %} <!-- extends path starting from templates directory, concatenates all contents of templates -->
+
+{% load staticfiles %}
+
+{% block css %}
+
+<link rel='stylesheet' href="{% static 'apps/core/css/form_style.css' %}"/>
+
+{{ form.media }} <!-- used for the html preview widget !-->
+
+{% endblock css %}
+
+{% block content %}
+
+    <header class="masthead">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="post-heading">
+              <h1>Update Post</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    {% if messages %}
+        {% include "project/messages.html" %}
+    {% endif %}
+
+    {% load crispy_forms_tags %}
+    <div class="container">
+        <div class="row justify-content-sm-center">
+            <div class = "col-md-7">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+
+                        <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+
+                            {{ form.as_p }}
+
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col_sm-10">
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

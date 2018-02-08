@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <!--{% load analytical %}-->
+        {% load staticfiles %}
+
+        <!--{% analytical_head_top %}-->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        {% block viewport %}
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        {% endblock viewport %}
+
+
+        <title>{% block title %}{% endblock title %}</title> <!-- This is the title that is seen in the tab -->
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <link rel='stylesheet' href="{% static 'apps/core/css/style.css' %}"/>
+        <link rel='stylesheet' href="{% static 'apps/core/css/sticky-footer-navbar.css' %}"/>
+
+
+        {% block css %}{% endblock css %}
+
+        <!--{% analytical_head_bottom %}-->
+    </head>
+
+    <body class="body">
+
+        <div>
+
+            <!--{% analytical_body_top %}-->
+
+            {% include "core/navbar.html" %}
+
+            {% block header %}{% endblock header %}
+
+            {% block content %}{% endblock content %}
+        </div>
+
+        <hr>
+        <footer>
+            <div class="container">
+                <div class="row">
+                  <div class="col-lg-8 col-md-10 mx-auto">
+                    <ul class="list-inline text-center">
+                        <li class="list-inline-item">
+                        <a href="/youtube">
+                          <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-youtube fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="/linkedin">
+                          <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="/twitter">
+                          <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#">
+                          <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#">
+                          <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                      </li>
+                    </ul>
+                    <p class="copyright text-muted">Copyright © GEBA Technology 2018</p>
+                  </div>
+                </div>
+            </div>
+
+        </footer>
+
+        <!--{% analytical_body_bottom %}-->
+
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <!--Placed at the end of the document so the pages load faster -->
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) make sure this is placed
+        before bootstrap.min.js otherwise the dropdown menu will not work-->
+
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+        {% block javascript %}{% endblock javascript %}
+
+        {% include "core/custom_js.html" %}
+        {% include "core/navbar_js.html" %}
+
+    </body>
+
+
+</html>
