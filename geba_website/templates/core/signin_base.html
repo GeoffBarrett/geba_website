@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <!--{% load analytical %}-->
+        {% load staticfiles %}
+
+        <!--{% analytical_head_top %}-->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        {% block viewport %}
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        {% endblock viewport %}
+
+
+        <title>{% block title %}{% endblock title %}</title> <!-- This is the title that is seen in the tab -->
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <link rel='stylesheet' href="{% static 'apps/core/css/style.css' %}"/>
+        <link rel='stylesheet' href="{% static 'apps/core/css/sticky-footer-navbar.css' %}"/>
+
+
+        {% block css %}{% endblock css %}
+
+        <!--{% analytical_head_bottom %}-->
+    </head>
+
+    <body class="body">
+
+        <div>
+
+            <!--{% analytical_body_top %}-->
+
+
+            {% block header %}{% endblock header %}
+
+            {% block content %}{% endblock content %}
+        </div>
+
+        <!--{% analytical_body_bottom %}-->
+
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <!--Placed at the end of the document so the pages load faster -->
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) make sure this is placed
+        before bootstrap.min.js otherwise the dropdown menu will not work-->
+
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+        <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+                crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <!--<script type="text/javascript" src="{% static 'apps/datetimepicker/build/js/collapse.js' %}"></script>-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+        <script type="text/javascript" src="{% static 'apps/datetimepicker/build/js/bootstrap-datetimepicker.min.js' %}"></script>
+
+        {% block javascript %}{% endblock javascript %}
+
+        {% include "core/custom_js.html" %}
+
+    </body>
+
+
+</html>

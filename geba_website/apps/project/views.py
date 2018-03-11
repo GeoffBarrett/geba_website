@@ -4,6 +4,8 @@ from django.db.models import Q
 from django.views.generic import CreateView, UpdateView, DetailView, ListView, DeleteView, FormView, View, \
     TemplateView, RedirectView
 from django.contrib import messages
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse_lazy
 from django.core.exceptions import PermissionDenied
 from django.core import serializers
@@ -22,6 +24,7 @@ from django.contrib.contenttypes.models import ContentType
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import authentication, permissions
+
 
 
 class ProjectActionMixin(object):
@@ -546,6 +549,10 @@ class ProjectPostLikeToggleAjax(APIView):
     authentication_classes = (authentication.SessionAuthentication, )
     permission_classes = (permissions.IsAuthenticated, )
 
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(ProjectPostLikeToggleAjax, self).dispatch(*args, **kwargs)
+
     def get(self, request, slug=None, format=None):
         # slug = self.kwargs.get("slug")
         obj = get_object_or_404(ProjectPost, slug=slug)
@@ -611,6 +618,12 @@ class ProjectLikeToggleAjax(APIView):
 
     authentication_classes = (authentication.SessionAuthentication, )
     permission_classes = (permissions.IsAuthenticated, )
+
+    '''
+    @method_decorator(login_required(login_url=reverse_lazy('core:signin')))
+    def dispatch(self, *args, **kwargs):
+        return super(ProjectLikeToggleAjax, self).dispatch(*args, **kwargs)
+    '''
 
     def get(self, request, slug=None, format=None):
         # slug = self.kwargs.get("slug")

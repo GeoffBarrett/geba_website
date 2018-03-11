@@ -19,9 +19,9 @@ def logout_view(request):
     logout(request)
     return redirect('core:index')
 
-
+'''
 class LoginRegisterFormView(TemplateView):
-    '''Based off of a TemplateView which is responsible for the GET request'''
+    """Based off of a TemplateView which is responsible for the GET request"""
     #form_class = UserForm
     register_form = UserCreationForm
     login_form = LoginForm
@@ -30,60 +30,13 @@ class LoginRegisterFormView(TemplateView):
     template_name = 'core/signin_form.html'
 
     def get(self, request):
-        '''when the user executes a get request, display blank registration form'''
+        """when the user executes a get request, display blank registration form"""
         #form = self.form_class(None)
         login_form = self.login_form(self.request.GET or None)
         register_form = self.register_form(self.request.GET or None)
         return render(request, self.template_name, {'login_form': login_form, 'register_form': register_form})
-    '''
-    def post(self, request):
-        #performs a post request, need to register the user and add to database
 
-        if 'login_btn' in request.POST:
-
-            #form = self.form_class(request.POST)
-            form = self.login_form(request.POST)
-
-            if form.is_valid():
-                print('hellooooo')
-                username = form.cleaned_data['username']
-                print(username)
-                password = form.cleaned_data['password']
-                user = authenticate(username=username, password=password)
-                login(request, user)  # can now refer to them as request.user.username
-                return redirect('core:index')
-
-            else:
-
-                return render(request, self.template_name, {'login_form': form})
-
-        elif 'register_btn' in request.POST:
-
-            form = self.register_form(request.POST)
-
-            if form.is_valid():
-
-                user = form.save(commit=False)  # creates object from the form, doesn't save it to the database just yet
-
-                # normalize the data so everything is in the same format
-                username = form.cleaned_data['username']
-                password = form.cleaned_data['password']
-                user.set_password(password)  # saves the hashed password
-                user.save()  # saves the information
-
-                # authenticate the user
-                user = authenticate(username=username, password=password)
-
-                if user is not None:
-                    #if authenticated it returns the user variable (none otherwise)
-
-                    if user.is_active:
-                        #checks to make sure the account is not banned or anything
-                        login(request, user)  # can now refer to them as request.user.username
-                        return redirect('core:index')
-            else:
-                return render(request, self.template_name, {'register_form': form})
-    '''
+'''
 
 
 class LoginFormView(FormView):
@@ -115,7 +68,8 @@ class LoginFormView(FormView):
 class RegisterFormView(FormView):
 
     form_class = UserCreationForm
-    template_name = 'core/signin_form.html'
+    # template_name = 'core/signin_form.html'
+    template_name = 'core/register_form.html'
     success_url = '/'
 
     def post(self, request, *args, **kwargs):

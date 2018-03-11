@@ -50,7 +50,8 @@
                     </li>
                 {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'core:signin' %}">Sign In/Register</a>
+                        <a class="nav-link" href="{% url 'core:login' %}">Sign In</a>
+                        <a class="nav-link" href="{% url 'core:register' %}">Register</a>
                     </li>
                 {% endif %}
             </ul>

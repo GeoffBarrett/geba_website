@@ -53,6 +53,10 @@
                 console.log(data)},
             error: function(error){
                 console.log(error)
+                console.log("hello")
+                if (error.indexOf("Authentication") !== -1){
+                    console.log("Authenticate!")
+                }
                 console.log("error")
             }
         })

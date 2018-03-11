@@ -1,5 +1,6 @@
 from functools import wraps
 from django.contrib.contenttypes.models import ContentType
+from django.core.exceptions import PermissionDenied
 
 
 # creates a wrapper function that will ensure that the function is enacted on an instance
@@ -33,3 +34,4 @@ def add_field_to_objects(model, objects, user_id):
         r.is_voted_down = (r.pk, DOWN) in voted_object_ids
 
     return objects
+

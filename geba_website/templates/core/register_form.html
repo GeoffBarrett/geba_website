@@ -1,0 +1,88 @@
+{% extends "core/signin_base.html" %} <!--  extends path starting from templates directory, concatenates all contents of templates -->
+{% block title %}Sign In | GEBA{% endblock %}
+
+{% block css %}
+	{% load staticfiles %}
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+	<link rel="stylesheet" href="{% static 'assets/font-awesome/css/font-awesome.min.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/form-elements.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+
+{% endblock css %}-->
+
+
+{% block content %}
+<!-- Top content -->
+<article>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-5">
+                <h3>Register!</h3>
+                <p>Fill in the form below to get instant access:</p>
+
+                <form role="form" action="{% url 'core:register' %}" method="post">
+                    {% csrf_token %}
+
+                    <!--{% for field in register_form %}
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <span class="text-danger small">{{ field.errors }}</span>
+                            </div>
+                            <label class="control-label col-sm-2">{{ field.label_tag }}</label>
+                            <div class="col-sm-10">{{ field }}</div>
+                        </div>
+                    {% endfor %}-->
+
+                    <div class="form-group">
+                        <div>
+                        <span class="text-danger small">{{ register_form.email.errors }}</span>
+                        </div>
+                        <label class="sr-only" for="{{ register_form.email.id_for_label }}">Email</label>
+                        <input type="text" name="email" placeholder="Email..." class="form-email form-control" id="{{ register_form.email.id_for_label }}">
+                    </div>
+                    <div class="form-group">
+                        <div>
+                        <span class="text-danger small">{{ register_form.username.errors }}</span>
+                        </div>
+                        <label class="sr-only" for="{{ register_form.username.id_for_label }}">Username</label>
+                        <input type="text" name="username" placeholder="Username..." class="form-username form-control" id="{{ register_form.username.id_for_label }}">
+                    </div>
+                    <div class="form-group">
+                        <div>
+                        <span class="text-danger small">{{ register_form.password1.errors }}</span>
+                        </div>
+                        <label class="sr-only" for="{{ register_form.password1.id_for_label }}">Password</label>
+                        <input type="password" name="password1" placeholder="Password..." class="form-password form-control" id="{{ register_form.password1.id_for_label }}">
+                    </div>
+                    <div class="form-group">
+                        <div>
+                        <span class="text-danger small">{{ register_form.password2.errors }}</span>
+                        </div>
+                        <label class="sr-only" for="{{ register_form.password2.id_for_label }}">Password2</label>
+                        <input type="password" name="password2" placeholder="Confirm Password..." class="form-password form-control" id="{{ register_form.password2.id_for_label }}">
+                    </div>
+                    <button type="submit" class="btn btn-success">Sign me up!</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</article>
+
+{% endblock content %}
+
+{% block java %}
+<!-- Javascript -->
+<script src="{% static 'assets/js/jquery-1.11.1.min.js' %}"></script>
+<script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/js/scripts.js' %}"></script>
+
+<!--[if lt IE 10]>-->
+<script src="{% static 'assets/js/placeholder.js' %}"></script>-->
+<!--<![endif]-->
+
+{% endblock java %}

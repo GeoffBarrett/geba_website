@@ -1,5 +1,6 @@
 from .models import ProjectPost, Project
 from django import forms
+from django.contrib.admin.widgets import AdminSplitDateTime, AdminDateWidget
 from django.utils import timezone
 
 from pagedown.widgets import PagedownWidget
@@ -12,6 +13,9 @@ class ProjectPostForm(forms.ModelForm):
 
     # publish_date = forms.DateTimeField(widget=forms.SelectDateWidget(show_preview=False))
     publish_date = forms.DateTimeField(widget=forms.SelectDateWidget)
+    # publish_date = forms.DateTimeField(widget=AdminSplitDateTime())
+    # publish_date = forms.DateInput(attrs={'class': 'date_picker'})
+
     body = forms.CharField(widget=PagedownWidget())
 
     class Meta:
@@ -23,6 +27,12 @@ class ProjectPostForm(forms.ModelForm):
                   'draft',
                   'publish_date',
                   )
+        """
+        widgets = {
+            'publish_date': forms.DateInput(attrs={'class': 'date_picker'})
+        }
+        """
+
     '''
     def clean_publish_date(self):
         publish_date = self.cleaned_data.get('publish_date')

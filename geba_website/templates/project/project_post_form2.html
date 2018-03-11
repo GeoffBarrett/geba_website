@@ -5,8 +5,10 @@
 {% block css %}
 
 <link rel='stylesheet' href="{% static 'apps/core/css/form_style.css' %}"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
-
+<link rel='stylesheet' href="{% static 'apps/datetimepicker/build/css/bootstrap-datetimepicker.css' %}"/>
+<!--<link rel='stylesheet' href="{% static 'admin/css/widgets.css' %}"/>
+<link rel='stylesheet' href="{% static 'admin/css/forms.css' %}"/>
+<link rel='stylesheet' href="{% static 'admin/css/base.css' %}"/>-->
 {{ form.media }} <!-- used for the html preview widget !-->
 
 {% endblock css %}
@@ -38,8 +40,6 @@
 
                         <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
                             {% csrf_token %}
-
-
 
                             <div class="form-group">
                                 <div>
@@ -77,8 +77,8 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="{{ form.publish_date.id_for_label }}">{{ form.publish_date.label_tag }}</label>
-                                <div class='input-group date' id='{{ form.publish_date.id_for_label }}'>
+                                <label for="datetimepicker1">{{ form.publish_date.label_tag }}</label>
+                                <div class='input-group date' id='datetimepicker1'>
                                     <input type='text' class="form-control" />
                                     <span class="input-group-addon">
                                         <span class="fa fa-calendar"></span>
@@ -107,16 +107,12 @@
 
 {% block javascript %}
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-<script type="text/javascript" src="{% static 'apps/core/js/moment.js' %}"></script>
-<script type="text/javascript" src="{% static 'apps/core/js/transition.js' %}"></script>
-<script type="text/javascript" src="{% static 'apps/core/js/collapse.js' %}"></script>
-<script type="text/javascript" src="{% static 'bootstrap-datetimepicker.min.js' %}"></script>
+    <!--<script type="text/javascript" src="{% static 'apps/datetimepicker/build/js/bootstrap-datetimepicker.min.js' %}"></script>-->
 
-<script type="text/javascript">
-    $(function () {
-        $('#datetimepicker1').datetimepicker();
-    });
-</script>
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker1').datetimepicker();
+        });
+    </script>
 
 {% endblock javascript %}
