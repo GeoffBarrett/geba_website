@@ -26,7 +26,6 @@ from rest_framework.response import Response
 from rest_framework import authentication, permissions
 
 
-
 class ProjectActionMixin(object):
     # the fields that user will be able to type in the forms for CreateView
     # fields = ('published', 'title', 'body')
@@ -195,7 +194,6 @@ class ProjectDeleteView(DeleteView):
     def dispatch(self, request, *args, **kwargs):
         request = check_project_rights(request)
         return super(ProjectDeleteView, self).dispatch(request, *args, **kwargs)
-
 
 #---------- unused ---------------
 class ProjectDetailGetView(DetailView):
@@ -476,12 +474,14 @@ class ProjectPostCreateView(ProjectActionMixin, CreateView):
     success_msg = 'Post Created!'
     form_class = ProjectPostForm
     template_name = 'project/project_post_form2.html'
+    # template_name = 'project/project_post_form.html'
     # success_url = '/'  # if no success_url is given, it will use the get_absolute_url() on the object if available
     # Don't need to specify template name due to the html file being named ModelName_form.html
 
     # make it so you have to be staff or super-user to create blog
     def dispatch(self, request, *args, **kwargs):
         request = check_project_rights(request)
+
         return super(ProjectPostCreateView, self).dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
@@ -496,6 +496,7 @@ class ProjectPostCreateView(ProjectActionMixin, CreateView):
 
     def post(self, request, *args, **kwargs):
         """performs a post request"""
+
         form = self.form_class(request.POST or None, request.FILES or None)
 
         if form.is_valid():
@@ -542,7 +543,6 @@ class ProjectPostCreateView(ProjectActionMixin, CreateView):
 
 UP = 0
 DOWN = 1
-
 
 class ProjectPostLikeToggleAjax(APIView):
 

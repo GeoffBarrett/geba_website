@@ -26,16 +26,6 @@
                 <form role="form" action="{% url 'core:register' %}" method="post">
                     {% csrf_token %}
 
-                    <!--{% for field in register_form %}
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <span class="text-danger small">{{ field.errors }}</span>
-                            </div>
-                            <label class="control-label col-sm-2">{{ field.label_tag }}</label>
-                            <div class="col-sm-10">{{ field }}</div>
-                        </div>
-                    {% endfor %}-->
-
                     <div class="form-group">
                         <div>
                         <span class="text-danger small">{{ register_form.email.errors }}</span>

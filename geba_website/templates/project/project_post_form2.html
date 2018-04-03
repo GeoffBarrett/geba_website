@@ -5,10 +5,6 @@
 {% block css %}
 
 <link rel='stylesheet' href="{% static 'apps/core/css/form_style.css' %}"/>
-<link rel='stylesheet' href="{% static 'apps/datetimepicker/build/css/bootstrap-datetimepicker.css' %}"/>
-<!--<link rel='stylesheet' href="{% static 'admin/css/widgets.css' %}"/>
-<link rel='stylesheet' href="{% static 'admin/css/forms.css' %}"/>
-<link rel='stylesheet' href="{% static 'admin/css/base.css' %}"/>-->
 {{ form.media }} <!-- used for the html preview widget !-->
 
 {% endblock css %}
@@ -31,6 +27,9 @@
         {% include "project/messages.html" %}
     {% endif %}
 
+    {{ form.name.errors }}
+    {{ form.non_field_errors }}
+
     {% load crispy_forms_tags %}
     <div class="container">
         <div class="row justify-content-sm-center">
@@ -38,7 +37,7 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
 
-                        <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+                        <form class="form-horizontal" action="." method="post" enctype="multipart/form-data">
                             {% csrf_token %}
 
                             <div class="form-group">
@@ -77,16 +76,9 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="datetimepicker1">{{ form.publish_date.label_tag }}</label>
-                                <div class='input-group date' id='datetimepicker1'>
-                                    <input type='text' class="form-control" />
-                                    <span class="input-group-addon">
-                                        <span class="fa fa-calendar"></span>
-                                    </span>
-                                </div>
+                                <label>{{ form.publish_date.label_tag }}</label>
+                                {{ form.publish_date }}
                             </div>
-
-                            <!--{{ form.as_p }}-->
 
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col_sm-10">
@@ -106,13 +98,5 @@
 
 
 {% block javascript %}
-
-    <!--<script type="text/javascript" src="{% static 'apps/datetimepicker/build/js/bootstrap-datetimepicker.min.js' %}"></script>-->
-
-    <script type="text/javascript">
-        $(function () {
-            $('#datetimepicker1').datetimepicker();
-        });
-    </script>
 
 {% endblock javascript %}

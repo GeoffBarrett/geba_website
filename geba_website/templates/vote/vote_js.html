@@ -11,6 +11,10 @@
         var object = button.data('object');
         var like_url = button.data('href');
 
+        if (like_url == '#'){
+            return;
+        }
+
         vote.parent().removeClass(current_class);  // removes whatever the current class is
 
         if(current_class == "unvoted"){
@@ -53,7 +57,6 @@
                 console.log(data)},
             error: function(error){
                 console.log(error)
-                console.log("hello")
                 if (error.indexOf("Authentication") !== -1){
                     console.log("Authenticate!")
                 }
@@ -73,6 +76,10 @@
         var current_class = current_class_obj.attr('current_class');
         var object = button.data('object');
         var dislike_url = button.data('href');
+
+        if (dislike_url == '#'){
+            return;
+        }
 
         vote.parent().removeClass(current_class);  // removes whatever the current class is
 
@@ -121,4 +128,25 @@
         })
 
     })
+
+    // this script is for deleting comments
+    $('#LoginVoteModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var content = button.data('content') // extract the content of the comment
+        var modal = $(this)
+        // var slug = button.data('slug'); // extract the slug of the comment
+        var url = 'action="' + button.data('url') + '">'; // extra the url information
+        var csrf = button.data('csrf');
+        modal.find('.modal-title').text('Delete Comment!')
+
+        modal.find('.modal-body ').text('Do you want to delete the following comment: ' + content + "!")
+
+        modal.find('.modal-footer ').html(
+        '<form method="POST" ' + url + csrf +
+        '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>' +
+        '<input type="submit" value="Delete" class="btn btn-default"/></form>')
+    })
+
 </script>
+
+{% include "vote/login_vote_modal.html" %}

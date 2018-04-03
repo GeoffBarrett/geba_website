@@ -13,6 +13,7 @@ class ProjectPostForm(forms.ModelForm):
 
     # publish_date = forms.DateTimeField(widget=forms.SelectDateWidget(show_preview=False))
     publish_date = forms.DateTimeField(widget=forms.SelectDateWidget)
+
     # publish_date = forms.DateTimeField(widget=AdminSplitDateTime())
     # publish_date = forms.DateInput(attrs={'class': 'date_picker'})
 

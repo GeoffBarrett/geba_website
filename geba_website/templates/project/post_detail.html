@@ -65,7 +65,7 @@
                            href="{% url 'project:create_post' projectpost.get_project_slug projectpost.get_next_post_order %}"
                            role="button">New Post</a>
                         <a class="btn btn-default" href="{% url 'project:update_post' projectpost.slug %}" role="button">Edit Post</a>
-                        <a class="btn btn-default" href='#' type="btn btn-default"  data-toggle="modal" data-target="#DeleteProjectModal">Delete Post</a>
+                        <a class="btn btn-default" href='#' type="btn btn-default"  data-toggle="modal" data-target="#DeleteProjectPostModal">Delete Post</a>
                     {% endif %}
 
                 </div>
@@ -174,12 +174,13 @@
         </div>
     </article>
 
-    <div class="modal fade" id="DeleteProjectModal" tabindex="-1" role="dialog" aria-labelledby="DeleteProjectModalLabel">
+
+    <div class="modal fade" id="DeleteProjectPostModal" tabindex="-1" role="dialog" aria-labelledby="DeleteProjectPostModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="DeletePostModalLabel">Delete Post</h4>
+                <h4 class="modal-title" id="DeleteProjectPostModalLabel">Delete Post</h4>
               </div>
               <div class="modal-body">
                   <p>Are you sure you want to delete the following post: "{{ object }}"?</p>
@@ -193,7 +194,7 @@
               </div>
             </div>
         </div>
-    </div>
+    </div><!---->
 
     {% include "comments/delete_comment_modal.html" %}
 

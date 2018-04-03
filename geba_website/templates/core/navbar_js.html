@@ -32,4 +32,28 @@
 
     })(jQuery); // End of use strict
 
+
+   $("#header-search-button").off("click").click(function(){
+
+       $(this).hasClass("btn-primary")?($(this).removeClass("btn-primary"),
+       $("#header-shop").removeClass("search-open"),
+       $("#header-search").removeClass("open"),
+       $("#header-search-type").removeClass("shown"),
+       $("#header-search-query").removeClass("open")):
+           ($(this).addClass("btn-primary"),
+           $("#header-search").addClass("open"),
+           $("#header-search-type").addClass("shown"),
+           $("#header-search-query").addClass("open").keypress(function(t){
+               if(t=t||window.event,27==t.keyCode)
+                   $(this).removeClass("open").blur(),
+                   $("#header-search-button").removeClass("btn-primary"),
+                   $("#header-search-type").removeClass("shown");
+               else if(13==t.keyCode)
+                   return
+                   $("#header-search").submit(),
+                   !1
+               }),
+               setTimeout(function(){$("#header-search-query").focus()}))
+   })
+
 </script>
