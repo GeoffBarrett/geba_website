@@ -158,21 +158,57 @@
 
                                     <div class="card-body">
 
-                                        <h2 class="card-title">{{ project.title }}
-                                            {% if project.pages.count == 0 %}
-                                                <span class="badge badge-danger">No Pages</span>
-                                                <!--<span style='color:red;'>| No Pages </span>-->
-                                            {% endif %}
+                                        <h2 class="card-title">
 
-                                            {% if project.draft %}
-                                                <span class="badge badge-danger">Draft</span>
-                                                <!--<span style='color:red;'>| Draft </span>-->
-                                            {% endif %}
+                                            <div class="row">
+                                                {% if request.user == project.author or request.user.is_superuser %}
+                                                    <div class="col-11">
+                                                {% else %}
+                                                    <div class="col-12">
+                                                {% endif %}
 
-                                            {% if project.is_future_publication %}
-                                                <span class="badge badge-danger">Future Project</span>
-                                                <!--<span style='color:red;'>| Future Project </span>-->
-                                            {% endif %}
+                                                {{ project.title }}
+                                                {% if project.pages.count == 0 %}
+                                                    <span class="badge badge-danger">No Pages</span>
+                                                    <!--<span style='color:red;'>| No Pages </span>-->
+                                                {% endif %}
+
+
+                                                {% if project.draft %}
+                                                    <span class="badge badge-danger">Draft</span>
+                                                    <!--<span style='color:red;'>| Draft </span>-->
+                                                {% endif %}
+
+                                                {% if project.is_future_publication %}
+                                                    <span class="badge badge-danger">Future Project</span>
+                                                    <!--<span style='color:red;'>| Future Project </span>-->
+                                                {% endif %}
+                                                </div>
+
+                                                {% if request.user == project.author or request.user.is_superuser %}
+                                                    <div class="col-1">
+                                                        <div class="btn-group">
+                                                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                                                               aria-haspopup="true" aria-expanded="false" id="DropDown{{ project.id }}">
+                                                              <span class="caret"></span>
+                                                            </a>
+
+                                                          <div class="dropdown-menu" aria-labelledby="DropDown{{ project.id }}">
+                                                            <!--<a class="dropdown-item" href="{% url 'project:update' project.slug %}">Edit Project</a>-->
+                                                            <a class="dropdown-item" data-toggle="modal" data-target="#DeleteProjectModalIndex"
+                                                               data-content="{{ project }}"
+                                                               data-url="{{ project.get_delete_url }}" data-csrf="{% csrf_token %}">
+                                                                Delete Blog</a>
+                                                            {% if project.draft %}
+                                                                <a class="dropdown-item" href="#">Publish</a>
+                                                            {% else %}
+                                                                <a class="dropdown-item" href="#">Make Private</a>
+                                                            {% endif %}
+                                                          </div>
+                                                        </div>
+                                                    </div>
+                                                {% endif %}
+                                            </div>
                                         </h2>
 
                                         <p class="card-text">
@@ -225,9 +261,11 @@
         {% endif %}
     </div>
 
+    {% include "project/delete_project_modal.html" %}
 
 {% endblock %}
 
 {% block javascript %}
+    {% include "project/project_js.html" %}
     {% include "vote/vote_js.html" %}
 {% endblock javascript %}

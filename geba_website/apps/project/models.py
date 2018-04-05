@@ -159,6 +159,9 @@ class Project(VoteModel, TimeStampModel):
 
     keywords = models.TextField(blank=True, null=True)
 
+    def get_delete_url(self):
+        return reverse("project:delete", kwargs={"slug": self.slug})
+
     class Meta:
         ordering = ["-vote_score", "-num_vote_up", "-publish_date", "-modified"]
 
