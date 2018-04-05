@@ -30,10 +30,12 @@
             <div class="post-heading">
               <h1>{{ projectpost.title }}
             {% if projectpost.draft %}
-            <span style='color:red;'>| Draft </span>
+                <span class="badge badge-danger">Draft</span>
+                <!--<span style='color:red;'>| Draft </span>-->
             {% endif %}
             {% if projectpost.is_future_publication %}
-            <span style='color:red;'>| Future Post </span>
+                <span class="badge badge-danger">Future Post</span>
+                <!--<span style='color:red;'>| Future Post </span>-->
             {% endif%}</h1>
               <!--<span class="subheading">Have questions? I have answers (maybe).</span>-->
               <span class="meta">Posted by <a href="#">{{ projectpost.author }},</a>

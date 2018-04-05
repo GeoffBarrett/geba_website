@@ -131,14 +131,17 @@ class BlogCreateView(BlogActionMixin, CreateView):
         if form.is_valid():
 
             instance = form.save(commit=False)  # creates object from the form, doesn't save it to the database just yet
-            #if instance.publish_date is None:
-            #    instance.publish_date = timezone.now()
+
             if request.user.get_username() == 'admin':
-                instance.author = User.objects.get(username='Geoff')
+                # instance.author = User.objects.get(username='Geoff')
+                instance.author = request.user
+                pass
             else:
                 instance.author = request.user
 
             instance.save()
+
+            instance.votes.up(request.user.id)
 
             return super(BlogCreateView, self).form_valid(form)
         else:
@@ -305,7 +308,9 @@ class PostLikeToggleAjax(APIView):
 
     def get(self, request, slug=None, format=None):
         # slug = self.kwargs.get("slug")
+
         obj = get_object_or_404(Post, slug=slug)
+
         # url_ = obj.get_absolute_url()  # get the url of the project post
         user = self.request.user  # get the user
         updated = False
@@ -323,7 +328,6 @@ class PostLikeToggleAjax(APIView):
             else:
                 # upvote the object
                 obj.votes.up(user.id)
-
                 liked = True
 
             updated = True

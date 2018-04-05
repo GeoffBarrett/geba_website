@@ -118,6 +118,8 @@ class ProjectCreationPostView(FormView):
 
             project_instance.save()
 
+            project_instance.votes.up(request.user.id)  # up voting the project
+
             if post_form.is_valid():
 
                 object_slug = project_instance.slug
@@ -128,7 +130,9 @@ class ProjectCreationPostView(FormView):
                 # creates object from the form, doesn't save it to the database just yet
 
                 if request.user.get_username() == 'admin':
-                    instance_post.author = User.objects.get(username='Geoff')
+                    # instance_post.author = User.objects.get(username='Geoff')
+                    instance_post.author = request.user
+                    pass
                 else:
                     instance_post.author = request.user
 
@@ -141,6 +145,8 @@ class ProjectCreationPostView(FormView):
 
                 # project_instance.save()
                 instance_post.save()
+
+                instance_post.votes.up(request.user.id)  # up voting the project post
 
             else:
 
@@ -196,6 +202,8 @@ class ProjectDeleteView(DeleteView):
         return super(ProjectDeleteView, self).dispatch(request, *args, **kwargs)
 
 #---------- unused ---------------
+
+
 class ProjectDetailGetView(DetailView):
     """This view will be used to GET the detail data"""
     # success_msg = 'Comment Added!'
@@ -287,6 +295,7 @@ class ProjectDetailPostView(SingleObjectMixin, FormView):
 
     def get_success_url(self):
         return reverse('project:detail', kwargs={'slug': self.object.slug})
+
 
 ######################## Both View #####################################
 
@@ -473,8 +482,8 @@ class ProjectPostCreateView(ProjectActionMixin, CreateView):
     model = ProjectPost
     success_msg = 'Post Created!'
     form_class = ProjectPostForm
-    template_name = 'project/project_post_form2.html'
-    # template_name = 'project/project_post_form.html'
+    # template_name = 'project/project_post_form2.html'
+    template_name = 'project/project_post_form.html'
     # success_url = '/'  # if no success_url is given, it will use the get_absolute_url() on the object if available
     # Don't need to specify template name due to the html file being named ModelName_form.html
 
@@ -532,6 +541,9 @@ class ProjectPostCreateView(ProjectActionMixin, CreateView):
 
             project_instance.save()
 
+            # obj = get_object_or_404(ProjectPost, id=instance.id)
+            instance.votes.up(request.user.id)
+
             # return HttpResponseRedirect(self.get_success_url())
             return super(ProjectPostCreateView, self).form_valid(form)
 
@@ -544,14 +556,17 @@ class ProjectPostCreateView(ProjectActionMixin, CreateView):
 UP = 0
 DOWN = 1
 
+
 class ProjectPostLikeToggleAjax(APIView):
 
     authentication_classes = (authentication.SessionAuthentication, )
     permission_classes = (permissions.IsAuthenticated, )
 
+    '''
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(ProjectPostLikeToggleAjax, self).dispatch(*args, **kwargs)
+    '''
 
     def get(self, request, slug=None, format=None):
         # slug = self.kwargs.get("slug")

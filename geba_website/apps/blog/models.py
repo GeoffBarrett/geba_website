@@ -21,7 +21,7 @@ def upload_location(instance, filename):
 class PostManager(models.Manager):
     def active(self, *args, **kwargs):
         """overwriting Post.objects.all()"""
-        return super(PostManager, self).filter(draft=False).filter(publish_date__lte=timezone.now())
+        return super(PostManager, self).filter(draft=False, publish_date__lte=timezone.now())
 
 
 class Post(VoteModel, TimeStampModel):
@@ -64,6 +64,9 @@ class Post(VoteModel, TimeStampModel):
 
     class Meta:
         ordering = ["-vote_score", "-num_vote_up", "-publish_date", "-modified"]
+
+    def get_delete_url(self):
+        return reverse("blog:delete", kwargs={"slug": self.slug})
 
     def get_html(self):
         '''converts the body to markdown so we dont have to use the |markdown filter'''

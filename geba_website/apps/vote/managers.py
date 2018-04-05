@@ -125,7 +125,9 @@ class _VotableManager(models.Manager):
 
                 self.instance = self.model.objects.select_for_update().get(
                     pk=self.instance.pk)
+
                 statistics_field = self.through.ACTION_FIELD.get(vote.action)
+
                 setattr(self.instance, statistics_field,
                         getattr(self.instance, statistics_field) - 1)
 
@@ -134,7 +136,10 @@ class _VotableManager(models.Manager):
                 vote.delete()
 
             return True
-        except (OperationalError, IntegrityError):
+        except (OperationalError, IntegrityError) as error:
+            print('-----------------------------------')
+            print(error)
+            print('-----------------------------------')
             # concurrent request may decrease num_vote field to negative
             return False
 

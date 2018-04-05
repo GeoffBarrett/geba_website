@@ -47,56 +47,86 @@
 
                     {% for post in object_list %} <!-- object_list is returned from the ListView of objects.all()-->
                         <div class="row">
-
                             <div class="col-1">
                                 {% with post.unvoted_net_likes as "unvoted_likes" %}
                                     {% if post.is_voted_up %}
                                         <div class="link" current_class="likes">
                                             <div class="midcol likes">
-                                                <div class="arrow up upvote-btn login-required access-required upmod"
-                                                 data-event-action="upvote" title="upvote"
-                                                 role="button" aria-label="upvote" data-object="{{ post }}"
-                                                 data-href="{% url 'blog:like_toggle_api' post.slug %}"></div>
+                                                {% if user.is_authenticated %}
+                                                    <div class="arrow up upvote-btn login-required access-required upmod"
+                                                     data-event-action="upvote" title="upvote"
+                                                     role="button" aria-label="upvote" data-object="{{ post }}"
+                                                     data-href="{% url 'blog:like_toggle_api' post.slug %}"></div>
+                                                {% else %}
+                                                    {% include "vote/unauthenticated_upvote.html" %}
+                                                {% endif %}
+
                                                 <div class="score dislikes" title="{{ unvoted_likes|add:'-1' }}">{{ unvoted_likes|add:"-1" }}</div>
                                                 <div class="score unvoted" title="{{ unvoted_likes|add:'0' }}">{{ unvoted_likes|add:'0' }}</div>
                                                 <div class="score likes" title="{{ unvoted_likes|add:'1' }}">{{ unvoted_likes|add:"1" }}</div>
-                                                <div class="arrow down downvote-btn login-required access-required"
-                                                     data-event-action="downvote" role="button"
-                                                     aria-label="downvote" title="downvote" data-object="{{ post }}"
-                                                     data-href="{% url 'blog:dislike_toggle_api' post.slug %}"></div>
+
+                                                {% if user.is_authenticated %}
+                                                    <div class="arrow down downvote-btn login-required access-required"
+                                                         data-event-action="downvote" role="button"
+                                                         aria-label="downvote" title="downvote" data-object="{{ post }}"
+                                                         data-href="{% url 'blog:dislike_toggle_api' post.slug %}"></div>
+                                                {% else %}
+                                                    {% include "vote/unauthenticated_downvote.html" %}
+                                                {% endif %}
                                             </div>
                                         </div>
 
                                     {% elif  post.is_voted_down %}
                                         <div class="link" current_class="dislikes">
                                             <div class="midcol dislikes">
-                                                <div class="arrow up upvote-btn login-required access-required"
-                                                 data-event-action="upvote" title="upvote"
-                                                 role="button" aria-label="upvote" data-object="{{ post }}"
-                                                 data-href="{% url 'blog:like_toggle_api' post.slug %}"></div>
+                                                {% if user.is_authenticated %}
+                                                    <div class="arrow up upvote-btn login-required access-required"
+                                                     data-event-action="upvote" title="upvote"
+                                                     role="button" aria-label="upvote" data-object="{{ post }}"
+                                                     data-href="{% url 'blog:like_toggle_api' post.slug %}"></div>
+                                                {% else %}
+                                                    {% include "vote/unauthenticated_upvote.html" %}
+                                                {% endif %}
+
                                                 <div class="score dislikes" title="{{ unvoted_likes|add:'-1' }}">{{ unvoted_likes|add:"-1" }}</div>
                                                 <div class="score unvoted" title="{{ unvoted_likes|add:'0' }}">{{ unvoted_likes|add:'0' }}</div>
                                                 <div class="score likes" title="{{ unvoted_likes|add:'1' }}">{{ unvoted_likes|add:"1" }}</div>
-                                                <div class="arrow down downvote-btn login-required access-required downmod"
-                                                     data-event-action="downvote" role="button"
-                                                     aria-label="downvote" title="downvote" data-object="{{ post }}"
-                                                     data-href="{% url 'blog:dislike_toggle_api' post.slug %}"></div>
+
+                                                {% if user.is_authenticated %}
+                                                    <div class="arrow down downvote-btn login-required access-required downmod"
+                                                         data-event-action="downvote" role="button"
+                                                         aria-label="downvote" title="downvote" data-object="{{ post }}"
+                                                         data-href="{% url 'blog:dislike_toggle_api' post.slug %}"></div>
+                                                {% else %}
+                                                    {% include "vote/unauthenticated_downvote.html" %}
+                                                {% endif %}
+
                                             </div>
                                         </div>
                                     {% else %}
                                         <div class="link" current_class="unvoted">
                                             <div class="midcol unvoted">
-                                                <div class="arrow up upvote-btn login-required access-required"
-                                                 data-event-action="upvote" title="upvote"
-                                                 role="button" aria-label="upvote" data-object="{{ post }}"
-                                                 data-href="{% url 'blog:like_toggle_api' post.slug %}"></div>
+                                                {% if user.is_authenticated %}
+                                                    <div class="arrow up upvote-btn login-required access-required"
+                                                     data-event-action="upvote" title="upvote"
+                                                     role="button" aria-label="upvote" data-object="{{ post }}"
+                                                     data-href="{% url 'blog:like_toggle_api' post.slug %}"></div>
+                                                {% else %}
+                                                    {% include "vote/unauthenticated_upvote.html" %}
+                                                {% endif %}
+
                                                 <div class="score dislikes" title="{{ unvoted_likes|add:'-1' }}">{{ unvoted_likes|add:"-1" }}</div>
                                                 <div class="score unvoted" title="{{ unvoted_likes|add:'0' }}">{{ unvoted_likes|add:'0' }}</div>
                                                 <div class="score likes" title="{{ unvoted_likes|add:'1' }}">{{ unvoted_likes|add:"1" }}</div>
-                                                <div class="arrow down downvote-btn login-required access-required"
-                                                     data-event-action="downvote" role="button"
-                                                     aria-label="downvote" title="downvote" data-object="{{ post }}"
-                                                     data-href="{% url 'blog:dislike_toggle_api' post.slug %}"></div>
+
+                                                {% if user.is_authenticated %}
+                                                    <div class="arrow down downvote-btn login-required access-required"
+                                                         data-event-action="downvote" role="button"
+                                                         aria-label="downvote" title="downvote" data-object="{{ post }}"
+                                                         data-href="{% url 'blog:dislike_toggle_api' post.slug %}"></div>
+                                                {% else %}
+                                                    {% include "vote/unauthenticated_downvote.html" %}
+                                                {% endif %}
                                             </div>
                                         </div>
                                     {% endif %}
@@ -119,14 +149,50 @@
 
                                     <div class="card-body">
 
-                                        <h2 class="card-title">{{ post.title }}
-                                            {% if post.draft %}
-                                                <span style='color:red;'>| Draft </span>
-                                            {% endif %}
+                                        <h2 class="card-title">
+                                            <div class="row">
+                                                {% if request.user == child_comment.author or request.user.is_superuser %}
+                                                    <div class="col-11">
+                                                {% else %}
+                                                    <div class="col-12">
+                                                {% endif %}
 
-                                            {% if post.is_future_publication %}
-                                                <span style='color:red;'>| Future Blog </span>
-                                            {% endif %}
+                                                {{ post.title }}
+                                                {% if post.draft %}
+                                                    <span class="badge badge-danger">Draft</span>
+                                                    <!--<span style='color:red;'>| Draft </span>-->
+                                                {% endif %}
+
+                                                {% if post.is_future_publication %}
+                                                    <span class="badge badge-danger">Future Blog</span>
+                                                    <!--<span style='color:red;'>| Future Blog </span>-->
+                                                {% endif %}
+                                                </div>
+
+                                                {% if request.user == child_comment.author or request.user.is_superuser %}
+                                                    <div class="col-1">
+                                                        <div class="btn-group">
+                                                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                                                               aria-haspopup="true" aria-expanded="false" id="navbarDropDown{{ post.id }}">
+                                                              <span class="caret"></span>
+                                                            </a>
+
+                                                          <div class="dropdown-menu" aria-labelledby="navbarDropDown{{ post.id }}">
+                                                            <a class="dropdown-item" href="{% url 'blog:update' post.slug %}">Edit Blog</a>
+                                                            <a class="dropdown-item" data-toggle="modal" data-target="#DeletePostModalIndex"
+                                                               data-content="{{ post }}"
+                                                               data-url="{{ post.get_delete_url }}" data-csrf="{% csrf_token %}">
+                                                                Delete Blog</a>
+                                                            {% if post.draft %}
+                                                                <a class="dropdown-item" href="#">Publish</a>
+                                                            {% else %}
+                                                                <a class="dropdown-item" href="#">Make Private</a>
+                                                            {% endif %}
+                                                          </div>
+                                                        </div>
+                                                    </div>
+                                                {% endif %}
+                                            </div>
                                         </h2>
 
                                         <p class="card-text">
@@ -167,8 +233,11 @@
         {% endif %}
     </div>
 
+    {% include "blog/delete_post_modal.html" %}
+
 {% endblock %}
 
 {% block javascript %}
+    {% include "blog/blog_js.html" %}
     {% include "vote/vote_js.html" %}
 {% endblock javascript %}

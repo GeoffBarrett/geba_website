@@ -752,3 +752,9 @@ footer .copyright {
   padding-bottom:7px;
   display:none
 }
+
+/* ################## Random ###################### */
+
+.text_right{
+   margin-left: auto !important;
+}

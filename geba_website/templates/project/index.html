@@ -79,7 +79,7 @@
                                                          aria-label="downvote" title="downvote"
                                                          data-href="{% url 'project:project_dislike_toggle_api' project.slug %}"></div>
                                                 {% else %}
-                                                    {% include "vote/unauthenticated_upvote.html" %}
+                                                    {% include "vote/unauthenticated_downvote.html" %}
                                                 {% endif %}
                                             </div>
                                         </div>
@@ -160,15 +160,18 @@
 
                                         <h2 class="card-title">{{ project.title }}
                                             {% if project.pages.count == 0 %}
-                                                <span style='color:red;'>| No Pages </span>
+                                                <span class="badge badge-danger">No Pages</span>
+                                                <!--<span style='color:red;'>| No Pages </span>-->
                                             {% endif %}
 
                                             {% if project.draft %}
-                                                <span style='color:red;'>| Draft </span>
+                                                <span class="badge badge-danger">Draft</span>
+                                                <!--<span style='color:red;'>| Draft </span>-->
                                             {% endif %}
 
                                             {% if project.is_future_publication %}
-                                                <span style='color:red;'>| Future Project </span>
+                                                <span class="badge badge-danger">Future Project</span>
+                                                <!--<span style='color:red;'>| Future Project </span>-->
                                             {% endif %}
                                         </h2>
 
