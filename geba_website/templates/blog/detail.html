@@ -29,13 +29,15 @@
             <div class="post-heading">
               <h1>{{ post.title }}
             {% if post.draft %}
-            <span class="badge badge-danger">Draft</span>
-            <!--<span style='color:red;'>| Draft </span>-->
+              <span class="badge-geba" id="draft-{{ post.slug }}">Draft</span>
+            {% else %}
+              <span class="badge-geba hidebadge" id="draft-{{ post.slug }}">Draft</span>
             {% endif %}
+
             {% if post.is_future_publication %}
-            <span class="badge badge-danger">Future Blog</span>
-            <!--<span style='color:red;'>| Future Blog </span>-->
-            {% endif%}</h1>
+              <span class="badge-geba" >Future Blog</span>
+            {% endif %}
+              </h1>
               <!--<span class="subheading">Have questions? I have answers (maybe).</span>-->
               <span class="meta">Posted by <a href="#">{{ post.author }},</a>
                 {% if post.publish_date == post.modified %}
@@ -63,7 +65,21 @@
                     {% if user.is_staff or user.is_superuser %}
                         <a class="btn btn-default" href="{% url 'blog:create' %}" role="button">New Blog</a>
                         <a class="btn btn-default" href="{% url 'blog:update' post.slug %}" role="button">Edit Blog</a>
+
+                        {% if post.draft %}
+                            <a class="btn btn-default publish-btn" data-href="{% url 'blog:publish_ajax' post.slug %}"
+                               data-slug="{{ post.slug }}" id="publish_{{ post.slug }}" role="button">Publish</a>
+                            <a class="btn btn-default draft-btn hidebtn" data-href="{% url 'blog:draft_ajax' post.slug %}"
+                               data-slug="{{ post.slug }}" id="draft_{{ post.slug }}" role="button">Set as Draft</a>
+                        {% else %}
+                            <a class="btn btn-default draft-btn" data-href="{% url 'blog:draft_ajax' post.slug %}"
+                               data-slug="{{ post.slug }}" id="draft_{{ post.slug }}" role="button">Set as Draft</a>
+                            <a class="btn btn-default publish-btn hidebtn" data-href="{% url 'blog:publish_ajax' post.slug %}"
+                               data-slug="{{ post.slug }}" id="publish_{{ post.slug }}" role="button">Publish</a>
+                        {% endif %}
+
                         <a class="btn btn-default" href='#' type="btn btn-default"  data-toggle="modal" data-target="#DeletePostModal">Delete Blog</a>
+
                     {% endif %}
                 </div>
             </div>
@@ -181,6 +197,7 @@
 {% endblock content %}
 
 {% block javascript %}
+    {% include "core/badge_js.html" %}
     {% include "comments/comment_js.html" %}
     {% include "vote/vote_js.html" %}
 {% endblock javascript %}

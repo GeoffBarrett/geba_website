@@ -30,11 +30,11 @@
             <div class="post-heading">
               <h1>{{ projectpost.title }}
             {% if projectpost.draft %}
-                <span class="badge badge-danger">Draft</span>
+                <span class="badge-geba" id="draft-{{ projectpost.id }}">Draft</span>
                 <!--<span style='color:red;'>| Draft </span>-->
             {% endif %}
             {% if projectpost.is_future_publication %}
-                <span class="badge badge-danger">Future Post</span>
+                <span class="badge-geba"  id="future-{{ projectpost.id }}">Future Post</span>
                 <!--<span style='color:red;'>| Future Post </span>-->
             {% endif%}</h1>
               <!--<span class="subheading">Have questions? I have answers (maybe).</span>-->

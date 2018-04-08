@@ -369,3 +369,70 @@ class PostDislikeToggleAjax(APIView):
                 'disliked': disliked}
 
         return Response(data)
+
+
+class PublishPostAjax(APIView):
+
+    authentication_classes = (authentication.SessionAuthentication, )
+    permission_classes = (permissions.IsAdminUser, )
+
+    def get(self, request, slug=None, format=None):
+        # slug = self.kwargs.get("slug")
+        obj = get_object_or_404(Post, slug=slug)
+        # url_ = obj.get_absolute_url()  # get the url of the project post
+        user = self.request.user  # get the user
+        updated = False
+        published = False
+
+        if user.is_authenticated():
+
+            # check if the user is authenticated
+            # check if the post is already published
+            if not obj.draft:
+                published = False
+            else:
+                # set the post as not a draft
+                obj.draft = False
+                obj.save()
+                obj.votes.down(user.id)
+                published = True
+
+            updated = True
+
+        data = {'updated': updated,
+                'published': published}
+
+        return Response(data)
+
+
+class MakeDraftPostAjax(APIView):
+
+    authentication_classes = (authentication.SessionAuthentication, )
+    permission_classes = (permissions.IsAdminUser, )
+
+    def get(self, request, slug=None, format=None):
+        # slug = self.kwargs.get("slug")
+        obj = get_object_or_404(Post, slug=slug)
+        # url_ = obj.get_absolute_url()  # get the url of the project post
+        user = self.request.user  # get the user
+        updated = False
+        drafted = False
+
+        if user.is_authenticated():
+
+            # check if the user is authenticated
+            # check if the post is already a draft
+            if obj.draft:
+                drafted = False
+            else:
+                # make the post a draft
+                obj.draft = True
+                obj.save()
+                drafted = True
+
+            updated = True
+
+        data = {'updated': updated,
+                'drafted': drafted}
+
+        return Response(data)

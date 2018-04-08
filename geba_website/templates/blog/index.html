@@ -159,14 +159,15 @@
 
                                                 {{ post.title }}
                                                 {% if post.draft %}
-                                                    <span class="badge badge-danger">Draft</span>
-                                                    <!--<span style='color:red;'>| Draft </span>-->
+                                                  <span class="badge-geba" id="draft-{{ post.slug }}">Draft</span>
+                                                {% else %}
+                                                  <span class="badge-geba hidebadge" id="draft-{{ post.slug }}">Draft</span>
                                                 {% endif %}
 
                                                 {% if post.is_future_publication %}
-                                                    <span class="badge badge-danger">Future Blog</span>
-                                                    <!--<span style='color:red;'>| Future Blog </span>-->
+                                                  <span class="badge-geba" >Future Blog</span>
                                                 {% endif %}
+
                                                 </div>
 
                                                 {% if request.user == post.author or request.user.is_superuser %}
@@ -184,9 +185,15 @@
                                                                data-url="{{ post.get_delete_url }}" data-csrf="{% csrf_token %}">
                                                                 Delete Blog</a>
                                                             {% if post.draft %}
-                                                                <a class="dropdown-item" href="#">Publish</a>
+                                                                <a class="dropdown-item publish-btn"
+                                                                   data-href="{% url 'blog:publish_ajax' post.slug %}"
+                                                                   data-slug="{{ post.slug }}"
+                                                                   id="publish_{{ post.slug }}">Publish</a>
                                                             {% else %}
-                                                                <a class="dropdown-item" href="#">Make Private</a>
+                                                                <a class="dropdown-item draft-btn"
+                                                                   data-href="{% url 'blog:draft_ajax' post.slug %}"
+                                                                   data-slug="{{ post.slug }}"
+                                                                   id="draft_{{ post.slug }}">Set as Draft</a>
                                                             {% endif %}
                                                           </div>
                                                         </div>
@@ -238,6 +245,7 @@
 {% endblock %}
 
 {% block javascript %}
+    {% include "core/badge_js.html" %}
     {% include "blog/blog_js.html" %}
     {% include "vote/vote_js.html" %}
 {% endblock javascript %}

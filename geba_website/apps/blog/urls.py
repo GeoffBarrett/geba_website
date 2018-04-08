@@ -22,4 +22,9 @@ urlpatterns = [
     url(r'^api/(?P<slug>[\w-]+)/like/$', views.PostLikeToggleAjax.as_view(), name='like_toggle_api'),
 
     url(r'^api/(?P<slug>[\w-]+)/dislike/$', views.PostDislikeToggleAjax.as_view(), name='dislike_toggle_api'),
+
+    url(r'^api/(?P<slug>[\w-]+)/publish/$', views.PublishPostAjax.as_view(), name='publish_ajax'),
+
+    url(r'^api/(?P<slug>[\w-]+)/draft/$', views.MakeDraftPostAjax.as_view(), name='draft_ajax'),
+
 ]
