@@ -347,6 +347,7 @@ class ProjectPostDetailGetView(DetailView):
         # attribute 'object' in this DetailView
         self.object = ProjectPost.votes.annotate(queryset=ProjectPost.objects.filter(slug=self.kwargs.get('slug')),
                                                  user_id=self.request.user.id)[0]
+
         instance = self.object
         context = self.get_context_data(object=self.object)
         initial_data = {
@@ -363,6 +364,14 @@ class ProjectPostDetailGetView(DetailView):
         if instance.draft or instance.publish_date > timezone.now():
             if not self.request.user.is_staff or not self.request.user.is_superuser:
                 raise PermissionDenied
+
+        # make it so users cannot see any of the posts if the project is a draft
+        parent = instance.get_project()
+
+        if parent.draft or parent.publish_date > timezone.now():
+            if not self.request.user.is_staff or not self.request.user.is_superuser:
+                raise PermissionDenied
+
         return instance
 
     def get_context_data(self, **kwargs):

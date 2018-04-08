@@ -88,6 +88,9 @@ class ProjectPost(VoteModel, TimeStampModel):
     def get_project_slug(self):
         return Project.objects.filter(id=self.object_id)[0].slug
 
+    def get_project(self):
+        return Project.objects.filter(id=self.object_id)[0]
+
     def get_absolute_url(self):
         return reverse('project:detail', kwargs={'slug': self.slug})
 
