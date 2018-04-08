@@ -33,4 +33,13 @@ urlpatterns = [
 
     url(r'^(?P<slug>[\w-]+)$', views.ProjectDetailView.as_view(), name='detail'),
 
+    ############## draft / publish ####################
+    url(r'^api/(?P<slug>[\w-]+)/publish_post/$', views.PublishProjectPostAjax.as_view(), name='publish_post_ajax'),
+
+    url(r'^api/(?P<slug>[\w-]+)/draft_post/$', views.MakeDraftProjectPostAjax.as_view(), name='draft_post_ajax'),
+
+    url(r'^api/(?P<slug>[\w-]+)/publish/$', views.PublishProjectAjax.as_view(), name='publish_project_ajax'),
+
+    url(r'^api/(?P<slug>[\w-]+)/draft/$', views.MakeDraftProjectAjax.as_view(), name='draft_project_ajax'),
+
 ]

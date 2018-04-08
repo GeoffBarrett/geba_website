@@ -168,15 +168,16 @@
                                                 {% endif %}
 
                                                 {{ project.title }}
+
                                                 {% if project.pages.count == 0 %}
                                                     <span class="badge-geba">No Pages</span>
                                                     <!--<span style='color:red;'>| No Pages </span>-->
                                                 {% endif %}
 
-
                                                 {% if project.draft %}
-                                                    <span class="badge-geba">Draft</span>
-                                                    <!--<span style='color:red;'>| Draft </span>-->
+                                                  <span class="badge-geba" id="draft-{{ project.slug }}">Draft</span>
+                                                {% else %}
+                                                  <span class="badge-geba hidebadge" id="draft-{{ project.slug }}">Draft</span>
                                                 {% endif %}
 
                                                 {% if project.is_future_publication %}
@@ -194,15 +195,29 @@
                                                             </a>
 
                                                           <div class="dropdown-menu" aria-labelledby="DropDown{{ project.id }}">
-                                                            <!--<a class="dropdown-item" href="{% url 'project:update' project.slug %}">Edit Project</a>-->
+                                                            <a class="dropdown-item" href="{% url 'project:update' project.slug %}">Edit Project</a>
                                                             <a class="dropdown-item" data-toggle="modal" data-target="#DeleteProjectModalIndex"
                                                                data-content="{{ project }}"
                                                                data-url="{{ project.get_delete_url }}" data-csrf="{% csrf_token %}">
                                                                 Delete Blog</a>
                                                             {% if project.draft %}
-                                                                <a class="dropdown-item" href="#">Publish</a>
+                                                                <a class="dropdown-item publish-btn"
+                                                                   data-href="{% url 'project:publish_project_ajax' project.slug %}"
+                                                                   data-slug="{{ project.slug }}"
+                                                                   id="publish_{{ project.slug }}">Publish</a>
+                                                                <a class="dropdown-item draft-btn hidebtn"
+                                                                   data-href="{% url 'project:draft_project_ajax' project.slug %}"
+                                                                   data-slug="{{ project.slug }}"
+                                                                   id="draft_{{ project.slug }}">Set as Draft</a>
                                                             {% else %}
-                                                                <a class="dropdown-item" href="#">Make Private</a>
+                                                                <a class="dropdown-item draft-btn"
+                                                                   data-href="{% url 'project:draft_project_ajax' project.slug %}"
+                                                                   data-slug="{{ project.slug }}"
+                                                                   id="draft_{{ project.slug }}">Set as Draft</a>
+                                                                <a class="dropdown-item publish-btn hidebtn"
+                                                                   data-href="{% url 'project:publish_project_ajax' project.slug %}"
+                                                                   data-slug="{{ project.slug }}"
+                                                                   id="publish_{{ project.slug }}">Publish</a>
                                                             {% endif %}
                                                           </div>
                                                         </div>
@@ -266,6 +281,7 @@
 {% endblock %}
 
 {% block javascript %}
+    {% include "core/badge_js.html" %}
     {% include "project/project_js.html" %}
     {% include "vote/vote_js.html" %}
 {% endblock javascript %}

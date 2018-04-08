@@ -158,6 +158,7 @@
                                                 {% endif %}
 
                                                 {{ post.title }}
+
                                                 {% if post.draft %}
                                                   <span class="badge-geba" id="draft-{{ post.slug }}">Draft</span>
                                                 {% else %}
@@ -189,11 +190,19 @@
                                                                    data-href="{% url 'blog:publish_ajax' post.slug %}"
                                                                    data-slug="{{ post.slug }}"
                                                                    id="publish_{{ post.slug }}">Publish</a>
+                                                                <a class="dropdown-item draft-btn hidebtn"
+                                                                   data-href="{% url 'blog:draft_ajax' post.slug %}"
+                                                                   data-slug="{{ post.slug }}"
+                                                                   id="draft_{{ post.slug }}">Set as Draft</a>
                                                             {% else %}
                                                                 <a class="dropdown-item draft-btn"
                                                                    data-href="{% url 'blog:draft_ajax' post.slug %}"
                                                                    data-slug="{{ post.slug }}"
                                                                    id="draft_{{ post.slug }}">Set as Draft</a>
+                                                                <a class="dropdown-item publish-btn hidebtn"
+                                                                   data-href="{% url 'blog:publish_ajax' post.slug %}"
+                                                                   data-slug="{{ post.slug }}"
+                                                                   id="publish_{{ post.slug }}">Publish</a>
                                                             {% endif %}
                                                           </div>
                                                         </div>
