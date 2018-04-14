@@ -1,8 +1,8 @@
 from django.db import models
 from django.conf import settings
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.utils import timezone
-from django.db.models.signals import pre_save, pre_delete# before saving it emits this signal
+from django.db.models.signals import pre_save, pre_delete  # before saving it emits this signal
 from django.utils.text import slugify  # turns our title into a slug
 from ..core.models import TimeStampModel
 from django.utils.safestring import mark_safe
@@ -11,7 +11,7 @@ from ..comments.models import Comment
 from ..vote.models import VoteModel
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
-from django.shortcuts import get_object_or_404
+# from django.shortcuts import get_object_or_404
 # from django.db import transaction
 
 # Create your models here.
@@ -72,7 +72,7 @@ class ProjectPost(VoteModel, TimeStampModel):
 
     body = models.TextField()
 
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, null=True)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
 
     keywords = models.TextField(blank=True, null=True)
 

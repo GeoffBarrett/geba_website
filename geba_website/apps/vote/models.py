@@ -47,7 +47,7 @@ class Vote(models.Model):
 
     user_id = models.BigIntegerField()  # keep track of who voted
 
-    content_type = models.ForeignKey(ContentType)  # get the content type of the model that the vote belongs to
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)  # get the content type of the model that the vote belongs to
     object_id = models.PositiveIntegerField()  # get the id of the object voted on
     content_object = GenericForeignKey()  # the object that was voted on
 

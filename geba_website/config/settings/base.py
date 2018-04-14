@@ -144,13 +144,10 @@ THIRD_PARTY_APPS = (
 )
 
 PROJECT_APPS = (
-    'apps.about_me',  # the About Me app
     'apps.blog',  # the Blog app
-    'apps.contact',  # the contact app
     'apps.polls',
     'apps.core',  # adding the core page to the setttings
     'apps.profiles',
-    'apps.page',
     'apps.comments',
     'apps.project',
     'apps.vote',

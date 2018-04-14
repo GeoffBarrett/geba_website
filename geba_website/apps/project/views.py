@@ -2,24 +2,23 @@ from django.utils import timezone
 # from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
 from django.views.generic import CreateView, UpdateView, DetailView, ListView, DeleteView, FormView, View, \
-    TemplateView, RedirectView
+    TemplateView
 from django.contrib import messages
-from django.utils.decorators import method_decorator
-from django.contrib.auth.decorators import login_required
-from django.core.urlresolvers import reverse_lazy
+# from django.utils.decorators import method_decorator
+# from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from django.core import serializers
 from .utils import check_project_rights
 import json
 from django.shortcuts import render, render_to_response, get_object_or_404
 from .models import Project, ProjectPost
-from ..core.models import ModelFormFailureHistory, User
+from ..core.models import ModelFormFailureHistory
 from .forms import ProjectPostForm, ProjectForm
 from ..comments.forms import CommentForm
 from ..comments.models import Comment
-from django.core.urlresolvers import reverse
+from django.urls import reverse, reverse_lazy
 from django.views.generic.detail import SingleObjectMixin
-from django.http import HttpResponseForbidden, HttpResponseRedirect, Http404, HttpResponse
+from django.http import HttpResponseForbidden, HttpResponseRedirect
 from django.contrib.contenttypes.models import ContentType
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -47,7 +46,7 @@ class ProjectActionMixin(object):
         return super(ProjectActionMixin, self).form_invalid(form)
 
 
-################### PROJECT VIEWS ####################################################
+# ---------- PROJECT VIEWS ---------- #
 
 class ProjectIndexView(ListView):
     template_name = 'project/index.html'  # tells the view to use this template instead of it's default
@@ -160,6 +159,105 @@ class ProjectCreationPostView(FormView):
             return render(request, self.template_name, {'project_form': project_form, 'post_form': post_form})
 
 
+class ProjectCreationPostViewAjax(APIView):
+
+    authentication_classes = (authentication.SessionAuthentication,)
+    permission_classes = (permissions.IsAdminUser,)
+
+    project_form = ProjectForm
+    post_form = ProjectPostForm
+
+    # form_class = ProjectForm
+    template_name = 'project/project_form2.html'
+
+    success_url = '/'
+
+    '''
+    def get(self, request, slug=None, format=None):
+        # slug = self.kwargs.get("slug")
+        obj = get_object_or_404(Post, slug=slug)
+        # url_ = obj.get_absolute_url()  # get the url of the project post
+        user = self.request.user  # get the user
+        updated = False
+        published = False
+
+        if user.is_authenticated:
+            # check if the user is authenticated
+            # check if the post is already published
+            if not obj.draft:
+                published = False
+            else:
+                # set the post as not a draft
+                obj.draft = False
+                obj.save()
+                obj.votes.down(user.id)
+                published = True
+
+            updated = True
+
+        data = {'updated': updated,
+                'published': published}
+
+        return Response(data)
+    '''
+
+    def post(self, request, *args, **kwargs):
+
+        project_form = self.project_form(request.POST)
+        post_form = self.post_form(request.POST)
+
+        # form = self.form_class(request.POST)
+
+        if project_form.is_valid():
+
+            project_instance = project_form.save(commit=False)
+
+            # creates object from the form, doesn't save it to the database just yet
+
+            project_instance.save()
+
+            project_instance.votes.up(request.user.id)  # up voting the project
+
+            if post_form.is_valid():
+
+                object_slug = project_instance.slug
+
+                project_instance = Project.objects.get(slug=object_slug)
+
+                instance_post = post_form.save(commit=False)
+                # creates object from the form, doesn't save it to the database just yet
+
+                if request.user.get_username() == 'admin':
+                    # instance_post.author = User.objects.get(username='Geoff')
+                    instance_post.author = request.user
+                    pass
+                else:
+                    instance_post.author = request.user
+
+                project_instance.authors.add(instance_post.author)
+                project_instance.save()
+
+                instance_post.post_order = 1  # set the default to the 1st post
+                instance_post.content_type = project_instance.get_content_type
+                instance_post.object_id = project_instance.id
+
+                # project_instance.save()
+                instance_post.save()
+
+                instance_post.votes.up(request.user.id)  # up voting the project post
+
+            else:
+
+                # figure out what to do if this
+                # return render_to_response(self.template_name, {'project_form': project_form, 'post_form': post_form})
+                return render(request, self.template_name, {'project_form': project_form, 'post_form': post_form})
+
+            return super(ProjectCreationPostView, self).form_valid(post_form)
+        else:
+            # return render_to_response(self.template_name, {'project_form': project_form, 'post_form': post_form})
+            return render(request, self.template_name, {'project_form': project_form, 'post_form': post_form})
+
+
 class ProjectUpdateView(ProjectActionMixin, UpdateView):
     model = Project
     success_msg = 'Project Updated!'
@@ -201,7 +299,7 @@ class ProjectDeleteView(DeleteView):
         request = check_project_rights(request)
         return super(ProjectDeleteView, self).dispatch(request, *args, **kwargs)
 
-#---------- unused ---------------
+# ---------- unused --------------- #
 
 
 class ProjectDetailGetView(DetailView):
@@ -297,7 +395,7 @@ class ProjectDetailPostView(SingleObjectMixin, FormView):
         return reverse('project:detail', kwargs={'slug': self.object.slug})
 
 
-######################## Both View #####################################
+# ----------  Both View  ---------- #
 
 
 class ProjectDetailView(View):
@@ -331,7 +429,7 @@ class ProjectDetailView(View):
         return view(request, *args, **kwargs)
 
 
-##################### PROJECT POST VIEW #####################################
+# ---------- PROJECT POST VIEW  ---------- #
 
 class ProjectPostDetailGetView(DetailView):
     """This view will be used to GET the detail data"""
@@ -379,7 +477,8 @@ class ProjectPostDetailGetView(DetailView):
         # context['object'] provides the instance for us
 
         comment_qs = context['object'].comments
-        context['comments'] = Comment.votes.annotate(queryset=comment_qs, user_id=self.request.user.id)  # getting the vote info
+        # getting the vote info
+        context['comments'] = Comment.votes.annotate(queryset=comment_qs, user_id=self.request.user.id)
 
         # context['comment_form'] = CommentForm()
         return context
@@ -396,7 +495,7 @@ class ProjectPostDetailPostView(SingleObjectMixin, FormView):
 
     def post(self, request, *args, **kwargs):
         # comment_form = self.form_class(request.POST, request.FILES)
-        if not request.user.is_authenticated():
+        if not request.user.is_authenticated:
             return HttpResponseForbidden()
 
         self.object = self.get_object()
@@ -560,7 +659,7 @@ class ProjectPostCreateView(ProjectActionMixin, CreateView):
             return render_to_response(self.template_name, {'form': form, 'project_slug': kwargs['slug'],
                                                     'new_post_order': kwargs['post_order']})
 
-####### voting ##########
+# ----------voting ---------- #
 
 UP = 0
 DOWN = 1
@@ -585,7 +684,7 @@ class ProjectPostLikeToggleAjax(APIView):
         updated = False
         liked = False
 
-        if user.is_authenticated():
+        if user.is_authenticated:
 
             # check if the user is authenticated
             # check if the user has already voted on this object
@@ -618,7 +717,7 @@ class ProjectPostDislikeToggleAjax(APIView):
         updated = False
         disliked = False
 
-        if user.is_authenticated():
+        if user.is_authenticated:
 
             # check if the user is authenticated
             # check if the user has already voted on this object
@@ -657,7 +756,7 @@ class ProjectLikeToggleAjax(APIView):
         updated = False
         liked = False
 
-        if user.is_authenticated():
+        if user.is_authenticated:
 
             # check if the user is authenticated
             # check if the user has already voted on this object
@@ -690,7 +789,7 @@ class ProjectDislikeToggleAjax(APIView):
         updated = False
         disliked = False
 
-        if user.is_authenticated():
+        if user.is_authenticated:
 
             # check if the user is authenticated
             # check if the user has already voted on this object
@@ -723,7 +822,7 @@ class PublishProjectPostAjax(APIView):
         updated = False
         published = False
 
-        if user.is_authenticated():
+        if user.is_authenticated:
 
             # check if the user is authenticated
             # check if the post is already published
@@ -757,7 +856,7 @@ class MakeDraftProjectPostAjax(APIView):
         updated = False
         drafted = False
 
-        if user.is_authenticated():
+        if user.is_authenticated:
 
             # check if the user is authenticated
             # check if the post is already a draft
@@ -790,7 +889,7 @@ class PublishProjectAjax(APIView):
         updated = False
         published = False
 
-        if user.is_authenticated():
+        if user.is_authenticated:
 
             # check if the user is authenticated
             # check if the post is already published
@@ -824,7 +923,7 @@ class MakeDraftProjectAjax(APIView):
         updated = False
         drafted = False
 
-        if user.is_authenticated():
+        if user.is_authenticated:
 
             # check if the user is authenticated
             # check if the post is already a draft

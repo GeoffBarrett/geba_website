@@ -5,13 +5,12 @@ from .models import Comment
 from .forms import CommentForm
 from django.views.generic import DetailView, DeleteView, FormView, View, RedirectView
 from django.core import serializers
-from ..core.models import ModelFormFailureHistory, User
-from django.core.urlresolvers import reverse_lazy
+from ..core.models import ModelFormFailureHistory
+from django.urls import reverse_lazy, reverse
 from django.shortcuts import get_object_or_404
 from django.views.generic.detail import SingleObjectMixin
 from django.http import HttpResponseForbidden, HttpResponseRedirect, Http404, HttpResponse
 from django.contrib.contenttypes.models import ContentType
-from django.core.urlresolvers import reverse
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import authentication, permissions
@@ -202,7 +201,7 @@ class CommentLikeToggle(RedirectView):
         url_ = obj.get_absolute_url()  # get the url of the project post
         user = self.request.user  # get the user
 
-        if user.is_authenticated():
+        if user.is_authenticated:
 
             if obj.votes.exists(user.id, action=UP):
                 obj.votes.delete(user.id)
@@ -230,7 +229,7 @@ class CommentLikeToggleAjax(APIView):
         updated = False
         liked = False
 
-        if user.is_authenticated():
+        if user.is_authenticated:
 
             if obj.votes.exists(user.id, action=UP):
                 obj.votes.delete(user.id)
@@ -262,7 +261,7 @@ class CommentDislikeToggleAjax(APIView):
         updated = False
         disliked = False
 
-        if user.is_authenticated():
+        if user.is_authenticated:
 
             # check if the user is authenticated
             # check if the user has already voted on this object

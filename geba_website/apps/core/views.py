@@ -4,7 +4,7 @@ from django.shortcuts import render
 from .forms import UserCreationForm, LoginForm
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
-from django.views.generic import View, TemplateView, FormView
+from django.views.generic import FormView
 
 # Create your views here.
 # render(request, rendered_html, optional_dictionary)

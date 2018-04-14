@@ -2,7 +2,7 @@ from django.db import models
 from django.conf import settings
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from ..vote.models import VoteModel
 # Create your models here.
 
@@ -24,13 +24,13 @@ class Comment(VoteModel, models.Model):
 
     score_method = 'confidence'
 
-    author = models.ForeignKey(settings.AUTH_USER_MODEL)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     # the model that the comment is associated with
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()  # the id of the object with that model that the comment was on
     content_object = GenericForeignKey('content_type', 'object_id')  # the comment object
-    parent = models.ForeignKey('self', null=True, blank=True)
+    parent = models.ForeignKey('self', null=True, blank=True, on_delete=models.CASCADE)
 
     content = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)

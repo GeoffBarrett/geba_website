@@ -1,6 +1,6 @@
 from functools import wraps
 from django.contrib.contenttypes.models import ContentType
-from django.core.exceptions import PermissionDenied
+# from django.core.exceptions import PermissionDenied
 
 
 # creates a wrapper function that will ensure that the function is enacted on an instance

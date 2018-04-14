@@ -1,6 +1,6 @@
 from django.db import models
 from django.conf import settings
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.utils import timezone
 from django.db.models.signals import pre_save  # before saving it emits this signal
 from django.utils.text import slugify  # turns our title into a slug
@@ -10,7 +10,7 @@ from markdown_deux import markdown
 from ..comments.models import Comment
 from ..vote.models import VoteModel
 from django.contrib.contenttypes.models import ContentType
-from django.db import transaction
+# from django.db import transaction
 
 
 def upload_location(instance, filename):
@@ -51,7 +51,7 @@ class Post(VoteModel, TimeStampModel):
 
     body = models.TextField()
 
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, null=True)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
     # author = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True)
 
     keywords = models.TextField(blank=True, null=True)

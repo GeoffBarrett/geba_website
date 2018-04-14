@@ -1,6 +1,6 @@
 from django.contrib import admin
-from django.core.urlresolvers import reverse
-from django.utils.html import format_html
+# from django.urls import reverse
+# from django.utils.html import format_html
 from .models import ProjectPost, Project
 # Register your models here.
 

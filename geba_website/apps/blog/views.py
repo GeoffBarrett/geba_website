@@ -3,18 +3,17 @@ from django.utils import timezone
 from django.db.models import Q
 from django.views.generic import CreateView, UpdateView, DetailView, ListView, DeleteView, FormView, View
 from django.contrib import messages
-from django.core.urlresolvers import reverse_lazy
 from django.core.exceptions import PermissionDenied
 from django.core import serializers
 from .utils import check_blog_rights
 import json
 from django.shortcuts import render, render_to_response, get_object_or_404
 from .models import Post
-from ..core.models import ModelFormFailureHistory, User
+from ..core.models import ModelFormFailureHistory
 from .forms import BlogPostForm
 from ..comments.forms import CommentForm
 from ..comments.models import Comment
-from django.core.urlresolvers import reverse
+from django.urls import reverse, reverse_lazy
 from django.views.generic.detail import SingleObjectMixin
 from django.http import HttpResponseForbidden, HttpResponseRedirect
 from django.contrib.contenttypes.models import ContentType
@@ -316,7 +315,7 @@ class PostLikeToggleAjax(APIView):
         updated = False
         liked = False
 
-        if user.is_authenticated():
+        if user.is_authenticated:
 
             # check if the user is authenticated
             # check if the user has already voted on this object
@@ -351,7 +350,7 @@ class PostDislikeToggleAjax(APIView):
         updated = False
         disliked = False
 
-        if user.is_authenticated():
+        if user.is_authenticated:
 
             # check if the user is authenticated
             # check if the user has already voted on this object
@@ -384,7 +383,7 @@ class PublishPostAjax(APIView):
         updated = False
         published = False
 
-        if user.is_authenticated():
+        if user.is_authenticated:
 
             # check if the user is authenticated
             # check if the post is already published
@@ -418,7 +417,7 @@ class MakeDraftPostAjax(APIView):
         updated = False
         drafted = False
 
-        if user.is_authenticated():
+        if user.is_authenticated:
 
             # check if the user is authenticated
             # check if the post is already a draft

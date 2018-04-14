@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
+from django.urls import re_path, include
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
@@ -21,20 +21,20 @@ from django.conf.urls.static import static
 from django.views.generic import RedirectView
 
 urlpatterns = [
-    url(r'^grappelli/', include('grappelli.urls')),  # grappelli URLS
-    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-    url(r'^admin/', admin.site.urls),
-    url(r'^', include('apps.core.urls', namespace="core")),  # Home app
-    url(r'^about/', include('apps.about_me.urls', namespace="about")),  # About Me app
-    url(r'^blog/', include('apps.blog.urls', namespace="blog")),  # Blog app
-    url(r'^polls/', include('apps.polls.urls', namespace="polls")),
-    url(r'^comments/', include('apps.comments.urls', namespace="comments")),
-    url(r'^project/', include('apps.project.urls', namespace="project")),
+    re_path(r'^grappelli/', include('grappelli.urls')),  # grappelli URLS
+    re_path(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    re_path(r'^admin/', admin.site.urls),
+    re_path(r'^', include(('apps.core.urls', "core"))),  # Home app
+    # re_path(r'^about/', include(('apps.about_me.urls', "about"))),  # About Me app
+    re_path(r'^blog/', include(('apps.blog.urls', "blog"))),  # Blog app
+    re_path(r'^polls/', include(('apps.polls.urls', "polls"))),
+    re_path(r'^comments/', include(('apps.comments.urls', "comments"))),
+    re_path(r'^project/', include(('apps.project.urls', "project"))),
 
     # -------------------- social link redirects -------------------------------
-    url(r'^youtube/', RedirectView.as_view(url='https://www.youtube.com/channel/UCoTtKQQhQHXMpCBSINlpO-A', permanent=False)),
-    url(r'^twitter/', RedirectView.as_view(url='http://twitter.com/geba_tech', permanent=False)),
-    url(r'^linkedin/', RedirectView.as_view(url='https://www.linkedin.com/in/gmbarrett', permanent=False))
+    re_path(r'^youtube/', RedirectView.as_view(url='https://www.youtube.com/channel/UCoTtKQQhQHXMpCBSINlpO-A', permanent=False)),
+    re_path(r'^twitter/', RedirectView.as_view(url='http://twitter.com/geba_tech', permanent=False)),
+    re_path(r'^linkedin/', RedirectView.as_view(url='https://www.linkedin.com/in/gmbarrett', permanent=False))
 
 ]
 
