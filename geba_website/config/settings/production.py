@@ -16,13 +16,13 @@ from os import environ
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-########## HOST CONFIGURATION
+# -------------------- HOST CONFIGURATION ----------------------- #
 # See: https://docs.djangoproject.com/en/1.5/releases/1.5/#allowed-hosts-required-in-production
 ALLOWED_HOSTS = ['www.geba.tech']
-########## END HOST CONFIGURATION
+# ---------------- END HOST CONFIGURATION --------------------- #
 
 
-########## EMAIL CONFIGURATION
+# ------------- EMAIL CONFIGURATION -------------------- #
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-use-tls
 EMAIL_USE_TLS = True
 
@@ -43,7 +43,7 @@ EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', '')
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-host-password
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', '')
-########## END EMAIL CONFIGURATION
+# --------------- END EMAIL CONFIGURATION --------------- #
 
 
 # Database
@@ -60,20 +60,19 @@ DATABASES = {
     }
 }
 
-
-########## CACHE CONFIGURATION
+# ------------------- CACHE CONFIGURATION --------------------#
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#caches
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
     }
 }
-########## END CACHE CONFIGURATION
+# ------------------ END CACHE CONFIGURATION --------------------- #
 
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 
-######## analytics settings #############
+# ------------------ analytics settings ---------------------- #
 
 CLICKY_SITE_ID = get_env_variable('CLICKY_SITE_ID')
 CRAZY_EGG_ACCOUNT_NUMBER = 'xxxxxxxx'
@@ -83,9 +82,9 @@ GOOGLE_ANALYTICS_PROPERTY_ID = get_env_variable('GOOGLE_ANALYTICS_PROPERTY_ID')
 GOOGLE_ANALYTICS_DISPLAY_ADVERTISING = True
 GOOGLE_ANALYTICS_SITE_SPEED = True
 
-######## end of analytics settings ##############
+# ------------------- end of analytics settings --------------- #
 
-################ amazon aws s3 ###########################
+# ------------------- amazon aws s3 ----------------- #
 # the sub-directories of media and static files
 STATICFILES_LOCATION = 'static'
 MEDIAFILES_LOCATION = 'media'
@@ -124,7 +123,7 @@ ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 
 MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
 
-############ end of amazon ############################
+# --------------- end of amazon --------------------------- #
 
 
 

@@ -5,6 +5,6 @@ from .models import Vote
 
 class VoteAdmin(admin.ModelAdmin):
 
-    list_display = ('create_at', 'content_type', 'user_id')
+    list_display = ('create_at', 'content_type', 'user_id', 'object_id', 'content_object')
 
 admin.site.register(Vote, VoteAdmin)

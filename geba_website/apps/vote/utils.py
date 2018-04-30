@@ -30,6 +30,7 @@ def add_field_to_objects(model, objects, user_id):
     ).values_list("object_id", "action")
 
     for r in objects:
+
         r.is_voted_up = (r.pk, UP) in voted_object_ids
         r.is_voted_down = (r.pk, DOWN) in voted_object_ids
 

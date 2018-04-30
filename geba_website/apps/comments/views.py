@@ -255,7 +255,12 @@ class CommentDislikeToggleAjax(APIView):
 
     def get(self, request, pk=None, format=None):
         # slug = self.kwargs.get("slug")
-        obj = get_object_or_404(Comment, pk=pk)
+        pk = self.kwargs.get("pk")
+
+        # the get_object_or_404 won't work on the reply comments
+        # obj = get_object_or_404(Comment, pk=pk)
+        obj = Comment.objects.get(pk=pk)
+
         # url_ = obj.get_absolute_url()  # get the url of the project post
         user = self.request.user  # get the user
         updated = False

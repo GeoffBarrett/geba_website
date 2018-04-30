@@ -57,9 +57,9 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
         <script type="text/javascript" src="{% static 'apps/datetimepicker/build/js/bootstrap-datetimepicker.min.js' %}"></script>
 
-        {% block javascript %}{% endblock javascript %}
-
-        {% include "core/custom_js.html" %}
+        {% block javascript %}
+        <script src="{% static 'apps/core/js/custom.js' %}"></script>
+        {% endblock javascript %}
 
     </body>
 

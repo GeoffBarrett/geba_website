@@ -195,11 +195,14 @@
                                                             </a>
 
                                                           <div class="dropdown-menu" aria-labelledby="DropDown{{ project.id }}">
+                                                            <a class="dropdown-item"
+                                                               href="{% url 'project:create_post' project.slug project.get_next_post_order %}"
+                                                               role="button">New Post</a>
                                                             <a class="dropdown-item" href="{% url 'project:update' project.slug %}">Edit Project</a>
                                                             <a class="dropdown-item" data-toggle="modal" data-target="#DeleteProjectModalIndex"
-                                                               data-content="{{ project }}"
+                                                               data-content="{{ project.title }}"
                                                                data-url="{{ project.get_delete_url }}" data-csrf="{% csrf_token %}">
-                                                                Delete Blog</a>
+                                                                Delete Project</a>
                                                             {% if project.draft %}
                                                                 <a class="dropdown-item publish-btn"
                                                                    data-href="{% url 'project:publish_project_ajax' project.slug %}"
@@ -277,11 +280,12 @@
     </div>
 
     {% include "project/delete_project_modal.html" %}
+    {% include "vote/login_vote_modal.html" %}
 
 {% endblock %}
 
 {% block javascript %}
-    {% include "core/badge_js.html" %}
-    {% include "project/project_js.html" %}
-    {% include "vote/vote_js.html" %}
+    <script src="{% static 'apps/project/js/project.js' %}"></script>
+    <script src="{% static 'apps/core/js/badge.js' %}"></script>
+    <script src="{% static 'apps/vote/js/vote.js' %}"></script>
 {% endblock javascript %}

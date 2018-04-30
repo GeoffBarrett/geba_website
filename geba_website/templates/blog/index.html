@@ -250,11 +250,12 @@
     </div>
 
     {% include "blog/delete_post_modal.html" %}
+    {% include "vote/login_vote_modal.html" %}
 
 {% endblock %}
 
 {% block javascript %}
-    {% include "core/badge_js.html" %}
-    {% include "blog/blog_js.html" %}
-    {% include "vote/vote_js.html" %}
+    <script src="{% static 'apps/blog/js/blog.js' %}"></script>
+    <script src="{% static 'apps/core/js/badge.js' %}"></script>
+    <script src="{% static 'apps/vote/js/vote.js' %}"></script>
 {% endblock javascript %}

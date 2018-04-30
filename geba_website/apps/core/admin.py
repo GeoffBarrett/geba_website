@@ -5,4 +5,8 @@ from .models import ModelFormFailureHistory, User
 
 admin.site.register(ModelFormFailureHistory)
 
-admin.site.register(User, UserAdmin)
+
+class UserAdminCustom(UserAdmin):
+    list_display = ('username', 'email', 'first_name', 'last_name', 'is_staff', 'id')
+
+admin.site.register(User, UserAdminCustom)

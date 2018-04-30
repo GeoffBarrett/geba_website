@@ -193,11 +193,11 @@
     </div>
 
     {% include "comments/delete_comment_modal.html" %}
-
+    {% include "vote/login_vote_modal.html" %}
 {% endblock content %}
 
 {% block javascript %}
-    {% include "core/badge_js.html" %}
-    {% include "comments/comment_js.html" %}
-    {% include "vote/vote_js.html" %}
+    <script src="{% static 'apps/comments/js/comment.js' %}"></script>
+    <script src="{% static 'apps/core/js/badge.js' %}"></script>
+    <script src="{% static 'apps/vote/js/vote.js' %}"></script>
 {% endblock javascript %}

@@ -20,7 +20,6 @@ class VotedQuerySet(QuerySet):
 
     def __init__(self, model=None, query=None, using=None, user_id=None,
                  hints=None):
-
         self.user_id = user_id
         super(VotedQuerySet, self).__init__(model, query, using, hints)
 
@@ -32,7 +31,6 @@ class VotedQuerySet(QuerySet):
             return iter(self._result_cache)
 
         objects = self._result_cache
-
         user_id = self.user_id
 
         objects = add_field_to_objects(self.model, objects, user_id)
@@ -137,9 +135,7 @@ class _VotableManager(models.Manager):
 
             return True
         except (OperationalError, IntegrityError) as error:
-            print('-----------------------------------')
             print(error)
-            print('-----------------------------------')
             # concurrent request may decrease num_vote field to negative
             return False
 
@@ -204,6 +200,7 @@ class _VotableManager(models.Manager):
 
         if ids is not None:
             objects = self.model.objects.filter(id__in=ids)
+
             objects = sorted(objects, key=lambda x: ids.index(x.id))
             return add_field_to_objects(self.model, objects, user_id)
         else:

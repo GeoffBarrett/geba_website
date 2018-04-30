@@ -43,21 +43,6 @@ class BlogActionMixin(object):
         ModelFormFailureHistory.objects.create(form_data=form_data, model_data=model_data)
         return super(BlogActionMixin, self).form_invalid(form)
 
-'''
-class AjaxTemplateMixin(object):
-
-    def dispatch(self, request, *args, **kwargs):
-        if not hasattr(self, 'ajax_template_name'):
-            split = self.template_name.split('.html')
-            split[-1] = '_inner'
-            split.append('.html')
-            self.ajax_template_name = ''.join(split)
-        if request.is_ajax():
-            self.template_name = self.ajax_template_name
-
-        return super(AjaxTemplateMixin, self).dispatch(request, *args, **kwargs)
-'''
-
 
 class BlogIndexView(ListView):
     template_name = 'blog/index.html'  # tells the view to use this template instead of it's default
@@ -199,10 +184,6 @@ class BlogDetailGetView(DetailView):
     def get(self, request, *args, **kwargs):
         self.object = self.get_object()
 
-        # returning the object with the vote status included (is_voted_up/is_voted_down)
-        self.object = Post.votes.annotate(queryset=Post.objects.filter(slug=self.kwargs.get('slug')),
-                                          user_id=self.request.user.id)[0]
-
         # the original get defines self.object, this is required otherwise you get an error stating that there is no
         # attribute 'object' in this DetailView
         instance = self.object
@@ -221,6 +202,10 @@ class BlogDetailGetView(DetailView):
         if instance.draft or instance.publish_date > timezone.now():
             if not self.request.user.is_staff or not self.request.user.is_superuser:
                 raise PermissionDenied
+
+        # don't use annotate, use vote_by in this case, annotate only works when __iter__ is called
+        instance = Post.votes.vote_by(self.request.user.id, ids=[instance.id])[0]
+
         return instance
 
     def get_context_data(self, **kwargs):
@@ -250,8 +235,7 @@ class BlogDetailPostView(SingleObjectMixin, FormView):
             return HttpResponseForbidden()
 
         self.object = self.get_object()
-        self.object = Post.votes.annotate(queryset=Post.objects.filter(slug=self.kwargs.get('slug')),
-                                          user_id=self.request.user.id)[0]
+        self.object = Post.votes.vote_by(self.request.user.id, ids=[self.object.id])[0]
 
         form = self.form_class(request.POST)
         if form.is_valid():
@@ -319,7 +303,6 @@ class PostLikeToggleAjax(APIView):
 
             # check if the user is authenticated
             # check if the user has already voted on this object
-            # obj.votes.vote_by(user.id)
 
             if obj.votes.exists(user.id, action=UP):
                 obj.votes.delete(user.id)
@@ -344,6 +327,9 @@ class PostDislikeToggleAjax(APIView):
 
     def get(self, request, slug=None, format=None):
         # slug = self.kwargs.get("slug")
+
+        print('hello===========================')
+
         obj = get_object_or_404(Post, slug=slug)
         # url_ = obj.get_absolute_url()  # get the url of the project post
         user = self.request.user  # get the user

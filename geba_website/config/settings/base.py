@@ -40,7 +40,7 @@ path.append(DJANGO_ROOT)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-#A list of all the people who get code error notifications.
+# A list of all the people who get code error notifications.
 ADMINS = (
     ('Geoffrey Barrett', 'gmbarrett313@gmail.com'),
     ('Geoffrey Barrett', 'Geoffrey.M.Barrett@gmail.com')
@@ -140,6 +140,7 @@ THIRD_PARTY_APPS = (
     'crispy_forms',
     'storages',
     'analytical',
+    'formtools',
     # 'easy_timezones',
 )
 
@@ -153,6 +154,7 @@ PROJECT_APPS = (
     'apps.vote',
 )
 
+CSRF_USE_SESSIONS = False  # djangos's default
 
 ##########################
 

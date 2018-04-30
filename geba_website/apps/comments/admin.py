@@ -7,7 +7,7 @@ from .models import Comment
 
 class CommentAdmin(admin.ModelAdmin):
 
-    list_display = ('timestamp', 'author', 'content', 'object_id', 'parent', 'pk')
+    list_display = ('timestamp', 'author', 'content', 'content_type', 'object_id', 'content_object', 'parent', 'pk')
     # readonly_fields = ('show_url',)
     #
     # def show_url(self, instance):

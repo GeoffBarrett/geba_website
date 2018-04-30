@@ -1,8 +1,9 @@
+import os
 from django.db import models
 from django.conf import settings
 from django.urls import reverse
 from django.utils import timezone
-from django.db.models.signals import pre_save  # before saving it emits this signal
+from django.db.models.signals import pre_save, pre_delete  # before saving it emits this signal
 from django.utils.text import slugify  # turns our title into a slug
 from ..core.models import TimeStampModel
 from django.utils.safestring import mark_safe
@@ -119,4 +120,31 @@ def pre_save_post_signal_receiver(sender, instance, *args, **kwargs):
         # if there is no slug, create one
         instance.slug = create_slug(instance=instance)
 
+
+def pre_delete_post_signal_receiver(sender, instance, *args, **kwargs):
+    """This will ensure to modify the authors ManytoManyField if necessary and delete an author if
+    there are no more posts in the project with that authors name."""
+
+    # delete the comments on the project post
+    comments = instance.comments
+    for comment in comments:
+        comment.delete()
+
+    # delete image of the project post
+    delete_image(instance)
+
+
+def delete_image(instance):
+    if instance.image:
+        # if an image exists, delete it
+        img_path = instance.image.path
+
+        if os.path.isfile(img_path):
+            img_dir = os.path.dirname(img_path)
+            os.remove(img_path)
+            if len(os.listdir(img_dir)) == 0:
+                # if the directory that the image is in is empty, delete it
+                os.rmdir(img_dir)
+
 pre_save.connect(pre_save_post_signal_receiver, sender=Post)  # connects the signal with the signal receiver
+pre_delete.connect(pre_delete_post_signal_receiver, sender=Post)  # connects the signal with the signal receiver

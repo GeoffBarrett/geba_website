@@ -113,10 +113,11 @@
                 integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
                 crossorigin="anonymous"></script>
 
-        {% block javascript %}{% endblock javascript %}
+        <script src="{% static 'apps/core/js/navbar.js' %}"></script>
+        <script src="{% static 'apps/core/js/custom.js' %}"></script>
 
-        {% include "core/custom_js.html" %}
-        {% include "core/navbar_js.html" %}
+        {% block javascript %}
+        {% endblock javascript %}
 
     </body>
 

@@ -9,15 +9,13 @@ from ..vote.models import VoteModel
 
 class CommentManager(models.Manager):
     def all(self):
-        qs = super(CommentManager, self).filter(parent=None)
-        return qs
+        return super(CommentManager, self).filter(parent=None)
 
     def filter_by_instance(self, instance):
         # instance.__class__ ensures that it works for a multitude of object types / models
         content_type = ContentType.objects.get_for_model(instance.__class__)
         obj_id = instance.id
-        qs = super(CommentManager, self).filter(content_type=content_type, object_id=obj_id).filter(parent=None)
-        return qs
+        return super(CommentManager, self).filter(content_type=content_type, object_id=obj_id).filter(parent=None)
 
 
 class Comment(VoteModel, models.Model):
@@ -30,6 +28,8 @@ class Comment(VoteModel, models.Model):
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()  # the id of the object with that model that the comment was on
     content_object = GenericForeignKey('content_type', 'object_id')  # the comment object
+    # content_object = GenericForeignKey()  # the object that was voted on
+
     parent = models.ForeignKey('self', null=True, blank=True, on_delete=models.CASCADE)
 
     content = models.TextField()
@@ -42,11 +42,6 @@ class Comment(VoteModel, models.Model):
 
     def __str__(self):
         return str(self.author.username)
-
-    '''
-    def children(self):
-        return Comment.objects.filter(parent=self)
-    '''
 
     def children(self, user_id):
         qs = Comment.objects.filter(parent=self)
@@ -67,11 +62,6 @@ class Comment(VoteModel, models.Model):
 
     def get_api_like_url(self):
         return reverse("comments:like_toggle_api", kwargs={'pk': self.pk})
-
-    '''
-    def get_like_url(self):
-        return reverse("comments:like_toggle", kwargs={'pk': self.pk})
-    '''
 
     def get_api_dislike_url(self):
         return reverse("comments:dislike_toggle_api", kwargs={'pk': self.pk})

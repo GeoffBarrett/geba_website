@@ -1,3 +1,4 @@
+import os
 from django.db import models
 from django.conf import settings
 from django.urls import reverse
@@ -187,6 +188,15 @@ class Project(VoteModel, TimeStampModel):
     def get_api_dislike_url(self):
         return reverse("project:project_dislike_toggle_api", kwargs={'slug': self.slug})
 
+    def get_project_posts(self):
+        """This method will be used in post_detail.html to have a list of related posts"""
+        return ProjectPost.objects.filter(object_id=self.id)
+
+    def get_next_post_order(self):
+        """This method will return the post order when a new post is being created, it will default as the
+        immediate next post"""
+        return int(len(ProjectPost.objects.filter(object_id=self.id)) + 1)
+
     @property
     def comments(self):
         '''creating a method to allow the post form to grab the post comments'''
@@ -240,11 +250,15 @@ def pre_save_signal_receiver(sender, instance, *args, **kwargs):
         instance.slug = create_slug(instance=instance)
 
 
-def pre_delete_post_signal_receiver(sender, instance, *args, **kwargs):
+def pre_delete_projectpost_signal_receiver(sender, instance, *args, **kwargs):
     """This will ensure to modify the authors ManytoManyField if necessary and delete an author if
     there are no more posts in the project with that authors name."""
 
-    project_instance = Project.objects.filter(id=instance.object_id)[0]
+    try:
+        project_instance = Project.objects.filter(id=instance.object_id)[0]
+    except IndexError:
+        # if the project instance was already deleted, you will get an instance error
+        return
 
     # get the authors of the posts (excluding the current instance
     authors = [post.author for post in project_instance.pages.all() if post != instance]
@@ -253,8 +267,41 @@ def pre_delete_post_signal_receiver(sender, instance, *args, **kwargs):
         project_instance.authors.remove(instance.author)
         project_instance.save()
 
+    # delete the comments on the project post
+    comments = instance.comments
+    for comment in comments:
+        comment.delete()
+
+    # delete image of the project post
+    delete_image(instance)
+
+
+def pre_delete_project_signal_receiver(sender, instance, *args, **kwargs):
+    """This will be used to delete the project posts that go along with the project"""
+
+    project_posts = instance.get_project_posts()
+
+    for post in project_posts:
+        post.delete()
+
+    # delete the image of the project
+    delete_image(instance)
+
+
+def delete_image(instance):
+    if instance.image:
+        # if an image exists, delete it
+        img_path = instance.image.path
+
+        if os.path.isfile(img_path):
+            img_dir = os.path.dirname(img_path)
+            os.remove(img_path)
+            if len(os.listdir(img_dir)) == 0:
+                # if the directory that the image is in is empty, delete it
+                os.rmdir(img_dir)
 
 pre_save.connect(pre_save_signal_receiver, sender=ProjectPost)  # connects the signal with the signal receiver
 pre_save.connect(pre_save_signal_receiver, sender=Project)  # connects the signal with the signal receiver
 
-pre_delete.connect(pre_delete_post_signal_receiver, sender=ProjectPost)
+pre_delete.connect(pre_delete_projectpost_signal_receiver, sender=ProjectPost)
+pre_delete.connect(pre_delete_project_signal_receiver, sender=Project)
