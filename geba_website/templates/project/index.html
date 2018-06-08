@@ -35,7 +35,7 @@
                 {% endif %}
 
                 {% if user.is_staff or user.is_superuser %}
-                    <a class="btn btn-default" href="{% url 'project:create' %}" role="button">New Project</a>
+                    <a class="btn btn-primary" href="{% url 'project:create' %}" role="button">New Project</a>
                 {% endif %}
             </div>
         </div>

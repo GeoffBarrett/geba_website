@@ -18,7 +18,7 @@ from ..comments.forms import CommentForm
 from ..comments.models import Comment
 from django.urls import reverse, reverse_lazy
 from django.views.generic.detail import SingleObjectMixin
-from django.http import HttpResponseForbidden, HttpResponseRedirect, JsonResponse, HttpResponseBadRequest, HttpResponse
+from django.http import HttpResponseForbidden, HttpResponseRedirect, JsonResponse
 from django.contrib.contenttypes.models import ContentType
 from rest_framework.views import APIView
 # from rest_framework.decorators import api_view
@@ -58,8 +58,8 @@ TRANSFER_FORMS = [
     ("project_post_form", ProjectPostForm),
 ]
 TRANSFER_TEMPLATES = {
-    "project_form": "project/project_form4.html",
-    "project_post_form": "project/project_form4.html"
+    "project_form": "project/project_form2.html",
+    "project_post_form": "project/project_form3.html"
 }
 
 
@@ -200,112 +200,6 @@ class ProjectCreationPostView(FormView):
         else:
             # return render_to_response(self.template_name, {'project_form': project_form, 'post_form': post_form})
             return render(request, self.template_name, {'project_form': project_form, 'post_form': post_form})
-
-
-class AjaxableResponseMixin():
-    """
-    Mixin to add AJAX support to a form.
-    Must be used with an object-based FormView (e.g. CreateView)
-    """
-    def form_invalid(self, form):
-        response = super().form_invalid(form)
-        if self.request.is_ajax():
-            return JsonResponse(form.errors, status=400)
-        else:
-            return response
-
-    def form_valid(self, form):
-        # We make sure to call the parent's form_valid() method because
-        # it might do some processing (in the case of CreateView, it will
-        # call form.save() for example).
-        response = super().form_valid(form)
-        if self.request.is_ajax():
-            data = {
-                'form_valid': True,
-            }
-            return JsonResponse(data)
-        else:
-            return response
-
-
-class ProjectCreationPostViewAjax(AjaxableResponseMixin, FormView):
-    form_class = ProjectForm
-    template_name = 'project/project_form.html'
-    success_url = '/'
-
-
-'''
-class ProjectCreationPostViewAjax(APIView):
-    """
-    List all code snippets, or create a new snippet.
-    """
-    authentication_classes = (authentication.SessionAuthentication,)
-    permission_classes = (permissions.IsAuthenticated,)
-
-    def post(self, request, format=None):
-        serializer = ProjectSerializer(data=request.data)
-        if serializer.is_valid():
-            # serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-'''
-
-'''
-class ProjectCreationPostViewAjax(FormView):
-
-    project_form = ProjectForm
-    post_form = ProjectPostForm
-
-    # form_class = ProjectForm
-    template_name = 'project/project_form.html'
-
-    success_url = reverse_lazy('project:index')
-
-    def post(self, request, *args, **kwargs):
-
-        project_form = self.project_form(request.POST)
-        post_form = self.project_form(request.POST or None)
-
-        if project_form.is_valid():
-            print('hiiiiiiiiiiiiiiiiiii')
-            return super(ProjectCreationPostViewAjax, self).form_valid(project_form)
-        else:
-            # return render_to_response(self.template_name, {'project_form': project_form, 'post_form': post_form})
-            # return render(request, self.template_name, {'project_form': project_form, 'post_form': post_form}, status=500)
-            return JsonResponse(request, status_code=400)
-'''
-
-'''
-class ProjectCreationPostViewAjax(AjaxFormMixin, FormView):
-
-    project_form = ProjectForm
-    post_form = ProjectPostForm
-
-    # form_class = ProjectForm
-    template_name = 'project/project_form.html'
-
-    success_url = reverse_lazy('project:index')
-
-    def post(self, request, *args, **kwargs):
-
-        project_form = self.project_form(request.POST)
-        post_form = self.project_form(request.POST or None)
-
-        if project_form.is_valid():
-
-            project_instance = project_form.save(commit=False)
-
-            # creates object from the form, doesn't save it to the database just yet
-
-            project_instance.save()
-
-            project_instance.votes.up(request.user.id)  # up voting the project
-
-            return super(ProjectCreationPostViewAjax, self).form_valid(project_form)
-        else:
-            # return render_to_response(self.template_name, {'project_form': project_form, 'post_form': post_form})
-            return render(request, self.template_name, {'project_form': project_form, 'post_form': post_form})
-'''
 
 
 class ProjectUpdateView(ProjectActionMixin, UpdateView):

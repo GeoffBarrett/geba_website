@@ -3,11 +3,10 @@
 {% load staticfiles %}
 
 {% block css %}
+
 <link rel='stylesheet' href="{% static 'apps/core/css/form_style.css' %}"/>
-<!--<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" media="screen"
- href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">-->
-{{ form.media }} <!-- used for the pagedown widget !-->
+
+{{ form.media }}
 {{ wizard.form.media }}
 
 {% endblock css %}
@@ -25,29 +24,24 @@
             <div class="panel panel-default">
                 <div class="panel-body">
 
-                    <form class="form-horizontal" id='ProjectForm' action="." data-url="{% url 'project:create_project_ajax' %}" method="post" enctype="multipart/form-data">
+                    <form class="form-horizontal" id='ProjectForm' action="" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
-
                         <table>
                         {{ wizard.management_form }}
                         {% if wizard.form.forms %}
                             {{ wizard.form.management_form }}
                             {% for form in wizard.form.forms %}
-                                {{ form|crispy }}
+                                {{ form }}
                             {% endfor %}
                         {% else %}
-                            {{ wizard.form|crispy }}
+                            {{ wizard.form }}
                         {% endif %}
                         </table>
-
                         {% if wizard.steps.prev %}
-                        <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">Back</button>
+                        <button name="wizard_goto_step" type="hidden" value="{{ wizard.steps.prev }}">Back</button>
                         {% endif %}
-                        <input type="submit" value="Submit"/>
-
-                    </form>
-
-
+                        <input type="submit" value="submit"/>
+                        </form>
 
                 </div>
             </div>

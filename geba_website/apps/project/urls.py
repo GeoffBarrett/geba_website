@@ -1,7 +1,8 @@
 """Defines URL patterns for the GEBA website Blog app"""
 from django.urls import re_path
 from . import views
-from .forms import ProjectForm, ProjectPostForm
+# from .forms import ProjectForm, ProjectPostForm
+
 
 urlpatterns = [
 
@@ -13,12 +14,9 @@ urlpatterns = [
 
     re_path(r'^(?P<slug>[\w-]+)/update/$', views.ProjectUpdateView.as_view(), name='update'),
     # re_path(r'^create/$', views.ProjectCreateGetView.as_view(), name='create'),
-    re_path(r'^create/$', views.ProjectWizard.as_view([("project_form", ProjectForm),
-                                                       ("project_post_form", ProjectPostForm)]), name='create'),
+    re_path(r'^create/$', views.ProjectWizard.as_view(views.TRANSFER_FORMS), name='create'),
     # re_path(r'^create_project/$', views.ProjectCreationPostView.as_view(), name='create_project'),
     # re_path(r'^create_project/$', views.ProjectWizard.as_view([ProjectForm, ProjectPostForm]), name='create_project'),
-    # re_path(r'^api/create_project/$', views.ProjectCreationPostViewAjax.as_view(), name='create_project_ajax'),
-    re_path(r'^api/create_project/$', views.ProjectCreationPostViewAjax.as_view(), name='create_project_ajax'),
 
     re_path(r'^(?P<slug>[\w-]+)/delete/$', views.ProjectDeleteView.as_view(), name='delete'),
     re_path(r'^api/(?P<slug>[\w-]+)/project_like/$', views.ProjectLikeToggleAjax.as_view(),

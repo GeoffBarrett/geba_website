@@ -1,8 +1,10 @@
+/*
 body {
   font-size: 20px;
   color: #212529;
   font-family: 'Lora', 'Times New Roman', serif;
 }
+*/
 
 p {
   line-height: 1.5;
@@ -23,6 +25,7 @@ h6 {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+/* this will effect the glyph iocns as well*/
 a {
   color: #212529;
   -webkit-transition: all 0.2s;
@@ -30,6 +33,7 @@ a {
   transition: all 0.2s;
 }
 
+/*
 a:focus, a:hover {
   color: #02178e;
 }
@@ -37,7 +41,7 @@ a:focus, a:hover {
 blockquote {
   font-style: italic;
   color: #868e96;
-}
+}*/
 
 .section-heading {
   font-size: 36px;
@@ -56,6 +60,7 @@ blockquote {
   border-bottom-left-radius: 5px;
 }
 
+/*
 ::-moz-selection {
   color: #fff;
   background: #02178e;
@@ -68,6 +73,7 @@ blockquote {
   text-shadow: none;
 }
 
+
 img::selection {
   color: white;
   background: transparent;
@@ -77,6 +83,8 @@ img::-moz-selection {
   color: white;
   background: transparent;
 }
+
+*/
 
 #mainNav {
   top: 0;
@@ -96,6 +104,13 @@ img::-moz-selection {
     border: 1px solid transparent;
     padding: 0 0;
 }
+
+.navbar .nav-link {
+    /*padding: 1rem;*/
+    border-left: none;
+    border-right: none;
+}
+
 
 #mainNav .navbar-brand {
   font-weight: 800;
