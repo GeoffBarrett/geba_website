@@ -4,7 +4,7 @@
     <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="ignoredPackages">
         <value>
-          <list size="21">
+          <list size="29">
             <item index="0" class="java.lang.String" itemvalue="django-registration" />
             <item index="1" class="java.lang.String" itemvalue="Django" />
             <item index="2" class="java.lang.String" itemvalue="psycopg2" />
@@ -26,6 +26,14 @@
             <item index="18" class="java.lang.String" itemvalue="olefile" />
             <item index="19" class="java.lang.String" itemvalue="pytz" />
             <item index="20" class="java.lang.String" itemvalue="Pillow" />
+            <item index="21" class="java.lang.String" itemvalue="boto3" />
+            <item index="22" class="java.lang.String" itemvalue="botocore" />
+            <item index="23" class="java.lang.String" itemvalue="markdown2" />
+            <item index="24" class="java.lang.String" itemvalue="django-analytical" />
+            <item index="25" class="java.lang.String" itemvalue="django-pagedown" />
+            <item index="26" class="java.lang.String" itemvalue="docutils" />
+            <item index="27" class="java.lang.String" itemvalue="django-storages" />
+            <item index="28" class="java.lang.String" itemvalue="djangorestframework" />
           </list>
         </value>
       </option>

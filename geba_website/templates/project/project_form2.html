@@ -4,11 +4,10 @@
 
 {% block css %}
 <link rel='stylesheet' href="{% static 'apps/core/css/form_style.css' %}"/>
-
-{{ form.media }}
-{{ wizard.form.media }}
-
 {% endblock css %}
+
+{{ form.media }} <!-- used for the pagedown widget !-->
+{{ wizard.form.media }}
 
 {% block content %}
 
@@ -71,7 +70,6 @@
 
                             </div>
                         </div>
-
 
                     </form>
 
