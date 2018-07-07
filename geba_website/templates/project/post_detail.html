@@ -68,24 +68,24 @@
                     {% load markdown_deux_tags %}
 
                     {% if user.is_staff or user.is_superuser %}
-                        <a class="btn btn-default"
+                        <a class="btn btn-primary"
                            href="{% url 'project:create_post' projectpost.get_project_slug projectpost.get_next_post_order %}"
                            role="button">New Post</a>
-                        <a class="btn btn-default" href="{% url 'project:update_post' projectpost.slug %}" role="button">Edit Post</a>
+                        <a class="btn btn-primary" href="{% url 'project:update_post' projectpost.slug %}" role="button">Edit Post</a>
 
                         {% if projectpost.draft %}
-                            <a class="btn btn-default publish-btn" data-href="{% url 'project:publish_post_ajax' projectpost.slug %}"
-                               data-slug="{{ projectpost.slug }}" id="publish_{{ projectpost.slug }}" role="button">Publish</a>
-                            <a class="btn btn-default draft-btn hidebtn" data-href="{% url 'project:draft_post_ajax' projectpost.slug %}"
-                               data-slug="{{ projectpost.slug }}" id="draft_{{ projectpost.slug }}" role="button">Set as Draft</a>
+                            <a class="btn btn-primary publish-btn" data-href="{% url 'project:publish_post_ajax' projectpost.slug %}"
+                               data-slug="{{ projectpost.slug }}" id="publish_{{ projectpost.slug }}" href="#" role="button">Publish</a>
+                            <a class="btn btn-primary draft-btn hidebtn" data-href="{% url 'project:draft_post_ajax' projectpost.slug %}"
+                               data-slug="{{ projectpost.slug }}" id="draft_{{ projectpost.slug }}" href="#" role="button">Set as Draft</a>
                         {% else %}
-                            <a class="btn btn-default draft-btn" data-href="{% url 'project:draft_post_ajax' projectpost.slug %}"
-                               data-slug="{{ projectpost.slug }}" id="draft_{{ projectpost.slug }}" role="button">Set as Draft</a>
-                            <a class="btn btn-default publish-btn hidebtn" data-href="{% url 'project:publish_post_ajax' projectpost.slug %}"
-                               data-slug="{{ projectpost.slug }}" id="publish_{{ projectpost.slug }}" role="button">Publish</a>
+                            <a class="btn btn-primary draft-btn" data-href="{% url 'project:draft_post_ajax' projectpost.slug %}"
+                               data-slug="{{ projectpost.slug }}" id="draft_{{ projectpost.slug }}" href="#" role="button">Set as Draft</a>
+                            <a class="btn btn-primary publish-btn hidebtn" data-href="{% url 'project:publish_post_ajax' projectpost.slug %}"
+                               data-slug="{{ projectpost.slug }}" id="publish_{{ projectpost.slug }}" href="#" role="button">Publish</a>
                         {% endif %}
 
-                        <a class="btn btn-default" href='#' type="btn btn-default"  data-toggle="modal" data-target="#DeleteProjectPostModal">Delete Post</a>
+                        <a class="btn btn-primary" href='#' data-toggle="modal" data-target="#DeleteProjectPostModal">Delete Post</a>
                     {% endif %}
 
                 </div>
@@ -105,11 +105,11 @@
 
                 <!-- this div will contain the contents of the post, including comments -->
                 <div class="col-sm-8 content-markdown">
-                    <div class="post-body">{{ projectpost.get_html }}</div>
+                    <div class="post-body">{{ projectpost.get_html|safe }}</div>
 
                     <div class="row">
                         <div class="col">
-                            <a class="btn btn-default" href="#Top">Top of Page</a>
+                            <a class="btn btn-primary" href="#Top">Top of Page</a>
                         </div>
                     </div>
 

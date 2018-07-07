@@ -12,6 +12,7 @@ from ..comments.models import Comment
 from ..vote.models import VoteModel
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
+# from tinymce.models import HTMLField
 # from django.shortcuts import get_object_or_404
 # from django.db import transaction
 
@@ -110,7 +111,8 @@ class ProjectPost(VoteModel, TimeStampModel):
     def get_html(self):
         '''converts the body to markdown so we don\'t have to use the |markdown filter'''
         body = self.body
-        return mark_safe(markdown(body))
+        # return mark_safe(markdown(body))
+        return mark_safe(body)
 
     @property
     def comments(self):
@@ -299,6 +301,7 @@ def delete_image(instance):
             if len(os.listdir(img_dir)) == 0:
                 # if the directory that the image is in is empty, delete it
                 os.rmdir(img_dir)
+
 
 pre_save.connect(pre_save_signal_receiver, sender=ProjectPost)  # connects the signal with the signal receiver
 pre_save.connect(pre_save_signal_receiver, sender=Project)  # connects the signal with the signal receiver

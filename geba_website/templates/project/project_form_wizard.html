@@ -6,8 +6,7 @@
 <link rel='stylesheet' href="{% static 'apps/core/css/form_style.css' %}"/>
 {% endblock css %}
 
-{{ form.media }} <!-- used for the pagedown widget !-->
-{{ wizard.form.media }}
+{% block title %}GEBA - Create Project{% endblock title %}
 
 {% block content %}
 
@@ -18,13 +17,14 @@
     {% load crispy_forms_tags %}
 
     <div class="row justify-content-md-center">
-        <div class = "col-sm-8">
+        <div class = "col-sm-12 col-md-7">
             <div class="panel panel-default">
                 <div class="panel-body">
 
                     <form class="form-horizontal" id='ProjectForm' action="" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
 
+                        {{ wizard.form.media }}
                         {{ wizard.management_form }}
 
                         <!--<div class="form-group">
@@ -33,7 +33,7 @@
                             </div>
                             {{ wizard.form.title.label_tag }}
                             {% if wizard.form.title.field.required %}(*){% endif %}
-                            <input type="text" name="title" placeholder="Title..." class="form-control"
+                            <input type="text" name="{{ wizard.form.title.name }}" placeholder="Title..." class="form-control"
                                    id="{{ wizard.form.title.id_for_label }}">
                         </div>
 
@@ -56,11 +56,11 @@
                         <div class="form-group">
                             {{ wizard.form.publish_date.label_tag }}
                             {{ wizard.form.publish_date }}
-                        </div>-->
+                        </div>
+
+                        {{ wizard.form.as_p }}-->
 
                         {{ wizard.form|crispy }}
-
-                        <!--{{ post_form.as_ul }}-->
 
                         <div class="form-group">
                             <div class="col-sm-offset-2 col_sm-10">

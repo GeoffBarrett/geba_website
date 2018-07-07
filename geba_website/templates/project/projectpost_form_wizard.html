@@ -1,12 +1,14 @@
 {% extends "core/base.html" %} <!-- extends path starting from templates directory, concatenates all contents of templates -->
 
+{% load crispy_forms_tags %}
 {% load staticfiles %}
 
 {% block css %}
 <link rel='stylesheet' href="{% static 'apps/core/css/form_style.css' %}"/>
 {% endblock css %}
 
-{{ form.media }} <!-- used for the pagedown widget !-->
+{% block title %}GEBA - Create Project Post{% endblock title %}
+
 {{ wizard.form.media }}
 
 {% block content %}
@@ -15,10 +17,8 @@
         {% include "project/messages.html" %}
     {% endif %}
 
-    {% load crispy_forms_tags %}
-
     <div class="row justify-content-md-center">
-        <div class = "col-sm-8">
+        <div class = "col-sm-12 col-md-7">
             <div class="panel panel-default">
                 <div class="panel-body">
 
@@ -28,9 +28,6 @@
                         {{ wizard.management_form }}
 
                         {{ wizard.form|crispy }}
-
-                        <!--{{ post_form.as_ul }}-->
-
 
                         <div class="form-group">
                             <div class="col-sm-offset-2 col_sm-10">

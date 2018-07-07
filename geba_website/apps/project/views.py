@@ -58,8 +58,8 @@ TRANSFER_FORMS = [
     ("project_post_form", ProjectPostForm),
 ]
 TRANSFER_TEMPLATES = {
-    "project_form": "project/project_form2.html",
-    "project_post_form": "project/project_form3.html"
+    "project_form": "project/project_form_wizard.html",
+    "project_post_form": "project/projectpost_form_wizard.html"
 }
 
 
@@ -157,51 +157,6 @@ class ProjectIndexView(ListView):
         return query_set_list
 
 
-class ProjectCreateGetView(TemplateView):
-
-    project_form = ProjectForm
-    post_form = ProjectPostForm
-    success_url = '/'
-
-    template_name = 'project/project_form.html'
-
-    def get(self, request):
-        """when the user executes a get request, display blank form"""
-        project_form = self.project_form(request.GET or None, request.FILES or None)
-        post_form = self.post_form(request.GET or None, request.FILES or None)
-        return render(request, self.template_name, {'project_form': project_form, 'post_form': post_form})
-
-
-class ProjectCreationPostView(FormView):
-
-    project_form = ProjectForm
-    post_form = ProjectPostForm
-
-    template_name = 'project/project_form.html'
-
-    success_url = reverse_lazy('project:index')
-
-    def post(self, request, *args, **kwargs):
-
-        project_form = self.project_form(request.POST)
-        post_form = self.post_form(request.POST)
-
-        if project_form.is_valid():
-
-            project_instance = project_form.save(commit=False)
-
-            # creates object from the form, doesn't save it to the database just yet
-
-            project_instance.save()
-
-            project_instance.votes.up(request.user.id)  # up voting the project
-
-            return super(ProjectCreationPostView, self).form_valid(post_form)
-        else:
-            # return render_to_response(self.template_name, {'project_form': project_form, 'post_form': post_form})
-            return render(request, self.template_name, {'project_form': project_form, 'post_form': post_form})
-
-
 class ProjectUpdateView(ProjectActionMixin, UpdateView):
     model = Project
     success_msg = 'Project Updated!'
@@ -243,102 +198,6 @@ class ProjectDeleteView(DeleteView):
         request = check_project_rights(request)
         return super(ProjectDeleteView, self).dispatch(request, *args, **kwargs)
 
-# ---------- unused --------------- #
-
-'''
-class ProjectDetailGetView(DetailView):
-    """This view will be used to GET the detail data"""
-    # success_msg = 'Comment Added!'
-    model = ProjectPost  # generic views need to know which model to act upon
-    template_name = 'project/detail.html'  # tells the view to use this template instead of it's default
-    success_url = reverse_lazy('project:index')
-    form_class = CommentForm
-
-    def get(self, request, *args, **kwargs):
-        self.object = self.get_object()
-
-        self.object = ProjectPost.votes.annotate(queryset=ProjectPost.objects.filter(slug=self.kwargs.get('slug')),
-                               user_id=self.request.user.id)[0]
-
-        # the original get defines self.object, this is required otherwise you get an error stating that there is no
-        # attribute 'object' in this DetailView
-        instance = self.object
-        context = self.get_context_data(object=self.object)
-        initial_data = {
-            'content_type': instance.get_content_type,
-            'object_id': instance.id,
-        }
-        comment_form = self.form_class(request.POST or None, initial=initial_data)
-        context['comment_form'] = comment_form
-        return self.render_to_response(context)
-
-    def get_object(self):
-        # make it so only the admin can see items in the future or that are drafts
-        instance = super(ProjectDetailGetView, self).get_object()
-        if instance.draft or instance.publish_date > timezone.now():
-            if not self.request.user.is_staff or not self.request.user.is_superuser:
-                raise PermissionDenied
-        return instance
-
-    def get_context_data(self, **kwargs):
-        context = super(ProjectDetailGetView, self).get_context_data(**kwargs)
-        # context['object'] provides the instance for us
-        context['comments'] = context['object'].comments
-
-        # context['comment_form'] = CommentForm()
-        return context
-'''
-
-'''
-class ProjectDetailPostView(SingleObjectMixin, FormView):
-    """This view will be used to POST the detail data
-
-    SingleObjectMixin = Provides a mechanism for looking up an object associated with the current HTTP request.
-    """
-    # template_name = 'project/detail.html'  # tells the view to use this template instead of it's default
-    form_class = CommentForm
-    model = Project  # generic views need to know which model to act upon
-
-    def post(self, request, *args, **kwargs):
-        # comment_form = self.form_class(request.POST, request.FILES)
-        if not request.user.is_authenticated:
-            return HttpResponseForbidden()
-
-        self.object = self.get_object()
-
-        self.object = Project.votes.annotate(queryset=Project.objects.filter(slug=self.kwargs.get('slug')),
-                                                 user_id=self.request.user.id)[0]
-
-        form = self.form_class(request.POST)
-        if form.is_valid():
-            c_type = form.cleaned_data.get("content_type")
-            content_type = ContentType.objects.get(model=c_type)
-            object_id = form.cleaned_data.get("object_id")
-            content_data = form.cleaned_data.get("content")
-            parent_object = None
-            try:
-                parent_id = int(request.POST.get("parent_id"))
-            except:
-                parent_id = None
-
-            if parent_id:
-                parent_qs = Comment.objects.filter(id=parent_id)
-                if parent_qs.exists():
-                    parent_object = parent_qs.first()  # get the first object in that queryset
-
-            new_comment, created = Comment.objects.get_or_create(
-                author=request.user,
-                content_type=content_type,
-                object_id=object_id,
-                content=content_data,
-                parent=parent_object
-            )
-
-        return super().post(request, *args, **kwargs)
-
-    def get_success_url(self):
-        return reverse('project:detail', kwargs={'slug': self.object.slug})
-'''
 
 # ----------  Both View  ---------- #
 
@@ -673,6 +532,7 @@ class ProjectPostCreateView(ProjectActionMixin, CreateView):
                                                     'new_post_order': kwargs['post_order']})
 
 # ----------voting ---------- #
+
 
 UP = 0
 DOWN = 1

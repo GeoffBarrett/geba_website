@@ -63,22 +63,22 @@
                     {% load markdown_deux_tags %}
 
                     {% if user.is_staff or user.is_superuser %}
-                        <a class="btn btn-default" href="{% url 'blog:create' %}" role="button">New Blog</a>
-                        <a class="btn btn-default" href="{% url 'blog:update' post.slug %}" role="button">Edit Blog</a>
+                        <a class="btn btn-primary" href="{% url 'blog:create' %}" role="button">New Blog</a>
+                        <a class="btn btn-primary" href="{% url 'blog:update' post.slug %}" role="button">Edit Blog</a>
 
                         {% if post.draft %}
-                            <a class="btn btn-default publish-btn" data-href="{% url 'blog:publish_ajax' post.slug %}"
-                               data-slug="{{ post.slug }}" id="publish_{{ post.slug }}" role="button">Publish</a>
-                            <a class="btn btn-default draft-btn hidebtn" data-href="{% url 'blog:draft_ajax' post.slug %}"
-                               data-slug="{{ post.slug }}" id="draft_{{ post.slug }}" role="button">Set as Draft</a>
+                            <a class="btn btn-primary publish-btn" data-href="{% url 'blog:publish_ajax' post.slug %}"
+                               data-slug="{{ post.slug }}" id="publish_{{ post.slug }}" href="#" role="button">Publish</a>
+                            <a class="btn btn-primary draft-btn hidebtn" data-href="{% url 'blog:draft_ajax' post.slug %}"
+                               data-slug="{{ post.slug }}" id="draft_{{ post.slug }}" href="#" role="button">Set as Draft</a>
                         {% else %}
-                            <a class="btn btn-default draft-btn" data-href="{% url 'blog:draft_ajax' post.slug %}"
-                               data-slug="{{ post.slug }}" id="draft_{{ post.slug }}" role="button">Set as Draft</a>
-                            <a class="btn btn-default publish-btn hidebtn" data-href="{% url 'blog:publish_ajax' post.slug %}"
-                               data-slug="{{ post.slug }}" id="publish_{{ post.slug }}" role="button">Publish</a>
+                            <a class="btn btn-primary draft-btn" data-href="{% url 'blog:draft_ajax' post.slug %}"
+                               data-slug="{{ post.slug }}" id="draft_{{ post.slug }}" href="#" role="button">Set as Draft</a>
+                            <a class="btn btn-primary publish-btn hidebtn" data-href="{% url 'blog:publish_ajax' post.slug %}"
+                               data-slug="{{ post.slug }}" id="publish_{{ post.slug }}" href="#" role="button">Publish</a>
                         {% endif %}
 
-                        <a class="btn btn-default" href='#' type="btn btn-default"  data-toggle="modal" data-target="#DeletePostModal">Delete Blog</a>
+                        <a class="btn btn-primary" href='#' data-toggle="modal" data-target="#DeletePostModal">Delete Blog</a>
 
                     {% endif %}
                 </div>
@@ -103,7 +103,7 @@
 
                     <div class="row">
                         <div class="col">
-                            <a class="btn btn-default" href="#Top">Top of Page</a>
+                            <a class="btn btn-primary" href="#Top">Top of Page</a>
                         </div>
                     </div>
 

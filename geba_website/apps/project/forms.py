@@ -3,7 +3,9 @@ from django import forms
 # from django.contrib.admin.widgets import AdminSplitDateTime, AdminDateWidget
 # from django.utils import timezone
 
-from pagedown.widgets import PagedownWidget
+# from pagedown.widgets import PagedownWidget
+
+from django_summernote.widgets import SummernoteWidget
 
 
 class ProjectPostForm(forms.ModelForm):
@@ -17,7 +19,8 @@ class ProjectPostForm(forms.ModelForm):
     # publish_date = forms.DateTimeField(widget=AdminSplitDateTime())
     # publish_date = forms.DateInput(attrs={'class': 'date_picker'})
 
-    body = forms.CharField(widget=PagedownWidget())
+    # body = forms.CharField(widget=PagedownWidget())  # this is for pagedown wysiwyg
+    body = forms.CharField(widget=SummernoteWidget())
 
     class Meta:
         model = ProjectPost
@@ -28,18 +31,10 @@ class ProjectPostForm(forms.ModelForm):
                   'draft',
                   'publish_date',
                   )
-        """
+        '''
         widgets = {
-            'publish_date': forms.DateInput(attrs={'class': 'date_picker'})
-        }
-        """
-
-    '''
-    def clean_publish_date(self):
-        publish_date = self.cleaned_data.get('publish_date')
-
-        return publish_date
-    '''
+            'body': SummernoteInplaceWidget(),
+        }'''
 
 
 class ProjectForm(forms.ModelForm):

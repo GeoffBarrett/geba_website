@@ -2,13 +2,14 @@ from .models import Post
 from django import forms
 # from django.utils import timezone
 
-from pagedown.widgets import PagedownWidget
+# from pagedown.widgets import PagedownWidget
+from django_summernote.widgets import SummernoteWidget
 
 
 class BlogPostForm(forms.ModelForm):
 
     publish_date = forms.DateTimeField(widget=forms.SelectDateWidget)
-    body = forms.CharField(widget=PagedownWidget())
+    body = forms.CharField(widget=SummernoteWidget())
 
     class Meta:
         model = Post

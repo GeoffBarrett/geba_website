@@ -22,6 +22,7 @@ def get_env_variable(var_name):
         error_msg = "Set the %s environment variable" % var_name
         raise ImproperlyConfigured(error_msg)
 
+
 DJANGO_ROOT = Path(__file__).ancestor(3)  # /geba_website/geba_website
 
 CONFIG_ROOT = DJANGO_ROOT.child("config")
@@ -128,28 +129,30 @@ DJANGO_APPS = (
 
 
 THIRD_PARTY_APPS = (
-    #'authtools',
-    'django_extensions',
-    #'django_rq',
-    #'floppyforms',
-    #'pipeline',
-    'rest_framework',
-    'grappelli',
-    'pagedown',
-    'markdown_deux',
-    'crispy_forms',
-    'storages',
     'analytical',
-    'formtools',
+    # 'authtools',
+    'crispy_forms',
+    # 'django_extensions',
+    # 'django_rq',
+    'django_summernote',
     # 'easy_timezones',
+    # 'floppyforms',
+    'formtools',
+    'grappelli',
+    'markdown_deux',
+    'pagedown',  # this is for the WYSIWYG editor
+    # 'pipeline',
+    'rest_framework',
+    'storages',
+    # 'tinymce',  # another WYSIWYG editor
 )
 
 PROJECT_APPS = (
     'apps.blog',  # the Blog app
-    'apps.polls',
-    'apps.core',  # adding the core page to the setttings
-    'apps.profiles',
     'apps.comments',
+    'apps.core',  # adding the core page to the setttings
+    'apps.polls',
+    'apps.profiles',
     'apps.project',
     'apps.vote',
 )
@@ -214,4 +217,4 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
