@@ -7,10 +7,8 @@
     {% load staticfiles %}
     {% load crispy_forms_tags %}
     {% load comment %}
-    <!--<link rel='stylesheet' href="{% static 'apps/project/css/offcanvas.css' %}"/>-->
     <link rel='stylesheet' href="{% static 'apps/project/css/project.css' %}"/>
     <link rel='stylesheet' href="{% static 'apps/vote/css/vote.css' %}"/>
-    <!--<link rel='stylesheet' href="{% static 'apps/blog/css/clean-blog.min.css' %}"/>-->
 
 {% endblock header %}
 
@@ -61,11 +59,16 @@
         <div class="container">
 
             <div class="row">
-                <div class="col">
+                <div class="col-sm-8 offset-sm-1">
                     {% if messages %}
                         {% include "project/messages.html" %}
                     {% endif %}
                     {% load markdown_deux_tags %}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-8 offset-sm-1">
 
                     {% if user.is_staff or user.is_superuser %}
                         <a class="btn btn-primary"
@@ -91,13 +94,7 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col">
-
-                </div>
-            </div>
-
-            <div class="row">
+            <div class="row mt-3">
                 <!-- This div will contain the voting -->
                 <div class="col-sm-1">
                     {% include "project/projectpost_vote.html" %}
@@ -121,7 +118,7 @@
                     <form method="POST" action="{% url 'project:detail' projectpost.slug %}">
                         {% csrf_token %}
                         {{ comment_form|crispy }}
-                        <input type="submit" value="Submit Comment" class="btn btn-default">
+                        <input type="submit" value="Post Comment" class="btn btn-primary">
                     </form>
 
                     {% for comment in comments %}

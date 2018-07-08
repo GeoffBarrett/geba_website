@@ -5,33 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df093060-28c8-46a3-87ad-ac27d7285a35" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/blog/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/apps/blog/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/blog/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/apps/blog/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/project/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/apps/project/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/project/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/apps/project/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/apps/project/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/project/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/apps/project/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/assets/apps/blog/css/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/assets/apps/blog/css/custom.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/assets/apps/core/css/bootstrap_old.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/assets/apps/core/css/bootstrap_old.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/assets/apps/core/css/form_style.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/geba_website/assets/apps/core/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/assets/apps/core/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/assets/apps/project/css/project.css" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/assets/apps/project/css/project.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/config/settings/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/config/settings/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/config/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/config/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/templates/blog/blog_vote.html" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/templates/blog/blog_vote.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geba_website/templates/blog/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/templates/blog/detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geba_website/templates/blog/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/templates/blog/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/templates/blog/post_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/templates/blog/post_form.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geba_website/templates/project/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/templates/project/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geba_website/templates/project/post_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/templates/project/post_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/templates/project/project_form.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/templates/project/project_form2.html" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/templates/project/project_form_wizard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/templates/project/project_form3.html" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/templates/project/projectpost_form_wizard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/templates/project/project_form4.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/templates/project/project_post_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/templates/project/project_post_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/templates/project/project_post_form2.html" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/templates/project/old/project_post_form2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/templates/project/project_post_form_update.html" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/templates/project/project_post_form_update.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/templates/project/projectpost_vote.html" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/templates/project/projectpost_vote.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -45,29 +25,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/geba_website/templates/blog/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="322">
+              <caret line="182" column="63" selection-start-line="182" selection-start-column="63" selection-end-line="182" selection-end-column="63" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="post_detail.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/geba_website/templates/project/post_detail.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1351">
+              <caret line="101" lean-forward="true" selection-start-line="101" selection-end-line="101" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="detail.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/geba_website/templates/blog/detail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="492">
-              <caret line="70" column="96" selection-start-line="70" selection-start-column="96" selection-end-line="70" selection-end-column="96" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/geba_website/apps/comments/forms.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="post_detail.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/geba_website/templates/project/post_detail.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="560">
-              <caret line="84" column="110" selection-start-line="84" selection-start-column="110" selection-end-line="84" selection-end-column="110" />
+            <state relative-caret-position="459">
+              <caret line="91" column="58" selection-start-line="91" selection-start-column="58" selection-end-line="91" selection-end-column="58" />
             </state>
           </provider>
         </entry>
@@ -75,17 +55,17 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/geba_website/templates/project/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="74" selection-start-line="16" selection-start-column="66" selection-end-line="16" selection-end-column="74" />
+            <state relative-caret-position="220">
+              <caret line="188" column="79" lean-forward="true" selection-start-line="188" selection-start-column="79" selection-end-line="188" selection-end-column="79" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/geba_website/templates/core/base.html">
+      <file leaf-file-name="sticky-footer-navbar.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/geba_website/assets/apps/core/css/sticky-footer-navbar.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="22" column="76" selection-start-line="22" selection-start-column="76" selection-end-line="22" selection-end-column="76" />
+            <state relative-caret-position="-51">
+              <caret column="23" lean-forward="true" selection-start-column="23" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -93,8 +73,8 @@
       <file leaf-file-name="bootstrap.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/geba_website/assets/apps/core/css/bootstrap.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="165" column="1" lean-forward="true" selection-start-line="165" selection-start-column="1" selection-end-line="165" selection-end-column="1" />
+            <state relative-caret-position="-724">
+              <caret line="4096" column="9" selection-start-line="4096" selection-start-column="1" selection-end-line="4096" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -102,8 +82,8 @@
       <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/geba_website/assets/apps/core/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="831">
-              <caret line="783" column="27" selection-start-line="783" selection-start-column="27" selection-end-line="783" selection-end-column="27" />
+            <state relative-caret-position="651">
+              <caret line="814" lean-forward="true" selection-start-line="814" selection-end-line="814" />
             </state>
           </provider>
         </entry>
@@ -120,20 +100,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>CommentDislikeToggleAjax</find>
-      <find />
-      <find>comment</find>
-      <find>btn-default</find>
-      <find>form</find>
-      <find>bootstrap.min.css</find>
-      <find>create_project_ajax</find>
-      <find>project_post_form</find>
-      <find>markdown</find>
-      <find>body</find>
-      <find>content</find>
-      <find>set as draft</find>
-      <find>form4</find>
-      <find>content-markdown</find>
       <find>get_html</find>
       <find>project_post_form2</find>
       <find>create_post</find>
@@ -147,9 +113,23 @@
       <find>mainnav</find>
       <find>projectholders</find>
       <find>Top of Page</find>
-      <find>style.css</find>
       <find>sidebar</find>
+      <find>&lt;hr</find>
+      <find>&lt;hr&gt;</find>
+      <find>comment</find>
+      <find>02178e</find>
+      <find>272B30</find>
+      <find>hover</find>
+      <find>!important</find>
+      <find>style.css</find>
+      <find>center</find>
+      <find>Submit com</find>
       <find>placehol</find>
+      <find>Post Comment</find>
+      <find>nav-link</find>
+      <find>btn</find>
+      <find>dropdown-toggle</find>
+      <find>dropdown</find>
     </findStrings>
     <replaceStrings>
       <replace>post_form.</replace>
@@ -174,7 +154,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/geba_website/templates/vote/vote_js.html" />
         <option value="$PROJECT_DIR$/geba_website/assets/apps/comment/js/comment.js" />
         <option value="$PROJECT_DIR$/geba_website/assets/apps/blog/js/blog.js" />
         <option value="$PROJECT_DIR$/geba_website/templates/blog/blog_js.html" />
@@ -187,7 +166,6 @@
         <option value="$PROJECT_DIR$/geba_website/apps/vote/admin.py" />
         <option value="$PROJECT_DIR$/geba_website/assets/apps/core/js/csrf_cookie.js" />
         <option value="$PROJECT_DIR$/geba_website/assets/apps/vote/js/vote.js" />
-        <option value="$PROJECT_DIR$/geba_website/templates/project/projectpost_vote.html" />
         <option value="$PROJECT_DIR$/geba_website/apps/core/admin.py" />
         <option value="$PROJECT_DIR$/geba_website/apps/vote/models.py" />
         <option value="$PROJECT_DIR$/geba_website/apps/vote/managers.py" />
@@ -214,17 +192,19 @@
         <option value="$PROJECT_DIR$/geba_website/templates/project/projectpost_form_wizard.html" />
         <option value="$PROJECT_DIR$/geba_website/apps/project/views.py" />
         <option value="$PROJECT_DIR$/geba_website/apps/project/urls.py" />
-        <option value="$PROJECT_DIR$/geba_website/templates/blog/index.html" />
         <option value="$PROJECT_DIR$/geba_website/templates/blog/post_form.html" />
         <option value="$PROJECT_DIR$/geba_website/templates/project/project_post_form_update.html" />
         <option value="$PROJECT_DIR$/geba_website/templates/project/project_post_form.html" />
-        <option value="$PROJECT_DIR$/geba_website/templates/project/index.html" />
         <option value="$PROJECT_DIR$/geba_website/assets/apps/blog/css/custom.css" />
         <option value="$PROJECT_DIR$/geba_website/assets/apps/project/css/project.css" />
         <option value="$PROJECT_DIR$/geba_website/templates/core/base.html" />
-        <option value="$PROJECT_DIR$/geba_website/assets/apps/core/css/style.css" />
+        <option value="$PROJECT_DIR$/geba_website/templates/project/projectpost_vote.html" />
+        <option value="$PROJECT_DIR$/geba_website/templates/blog/blog_vote.html" />
         <option value="$PROJECT_DIR$/geba_website/templates/blog/detail.html" />
         <option value="$PROJECT_DIR$/geba_website/templates/project/post_detail.html" />
+        <option value="$PROJECT_DIR$/geba_website/assets/apps/core/css/style.css" />
+        <option value="$PROJECT_DIR$/geba_website/templates/project/index.html" />
+        <option value="$PROJECT_DIR$/geba_website/templates/blog/index.html" />
       </list>
     </option>
   </component>
@@ -261,13 +241,6 @@
               <item name="geba_website" type="b2602c69:ProjectViewProjectNode" />
               <item name="geba_website" type="462c0819:PsiDirectoryNode" />
               <item name="geba_website" type="462c0819:PsiDirectoryNode" />
-              <item name="apps" type="462c0819:PsiDirectoryNode" />
-              <item name="comments" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="geba_website" type="b2602c69:ProjectViewProjectNode" />
-              <item name="geba_website" type="462c0819:PsiDirectoryNode" />
-              <item name="geba_website" type="462c0819:PsiDirectoryNode" />
               <item name="assets" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -332,6 +305,23 @@
               <item name="geba_website" type="b2602c69:ProjectViewProjectNode" />
               <item name="geba_website" type="462c0819:PsiDirectoryNode" />
               <item name="geba_website" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
+              <item name="vote" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geba_website" type="b2602c69:ProjectViewProjectNode" />
+              <item name="geba_website" type="462c0819:PsiDirectoryNode" />
+              <item name="geba_website" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
+              <item name="vote" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geba_website" type="b2602c69:ProjectViewProjectNode" />
+              <item name="geba_website" type="462c0819:PsiDirectoryNode" />
+              <item name="geba_website" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -354,6 +344,13 @@
               <item name="geba_website" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="project" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geba_website" type="b2602c69:ProjectViewProjectNode" />
+              <item name="geba_website" type="462c0819:PsiDirectoryNode" />
+              <item name="geba_website" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="vote" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -515,44 +512,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/geba_website/apps/core/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="85" selection-start-line="9" selection-start-column="85" selection-end-line="9" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geba_website/apps/blog/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geba_website/apps/core/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="e#0#35#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geba_website/apps/blog/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="43" column="62" selection-start-line="43" selection-start-column="62" selection-end-line="43" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geba_website/apps/vote/managers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="26" column="35" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/geba_website/apps/vote/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2057">
@@ -724,22 +683,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/geba_website/templates/blog/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="33" column="30" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/geba_website/templates/project/detail.html">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geba_website/templates/project/projectpost_vote.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="33" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="33" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/geba_website/templates/project/project_form_wizard.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -800,59 +745,94 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/geba_website/assets/apps/project/css/project.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/geba_website/assets/apps/blog/css/custom.css">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geba_website/templates/project/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="74" selection-start-line="16" selection-start-column="66" selection-end-line="16" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geba_website/assets/apps/core/css/sticky-footer-navbar.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-393" />
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/geba_website/assets/apps/core/css/bootstrap.min.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/geba_website/assets/apps/project/css/project.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geba_website/assets/apps/vote/css/vote.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/geba_website/templates/core/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
+        <state relative-caret-position="374">
           <caret line="22" column="76" selection-start-line="22" selection-start-column="76" selection-end-line="22" selection-end-column="76" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/geba_website/assets/apps/core/css/bootstrap.css">
+    <entry file="file://$PROJECT_DIR$/geba_website/templates/vote/login_vote_modal.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geba_website/templates/vote/unauthenticated_upvote.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geba_website/templates/vote/unauthenticated_downvote.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geba_website/templates/project/projectpost_vote.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="165" column="1" lean-forward="true" selection-start-line="165" selection-start-column="1" selection-end-line="165" selection-end-column="1" />
+        <state relative-caret-position="918">
+          <caret line="54" column="31" selection-start-line="54" selection-start-column="31" selection-end-line="54" selection-end-column="31" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/geba_website/assets/apps/core/css/style.css">
+    <entry file="file://$PROJECT_DIR$/geba_website/templates/blog/blog_vote.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="831">
-          <caret line="783" column="27" selection-start-line="783" selection-start-column="27" selection-end-line="783" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geba_website/templates/blog/detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="492">
-          <caret line="70" column="96" selection-start-line="70" selection-start-column="96" selection-end-line="70" selection-end-column="96" />
+        <state relative-caret-position="578">
+          <caret line="55" column="31" selection-start-line="55" selection-start-column="31" selection-end-line="55" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/geba_website/templates/project/post_detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="84" column="110" selection-start-line="84" selection-start-column="110" selection-end-line="84" selection-end-column="110" />
+        <state relative-caret-position="-1351">
+          <caret line="101" lean-forward="true" selection-start-line="101" selection-end-line="101" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geba_website/assets/apps/core/css/bootstrap.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-724">
+          <caret line="4096" column="9" selection-start-line="4096" selection-start-column="1" selection-end-line="4096" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geba_website/assets/apps/core/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="651">
+          <caret line="814" lean-forward="true" selection-start-line="814" selection-end-line="814" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geba_website/templates/project/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="188" column="79" lean-forward="true" selection-start-line="188" selection-start-column="79" selection-end-line="188" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geba_website/templates/blog/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="182" column="63" selection-start-line="182" selection-start-column="63" selection-end-line="182" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geba_website/templates/blog/detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="91" column="58" selection-start-line="91" selection-start-column="58" selection-end-line="91" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geba_website/assets/apps/core/css/sticky-footer-navbar.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-51">
+          <caret column="23" lean-forward="true" selection-start-column="23" selection-end-column="23" />
         </state>
       </provider>
     </entry>

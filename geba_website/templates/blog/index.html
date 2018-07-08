@@ -25,11 +25,15 @@
     <div class="container">
 
         <div class="row">
-            <div class="col">
+            <div class="col-sm-8 offset-sm-1">
                 {% if messages %}
                     {% include "blog/messages.html" %}
                 {% endif %}
+            </div>
+        </div>
 
+        <div class="row">
+            <div class="col-10 offset-1">
                 {% if user.is_staff or user.is_superuser %}
                     <a class="btn btn-primary" href="{% url 'blog:create' %}" role="button">New Blog</a>
                 {% endif %}
@@ -41,8 +45,8 @@
         {% if object_list|length == 0 %}
             <h5>There are currently no active blog posts, thanks for your interest!</h5>
         {% else %}
-            <div class="row justify-content-center">
-                <div class="col-md-11">
+            <div class="row justify-content-center mt-3">
+                <div class="col-md-12">
                     {% load markdown_deux_tags %}
 
                     {% for post in object_list %} <!-- object_list is returned from the ListView of objects.all()-->
@@ -50,7 +54,7 @@
                             <div class="col-1">
                                 {% with post.unvoted_net_likes as "unvoted_likes" %}
                                     {% if post.is_voted_up %}
-                                        <div class="link" current_class="likes">
+                                        <div class="link center" current_class="likes">
                                             <div class="midcol likes">
                                                 {% if user.is_authenticated %}
                                                     <div class="arrow up upvote-btn login-required access-required upmod"
@@ -77,7 +81,7 @@
                                         </div>
 
                                     {% elif  post.is_voted_down %}
-                                        <div class="link" current_class="dislikes">
+                                        <div class="link center" current_class="dislikes">
                                             <div class="midcol dislikes">
                                                 {% if user.is_authenticated %}
                                                     <div class="arrow up upvote-btn login-required access-required"
@@ -104,7 +108,7 @@
                                             </div>
                                         </div>
                                     {% else %}
-                                        <div class="link" current_class="unvoted">
+                                        <div class="link center" current_class="unvoted">
                                             <div class="midcol unvoted">
                                                 {% if user.is_authenticated %}
                                                     <div class="arrow up upvote-btn login-required access-required"
@@ -174,8 +178,9 @@
                                                 {% if request.user == post.author or request.user.is_superuser %}
                                                     <div class="col-1">
                                                         <div class="btn-group">
-                                                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
-                                                               aria-haspopup="true" aria-expanded="false" id="DropDown{{ post.id }}">
+                                                            <a href="#" class="nav-link dropdown-toggle pt-0 dropdown-toggle-top"
+                                                               data-toggle="dropdown" role="button" aria-haspopup="true"
+                                                               aria-expanded="false" id="DropDown{{ post.id }}">
                                                               <span class="caret"></span>
                                                             </a>
 
