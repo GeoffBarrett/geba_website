@@ -59,7 +59,7 @@
         <div class="container">
 
             <div class="row">
-                <div class="col-sm-8 offset-sm-1">
+                <div class="col-8 offset-1">
                     {% if messages %}
                         {% include "project/messages.html" %}
                     {% endif %}
@@ -68,7 +68,7 @@
             </div>
 
             <div class="row">
-                <div class="col-sm-8 offset-sm-1">
+                <div class="col-8 offset-1">
 
                     {% if user.is_staff or user.is_superuser %}
                         <a class="btn btn-primary"
@@ -96,12 +96,12 @@
 
             <div class="row mt-3">
                 <!-- This div will contain the voting -->
-                <div class="col-sm-1">
+                <div class="col-1">
                     {% include "project/projectpost_vote.html" %}
                 </div>
 
                 <!-- this div will contain the contents of the post, including comments -->
-                <div class="col-sm-8 content-markdown">
+                <div class="col-8 content-markdown">
                     <div class="post-body">{{ projectpost.get_html|safe }}</div>
 
                     <div class="row">
@@ -124,10 +124,10 @@
                     {% for comment in comments %}
                         <hr>
                         <div class="row">
-                            <div class="col-sm-1">
+                            <div class="col-1">
                                 {% include "comments/comment_vote.html" %}
                             </div>
-                            <div class="col-sm-8">
+                            <div class="col-8">
                                 <blockquote>
                                     <p>{{ comment.content }}</p>
 
@@ -141,10 +141,10 @@
                                         {% for child_comment in child_comments %}
                                             <hr>
                                             <div class="row">
-                                                <div class="col-sm-1">
+                                                <div class="col-1">
                                                     {% include "comments/child_comment_vote.html" %}
                                                 </div>
-                                                <div class="col-sm-8">
+                                                <div class="col-8">
                                                     {% include 'comments/child_comment.html' %}
                                                 </div>
                                             </div>
@@ -174,7 +174,7 @@
 
                 </div>
 
-                <div class="col-sm-3 ml-sm-auto">
+                <div class="col-3 ml-sm-auto">
                     <div class="list-group">
                         {% for post in projectpost.get_project_posts %}
                             {% if projectpost.slug == post.slug %}

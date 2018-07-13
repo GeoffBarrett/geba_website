@@ -13,7 +13,7 @@
     <header class="masthead" style="background-image: url('http://placehold.it/700x300')">
       <div class="container">
         <div class="row">
-          <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="col-8 col-10 mx-auto">
             <div class="site-heading">
               <h1>Blogs</h1>
             </div>
@@ -25,7 +25,7 @@
     <div class="container">
 
         <div class="row">
-            <div class="col-sm-8 offset-sm-1">
+            <div class="col-8 offset-1">
                 {% if messages %}
                     {% include "blog/messages.html" %}
                 {% endif %}
@@ -46,7 +46,7 @@
             <h5>There are currently no active blog posts, thanks for your interest!</h5>
         {% else %}
             <div class="row justify-content-center mt-3">
-                <div class="col-md-12">
+                <div class="col-12">
                     {% load markdown_deux_tags %}
 
                     {% for post in object_list %} <!-- object_list is returned from the ListView of objects.all()-->

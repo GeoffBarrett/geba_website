@@ -28,7 +28,7 @@
     <div class="container">
 
         <div class="row">
-            <div class="col-sm-8 offset-sm-1">
+            <div class="col-8 offset-1">
                 {% if messages %}
                     {% include "project/messages.html" %}
                 {% endif %}
@@ -52,12 +52,12 @@
         {% else %}
 
             <div class="row justify-content-center mt-3">
-                <div class="col-md-12">
+                <div class="col-12">
                     {% load markdown_deux_tags %}
 
                     {% for project in object_list %} <!-- object_list is returned from the ListView of objects.all()-->
                         <div class="row">
-                            <div class="col-md-1">
+                            <div class="col-1">
                                 {% with project.unvoted_net_likes as "unvoted_likes" %}
                                     {% if project.is_voted_up %}
                                         <div class="link center" current_class="likes">
@@ -145,7 +145,7 @@
                                 {% endwith %}
                             </div>
 
-                            <div class="col-md-10">
+                            <div class="col-10">
 
                                 <div class="card mb-4">
                                      {% if project.image %}

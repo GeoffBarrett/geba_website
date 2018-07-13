@@ -57,7 +57,7 @@
         <div class="container">
 
             <div class="row">
-                <div class="col-sm-8 offset-sm-1">
+                <div class="col-8 offset-1">
                     {% if messages %}
                         {% include "blog/messages.html" %}
                     {% endif %}
@@ -66,7 +66,7 @@
             </div>
 
             <div class="row justify-content-md-center">
-                <div class="col-sm-8 offset-sm-1">
+                <div class="col-8 offset-1">
                     {% if user.is_staff or user.is_superuser %}
                         <a class="btn btn-primary" href="{% url 'blog:create' %}" role="button">New Blog</a>
                         <a class="btn btn-primary" href="{% url 'blog:update' post.slug %}" role="button">Edit Blog</a>
@@ -92,12 +92,12 @@
             <div class="row justify-content-md-center mt-3">
 
                 <!-- This div will contain the voting -->
-                <div class="col-sm-1">
+                <div class="col-1">
                     {% include "blog/blog_vote.html" %}
                 </div>
 
                 <!-- this div will contain the contents of the post, including comments -->
-                <div class="col-sm-8 content-markdown">
+                <div class="col-8 content-markdown">
                     <div class="post-body">{{ post.get_html }}</div>
 
                     <div class="row">
@@ -118,10 +118,10 @@
                     {% for comment in comments %}
                         <hr>
                         <div class="row">
-                            <div class="col-sm-1">
+                            <div class="col-1">
                                 {% include "comments/comment_vote.html" %}
                             </div>
-                            <div class="col-sm-8">
+                            <div class="col-8">
                                 <blockquote>
                                     <p>{{ comment.content }}</p>
 
@@ -134,10 +134,10 @@
                                         {% for child_comment in child_comments %}
                                             <hr>
                                             <div class="row">
-                                                <div class="col-sm-1">
+                                                <div class="col-1">
                                                     {% include "comments/child_comment_vote.html" %}
                                                 </div>
-                                                <div class="col-sm-8">
+                                                <div class="col-8">
                                                     {% include 'comments/child_comment.html' %}
                                                 </div>
                                             </div>

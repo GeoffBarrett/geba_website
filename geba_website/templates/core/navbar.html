@@ -15,7 +15,7 @@
     <form id="header-search" class="navbar-form navbar-left" action="/search"
           accept-charset="UTF-8" method="get">
         <input name="utf8" type="hidden" value="✓">
-        <div class="btn" id="header-search-button">
+        <div class="btn_header" id="header-search-button">
             <i class="fa fa-search"></i>
         </div>
         <input id="header-search-query" name="query" placeholder="What are you looking for?" type="text" value="">
@@ -39,7 +39,9 @@
     </form>
 
     {% if user.is_authenticated %}
+
         <ul class="nav navbar-nav navbar-right hidden-xs">
+
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#SignUpNavBar">
                 <span class="fa fa"></span>
             </button>
@@ -61,13 +63,13 @@
     {% else %}
         <ul class="nav navbar-nav navbar-right hidden-xs align-items-start">
             <li>
-                <a class="btn btn-primary" href="{% url 'core:register' %}">
+                <a class="btn_header btn-primary" href="{% url 'core:register' %}">
                     <i class="visible-sm-inline fa fa-user"></i>
                     <span class="hidden-sm">Join GEBA</span>
                 </a>
             </li>
             <li class="hidden-sm">
-                <a class="btn btn-signup" href="{% url 'core:login' %}">Sign In</a>
+                <a class="btn_header btn-signup" href="{% url 'core:login' %}">Sign In</a>
             </li>
         </ul>
     {% endif %}

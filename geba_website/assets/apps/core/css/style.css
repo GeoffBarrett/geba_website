@@ -154,6 +154,17 @@ a {
     border-bottom: 1px solid white;
     background-color: rgba(255, 255, 255, 0.9);
   }
+  #mainNav.is-fixed.is-visible {
+    /* added this so that the geba icon does not show with both is-fixed and is-visible */
+    position: fixed;
+    top: -50px;
+    -webkit-transition: -webkit-transform 0.2s;
+    -moz-transition: -moz-transform 0.2s;
+    transition: transform 0.2s;
+    border-bottom: 1px solid white;
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+
   #mainNav.is-fixed .navbar-brand {
     color: #212529;
   }
@@ -177,6 +188,10 @@ a {
     transform: translate3d(0, 100%, 0);
   }
 
+}
+
+.visible-xs-block,.visible-xs-inline,.visible-xs-inline-block,.visible-sm-block,.visible-sm-inline,.visible-sm-inline-block,.visible-md-block,.visible-md-inline,.visible-md-inline-block,.visible-lg-block,.visible-lg-inline,.visible-lg-inline-block{
+    display:none!important
 }
 
 /*  The Masthead is the class of the header tag that contains the image */
@@ -530,15 +545,16 @@ footer .copyright {
   background-color: #fff;
 }
 
-#mainNav .navbar-nav.navbar-right .btn {
-  margin-top: 8px;
+#mainNav .navbar-nav.navbar-right .btn_header {
+  /*margin-top: 8px;*/
+  margin-top: 0px;
 }
 
-#mainNav .navbar-nav.navbar-right .btn i {
+#mainNav .navbar-nav.navbar-right .btn_header i {
   margin-right: 10px;
 }
 
-#mainNav .navbar-nav.navbar-right .btn .avatar {
+#mainNav .navbar-nav.navbar-right .btn_header .avatar {
   border-radius: 50%;
   height: 30px;
   margin-right: 10px;
@@ -554,7 +570,7 @@ footer .copyright {
 }
 
 @media(min-width:768px) and (max-width:991px) {
-  header#top-nav .navbar-right .btn.btn-primary {
+  header#top-nav .navbar-right .btn_header.btn-primary {
     background: 0 0;
     border: 0;
     font-size: 20px;
@@ -586,7 +602,8 @@ footer .copyright {
 
 @media(min-width:768px) {
   .navbar-left {
-    margin-right: auto!important;
+    /*margin-right: auto!important;*/
+    float: left!important;
   }
   .navbar-right {
     margin-left: auto!important;
@@ -619,20 +636,18 @@ footer .copyright {
   }
 }
 
-#mainNav .navbar-nav .btn {
+#mainNav .navbar-nav .btn_header {
   height:32px;
   line-height:30px;
   padding:0 15px;
   margin-top:10px;
 }
 
-#mainNav .navbar-nav.navbar-right .btn {
-  margin-top:8px
-}
 
-#mainNav .navbar-nav.navbar-right .btn i {
+#mainNav .navbar-nav.navbar-right .btn_header i {
   margin-right:10px
 }
+
 
 #mainNav .navbar-nav.navbar-right .btn .avatar {
   border-radius:50%;
@@ -669,7 +684,8 @@ footer .copyright {
 
 
 #mainNav #header-search {
-  margin:7px 0 0;
+  /*margin:7px 0 0;*/
+  margin: 0px 0 0;
   padding:0;
   z-index:1;
   position:relative
@@ -677,6 +693,7 @@ footer .copyright {
 
 #mainNav #header-search #header-search-button {
   margin-left: auto;
+  /*float:left;*/
   cursor:pointer;
   transition:all .5s
 }
@@ -819,4 +836,29 @@ hr {
 
 .dropdown-toggle-top::after {
     vertical-align: top !important;
+}
+
+a.footer2{
+    color: linear-gradient(#484e55, #3A3F44 60%, #313539) !important;
+}
+
+
+.btn_header {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    border-radius: 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
