@@ -8,14 +8,14 @@
 
 {% endblock css %}
 
-{% block title %}GEBA - New Project Post{% endblock title %}
+{% block title %}GEBA - Update Post{% endblock title %}
 
 {% block content %}
 
     <header class="masthead">
       <div class="container">
         <div class="row">
-          <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="col-8 mx-auto">
             <div class="post-heading">
               <h1>Update Post</h1>
             </div>
@@ -31,17 +31,17 @@
     {% load crispy_forms_tags %}
     <div class="container">
         <div class="row justify-content-sm-center">
-            <div class = "col-md-7">
+            <div class = "col-7">
                 <div class="panel panel-default">
                     <div class="panel-body">
 
                         <form class="form-horizontal" action="" method="post">
                             {% csrf_token %}
 
-                            {{ form.as_p }}
+                            {{ form|crispy }}
 
                             <div class="form-group">
-                                <div class="col-sm-offset-2 col_sm-10">
+                                <div class="col-offset-2 col_sm-10">
                                     <button type="submit" class="btn btn-success">Submit</button>
                                 </div>
                             </div>

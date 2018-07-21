@@ -161,12 +161,14 @@ class ProjectUpdateView(ProjectActionMixin, UpdateView):
     model = Project
     success_msg = 'Project Updated!'
     form_class = ProjectPostForm
-    template_name = 'project/project_form.html'
+    # template_name = 'project/project_form.html'
+    template_name = 'project/project_post_form.html'
     success_url = reverse_lazy('project:index')
 
     def get(self, request, slug):
         '''when the user executes a get request, display blank registration form'''
-        form = self.form_class(request.GET or None, request.FILES or None)
+        self.object = self.get_object()
+        form = self.form_class(request.GET or None, request.FILES or None, instance=self.object)
         return render(request, self.template_name, {'form': form})
 
     # def get_object(self, queryset=None):
@@ -413,25 +415,11 @@ class ProjectPostUpdateView(ProjectActionMixin, UpdateView):
     template_name = 'project/project_post_form_update.html'
     success_url = reverse_lazy('project:index')
 
-    def get_initial(self):
-        initial = super(ProjectPostUpdateView, self).get_initial()
-        print('initial data', initial)
-
-        # retrieve current object
-        projectpost_object = self.get_object()
-
-        initial['field1'] = projectpost_object.field1
-        initial['field2'] = projectpost_object.field2
-        return initial
-
     def get(self, request, slug):
-        '''when the user executes a get request, display blank registration form'''
-        form = self.form_class(request.GET or None, request.FILES or None)
+        """when the user executes a get request, display blank registration form"""
+        self.object = self.get_object()
+        form = self.form_class(request.GET or None, request.FILES or None, instance=self.object)
         return render(request, self.template_name, {'form': form})
-
-    # def get_object(self, queryset=None):
-    #     obj = Post.objects.get(slug=self.kwargs['slug'])
-    #     return obj
 
     # make it so you have to be staff or super-user to update blog
     def dispatch(self, request, *args, **kwargs):

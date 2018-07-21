@@ -136,12 +136,13 @@ class BlogUpdateView(BlogActionMixin, UpdateView):
     model = Post
     success_msg = 'Blog Updated!'
     form_class = BlogPostForm
-    template_name = 'blog/post_form.html'
+    template_name = 'blog/post_form_update.html'
     success_url = reverse_lazy('blog:index')
 
     def get(self, request, slug):
-        '''when the user executes a get request, display blank registration form'''
-        form = self.form_class(request.GET or None, request.FILES or None)
+        """when the user executes a get request, display blank registration form"""
+        self.object = self.get_object()
+        form = self.form_class(request.GET or None, request.FILES or None, instance=self.object)
         return render(request, self.template_name, {'form': form})
 
     # def get_object(self, queryset=None):
