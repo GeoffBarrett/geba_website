@@ -198,10 +198,6 @@
                                                                href="{% url 'project:create_post' project.slug project.get_next_post_order %}"
                                                                role="button">New Post</a>
                                                             <a class="dropdown-item" href="{% url 'project:update' project.slug %}">Edit Project</a>
-                                                            <a class="dropdown-item" data-toggle="modal" data-target="#DeleteProjectModalIndex"
-                                                               data-content="{{ project.title }}"
-                                                               data-url="{{ project.get_delete_url }}" data-csrf="{% csrf_token %}">
-                                                                Delete Project</a>
                                                             {% if project.draft %}
                                                                 <a class="dropdown-item publish-btn"
                                                                    data-href="{% url 'project:publish_project_ajax' project.slug %}"
@@ -221,6 +217,10 @@
                                                                    data-slug="{{ project.slug }}"
                                                                    id="publish_{{ project.slug }}">Publish</a>
                                                             {% endif %}
+                                                            <a class="dropdown-item" data-toggle="modal" data-target="#DeleteProjectModalIndex"
+                                                               data-content="{{ project.title }}"
+                                                               data-url="{{ project.get_delete_url }}" data-csrf="{% csrf_token %}">
+                                                                Delete Project</a>
                                                           </div>
                                                         </div>
                                                     </div>

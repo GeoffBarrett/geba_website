@@ -70,6 +70,7 @@ class BlogIndexView(ListView):
                 Q(author__username__icontains=query)
                 #Q(body__text__icontains=query)
             ).distinct()
+
         '''
         paginator = Paginator(query_set_list, 5)  # shows 25 posts per page
         page_request_var = 'page'
@@ -104,7 +105,7 @@ class BlogCreateView(BlogActionMixin, CreateView):
         return super(BlogCreateView, self).form_valid(form)
 
     def get(self, request):
-        '''when the user executes a get request, display blank registration form'''
+        """when the user executes a get request, display blank registration form"""
         form = self.form_class(request.GET or None, request.FILES or None)
         return render(request, self.template_name, {'form': form})
 
@@ -137,17 +138,14 @@ class BlogUpdateView(BlogActionMixin, UpdateView):
     success_msg = 'Blog Updated!'
     form_class = BlogPostForm
     template_name = 'blog/post_form_update.html'
-    success_url = reverse_lazy('blog:index')
+    # success_url = reverse_lazy('blog:index')
 
     def get(self, request, slug):
         """when the user executes a get request, display blank registration form"""
         self.object = self.get_object()
+        self.success_url = reverse_lazy('blog:detail', args=self.object.slug)
         form = self.form_class(request.GET or None, request.FILES or None, instance=self.object)
         return render(request, self.template_name, {'form': form})
-
-    # def get_object(self, queryset=None):
-    #     obj = Post.objects.get(slug=self.kwargs['slug'])
-    #     return obj
 
     # make it so you have to be staff or super-user to update blog
     def dispatch(self, request, *args, **kwargs):
@@ -166,7 +164,7 @@ class BlogDeleteView(DeleteView):
 
     def get(self, request, *args, **kwargs):
         self.object = self.get_object()
-        return HttpResponseRedirect(reverse('blog:detail', args=(self.object.slug)))
+        return HttpResponseRedirect(reverse('blog:detail', args=self.object.slug))
 
     # make it so you have to be a super-user or staff to delete
     def dispatch(self, request, *args, **kwargs):

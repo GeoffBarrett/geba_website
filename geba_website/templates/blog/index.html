@@ -186,10 +186,6 @@
 
                                                           <div class="dropdown-menu" aria-labelledby="DropDown{{ post.id }}">
                                                             <a class="dropdown-item" href="{% url 'blog:update' post.slug %}">Edit Blog</a>
-                                                            <a class="dropdown-item" data-toggle="modal" data-target="#DeletePostModalIndex"
-                                                               data-content="{{ post }}"
-                                                               data-url="{{ post.get_delete_url }}" data-csrf="{% csrf_token %}">
-                                                                Delete Blog</a>
                                                             {% if post.draft %}
                                                                 <a class="dropdown-item publish-btn"
                                                                    data-href="{% url 'blog:publish_ajax' post.slug %}"
@@ -209,6 +205,10 @@
                                                                    data-slug="{{ post.slug }}"
                                                                    id="publish_{{ post.slug }}">Publish</a>
                                                             {% endif %}
+                                                            <a class="dropdown-item" data-toggle="modal" data-target="#DeletePostModalIndex"
+                                                               data-content="{{ post }}"
+                                                               data-url="{{ post.get_delete_url }}" data-csrf="{% csrf_token %}">
+                                                                Delete Blog</a>
                                                           </div>
                                                         </div>
                                                     </div>

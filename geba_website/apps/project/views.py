@@ -1,31 +1,29 @@
 from django.utils import timezone
 # from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
-from django.views.generic import CreateView, UpdateView, DetailView, ListView, DeleteView, FormView, View, \
-    TemplateView
+from django.views.generic import CreateView, UpdateView, DetailView, ListView, DeleteView, FormView, View
 from django.contrib import messages
 # from django.utils.decorators import method_decorator
 # from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from django.core import serializers
 from .utils import check_project_rights
-import json, os
+import json
 from django.shortcuts import render, render_to_response, get_object_or_404
 from .models import Project, ProjectPost
 from ..core.models import ModelFormFailureHistory
-from .forms import ProjectPostForm, ProjectForm
 from ..comments.forms import CommentForm
 from ..comments.models import Comment
 from django.urls import reverse, reverse_lazy
 from django.views.generic.detail import SingleObjectMixin
-from django.http import HttpResponseForbidden, HttpResponseRedirect, JsonResponse
+from django.http import HttpResponseForbidden, HttpResponseRedirect
 from django.contrib.contenttypes.models import ContentType
 from rest_framework.views import APIView
 # from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from rest_framework import authentication, permissions, status
-from .serializers import ProjectSerializer
-from formtools.wizard.views import SessionWizardView, WizardView
+from rest_framework import authentication, permissions
+# from .serializers import ProjectSerializer
+from formtools.wizard.views import SessionWizardView
 from .forms import ProjectPostForm, ProjectForm
 from django.core.files.storage import FileSystemStorage
 from django.conf import settings
@@ -161,13 +159,13 @@ class ProjectUpdateView(ProjectActionMixin, UpdateView):
     model = Project
     success_msg = 'Project Updated!'
     form_class = ProjectPostForm
-    # template_name = 'project/project_form.html'
     template_name = 'project/project_post_form.html'
     success_url = reverse_lazy('project:index')
 
     def get(self, request, slug):
-        '''when the user executes a get request, display blank registration form'''
+        """when the user executes a get request, display blank registration form"""
         self.object = self.get_object()
+        # self.success_url = reverse_lazy('project:detail', args=self.object.slug)
         form = self.form_class(request.GET or None, request.FILES or None, instance=self.object)
         return render(request, self.template_name, {'form': form})
 
@@ -413,11 +411,12 @@ class ProjectPostUpdateView(ProjectActionMixin, UpdateView):
     success_msg = 'Post Updated!'
     form_class = ProjectPostForm
     template_name = 'project/project_post_form_update.html'
-    success_url = reverse_lazy('project:index')
+    # success_url = reverse_lazy('project:index')
 
     def get(self, request, slug):
         """when the user executes a get request, display blank registration form"""
         self.object = self.get_object()
+        self.success_url = reverse_lazy('project:detail', args=self.object.slug)
         form = self.form_class(request.GET or None, request.FILES or None, instance=self.object)
         return render(request, self.template_name, {'form': form})
 
@@ -438,7 +437,7 @@ class ProjectPostDeleteView(DeleteView):
 
     def get(self, request, *args, **kwargs):
         self.object = self.get_object()
-        return HttpResponseRedirect(reverse('project:detail', args=(self.object.slug)))
+        return HttpResponseRedirect(reverse('project:detail', args=self.object.slug))
 
     # make it so you have to be a super-user or staff to delete
     def dispatch(self, request, *args, **kwargs):
@@ -465,7 +464,7 @@ class ProjectPostCreateView(ProjectActionMixin, CreateView):
         return super(ProjectPostCreateView, self).form_valid(form)
 
     def get(self, request, *args, **kwargs):
-        '''when the user executes a get request, display blank registration form'''
+        """when the user executes a get request, display blank registration form"""
         form = self.form_class(request.GET or None, request.FILES or None)
         # context = self.get_context_data()
         return render(request, self.template_name, {'form': form, 'project_slug': kwargs['slug'],
@@ -595,12 +594,6 @@ class ProjectLikeToggleAjax(APIView):
 
     authentication_classes = (authentication.SessionAuthentication, )
     permission_classes = (permissions.IsAuthenticated, )
-
-    '''
-    @method_decorator(login_required(login_url=reverse_lazy('core:signin')))
-    def dispatch(self, *args, **kwargs):
-        return super(ProjectLikeToggleAjax, self).dispatch(*args, **kwargs)
-    '''
 
     def get(self, request, slug=None, format=None):
         # slug = self.kwargs.get("slug")

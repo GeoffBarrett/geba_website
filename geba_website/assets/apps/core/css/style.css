@@ -1,5 +1,5 @@
 .visible-xs-block,.visible-xs-inline,.visible-xs-inline-block,.visible-sm-block,.visible-sm-inline,.visible-sm-inline-block,.visible-md-block,.visible-md-inline,.visible-md-inline-block,.visible-lg-block,.visible-lg-inline,.visible-lg-inline-block{
-    display:none!important
+    display:none!important;
 }
 
 p {
@@ -94,7 +94,6 @@ a {
   color: white;
 }
 
-
 /* ############ search button ################ */
 
 .navbar-form {
@@ -114,14 +113,20 @@ a {
   margin: 0px 0 0;
   padding:0;
   z-index:1;
-  position:relative
+  position:relative;
 }
 
 #mainNav #header-search #header-search-button {
   /*margin-left: auto;*/
   /*float:left;*/
   cursor:pointer;
-  transition:all .5s
+  transition:all .5s;
+}
+
+@media(min-width:768px){
+  .navbar-header{
+    float:left;
+  }
 }
 
 #mainNav #header-search #header-search-query {
@@ -138,17 +143,17 @@ a {
 
 #mainNav #header-search #header-search-query.open {
   padding:7px 12px;
-  width:250px
+  width:250px;
 }
 
 #mainNav #header-search #header-search-type {
   opacity:0;
-  transition:all .5s
+  transition:all .5s;
 }
 
 #mainNav #header-search #header-search-type a {
   color:#000;
-  cursor:pointer
+  cursor:pointer;
 }
 
 #mainNav #header-search #header-search-type.shown {
@@ -156,7 +161,7 @@ a {
 }
 
 #mainNav #header-search #header-search-type.shown .dropdown-toggle {
-  display:inline-block
+  display:inline-block;
 }
 
 #mainNav #header-search #header-search-type .dropdown-toggle {
@@ -175,6 +180,22 @@ a {
   .hidden-lg {
     display: none!important;
   }
+}
+
+/*This is for the unscrolled navbar*/
+#mainNav .navbar-nav > li.nav-item > a:hover {
+    color: #3c52fc;
+    background-color: transparent!important;
+    background-image: none;
+    border-left: none;
+ }
+
+/* this is for the scrolled navbar */
+#mainNav.is-fixed .navbar-nav > li.nav-item > a:hover, #mainNav.is-fixed.is-visible .navbar-nav > li.nav-item > a:hover{
+    color: #3c52fc;
+    background-color: transparent!important;
+    background-image: none;
+    border-left: none;
 }
 
 /* 992px width css */
@@ -200,23 +221,14 @@ a {
     color: white;
   }
 
+  /*
   #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
     color: #3c52fc;
-  }
+  }*/
 
   #mainNav .navbar-nav > li.nav-item > a {
     padding: 10px 20px;
     color: white;
-  }
-
-  #mainNav .navbar-nav > .navbar-collapse > li.nav-item > a {
-    padding: 10px 20px;
-    color: white;
-  }
-
-  #mainNav .navbar-nav > .navbar-collapse > li.nav-item > a:focus, #mainNav .navbar-nav > li.nav-item > a:hover {
-    color: #3c52fc;
-    background-color: #fff;
   }
 
   #mainNav.is-fixed {
@@ -247,7 +259,9 @@ a {
 
   #mainNav.is-fixed .navbar-nav > li.nav-item > a {
     color: #212529;
+    background-color:transparent;
   }
+
 
   #mainNav.is-visible {
     /* if the user changes the scrolling direction, we show the header */
@@ -310,12 +324,12 @@ a {
 
   #mainNav #navBrand .bottom-wrapper {
     height:12px;
-    width:50px
+    width:50px;
   }
 
   #mainNav #navBrand .bottom-wrapper .bottom {
     height:48px;
-    width:48px
+    width:48px;
   }
 
   #mainNav .navbar-toggle,#mainNav #xs-sign-in{
@@ -326,12 +340,13 @@ a {
     font-weight:400;
     line-height:45px;
     padding:0;
-    border:0
+    border:0;
   }
 
   #mainNav #xs-sign-in{
     float:right;
-    margin:0 10px
+    /*margin-right: auto!important;*/
+    margin:0 10px;
   }
 
   #mainNav .navbar-user{
@@ -340,12 +355,12 @@ a {
     display:inline;
     position:absolute;
     top:0;
-    right:0
+    right:0;
   }
 
   #mainNav .navbar-user .btn{
     margin-top:0;
-    padding:0
+    padding:0;
   }
 
   .visible-xs-inline {
@@ -360,18 +375,14 @@ a {
   }
 }
 
+
+
 @media(min-width: 768px) {
 
   #mainNav{
     border-bottom: 1px solid transparent;
-    background:transparent
+    background:transparent;
   }
-
-  /*
-  .navbar-left {
-    margin-right:auto!important;
-    float:left!important;
-  }*/
 
   .navbar-left{
     margin-right: auto!important;
@@ -471,7 +482,7 @@ a {
   }
   /* when the navbar is scrolled it will be less transparent */
   #mainNav.scrolled{
-    background:rgba(0,0,0,.6)
+    background:rgba(0,0,0,.6);
   }
   #mainNav.scrolled #navBrand{
     opacity:1;
@@ -527,7 +538,7 @@ a {
   width:65px;
   z-index:-1;
   bottom:0;
-  overflow:hidden
+  overflow:hidden;
 }
 
 /* adds coloring to the transparent section below the brand image */
@@ -547,8 +558,8 @@ a {
 */
 
 #mainNav .navbar-nav li>a {
-  padding-left:20px;
-  padding-right:20px;
+  padding-left:15px;
+  padding-right:15px;
 }
 
 #mainNav .navbar-nav.brand-left {
@@ -561,11 +572,6 @@ a {
   position: absolute;
   left: 50%;
   margin-left: 40px;
-}
-
-#mainNav .navbar-nav.navbar-right a:hover {
-  color: #3c52fc;
-  background-color: #fff;
 }
 
 #mainNav .navbar-nav.navbar-right .btn_header {
@@ -600,13 +606,13 @@ a {
 }
 
 #mainNav .navbar-nav.navbar-right .btn_header i {
-  margin-right:10px
+  margin-right:10px;
 }
 
 #mainNav .navbar-nav.navbar-right .btn .avatar {
   border-radius:50%;
   height:30px;
-  margin-right:10px
+  margin-right:10px;
 }
 
 
