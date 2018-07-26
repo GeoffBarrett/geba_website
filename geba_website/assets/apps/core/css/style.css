@@ -94,6 +94,15 @@ a {
   color: white;
 }
 
+#mainNav:hover {
+    border-bottom: 1px solid transparent;
+    background-color: rgba(0, 0, 0, 0.35);
+}
+
+.mobile-nav{
+  display:none;
+}
+
 /* ############ search button ################ */
 
 .navbar-form {
@@ -121,12 +130,6 @@ a {
   /*float:left;*/
   cursor:pointer;
   transition:all .5s;
-}
-
-@media(min-width:768px){
-  .navbar-header{
-    float:left;
-  }
 }
 
 #mainNav #header-search #header-search-query {
@@ -221,11 +224,6 @@ a {
     color: white;
   }
 
-  /*
-  #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
-    color: #3c52fc;
-  }*/
-
   #mainNav .navbar-nav > li.nav-item > a {
     padding: 10px 20px;
     color: white;
@@ -249,8 +247,12 @@ a {
     -webkit-transition: -webkit-transform 0.2s;
     -moz-transition: -moz-transform 0.2s;
     transition: transform 0.2s;
-    border-bottom: 1px solid white;
-    background-color: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid transparent;
+    background-color: rgba(0, 0, 0, 0.55);
+  }
+
+  #mainNav.is-fixed.is-visible:hover {
+    background-color: rgba(0, 0, 0, 1);
   }
 
   #mainNav.is-fixed .navbar-brand {
@@ -258,10 +260,9 @@ a {
   }
 
   #mainNav.is-fixed .navbar-nav > li.nav-item > a {
-    color: #212529;
+    color: white;
     background-color:transparent;
   }
-
 
   #mainNav.is-visible {
     /* if the user changes the scrolling direction, we show the header */
@@ -272,6 +273,10 @@ a {
     transform: translate3d(0, 100%, 0);
   }
 
+  .navbar-toggle {
+    display: none;
+  }
+
 }
 
 /* 992px width css */
@@ -279,6 +284,49 @@ a {
 @media(min-width:992px) and (max-width:1199px) {
   .hidden-md {
     display: none!important;
+  }
+
+
+}
+
+@media(max-width:991px){
+  .visible-xs-inline {
+    display: inline!important;
+  }
+
+  #mainNav .navbar-toggle,#mainNav #xs-sign-in{
+    color:#fff;
+    margin:0;
+    text-transform:uppercase;
+    font-family:proxima nova semibold!important;
+    font-weight:400;
+    line-height:45px;
+    padding:0;
+    border:0;
+  }
+
+  #mainNav #xs-sign-in{
+    float:right;
+    /*margin-right: auto!important;*/
+    margin:0 10px;
+  }
+
+  #mainNav .navbar-user{
+    margin:0;
+    float:right;
+    display:inline;
+    position:absolute;
+    top:0;
+    right:0;
+  }
+
+  #mainNav .navbar-user .btn{
+    margin-top:0;
+    padding:0;
+  }
+
+  .visible-xs-inline {
+    display: inline!important;
   }
 }
 
@@ -332,41 +380,6 @@ a {
     width:48px;
   }
 
-  #mainNav .navbar-toggle,#mainNav #xs-sign-in{
-    color:#fff;
-    margin:0;
-    text-transform:uppercase;
-    font-family:proxima nova semibold!important;
-    font-weight:400;
-    line-height:45px;
-    padding:0;
-    border:0;
-  }
-
-  #mainNav #xs-sign-in{
-    float:right;
-    /*margin-right: auto!important;*/
-    margin:0 10px;
-  }
-
-  #mainNav .navbar-user{
-    margin:0;
-    float:right;
-    display:inline;
-    position:absolute;
-    top:0;
-    right:0;
-  }
-
-  #mainNav .navbar-user .btn{
-    margin-top:0;
-    padding:0;
-  }
-
-  .visible-xs-inline {
-    display: inline!important;
-  }
-
 }
 
 @media only screen and (min-width: 768px) {
@@ -375,13 +388,15 @@ a {
   }
 }
 
-
-
 @media(min-width: 768px) {
 
   #mainNav{
     border-bottom: 1px solid transparent;
     background:transparent;
+  }
+
+  .navbar-header{
+    float:left;
   }
 
   .navbar-left{
@@ -429,10 +444,6 @@ a {
     margin-right: -10px;
   }
 
-  .navbar-toggle {
-    display: none;
-  }
-
 }
 
 @media(min-width:768px) and (max-width:991px) {
@@ -457,7 +468,9 @@ a {
   .signed-in .navbar-toggle{
     margin-right:45px!important;
   }
-
+  #large-nav {
+    display: none;
+  }
 }
 
 @media(min-width:768px) and (max-width:991px) {
@@ -566,12 +579,14 @@ a {
   position: absolute;
   right: 50%;
   margin-right: 40px;
+  top: 5px;
 }
 
 #mainNav .navbar-nav.brand-right {
   position: absolute;
   left: 50%;
   margin-left: 40px;
+  top: 5px;
 }
 
 #mainNav .navbar-nav.navbar-right .btn_header {

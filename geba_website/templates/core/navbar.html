@@ -13,7 +13,6 @@
     </div>
 
 
-
     <form id="header-search" class="navbar-form navbar-left" action="/search"
           accept-charset="UTF-8" method="get">
         <input name="utf8" type="hidden" value="✓">
@@ -41,7 +40,7 @@
     </form>
 
     <div class="navbar-header">
-        <a class="visible-xs-inline" id="xs-sign-in" href="/auth/signin">
+        <a class="visible-xs-inline" id="xs-sign-in" href="{% url 'core:register' %}">
             <i class="fa fa-user"></i></a>
         <button class="navbar-toggle" id="mobile-nav-button" type="button">
             <div class="fa fa-bars"></div>
@@ -84,30 +83,43 @@
             </li>
         </ul>
     {% endif %}
+    <div id="large-nav">
+        <ul class="navbar-nav brand-left flex-row">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+            </li>
+        </ul>
 
-    <ul class="navbar-nav brand-left flex-row">
-        <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/">About</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-        </li>
+        <ul class="navbar-nav brand-right flex-row">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'blog:index' %}">Blog</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'project:index' %}">Projects</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/">Forum</a>
+            </li>
+        </ul>
+    </div>
 
-    </ul>
-
-    <ul class="navbar-nav brand-right flex-row">
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'blog:index' %}">Blog</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'project:index' %}">Projects</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/">Forum</a>
-        </li>
-    </ul>
+    <div class="mobile-nav open flex-row" id="mobile-nav">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/">About</a></li>
+            <li><a href="/">Contact</a></li>
+            <li><a href="{% url 'blog:index' %}">Blog</a></li>
+            <li><a href="{% url 'project:index' %}">Projects</a></li>
+            <li><a href="/">Forum</a></li>
+        </ul>
+    </div>
 
 </nav>
+
+
