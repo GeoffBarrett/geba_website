@@ -8,7 +8,7 @@
           <div class="modal-body">
               <p>Creating a GEBA account will change your life. You can vote, and do other wicked cool stuff...</p>
 
-              <form role="form" action="{% url 'core:register' %}" method="post">
+              <form role="form" action="{% url 'geba_auth:register' %}" method="post">
                     {% csrf_token %}
             </form>
           </div>

@@ -176,7 +176,7 @@ class VoteModel(models.Model):
     @property
     def calculate_hot_score(self):
         """This score is similar to how Reddit scores their posts, we will not have downvotes since these
-        posts aren't user submitted"""
+        posts aren't geba_auth submitted"""
 
         s = self.num_vote_up
         date = datetime.now(timezone.utc)

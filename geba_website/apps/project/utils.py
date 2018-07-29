@@ -7,5 +7,5 @@ def check_project_rights(request):
         request.can_view_all = True
         return request
 
-    # return HTTP 403 Back to user
+    # return HTTP 403 Back to geba_auth
     raise PermissionDenied

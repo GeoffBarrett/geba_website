@@ -147,5 +147,6 @@ def delete_image(instance):
                 # if the directory that the image is in is empty, delete it
                 os.rmdir(img_dir)
 
+
 pre_save.connect(pre_save_post_signal_receiver, sender=Post)  # connects the signal with the signal receiver
 pre_delete.connect(pre_delete_post_signal_receiver, sender=Post)  # connects the signal with the signal receiver

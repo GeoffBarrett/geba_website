@@ -18,7 +18,7 @@ from rest_framework import authentication, permissions
 
 
 class CommentActionMixin(object):
-    # the fields that user will be able to type in the forms for CreateView
+    # the fields that geba_auth will be able to type in the forms for CreateView
     # fields = ('published', 'title', 'body')
 
     @property
@@ -162,7 +162,7 @@ class CommentDeleteView(CommentActionMixin, DeleteView):
     success_msg = 'Comment Deleted!'
     success_url = reverse_lazy('blog:index')
 
-    # make it so you have to be a super-user or staff to delete
+    # make it so you have to be a super-geba_auth or staff to delete
     def dispatch(self, request, *args, **kwargs):
         # request = check_comment_rights(request)
         object = Comment.objects.get(pk=kwargs['pk'])
@@ -199,7 +199,7 @@ class CommentLikeToggle(RedirectView):
         obj = Comment.objects.get(pk=pk)
         # obj = get_object_or_404(Comment, pk=pk)
         url_ = obj.get_absolute_url()  # get the url of the project post
-        user = self.request.user  # get the user
+        user = self.request.user  # get the geba_auth
 
         if user.is_authenticated:
 
@@ -225,7 +225,7 @@ class CommentLikeToggleAjax(APIView):
         obj = Comment.objects.get(pk=pk)
 
         # url_ = obj.get_absolute_url()  # get the url of the project post
-        user = self.request.user  # get the user
+        user = self.request.user  # get the geba_auth
         updated = False
         liked = False
 
@@ -262,14 +262,14 @@ class CommentDislikeToggleAjax(APIView):
         obj = Comment.objects.get(pk=pk)
 
         # url_ = obj.get_absolute_url()  # get the url of the project post
-        user = self.request.user  # get the user
+        user = self.request.user  # get the geba_auth
         updated = False
         disliked = False
 
         if user.is_authenticated:
 
-            # check if the user is authenticated
-            # check if the user has already voted on this object
+            # check if the geba_auth is authenticated
+            # check if the geba_auth has already voted on this object
             if obj.votes.exists(user.id, action=DOWN):
                 obj.votes.delete(user.id)
                 disliked = False

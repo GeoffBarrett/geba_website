@@ -105,6 +105,7 @@ a {
 
 /* ############ search button ################ */
 
+/*
 .navbar-form {
     margin-left: -10px;
     margin-right: -10px;
@@ -115,6 +116,17 @@ a {
     box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.1);
     margin-top: 8px;
     margin-bottom: 8px;
+}*/
+
+.navbar-form {
+  width: auto;
+  border: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 
 #mainNav #header-search {
@@ -191,7 +203,7 @@ a {
     background-color: transparent!important;
     background-image: none;
     border-left: none;
- }
+}
 
 /* this is for the scrolled navbar */
 #mainNav.is-fixed .navbar-nav > li.nav-item > a:hover, #mainNav.is-fixed.is-visible .navbar-nav > li.nav-item > a:hover{
@@ -220,11 +232,6 @@ a {
   }
 
   #mainNav .navbar-brand {
-    padding: 10px 20px;
-    color: white;
-  }
-
-  #mainNav .navbar-nav > li.nav-item > a {
     padding: 10px 20px;
     color: white;
   }
@@ -272,11 +279,6 @@ a {
     -o-transform: translate3d(0, 100%, 0);
     transform: translate3d(0, 100%, 0);
   }
-
-  .navbar-toggle {
-    display: none;
-  }
-
 }
 
 /* 992px width css */
@@ -285,9 +287,14 @@ a {
   .hidden-md {
     display: none!important;
   }
-
-
 }
+
+@media(min-width:992px){
+  #mainNav .navbar-nav.brand-left,#mainNav .navbar-nav.brand-right{
+    top: 5px!important;
+  }
+}
+
 
 @media(max-width:991px){
   .visible-xs-inline {
@@ -328,6 +335,7 @@ a {
   .visible-xs-inline {
     display: inline!important;
   }
+
 }
 
 
@@ -339,22 +347,20 @@ a {
   header.masthead .site-heading {
     padding: 200px 0;
   }
-}
 
-@media only screen and (min-width: 768px) {
   header.masthead .page-heading h1,
   header.masthead .site-heading h1 {
     font-size: 80px;
   }
-}
 
-@media only screen and (min-width: 768px) {
   header.masthead .post-heading h1 {
     font-size: 55px;
   }
+
   header.masthead .post-heading .subheading {
     font-size: 30px;
   }
+
 }
 
 @media(max-width:767px) {
@@ -395,21 +401,24 @@ a {
     background:transparent;
   }
 
+  #mainNav .navbar-nav > li.nav-item > a {
+    padding: 10px 20px;
+    color: white;
+  }
+
+  /*
   .navbar-header{
     float:left;
   }
 
   .navbar-left{
     margin-right: auto!important;
-    /*float:left!important;*/
   }
 
   .navbar-right {
     float:right!important;
-    /*margin-left: auto!important;*/
     flex-direction: row!important;
-
-  }
+  }*/
 
   .navbar-right .dropdown-menu {
     right: 0;
@@ -468,9 +477,7 @@ a {
   .signed-in .navbar-toggle{
     margin-right:45px!important;
   }
-  #large-nav {
-    display: none;
-  }
+
 }
 
 @media(min-width:768px) and (max-width:991px) {
@@ -506,8 +513,99 @@ a {
     margin:0 !important;
     transition:all .5s;
   }
-
 }
+
+
+@media (min-width: 576px) {
+
+  #mainNav .navbar-nav > li.nav-item > a {
+    padding: 10px 15px;
+    color: white;
+  }
+
+  .navbar-header{
+    float:left;
+  }
+
+  .navbar-left{
+    margin-right: auto!important;
+    /*float:left!important;*/
+  }
+
+  .navbar-right {
+    float:right!important;
+    /*margin-left: auto!important;*/
+    flex-direction: row!important;
+  }
+}
+
+
+@media (max-width: 575px) {
+  #large-nav {
+    display: none;
+  }
+
+  .navbar-toggle {
+    display: inline!important;
+  }
+
+  .mobile-nav{
+    display:block;
+    position:fixed;
+    background:rgba(0,0,0,.6);
+    line-height:40px;
+    text-align:center;
+    left:0;
+    right:0;
+    top:-40px;
+    transition:all .5s;
+    z-index:10
+  }
+
+  .mobile-nav.open {
+    top: 45px;
+    background: rgba(0,0,0,.9);
+  }
+
+  .mobile-nav ul{
+    list-style:none;
+    margin:0;
+    padding:0
+  }
+
+  .mobile-nav ul li{
+    display:inline-block;
+    padding:0 5px
+  }
+
+  .mobile-nav ul li:first-child{
+    padding-left:0
+  }
+
+  .mobile-nav ul li:last-child{
+    padding-right:0
+  }
+
+  .mobile-nav ul li.more-left{
+    padding-left:10px
+  }
+
+  .mobile-nav ul li a{
+    color:#fff;
+    font-family:proxima nova
+  }
+
+  .mobile-nav ul li a.selected{
+    font-family:proxima nova semibold;
+    color:#ed1c24
+  }
+
+  .mobile-nav ul li .fa{
+    font-size:1.2em;
+    vertical-align:text-bottom
+  }
+}
+
 
 .navbar-header:before,.navbar-header:after{
   content:" ";
@@ -531,6 +629,7 @@ a {
     background-image: none;
     border: 1px solid transparent;
     border-radius: 0;
+    display: none;
 }
 
 #mainNav #brand-text {
@@ -616,7 +715,7 @@ a {
 #mainNav .navbar-nav .btn_header {
   height:32px;
   line-height:30px;
-  padding:0 15px;
+  padding:0 10px;
   margin-top:10px;
 }
 

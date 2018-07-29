@@ -8,7 +8,7 @@
             Thread
         </a>
         {% if request.user == comment.author %} |
-        <!-- make comment delete-able if the user is the author -->
+        <!-- make comment delete-able if the geba_auth is the author -->
         <a class="" data-toggle="modal" data-target="#DeleteCommentModal" data-content="{{ comment.content }}"
         data-url="{% url 'comments:delete' comment.id %}" data-csrf="{% csrf_token %}">
             <span class="fa fa-trash"></span>

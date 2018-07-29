@@ -24,7 +24,7 @@ from rest_framework import authentication, permissions
 
 
 class BlogActionMixin(object):
-    # the fields that user will be able to type in the forms for CreateView
+    # the fields that geba_auth will be able to type in the forms for CreateView
     # fields = ('published', 'title', 'body')
 
     @property
@@ -96,7 +96,7 @@ class BlogCreateView(BlogActionMixin, CreateView):
     # success_url = '/'
     # Don't need to specify template name due to the html file being named ModelName_form.html
 
-    # make it so you have to be staff or super-user to create blog
+    # make it so you have to be staff or super-geba_auth to create blog
     def dispatch(self, request, *args, **kwargs):
         request = check_blog_rights(request)
         return super(BlogCreateView, self).dispatch(request, *args, **kwargs)
@@ -105,7 +105,7 @@ class BlogCreateView(BlogActionMixin, CreateView):
         return super(BlogCreateView, self).form_valid(form)
 
     def get(self, request):
-        """when the user executes a get request, display blank registration form"""
+        """when the geba_auth executes a get request, display blank registration form"""
         form = self.form_class(request.GET or None, request.FILES or None)
         return render(request, self.template_name, {'form': form})
 
@@ -141,13 +141,13 @@ class BlogUpdateView(BlogActionMixin, UpdateView):
     # success_url = reverse_lazy('blog:index')
 
     def get(self, request, slug):
-        """when the user executes a get request, display blank registration form"""
+        """when the geba_auth executes a get request, display blank registration form"""
         self.object = self.get_object()
         self.success_url = reverse_lazy('blog:detail', args=self.object.slug)
         form = self.form_class(request.GET or None, request.FILES or None, instance=self.object)
         return render(request, self.template_name, {'form': form})
 
-    # make it so you have to be staff or super-user to update blog
+    # make it so you have to be staff or super-geba_auth to update blog
     def dispatch(self, request, *args, **kwargs):
         request = check_blog_rights(request)
         return super(BlogUpdateView, self).dispatch(request, *args, **kwargs)
@@ -166,7 +166,7 @@ class BlogDeleteView(DeleteView):
         self.object = self.get_object()
         return HttpResponseRedirect(reverse('blog:detail', args=self.object.slug))
 
-    # make it so you have to be a super-user or staff to delete
+    # make it so you have to be a super-geba_auth or staff to delete
     def dispatch(self, request, *args, **kwargs):
         request = check_blog_rights(request)
         return super(BlogDeleteView, self).dispatch(request, *args, **kwargs)
@@ -294,14 +294,14 @@ class PostLikeToggleAjax(APIView):
         obj = get_object_or_404(Post, slug=slug)
 
         # url_ = obj.get_absolute_url()  # get the url of the project post
-        user = self.request.user  # get the user
+        user = self.request.user  # get the geba_auth
         updated = False
         liked = False
 
         if user.is_authenticated:
 
-            # check if the user is authenticated
-            # check if the user has already voted on this object
+            # check if the geba_auth is authenticated
+            # check if the geba_auth has already voted on this object
 
             if obj.votes.exists(user.id, action=UP):
                 obj.votes.delete(user.id)
@@ -331,14 +331,14 @@ class PostDislikeToggleAjax(APIView):
 
         obj = get_object_or_404(Post, slug=slug)
         # url_ = obj.get_absolute_url()  # get the url of the project post
-        user = self.request.user  # get the user
+        user = self.request.user  # get the geba_auth
         updated = False
         disliked = False
 
         if user.is_authenticated:
 
-            # check if the user is authenticated
-            # check if the user has already voted on this object
+            # check if the geba_auth is authenticated
+            # check if the geba_auth has already voted on this object
             if obj.votes.exists(user.id, action=DOWN):
                 obj.votes.delete(user.id)
                 disliked = False
@@ -364,13 +364,13 @@ class PublishPostAjax(APIView):
         # slug = self.kwargs.get("slug")
         obj = get_object_or_404(Post, slug=slug)
         # url_ = obj.get_absolute_url()  # get the url of the project post
-        user = self.request.user  # get the user
+        user = self.request.user  # get the geba_auth
         updated = False
         published = False
 
         if user.is_authenticated:
 
-            # check if the user is authenticated
+            # check if the geba_auth is authenticated
             # check if the post is already published
             if not obj.draft:
                 published = False
@@ -398,13 +398,13 @@ class MakeDraftPostAjax(APIView):
         # slug = self.kwargs.get("slug")
         obj = get_object_or_404(Post, slug=slug)
         # url_ = obj.get_absolute_url()  # get the url of the project post
-        user = self.request.user  # get the user
+        user = self.request.user  # get the geba_auth
         updated = False
         drafted = False
 
         if user.is_authenticated:
 
-            # check if the user is authenticated
+            # check if the geba_auth is authenticated
             # check if the post is already a draft
             if obj.draft:
                 drafted = False

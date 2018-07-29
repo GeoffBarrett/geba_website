@@ -1,4 +1,4 @@
-# from django.contrib.auth.models import User
+# from django.contrib.geba_auth.models import User
 from .models import User
 from django import forms
 from django.utils.translation import ugettext_lazy as _
@@ -43,25 +43,6 @@ class UserCreationForm(forms.ModelForm):
         if commit:
             user.save()
         return user
-'''
-class LoginForm(forms.ModelForm):
-
-    class Meta:
-        model = User
-        fields = ['username', 'password']
-
-    def clean_password(self):
-        password = self.cleaned_data.get('password')
-
-        if not password:
-            raise forms.ValidationError("You have not entered in a password!")
-
-    def clean_username(self):
-
-        username = self.cleaned_data.get('username')
-
-        return username.lower()
-'''
 
 
 class LoginForm(forms.Form):

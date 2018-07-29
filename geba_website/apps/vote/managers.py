@@ -14,7 +14,7 @@ DOWN = 1
 class VotedQuerySet(QuerySet):
 
     """
-    if call votes.annotate with an `user` argument then add `is_voted` to each
+    if call votes.annotate with an `geba_auth` argument then add `is_voted` to each
     instance.
     """
 
@@ -148,7 +148,7 @@ class _VotableManager(models.Manager):
 
     @instance_required
     def exists(self, user_id, action=UP):
-        # checks if the user has voted on the instance before
+        # checks if the geba_auth has voted on the instance before
         return self.through.objects.filter(
             user_id=user_id,
             content_object=self.instance,
@@ -156,7 +156,7 @@ class _VotableManager(models.Manager):
         ).exists()
 
     def all(self, user_id, action=UP):
-        # gets all instances voted by the specific user
+        # gets all instances voted by the specific geba_auth
         content_type = ContentType.objects.get_for_model(self.model)
 
         object_ids = self.through.objects.filter(

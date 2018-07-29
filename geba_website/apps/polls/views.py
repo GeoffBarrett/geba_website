@@ -45,5 +45,5 @@ def vote(request, question_id):
         selected_choice.save()
         # Always return an HttpResponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a
-        # user hits the Back button.
+        # geba_auth hits the Back button.
         return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))

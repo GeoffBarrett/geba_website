@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+# from django.contrib.geba_auth.models import AbstractUser
 # Create your models here.
 
 
@@ -21,7 +21,4 @@ class ModelFormFailureHistory(models.Model):
     form_data = models.TextField()
     model_data = models.TextField()
 
-
-class User(AbstractUser):
-    bio = models.TextField(max_length=500, blank=True)
 

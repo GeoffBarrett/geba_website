@@ -62,7 +62,7 @@ DATABASES = {
     }
 
 }
-###### end database config #####
+# end database config #####
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
@@ -78,14 +78,14 @@ USE_L10N = True
 
 USE_TZ = True
 
-########## MEDIA CONFIGURATION
+# MEDIA CONFIGURATION
 # see the amazon section, if commented out
-# Absolute filesystem path to the directory that will hold user-uploaded files.
+# Absolute filesystem path to the directory that will hold geba_auth-uploaded files.
 # MEDIA_ROOT = os.path.normpath(os.path.join(DJANGO_ROOT, 'media'))
 
 # URL that handles the media served from MEDIA_ROOT, used for managing stored files.
 # MEDIA_URL = '/media/'
-########## END MEDIA CONFIGURATION
+# END MEDIA CONFIGURATION
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
@@ -150,7 +150,8 @@ THIRD_PARTY_APPS = (
 PROJECT_APPS = (
     'apps.blog',  # the Blog app
     'apps.comments',
-    'apps.core',  # adding the core page to the setttings
+    'apps.core',  # adding the core page to the settings
+    'apps.geba_auth',
     'apps.polls',
     'apps.profiles',
     'apps.project',
@@ -195,7 +196,7 @@ TEMPLATES = [
     },
 ]
 
-AUTH_USER_MODEL = 'core.User'
+AUTH_USER_MODEL = 'geba_auth.User'
 
 WSGI_APPLICATION = 'config.wsgi.application'
 

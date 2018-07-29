@@ -25,6 +25,7 @@ urlpatterns = [
     re_path(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     re_path(r'^admin/', admin.site.urls),
     re_path(r'^', include(('apps.core.urls', "core"))),  # Home app
+    re_path(r'^auth/', include(('apps.geba_auth.urls', "geba_auth"))),  # geba_auth app
     # re_path(r'^about/', include(('apps.about_me.urls', "about"))),  # About Me app
     re_path(r'^blog/', include(('apps.blog.urls', "blog"))),  # Blog app
     re_path(r'^polls/', include(('apps.polls.urls', "polls"))),

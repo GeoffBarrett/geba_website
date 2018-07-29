@@ -16,7 +16,7 @@ class ProjectPostAdmin(admin.ModelAdmin):
     #     return response
     #
     # show_url.short_description = "Post URL"
-    # show_url.allow_tags = True  # display HTML tags, never set to True for user submitted data
+    # show_url.allow_tags = True  # display HTML tags, never set to True for geba_auth submitted data
 
 
 class ProjectAdmin(admin.ModelAdmin):
@@ -30,7 +30,7 @@ class ProjectAdmin(admin.ModelAdmin):
     #     return response
     #
     # show_url.short_description = "Post URL"
-    # show_url.allow_tags = True  # display HTML tags, never set to True for user submitted data
+    # show_url.allow_tags = True  # display HTML tags, never set to True for geba_auth submitted data
 
 admin.site.register(ProjectPost, ProjectPostAdmin)
 admin.site.register(Project, ProjectAdmin)

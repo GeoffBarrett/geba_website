@@ -6,5 +6,5 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class DefaultProfile(models.Model):
-    """The default user profile"""
+    """The default geba_auth profile"""
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)

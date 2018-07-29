@@ -63,7 +63,7 @@ STATIC_URL = '/static/'  # where you put all your webapp static files webappname
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#media-root
 # see the amazon section, if commented out
-# Absolute filesystem path to the directory that will hold user-uploaded files.
+# Absolute filesystem path to the directory that will hold geba_auth-uploaded files.
 MEDIA_ROOT = os.path.normpath(os.path.join(DJANGO_ROOT, 'media'))
 
 # URL that handles the media served from MEDIA_ROOT, used for managing stored files.

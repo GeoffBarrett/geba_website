@@ -4,7 +4,7 @@ from django.db.models import Q
 from django.views.generic import CreateView, UpdateView, DetailView, ListView, DeleteView, FormView, View
 from django.contrib import messages
 # from django.utils.decorators import method_decorator
-# from django.contrib.auth.decorators import login_required
+# from django.contrib.geba_auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from django.core import serializers
 from .utils import check_project_rights
@@ -30,7 +30,7 @@ from django.conf import settings
 
 
 class ProjectActionMixin(object):
-    # the fields that user will be able to type in the forms for CreateView
+    # the fields that geba_auth will be able to type in the forms for CreateView
     # fields = ('published', 'title', 'body')
 
     @property
@@ -163,7 +163,7 @@ class ProjectUpdateView(ProjectActionMixin, UpdateView):
     success_url = reverse_lazy('project:index')
 
     def get(self, request, slug):
-        """when the user executes a get request, display blank registration form"""
+        """when the geba_auth executes a get request, display blank registration form"""
         self.object = self.get_object()
         # self.success_url = reverse_lazy('project:detail', args=self.object.slug)
         form = self.form_class(request.GET or None, request.FILES or None, instance=self.object)
@@ -173,7 +173,7 @@ class ProjectUpdateView(ProjectActionMixin, UpdateView):
     #     obj = Post.objects.get(slug=self.kwargs['slug'])
     #     return obj
 
-    # make it so you have to be staff or super-user to update blog
+    # make it so you have to be staff or super-geba_auth to update blog
     def dispatch(self, request, *args, **kwargs):
         request = check_project_rights(request)
         return super(ProjectUpdateView, self).dispatch(request, *args, **kwargs)
@@ -193,7 +193,7 @@ class ProjectDeleteView(DeleteView):
         # print(reverse('project:detail', args=(self.object.slug)))
         return HttpResponseRedirect(reverse('project:detail', args=(self.object.slug)))
 
-    # make it so you have to be a super-user or staff to delete
+    # make it so you have to be a super-geba_auth or staff to delete
     def dispatch(self, request, *args, **kwargs):
         request = check_project_rights(request)
         return super(ProjectDeleteView, self).dispatch(request, *args, **kwargs)
@@ -334,7 +334,7 @@ class ProjectPostDetailGetView(DetailView):
 
         qs = ProjectPost.objects.filter(slug=self.kwargs.get('slug'))
 
-        # instance = ProjectPost.votes.annotate(queryset=qs, user_id=self.request.user.id)[0]
+        # instance = ProjectPost.votes.annotate(queryset=qs, user_id=self.request.geba_auth.id)[0]
         # don't use annotate, use vote_by in this case, annotate only works when __iter__ is called
         instance = ProjectPost.votes.vote_by(self.request.user.id, ids=[instance.id])[0]
 
@@ -414,13 +414,13 @@ class ProjectPostUpdateView(ProjectActionMixin, UpdateView):
     # success_url = reverse_lazy('project:index')
 
     def get(self, request, slug):
-        """when the user executes a get request, display blank registration form"""
+        """when the geba_auth executes a get request, display blank registration form"""
         self.object = self.get_object()
         self.success_url = reverse_lazy('project:detail', args=self.object.slug)
         form = self.form_class(request.GET or None, request.FILES or None, instance=self.object)
         return render(request, self.template_name, {'form': form})
 
-    # make it so you have to be staff or super-user to update blog
+    # make it so you have to be staff or super-geba_auth to update blog
     def dispatch(self, request, *args, **kwargs):
         request = check_project_rights(request)
         return super(ProjectPostUpdateView, self).dispatch(request, *args, **kwargs)
@@ -439,7 +439,7 @@ class ProjectPostDeleteView(DeleteView):
         self.object = self.get_object()
         return HttpResponseRedirect(reverse('project:detail', args=self.object.slug))
 
-    # make it so you have to be a super-user or staff to delete
+    # make it so you have to be a super-geba_auth or staff to delete
     def dispatch(self, request, *args, **kwargs):
         request = check_project_rights(request)
         return super(ProjectPostDeleteView, self).dispatch(request, *args, **kwargs)
@@ -454,7 +454,7 @@ class ProjectPostCreateView(ProjectActionMixin, CreateView):
     # success_url = '/'  # if no success_url is given, it will use the get_absolute_url() on the object if available
     # Don't need to specify template name due to the html file being named ModelName_form.html
 
-    # make it so you have to be staff or super-user to create blog
+    # make it so you have to be staff or super-geba_auth to create blog
     def dispatch(self, request, *args, **kwargs):
         request = check_project_rights(request)
 
@@ -464,7 +464,7 @@ class ProjectPostCreateView(ProjectActionMixin, CreateView):
         return super(ProjectPostCreateView, self).form_valid(form)
 
     def get(self, request, *args, **kwargs):
-        """when the user executes a get request, display blank registration form"""
+        """when the geba_auth executes a get request, display blank registration form"""
         form = self.form_class(request.GET or None, request.FILES or None)
         # context = self.get_context_data()
         return render(request, self.template_name, {'form': form, 'project_slug': kwargs['slug'],
@@ -534,13 +534,13 @@ class ProjectPostLikeToggleAjax(APIView):
         # slug = self.kwargs.get("slug")
         obj = get_object_or_404(ProjectPost, slug=slug)
         # url_ = obj.get_absolute_url()  # get the url of the project post
-        user = self.request.user  # get the user
+        user = self.request.user  # get the geba_auth
         updated = False
         liked = False
 
         if user.is_authenticated:
-            # check if the user is authenticated
-            # check if the user has already voted on this object
+            # check if the geba_auth is authenticated
+            # check if the geba_auth has already voted on this object
             if obj.votes.exists(user.id, action=UP):
                 obj.votes.delete(user.id)
                 liked = False
@@ -566,14 +566,14 @@ class ProjectPostDislikeToggleAjax(APIView):
         # slug = self.kwargs.get("slug")
         obj = get_object_or_404(ProjectPost, slug=slug)
         # url_ = obj.get_absolute_url()  # get the url of the project post
-        user = self.request.user  # get the user
+        user = self.request.user  # get the geba_auth
         updated = False
         disliked = False
 
         if user.is_authenticated:
 
-            # check if the user is authenticated
-            # check if the user has already voted on this object
+            # check if the geba_auth is authenticated
+            # check if the geba_auth has already voted on this object
             if obj.votes.exists(user.id, action=DOWN):
                 obj.votes.delete(user.id)
                 disliked = False
@@ -599,14 +599,14 @@ class ProjectLikeToggleAjax(APIView):
         # slug = self.kwargs.get("slug")
         obj = get_object_or_404(Project, slug=slug)
         # url_ = obj.get_absolute_url()  # get the url of the project post
-        user = self.request.user  # get the user
+        user = self.request.user  # get the geba_auth
         updated = False
         liked = False
 
         if user.is_authenticated:
 
-            # check if the user is authenticated
-            # check if the user has already voted on this object
+            # check if the geba_auth is authenticated
+            # check if the geba_auth has already voted on this object
             if obj.votes.exists(user.id, action=UP):
                 obj.votes.delete(user.id)
                 liked = False
@@ -632,14 +632,14 @@ class ProjectDislikeToggleAjax(APIView):
         # slug = self.kwargs.get("slug")
         obj = get_object_or_404(Project, slug=slug)
         # url_ = obj.get_absolute_url()  # get the url of the project post
-        user = self.request.user  # get the user
+        user = self.request.user  # get the geba_auth
         updated = False
         disliked = False
 
         if user.is_authenticated:
 
-            # check if the user is authenticated
-            # check if the user has already voted on this object
+            # check if the geba_auth is authenticated
+            # check if the geba_auth has already voted on this object
             if obj.votes.exists(user.id, action=DOWN):
                 obj.votes.delete(user.id)
                 disliked = False
@@ -665,13 +665,13 @@ class PublishProjectPostAjax(APIView):
         # slug = self.kwargs.get("slug")
         obj = get_object_or_404(ProjectPost, slug=slug)
         # url_ = obj.get_absolute_url()  # get the url of the project post
-        user = self.request.user  # get the user
+        user = self.request.user  # get the geba_auth
         updated = False
         published = False
 
         if user.is_authenticated:
 
-            # check if the user is authenticated
+            # check if the geba_auth is authenticated
             # check if the post is already published
             if not obj.draft:
                 published = False
@@ -699,13 +699,13 @@ class MakeDraftProjectPostAjax(APIView):
         # slug = self.kwargs.get("slug")
         obj = get_object_or_404(ProjectPost, slug=slug)
         # url_ = obj.get_absolute_url()  # get the url of the project post
-        user = self.request.user  # get the user
+        user = self.request.user  # get the geba_auth
         updated = False
         drafted = False
 
         if user.is_authenticated:
 
-            # check if the user is authenticated
+            # check if the geba_auth is authenticated
             # check if the post is already a draft
             if obj.draft:
                 drafted = False
@@ -732,13 +732,13 @@ class PublishProjectAjax(APIView):
         # slug = self.kwargs.get("slug")
         obj = get_object_or_404(Project, slug=slug)
         # url_ = obj.get_absolute_url()  # get the url of the project post
-        user = self.request.user  # get the user
+        user = self.request.user  # get the geba_auth
         updated = False
         published = False
 
         if user.is_authenticated:
 
-            # check if the user is authenticated
+            # check if the geba_auth is authenticated
             # check if the post is already published
             if not obj.draft:
                 published = False
@@ -766,13 +766,13 @@ class MakeDraftProjectAjax(APIView):
         # slug = self.kwargs.get("slug")
         obj = get_object_or_404(Project, slug=slug)
         # url_ = obj.get_absolute_url()  # get the url of the project post
-        user = self.request.user  # get the user
+        user = self.request.user  # get the geba_auth
         updated = False
         drafted = False
 
         if user.is_authenticated:
 
-            # check if the user is authenticated
+            # check if the geba_auth is authenticated
             # check if the post is already a draft
             if obj.draft:
                 drafted = False

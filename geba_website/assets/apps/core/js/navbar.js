@@ -55,3 +55,17 @@ $("#header-search-button").off("click").click(function(){
            }),
            setTimeout(function(){$("#header-search-query").focus()}))
 })
+
+$("#mobile-nav-button").click(function(t){
+    return t.preventDefault(),
+	$(this).hasClass("open")?($(this).removeClass("open"),
+	$("#mainNav").removeClass("open"),
+	$("#mobile-nav").removeClass("open"),
+	$("#mobile-user-nav").removeClass("open"),
+	$("#mobile-user-avatar").removeClass("open")):($(this).addClass("open"),
+	$("#mainNav").addClass("open"),
+	$("#mobile-nav").addClass("open"),
+	$("#mobile-user-nav").removeClass("open"),
+	$("#mobile-user-avatar").removeClass("open")),
+	!1
+})

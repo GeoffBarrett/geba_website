@@ -1,16 +1,30 @@
-{% extends "core/signin_base.html" %} <!--  extends path starting from templates directory, concatenates all contents of templates -->
-{% block title %}Sign In | GEBA{% endblock %}
+{% extends "core/base.html" %} <!--  extends path starting from templates directory, concatenates all contents of templates -->
+
+{% block title %}GEBA - Sign In{% endblock %}
+
+{% load staticfiles %}
+{% load crispy_forms_tags %}
 
 {% block css %}
-	{% load staticfiles %}
+<link rel='stylesheet' href="{% static 'apps/core/css/form_style.css' %}"/>
 
-	<!-- CSS -->
-	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
-	<link rel="stylesheet" href="{% static 'assets/font-awesome/css/font-awesome.min.css' %}">
-	<link rel="stylesheet" href="{% static 'assets/css/form-elements.css' %}">
-	<link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+{% endblock css %}
 
-{% endblock css %}-->
+{% block header %}
+
+<header class="masthead">
+  <div class="container">
+    <div class="row">
+      <div class="col-8 mx-auto">
+        <div class="post-heading">
+          <h1>Register</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+{% endblock header %}
 
 
 {% block content %}
@@ -19,16 +33,16 @@
 
     <div class="container">
 
-        <div class="row">
-            <div class="col-sm-5">
+        <div class="row justify-content-center">
+            <div class="col-5">
                 <h3>Login to GEBA Tech!</h3>
                 <p>Enter username and password to log on:</p>
 
 
-                <form role="form" action="{% url 'core:login' %}" method="post">
+                <form role="form" action="{% url 'geba_auth:login' %}" method="post">
                     {% csrf_token %}
 
-
+                    <!--
                     <div class="form-group">
                         <div>
                             <span class="text-danger small">{{ login_form.username.errors }}</span>
@@ -49,7 +63,9 @@
                       <label>
                         <input type="checkbox" value="remember-me"><h5>Remember me</h5>
                       </label>
-                    </div>
+                    </div>-->
+
+                    {{ form|crispy }}
 
                     <button type="submit" name="login_btn" class="btn">Sign in!</button>
                 </form>
@@ -79,13 +95,5 @@
 {% endblock content %}
 
 {% block java %}
-<!-- Javascript -->
-<script src="{% static 'assets/js/jquery-1.11.1.min.js' %}"></script>
-<script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
-<script src="{% static 'assets/js/scripts.js' %}"></script>
-
-<!--[if lt IE 10]>-->
-<script src="{% static 'assets/js/placeholder.js' %}"></script>-->
-<!--<![endif]-->
 
 {% endblock java %}

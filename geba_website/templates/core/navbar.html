@@ -2,7 +2,6 @@
 
 <nav class="navbar fixed-top" id="mainNav">
 
-    <!---->
     <div id="navBrand">
         <a href="/">
             <img width="64" src="{% static 'img/GEBA_Logo.png' %}" alt="Header@2x">
@@ -11,7 +10,6 @@
             <div class="bottom"></div>
         </div>
     </div>
-
 
     <form id="header-search" class="navbar-form navbar-left" action="/search"
           accept-charset="UTF-8" method="get">
@@ -40,7 +38,7 @@
     </form>
 
     <div class="navbar-header">
-        <a class="visible-xs-inline" id="xs-sign-in" href="{% url 'core:register' %}">
+        <a class="visible-xs-inline" id="xs-sign-in" href="{% url 'geba_auth:register' %}">
             <i class="fa fa-user"></i></a>
         <button class="navbar-toggle" id="mobile-nav-button" type="button">
             <div class="fa fa-bars"></div>
@@ -51,10 +49,10 @@
     {% if user.is_authenticated %}
 
         <ul class="nav navbar-nav navbar-right hidden-xs">
-
+            <!--
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#SignUpNavBar">
                 <span class="fa fa"></span>
-            </button>
+            </button>-->
             <li class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
                    aria-haspopup="true" aria-expanded="false" id="navbarDropDown">
@@ -65,24 +63,26 @@
                     {% if user.is_superuser %}
                     <a class="dropdown-item" href="/admin">Admin</a>
                     {% endif %}
-                    <a class="dropdown-item" href="{% url 'core:logout' %}">Logout</a>
+                    <a class="dropdown-item" href="{% url 'geba_auth:logout' %}">Logout</a>
                 </div>
             </li>
         </ul>
 
     {% else %}
+
         <ul class="nav navbar-nav navbar-right hidden-xs align-items-start">
             <li>
-                <a class="btn_header btn-primary" href="{% url 'core:register' %}">
+                <a class="btn_header btn-primary" href="{% url 'geba_auth:register' %}">
                     <i class="visible-sm-inline fa fa-user"></i>
                     <span class="hidden-sm">Join GEBA</span>
                 </a>
             </li>
             <li class="hidden-sm">
-                <a class="btn_header btn-signup" href="{% url 'core:login' %}">Sign In</a>
+                <a class="btn_header btn-signup" href="{% url 'geba_auth:login' %}">Sign In</a>
             </li>
         </ul>
     {% endif %}
+
     <div id="large-nav">
         <ul class="navbar-nav brand-left flex-row">
             <li class="nav-item">
@@ -107,9 +107,10 @@
                 <a class="nav-link" href="/">Forum</a>
             </li>
         </ul>
+
     </div>
 
-    <div class="mobile-nav open flex-row" id="mobile-nav">
+    <div class="mobile-nav flex-row" id="mobile-nav">
         <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/">About</a></li>
