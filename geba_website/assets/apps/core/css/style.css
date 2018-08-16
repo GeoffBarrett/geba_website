@@ -47,6 +47,26 @@ a {
   border-bottom-left-radius: 5px;
 }
 
+/* not sure if this is necessary
+.navbar-fixed-top,.navbar-fixed-bottom{
+  position:fixed;
+  right:0;
+  left:0;
+  z-index:1030;
+  -webkit-transform:translate3d(0,0,0);
+  transform:translate3d(0,0,0)
+}
+*/
+
+#mainNav #navBrand .bottom-wrapper{
+  position:absolute;
+  height:22px;
+  width:65px;
+  z-index:-1;
+  bottom:0;
+  overflow:hidden
+}
+
 #mainNav {
   top: 0;
   z-index: 1500;
@@ -231,6 +251,10 @@ a {
     -webkit-backface-visibility: hidden;
   }
 
+  .hidden-lg {
+    display: none!important;
+  }
+
   #mainNav .navbar-brand {
     padding: 10px 20px;
     color: white;
@@ -293,6 +317,7 @@ a {
   #mainNav .navbar-nav.brand-left,#mainNav .navbar-nav.brand-right{
     top: 5px!important;
   }
+
 }
 
 
@@ -386,6 +411,19 @@ a {
     width:48px;
   }
 
+  .hidden-xs {
+    display: none!important;
+  }
+
+  .mobile-avatar {
+    display: inline!important;
+    float:right;
+  }
+
+  .signed-in .navbar-toggle{
+    margin-right:45px!important;
+  }
+
 }
 
 @media only screen and (min-width: 768px) {
@@ -469,16 +507,6 @@ a {
   }
 }
 
-@media(max-width:767px) {
-  .hidden-xs {
-    display: none!important;
-  }
-
-  .signed-in .navbar-toggle{
-    margin-right:45px!important;
-  }
-
-}
 
 @media(min-width:768px) and (max-width:991px) {
   .hidden-sm {
@@ -494,12 +522,7 @@ a {
   #mainNav #navBrand{
     opacity:0;
   }
-  #mainNav.open{
-    background:rgba(0,0,0,.9)
-  }
-  #mainNav.open #navBrand{
-    opacity:1;
-  }
+
   /* when the navbar is scrolled it will be less transparent */
   #mainNav.scrolled{
     background:rgba(0,0,0,.6);
@@ -519,12 +542,8 @@ a {
 @media (min-width: 576px) {
 
   #mainNav .navbar-nav > li.nav-item > a {
-    padding: 10px 15px;
+    padding: 10px 10px;
     color: white;
-  }
-
-  .navbar-header{
-    float:left;
   }
 
   .navbar-left{
@@ -537,6 +556,11 @@ a {
     /*margin-left: auto!important;*/
     flex-direction: row!important;
   }
+
+  #mainNav #brand-text {
+    display: none;
+  }
+
 }
 
 
@@ -545,14 +569,69 @@ a {
     display: none;
   }
 
+  #mainNav .navbar-nav > li.nav-item > a {
+    padding: 10px 10px;
+    color: white;
+  }
+
+  .navbar-right {
+    float:right!important;
+    /*margin-left: auto!important;*/
+    flex-direction: row!important;
+  }
+
+  .navbar-header{
+    float:left;
+    /*width: 90%;*/
+  }
+
+  #mainNav #brand-text {
+    font-size: 20px;
+    margin: -100px 0 0 0px;/**/
+    margin-right: auto;
+    float: left;
+    color: #fff;
+    font-family: proxima nova bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: block;
+    transition: .5s;
+  }
+
+  #mainNav #navBrand {
+    margin: 6px 0 0 -25px;
+    z-index: 1;
+    transition: all .5s;
+    width: 50px;
+  }
+
+  #mainNav.open #brand-text{
+    margin-top:0px
+  }
+
+  #mainNav.open #header-search-button {
+    opacity: 0;
+  }
+
+  #mainNav.open #navBrand {
+    margin: 0px 7px 0px 7px;
+    width: 30px;
+    left: 0;
+  }
+
   .navbar-toggle {
     display: inline!important;
+  }
+
+  .navbar-toggle.signed-in {
+    margin-right: 60px!important;/**/
   }
 
   .mobile-nav{
     display:block;
     position:fixed;
     background:rgba(0,0,0,.6);
+    /*line-height:40px;*/
     line-height:40px;
     text-align:center;
     left:0;
@@ -604,6 +683,14 @@ a {
     font-size:1.2em;
     vertical-align:text-bottom
   }
+
+  #mainNav.open{
+    background:rgba(0,0,0,.9)
+  }
+  #mainNav.open #navBrand{
+    opacity:1;
+  }
+
 }
 
 
@@ -616,10 +703,9 @@ a {
   clear:both;
 }
 
-
 .navbar-toggle {
     position: relative;
-    /*float: right;*/
+    float: right;/**/
     margin-left: auto!important;
     margin-right: 10px;
     padding: 9px 10px;
@@ -631,11 +717,6 @@ a {
     border-radius: 0;
     display: none;
 }
-
-#mainNav #brand-text {
-    display: none;
-}
-
 
 /* centering the brand image */
 #mainNav div#navBrand {
@@ -697,7 +778,14 @@ a {
   margin-right: 10px;
 }
 
-#mainNav .navbar-nav.navbar-right .btn_header .avatar {
+.mobile-avatar {
+  display: none;
+  border-radius: 50%;
+  height: 30px;
+  margin-right: 10px;
+}
+
+#mainNav .navbar-nav.navbar-right .avatar {
   border-radius: 50%;
   height: 30px;
   margin-right: 10px;
@@ -729,6 +817,32 @@ a {
   margin-right:10px;
 }
 
+.fa-search {
+  font-size:16px
+}
+
+.fa-bars {
+  font-size:22px;
+  margin:-3px 2px 0 0;
+  vertical-align:middle
+}
+
+.fa-user {
+  font-size:20px;
+  margin:-6px 2px 0;
+  vertical-align:middle
+}
+
+
+#user-menu {
+    background: rgba(0,0,0,.6);
+    position: absolute;
+    right: -1px;
+    top: 49px;
+    max-height: 0;
+    overflow: hidden;
+    transition: all .5s;
+}
 
 .btn_header {
     display: inline-block;

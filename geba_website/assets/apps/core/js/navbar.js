@@ -62,7 +62,8 @@ $("#mobile-nav-button").click(function(t){
 	$("#mainNav").removeClass("open"),
 	$("#mobile-nav").removeClass("open"),
 	$("#mobile-user-nav").removeClass("open"),
-	$("#mobile-user-avatar").removeClass("open")):($(this).addClass("open"),
+	$("#mobile-user-avatar").removeClass("open")):(
+	$(this).addClass("open"),
 	$("#mainNav").addClass("open"),
 	$("#mobile-nav").addClass("open"),
 	$("#mobile-user-nav").removeClass("open"),

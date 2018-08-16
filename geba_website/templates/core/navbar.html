@@ -37,40 +37,51 @@
         </span>
     </form>
 
+    <div id="brand-text">GEBA</div>
+
     <div class="navbar-header">
-        <a class="visible-xs-inline" id="xs-sign-in" href="{% url 'geba_auth:register' %}">
-            <i class="fa fa-user"></i></a>
-        <button class="navbar-toggle" id="mobile-nav-button" type="button">
-            <div class="fa fa-bars"></div>
-        </button>
-        <div id="brand-text">GEBA</div>
+
+        {% if user.is_anonymous %}
+          <a class="visible-xs-inline" id="xs-sign-in" href="{% url 'geba_auth:register' %}"><i class="fa fa-user"></i></a>
+          <button class="navbar-toggle" id="mobile-nav-button" type="button">
+              <div class="fa fa-bars"></div>
+          </button>
+        {% else %}
+          <button class="navbar-toggle signed-in" id="mobile-nav-button" type="button">
+              <div class="fa fa-bars"></div>
+          </button>
+        {% endif %}
+
     </div>
 
     {% if user.is_authenticated %}
 
-        <ul class="nav navbar-nav navbar-right hidden-xs">
-            <!--
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#SignUpNavBar">
-                <span class="fa fa"></span>
-            </button>-->
+        <ul class="nav navbar-nav navbar-right navbar-user">
             <li class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                <a href="#" class="nav-link" data-toggle="dropdown" role="button"
                    aria-haspopup="true" aria-expanded="false" id="navbarDropDown">
-                  <span class="fa fa-user">{{ user.username }}</span><span class="caret"></span>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropDown">
-                    <a class="dropdown-item" href="#">My Account</a>
-                    {% if user.is_superuser %}
-                    <a class="dropdown-item" href="/admin">Admin</a>
+                    {% if user.avatar %}
+                    <img class="avatar" height="30" src="{{ user.avatar }}">
+                    {% else %}
+                    <img class="avatar" height="30" src="{% static 'apps/geba_auth/img/default_avatar.png' %}">
                     {% endif %}
-                    <a class="dropdown-item" href="{% url 'geba_auth:logout' %}">Logout</a>
+                    <span class="hidden-xs hidden-sm">{{ user.username }}</span>
+                </a>
+                <div id="user-menu">
+                    <ul>
+                        <li><a class="dropdown-item" href="#">My Account</a></li>
+                        {% if user.is_superuser %}
+                        <li><a class="dropdown-item" href="/admin">Admin</a></li>
+                        {% endif %}
+                        <li><a class="dropdown-item" href="{% url 'geba_auth:logout' %}">Logout</a></li>
+                    </ul>
                 </div>
             </li>
         </ul>
 
     {% else %}
 
-        <ul class="nav navbar-nav navbar-right hidden-xs align-items-start">
+        <ul class="nav navbar-nav navbar-right hidden-sm hidden-xs align-items-start">
             <li>
                 <a class="btn_header btn-primary" href="{% url 'geba_auth:register' %}">
                     <i class="visible-sm-inline fa fa-user"></i>
