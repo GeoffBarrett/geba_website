@@ -21,23 +21,30 @@ from django.conf.urls.static import static
 from django.views.generic import RedirectView
 
 urlpatterns = [
-    re_path(r'^grappelli/', include('grappelli.urls')),  # grappelli URLS
-    re_path(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-    re_path(r'^admin/', admin.site.urls),
-    re_path(r'^', include(('apps.core.urls', "core"))),  # Home app
+
+    # --------- custom urls ---------------------- #
+    re_path(r'^', include(('apps.pages.urls', "pages"))),
     re_path(r'^auth/', include(('apps.geba_auth.urls', "geba_auth"))),  # geba_auth app
-    # re_path(r'^about/', include(('apps.about_me.urls', "about"))),  # About Me app
     re_path(r'^blog/', include(('apps.blog.urls', "blog"))),  # Blog app
     re_path(r'^polls/', include(('apps.polls.urls', "polls"))),
     re_path(r'^comments/', include(('apps.comments.urls', "comments"))),
     re_path(r'^project/', include(('apps.project.urls', "project"))),
+
+    # ------------ third party urls -------------------- #
+    re_path(r'^grappelli/', include('grappelli.urls')),  # grappelli URLS
+    re_path(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    re_path(r'^admin/', admin.site.urls),
     re_path(r'^summernote/', include('django_summernote.urls')),
     # re_path(r'^tinymce/', include('tinymce.urls')),
 
     # -------------------- social link redirects -------------------------------
-    re_path(r'^youtube/', RedirectView.as_view(url='https://www.youtube.com/channel/UCoTtKQQhQHXMpCBSINlpO-A', permanent=False)),
+    re_path(r'^youtube/', RedirectView.as_view(url='https://www.youtube.com/channel/UCoTtKQQhQHXMpCBSINlpO-A',
+                                               permanent=False)),
+    re_path(r'^github/', RedirectView.as_view(url='https://www.github.com/GeoffBarrett', permanent=False)),
     re_path(r'^twitter/', RedirectView.as_view(url='http://twitter.com/geba_tech', permanent=False)),
     re_path(r'^linkedin/', RedirectView.as_view(url='https://www.linkedin.com/in/gmbarrett', permanent=False)),
+
+
 
 ]
 

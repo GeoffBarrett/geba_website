@@ -46,54 +46,72 @@
 
         <hr>
         <footer>
-            <div class="container">
-                <div class="row">
-                  <div class="col-lg-8 col-md-10 mx-auto">
-                    <ul class="list-inline text-center">
-                        <li class="list-inline-item">
-                        <a href="/youtube">
-                          <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-youtube fa-stack-1x fa-inverse"></i>
-                          </span>
-                        </a>
-                      </li>
-                      <li class="list-inline-item">
-                        <a href="/linkedin">
-                          <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-                          </span>
-                        </a>
-                      </li>
-                      <li class="list-inline-item">
-                        <a href="/twitter">
-                          <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                          </span>
-                        </a>
-                      </li>
-                      <li class="list-inline-item">
-                        <a href="#">
-                          <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                          </span>
-                        </a>
-                      </li>
-                      <li class="list-inline-item">
-                        <a href="#">
-                          <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                          </span>
-                        </a>
-                      </li>
-                    </ul>
-                    <p class="copyright text-muted">Copyright © GEBA Technology 2018</p>
-                  </div>
+
+            <div class="links">
+
+                <ul class="left-side">
+                    <li>
+                        <a href="{% url 'pages:detail' 'about' %}">About</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'blog:index' %}">Blog</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'project:index' %}">Projects</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'pages:detail' 'terms' %}">Terms</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'pages:detail' 'privacy' %}">Privacy</a>
+                    </li>
+
+                </ul>
+
+                <div class="social">
+                    <a href="/youtube/">
+                      <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-youtube fa-stack-1x fa-inverse"></i>
+                      </span>
+                    </a>
+
+                    <a href="/github/">
+                      <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                      </span>
+                    </a>
+
+                    <a href="/linkedin/">
+                      <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                      </span>
+                    </a>
+
+                    <a href="/twitter/">
+                      <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                      </span>
+                    </a>
+
+                    <a href="#">
+                      <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                      </span>
+                    </a>
+
                 </div>
+
+            </div>
+
+            <div class="row">
+              <div class="col-lg-8 col-md-10 mx-auto">
+                <p class="copyright text-muted">Copyright © GEBA Technology 2018</p>
+              </div>
             </div>
 
         </footer>

@@ -7,7 +7,7 @@ from django.db.models.signals import pre_save, pre_delete  # before saving it em
 from django.utils.text import slugify  # turns our title into a slug
 from ..core.models import TimeStampModel
 from django.utils.safestring import mark_safe
-from markdown_deux import markdown
+# from markdown_deux import markdown
 from ..comments.models import Comment
 from ..vote.models import VoteModel
 from django.contrib.contenttypes.models import ContentType
@@ -21,7 +21,7 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 
 def upload_location(instance, filename):
     """returns the location of where to save the post images"""
-    return "%s/%s" % (instance.slug, filename)
+    return "projects/%s/%s" % (instance.slug, filename)
 
 
 class ProjectPostManager(models.Manager):

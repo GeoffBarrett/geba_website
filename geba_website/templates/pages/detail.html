@@ -1,0 +1,54 @@
+{% extends "core/base.html" %}
+
+{% block title %}GEBA - {{ page.title }}{% endblock title %}
+
+{% block header %}
+
+    {% load staticfiles %}
+    {% load crispy_forms_tags %}
+
+{% endblock header %}
+
+{% block content %}
+
+    <!-- Page Header -->
+    {% if page.header_image %}
+        <header class="masthead" style="background-image: url({{ page.header_image.url }})">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="post-heading">
+                    <div class="site-heading">
+                        <h1>{{ page.title }}</h1>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+    {% endif %}
+
+    <article>
+        <div class="container">
+            {% if page.header_image.value == None %}
+                <div class="row no-header">
+                    <div class="col-8 offset-1">
+                        <div class="post-heading">
+                            <h1>{{ page.title }}</h1>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
+            <div class="row justify-content-md-center">
+                <div class="col-8 content-markdown">
+                    <div class="post-body">{{ page.get_html }}</div>
+                </div>
+            </div>
+        </div>
+    </article>
+{% endblock content %}
+
+{% block javascript %}
+
+{% endblock javascript %}

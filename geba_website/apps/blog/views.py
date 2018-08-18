@@ -327,8 +327,6 @@ class PostDislikeToggleAjax(APIView):
     def get(self, request, slug=None, format=None):
         # slug = self.kwargs.get("slug")
 
-        print('hello===========================')
-
         obj = get_object_or_404(Post, slug=slug)
         # url_ = obj.get_absolute_url()  # get the url of the project post
         user = self.request.user  # get the geba_auth

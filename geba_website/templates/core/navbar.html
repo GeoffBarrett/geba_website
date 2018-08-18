@@ -100,10 +100,10 @@
                 <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/">About</a>
+                <a class="nav-link" href="{% url 'pages:detail' 'about' %}">About</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Contact</a>
+                <a class="nav-link" href="{% url 'pages:detail' 'contact' %}">Contact</a>
             </li>
         </ul>
 
