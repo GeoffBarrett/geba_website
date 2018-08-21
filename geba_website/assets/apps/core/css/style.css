@@ -21,13 +21,13 @@ h6 {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-/* this will effect the glyph icons as well*/
 a {
-  color: #212529;
+  color: white;
   -webkit-transition: all 0.2s;
   -moz-transition: all 0.2s;
   transition: all 0.2s;
 }
+
 
 
 .section-heading {
@@ -317,7 +317,6 @@ a {
   #mainNav .navbar-nav.brand-left,#mainNav .navbar-nav.brand-right{
     top: 5px!important;
   }
-
 }
 
 
@@ -339,7 +338,6 @@ a {
 
   #mainNav #xs-sign-in{
     float:right;
-    /*margin-right: auto!important;*/
     margin:0 10px;
   }
 
@@ -360,7 +358,6 @@ a {
   .visible-xs-inline {
     display: inline!important;
   }
-
 }
 
 
@@ -385,7 +382,6 @@ a {
   header.masthead .post-heading .subheading {
     font-size: 30px;
   }
-
 }
 
 @media(max-width:767px) {
@@ -423,7 +419,6 @@ a {
   .signed-in .navbar-toggle{
     margin-right:45px!important;
   }
-
 }
 
 @media only screen and (min-width: 768px) {
@@ -443,20 +438,6 @@ a {
     padding: 10px 20px;
     color: white;
   }
-
-  /*
-  .navbar-header{
-    float:left;
-  }
-
-  .navbar-left{
-    margin-right: auto!important;
-  }
-
-  .navbar-right {
-    float:right!important;
-    flex-direction: row!important;
-  }*/
 
   .navbar-right .dropdown-menu {
     right: 0;
@@ -479,7 +460,6 @@ a {
   }
 
   .navbar-nav {
-    /*margin-right: auto;*/
     margin: 0;
   }
 
@@ -490,7 +470,6 @@ a {
   .navbar-nav.navbar-right:last-child {
     margin-right: -10px;
   }
-
 }
 
 @media(min-width:768px) and (max-width:991px) {
@@ -499,9 +478,11 @@ a {
     border: 0;
     font-size: 20px;
   }
+
   #mainNav .navbar-right .btn_header.btn-primary i {
     margin-right: 0;
   }
+
   footer .links ul li {
     padding-right: 20px;
   }
@@ -519,6 +500,7 @@ a {
     border-bottom: 1px solid transparent;
     background:transparent;
   }
+
   #mainNav #navBrand{
     opacity:0;
   }
@@ -527,6 +509,7 @@ a {
   #mainNav.scrolled{
     background:rgba(0,0,0,.6);
   }
+
   #mainNav.scrolled #navBrand{
     opacity:1;
   }
@@ -548,19 +531,16 @@ a {
 
   .navbar-left{
     margin-right: auto!important;
-    /*float:left!important;*/
   }
 
   .navbar-right {
     float:right!important;
-    /*margin-left: auto!important;*/
     flex-direction: row!important;
   }
 
   #mainNav #brand-text {
     display: none;
   }
-
 }
 
 
@@ -576,13 +556,11 @@ a {
 
   .navbar-right {
     float:right!important;
-    /*margin-left: auto!important;*/
     flex-direction: row!important;
   }
 
   .navbar-header{
     float:left;
-    /*width: 90%;*/
   }
 
   #mainNav #brand-text {
@@ -631,7 +609,6 @@ a {
     display:block;
     position:fixed;
     background:rgba(0,0,0,.6);
-    /*line-height:40px;*/
     line-height:40px;
     text-align:center;
     left:0;
@@ -690,7 +667,6 @@ a {
   #mainNav.open #navBrand{
     opacity:1;
   }
-
 }
 
 
@@ -735,7 +711,6 @@ a {
 }
 
 /* adds coloring to the transparent section below the brand image */
-
 /*
 #mainNav #navBrand .bottom-wrapper .bottom {
   background:#1d1d1d;
@@ -1206,17 +1181,25 @@ footer a {
 
 div.social a {
     color:#212529;
+    text-decoration: none;
 }
+
+div.social a:hover {
+    color:white;
+}
+
+div.social .fa-inverse:hover {
+    color:#02178e;
+}
+
 
 footer .links .social {
     float: right;
 }
 
-
 a.footer2 {
     color: linear-gradient(#484e55, #3A3F44 60%, #313539) !important;
 }
-
 
 .no-header {
     margin-top: 75px;

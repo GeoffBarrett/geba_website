@@ -9,7 +9,7 @@ from .models import Page
 
 class PageAdmin(admin.ModelAdmin):
 
-    list_display = ('title', 'id')
+    list_display = ('slug', 'title', 'id')
     # readonly_fields = ('show_url',)
     #
     # def show_url(self, instance):

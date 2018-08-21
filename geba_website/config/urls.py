@@ -21,6 +21,12 @@ from django.conf.urls.static import static
 from django.views.generic import RedirectView
 
 urlpatterns = [
+    # -------------------- social link redirects -------------------------------
+    re_path(r'^youtube$', RedirectView.as_view(url='https://www.youtube.com/channel/UCoTtKQQhQHXMpCBSINlpO-A',
+                                               permanent=False)),
+    re_path(r'^github$', RedirectView.as_view(url='https://www.github.com/GeoffBarrett', permanent=False)),
+    re_path(r'^twitter$', RedirectView.as_view(url='http://twitter.com/geba_tech', permanent=False)),
+    re_path(r'^linkedin$', RedirectView.as_view(url='https://www.linkedin.com/in/gmbarrett', permanent=False)),
 
     # --------- custom urls ---------------------- #
     re_path(r'^', include(('apps.pages.urls', "pages"))),
@@ -37,12 +43,7 @@ urlpatterns = [
     re_path(r'^summernote/', include('django_summernote.urls')),
     # re_path(r'^tinymce/', include('tinymce.urls')),
 
-    # -------------------- social link redirects -------------------------------
-    re_path(r'^youtube/', RedirectView.as_view(url='https://www.youtube.com/channel/UCoTtKQQhQHXMpCBSINlpO-A',
-                                               permanent=False)),
-    re_path(r'^github/', RedirectView.as_view(url='https://www.github.com/GeoffBarrett', permanent=False)),
-    re_path(r'^twitter/', RedirectView.as_view(url='http://twitter.com/geba_tech', permanent=False)),
-    re_path(r'^linkedin/', RedirectView.as_view(url='https://www.linkedin.com/in/gmbarrett', permanent=False)),
+
 
 
 

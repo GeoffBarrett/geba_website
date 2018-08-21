@@ -29,6 +29,9 @@ class ProjectPostManager(models.Manager):
         """overwriting Post.objects.all()"""
         return super(ProjectPostManager, self).filter(draft=False, publish_date__lte=timezone.now())
 
+    def latest(self, *args, **kwargs):
+        return super(ProjectPostManager, self).filter(draft=False, publish_date__lte=timezone.now())[0]
+
 
 class ProjectManager(models.Manager):
     def active(self, *args, **kwargs):
@@ -36,6 +39,10 @@ class ProjectManager(models.Manager):
         # return super(ProjectManager, self).filter(draft=False).filter(publish_date__lte=timezone.now())
         return super(ProjectManager, self).filter(draft=False, publish_date__lte=timezone.now(),
                                                   authors__isnull=False).exclude(description__exact='')
+
+    def latest(self, *args, **kwargs):
+        return super(ProjectManager, self).filter(draft=False, publish_date__lte=timezone.now(),
+                                                  authors__isnull=False).exclude(description__exact='')[0]
 
 
 class ProjectPost(VoteModel, TimeStampModel):

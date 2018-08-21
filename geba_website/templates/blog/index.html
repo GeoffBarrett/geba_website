@@ -156,9 +156,9 @@
                                         <h2 class="card-title">
                                             <div class="row">
                                                 {% if request.user == post.author or request.user.is_superuser %}
-                                                    <div class="col-11">
+                                                <div class="col-11">
                                                 {% else %}
-                                                    <div class="col-12">
+                                                <div class="col-12">
                                                 {% endif %}
 
                                                 {{ post.title }}
