@@ -1,7 +1,7 @@
 from django.views.generic import DetailView, UpdateView
 from .models import Page
 from django.shortcuts import get_object_or_404, render
-from .forms import PageForm
+from .forms import PageForm, ContactForm
 from django.contrib import messages
 import json
 from django.core import serializers
@@ -87,6 +87,28 @@ class HomeView(DetailView):
         context['Latest'] = []
         context['Latest_List'] = self.latest_models_list
         for i, latest_model in enumerate(self.latest_models):
-            context['Latest'].append([self.latest_models_list[i], latest_model.objects.latest()])
+            latest_m = latest_model.objects.latest()
+            if latest_m:
+                context['Latest'].append([self.latest_models_list[i], latest_m])
 
         return self.render_to_response(context)
+
+
+class ContactView(DetailView):
+    """This view will be used to GET the detail data"""
+    # success_msg = 'Comment Added!'
+    model = Page  # generic views need to know which model to act upon
+    template_name = 'pages/contact.html'  # tells the view to use this template instead of it's default
+    form_class = ContactForm
+
+    def get_object(self):
+        # make it so only the admin can see items in the future or that are drafts
+        # don't use annotate, use vote_by in this case, annotate only works when __iter__ is called
+        instance = get_object_or_404(Page, slug='contact')
+        return instance
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        form = self.form_class(request.GET or None, request.FILES or None)
+        return render(request, self.template_name, {'form': form, 'page': self.object})
+

@@ -1,0 +1,87 @@
+{% extends "core/base.html" %}
+
+{% block title %}GEBA - Contact {% endblock title %}
+
+{% block header %}
+
+    {% load staticfiles %}
+    {% load crispy_forms_tags %}
+
+{% endblock header %}
+
+{% block content %}
+
+    <!-- Page Header -->
+    {% if page.header_image %}
+        <header class="masthead" style="background-image: url({{ page.header_image.url }})">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="post-heading">
+                    <div class="site-heading">
+                        <h1>{{ page.title }}</h1>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+    {% endif %}
+
+    <article>
+        <div class="container">
+            {% if page.header_image == '' %}
+                <div class="row no-header justify-content-md-center">
+                    {% if user.is_superuser %}
+                        <div class="col-8 offset-1">
+                            <div class="post-heading">
+                                <h1>{{ page.title }}</h1>
+                            </div>
+                            <hr>
+                        </div>
+                        <div class="col-1">
+                            <a href="{% url 'pages:update' page.slug %}">
+                                <span class="fa fa-pencil"></span></a>
+                        </div>
+                    {% else %}
+                        <div class="col-8">
+                            <div class="post-heading">
+                                <h1>{{ page.title }}</h1>
+                                <hr>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endif %}
+
+            <div class="row justify-content-md-center mt-3">
+                {% if user.is_superuser %}
+                    <div class="col-8 content-markdown">
+                        <div class="post-body">{{ page.get_html }}</div>
+                    </div>
+                    {% if page.header_image %}
+                        <div class="col-1">
+                            <a href="{% url 'pages:update' page.slug %}"><span class="fa fa-pencil"></span></a>
+                        </div>
+                    {% endif %}
+                {% else %}
+                    <div class="col-8 content-markdown">
+                        <div class="post-body">{{ page.get_html }}</div>
+                    </div>
+                {% endif %}
+                <div class="col-8">
+                    <form role="form" action="" method="post">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </article>
+{% endblock content %}
+
+{% block javascript %}
+
+{% endblock javascript %}

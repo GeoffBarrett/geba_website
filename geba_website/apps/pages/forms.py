@@ -8,7 +8,7 @@ from django_summernote.widgets import SummernoteWidget
 
 class PageForm(forms.ModelForm):
 
-    body = forms.CharField(widget=SummernoteWidget())
+    body = forms.CharField(widget=SummernoteWidget(), required=False)
 
     class Meta:
         model = Page
@@ -24,3 +24,15 @@ class PageForm(forms.ModelForm):
 
         return publish_date
     '''
+
+
+class ContactForm(forms.Form):
+    first_name = forms.CharField(required=True, label='First Name')
+    last_name = forms.CharField(required=True, label='Last Name')
+    email = forms.EmailField(required=True, label='E-Mail')
+
+    content = forms.CharField(
+        required=True,
+        widget=forms.Textarea,
+        label='Message'
+    )

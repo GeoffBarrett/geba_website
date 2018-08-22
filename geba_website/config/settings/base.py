@@ -43,8 +43,7 @@ DEBUG = False
 
 # A list of all the people who get code error notifications.
 ADMINS = (
-    ('Geoffrey Barrett', 'gmbarrett313@gmail.com'),
-    ('Geoffrey Barrett', 'Geoffrey.M.Barrett@gmail.com')
+    ('Geoffrey Barrett', 'geoff@geba.technology')
 )
 
 MANAGERS = ADMINS
@@ -150,6 +149,7 @@ THIRD_PARTY_APPS = (
 PROJECT_APPS = (
     'apps.blog',  # the Blog app
     'apps.comments',
+    # 'apps.contact',
     'apps.core',  # adding the core page to the settings
     'apps.geba_auth',
     'apps.pages',
@@ -159,7 +159,7 @@ PROJECT_APPS = (
     'apps.vote',
 )
 
-CSRF_USE_SESSIONS = False  # djangos's default
+CSRF_USE_SESSIONS = False  # Djangos's default
 
 ##########################
 
