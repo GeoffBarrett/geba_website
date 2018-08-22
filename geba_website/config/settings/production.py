@@ -18,7 +18,7 @@ DEBUG = False
 
 # -------------------- HOST CONFIGURATION ----------------------- #
 # See: https://docs.djangoproject.com/en/1.5/releases/1.5/#allowed-hosts-required-in-production
-ALLOWED_HOSTS = ['www.geba.tech']
+ALLOWED_HOSTS = ['www.geba.technology']
 # ---------------- END HOST CONFIGURATION --------------------- #
 
 
@@ -30,7 +30,7 @@ EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#default-from-email
-DEFAULT_FROM_EMAIL = '%s Team <contact@%s>' % (PROJECT_NAME, PROJECT_DOMAIN)
+DEFAULT_FROM_EMAIL = 'geoff@geba.technology'
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-host
 EMAIL_HOST = 'smtp.gmail.com'

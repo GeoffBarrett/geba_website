@@ -27,11 +27,11 @@ class PageForm(forms.ModelForm):
 
 
 class ContactForm(forms.Form):
-    first_name = forms.CharField(required=True, label='First Name')
-    last_name = forms.CharField(required=True, label='Last Name')
-    email = forms.EmailField(required=True, label='E-Mail')
+    contact_first_name = forms.CharField(required=True, label='First Name')
+    contact_last_name = forms.CharField(required=True, label='Last Name')
+    contact_email = forms.EmailField(required=True, label='E-Mail')
 
-    content = forms.CharField(
+    contact_content = forms.CharField(
         required=True,
         widget=forms.Textarea,
         label='Message'

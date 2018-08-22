@@ -1,6 +1,6 @@
 from django.views.generic import DetailView, UpdateView
 from .models import Page
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, render_to_response, HttpResponseRedirect
 from .forms import PageForm, ContactForm
 from django.contrib import messages
 import json
@@ -8,8 +8,10 @@ from django.core import serializers
 from ..core.models import ModelFormFailureHistory
 from ..blog.models import Post
 from ..project.models import Project, ProjectPost
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse_lazy
 from .utils import check_page_rights
+from django.core.mail import EmailMessage
+from django.template.loader import get_template
 # Create your views here.
 
 
@@ -112,3 +114,37 @@ class ContactView(DetailView):
         form = self.form_class(request.GET or None, request.FILES or None)
         return render(request, self.template_name, {'form': form, 'page': self.object})
 
+    def post(self, request, *args, **kwargs):
+        """performs a post request"""
+
+        form = self.form_class(request.POST or None, request.FILES or None)
+
+        if form.is_valid():
+
+            contact_first_name = request.POST.get('contact_first_name')
+            contact_last_name = request.POST.get('contact_last_name')
+            contact_email = request.POST.get('contact_email')
+
+            contact_content = request.POST.get('contact_content', '')
+
+            template = get_template('pages/contact_template.txt')
+
+            context = {'contact_name': '%s %s' % (contact_first_name, contact_last_name),
+                       'contact_email': contact_email,
+                       'contact_content': contact_content}
+
+            content = template.render(context)
+
+            email = EmailMessage(
+                "New Contact Form Submission",
+                content,
+                "GEBA Technology" + "",
+                ['geoff@geba.technology'],
+                headers={'Reply-To': contact_email}
+            )
+            email.send()
+
+            return HttpResponseRedirect(reverse_lazy('pages:contact'))
+
+        else:
+            return render_to_response(self.template_name, {'form': form, 'page': self.object})
