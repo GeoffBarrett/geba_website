@@ -10,14 +10,12 @@ from ..blog.models import Post
 from ..project.models import Project, ProjectPost
 from django.urls import reverse_lazy
 from .utils import check_page_rights
-from django.core.mail import EmailMessage
+from django.core.mail import EmailMessage, send_mail
 from django.template.loader import get_template
 # Create your views here.
 
 
 class PageActionMixin(object):
-    # the fields that geba_auth will be able to type in the forms for CreateView
-    # fields = ('published', 'title', 'body')
 
     @property
     def success_msg(self):
@@ -53,7 +51,9 @@ class PageUpdateView(PageActionMixin, UpdateView):
     def get(self, request, slug):
         """when the geba_auth executes a get request, display blank registration form"""
         self.object = self.get_object()
+
         self.success_url = reverse_lazy('pages:detail', args=self.object.slug)
+
         form = self.form_class(request.GET or None, request.FILES or None, instance=self.object)
         return render(request, self.template_name, {'form': form})
 
@@ -89,6 +89,7 @@ class HomeView(DetailView):
         context['Latest'] = []
         context['Latest_List'] = self.latest_models_list
         for i, latest_model in enumerate(self.latest_models):
+            print(latest_model)
             latest_m = latest_model.objects.latest()
             if latest_m:
                 context['Latest'].append([self.latest_models_list[i], latest_m])
@@ -135,14 +136,10 @@ class ContactView(DetailView):
 
             content = template.render(context)
 
-            email = EmailMessage(
-                "New Contact Form Submission",
-                content,
-                "GEBA Technology" + "",
-                ['geoff@geba.technology'],
-                headers={'Reply-To': contact_email}
-            )
-            email.send()
+            subject = 'GEBA Contact Form - %s %s ' % (contact_first_name, contact_last_name)
+            from_mail = 'geoff@geba.technology'
+            to_mail = ['geoff@geba.technology']
+            send_mail(subject, content, from_mail, to_mail, fail_silently=False)
 
             return HttpResponseRedirect(reverse_lazy('pages:contact'))
 

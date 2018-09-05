@@ -26,7 +26,10 @@ class PostManager(models.Manager):
 
     def latest(self, *args, **kwargs):
         """overwriting Post.objects.all()"""
-        return super(PostManager, self).filter(draft=False, publish_date__lte=timezone.now())[0]
+        try:
+            return super(PostManager, self).filter(draft=False, publish_date__lte=timezone.now())[0]
+        except IndexError:
+            return []
 
 
 class Post(VoteModel, TimeStampModel):

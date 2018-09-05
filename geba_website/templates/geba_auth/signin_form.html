@@ -16,8 +16,8 @@
   <div class="container">
     <div class="row">
       <div class="col-8 mx-auto">
-        <div class="post-heading">
-          <h1>Register</h1>
+        <div class="site-heading">
+          <h1>Sign In!</h1>
         </div>
       </div>
     </div>
@@ -31,7 +31,7 @@
 <!-- Top content -->
 <article>
 
-    <div class="container">
+    <div class="container-fluid">
 
         <div class="row justify-content-center">
             <div class="col-5">
@@ -42,46 +42,23 @@
                 <form role="form" action="{% url 'geba_auth:login' %}" method="post">
                     {% csrf_token %}
 
-                    <!--
-                    <div class="form-group">
-                        <div>
-                            <span class="text-danger small">{{ login_form.username.errors }}</span>
-                        </div>
-                        <label class="sr-only" for="{{ login_form.username.id_for_label }}">Username</label>
-                        <input type="text" name="username" placeholder="Username..." class="form-username form-control" id="{{ login_form.username.id_for_label }}">
-                    </div>
-
-                    <div class="form-group">
-                        <div>
-                            <span class="text-danger small">{{ login_form.password.errors }}</span>
-                        </div>
-                        <label class="sr-only" for="{{ login_form.password.id_for_label }}">Password</label>
-                        <input type="password" name="password" placeholder="Password..." class="form-password form-control" id="{{ login_form.password.id_for_label }}">
-                    </div>
-
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox" value="remember-me"><h5>Remember me</h5>
-                      </label>
-                    </div>-->
-
                     {{ form|crispy }}
 
-                    <button type="submit" name="login_btn" class="btn">Sign in!</button>
+                    <button type="submit" name="login_btn" class="btn btn-primary">Sign in</button>
                 </form>
 
 
                 <div class="social-login">
-                    <h3>...or login with:</h3>
+                    <h3 class="mt-1">...or login with:</h3>
                     <div class="social-login-buttons">
-                        <a class="btn btn-link-2" href="#">
+                        <a class="btn btn-primary" href="#">
                             <i class="fa fa-facebook"></i> Facebook
                         </a>
-                        <a class="btn btn-link-2" href="#">
+                        <a class="btn btn-primary" href="#">
                             <i class="fa fa-twitter"></i> Twitter
                         </a>
-                        <a class="btn btn-link-2" href="#">
-                            <i class="fa fa-google-plus"></i> Google Plus
+                        <a class="btn btn-primary" href="#">
+                            <i class="fa fa-github"></i> GitHub
                         </a>
                     </div>
                 </div>

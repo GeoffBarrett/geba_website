@@ -15,11 +15,6 @@
 
         <title>{% block title %}{% endblock title %}</title> <!-- This is the title that is seen in the tab -->
 
-        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-              crossorigin="anonymous">-->
-        <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
-              integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">-->
         <link rel='stylesheet' href="{% static 'apps/core/css/bootstrap.min.css' %}"/>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel='stylesheet' href="{% static 'apps/core/css/style.css' %}"/>
@@ -34,7 +29,6 @@
     <body class="body">
 
         <div>
-
             <!--{% analytical_body_top %}-->
 
             {% include "core/navbar.html" %}
@@ -45,71 +39,69 @@
         </div>
 
         <hr>
+
         <footer>
+            <div class="row justify-content-center">
+                <div class="links">
+                    <ul class="left-side">
+                        <li>
+                            <a href="{% url 'pages:detail' 'about' %}">About</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'blog:index' %}">Blog</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'project:index' %}">Projects</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'pages:detail' 'terms' %}">Terms</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'pages:detail' 'privacy' %}">Privacy</a>
+                        </li>
+                    </ul>
 
-            <div class="links">
+                    <div class="social">
+                        <a href="/youtube">
+                          <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-youtube fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
 
-                <ul class="left-side">
-                    <li>
-                        <a href="{% url 'pages:detail' 'about' %}">About</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'blog:index' %}">Blog</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'project:index' %}">Projects</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'pages:detail' 'terms' %}">Terms</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'pages:detail' 'privacy' %}">Privacy</a>
-                    </li>
+                        <a href="/github">
+                          <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
 
-                </ul>
+                        <a href="/linkedin">
+                          <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
 
-                <div class="social">
-                    <a href="/youtube">
-                      <span class="fa-stack fa-lg">
-                        <i class="fa fa-circle fa-stack-2x"></i>
-                        <i class="fa fa-youtube fa-stack-1x fa-inverse"></i>
-                      </span>
-                    </a>
+                        <a href="/twitter">
+                          <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
 
-                    <a href="/github">
-                      <span class="fa-stack fa-lg">
-                        <i class="fa fa-circle fa-stack-2x"></i>
-                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                      </span>
-                    </a>
-
-                    <a href="/linkedin">
-                      <span class="fa-stack fa-lg">
-                        <i class="fa fa-circle fa-stack-2x"></i>
-                        <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-                      </span>
-                    </a>
-
-                    <a href="/twitter">
-                      <span class="fa-stack fa-lg">
-                        <i class="fa fa-circle fa-stack-2x"></i>
-                        <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                      </span>
-                    </a>
-
-                    <a href="#">
-                      <span class="fa-stack fa-lg">
-                        <i class="fa fa-circle fa-stack-2x"></i>
-                        <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                      </span>
-                    </a>
-
+                        <a href="#">
+                          <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                    </div>
                 </div>
-
             </div>
 
-            <div class="row">
-              <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="row justify-content-center">
+              <div class="col-10">
                 <p class="copyright text-muted">Copyright © GEBA Technology 2018</p>
               </div>
             </div>
@@ -137,7 +129,7 @@
                 crossorigin="anonymous"></script>
 
         <script src="{% static 'apps/core/js/navbar.js' %}"></script>
-        <script src="{% static 'apps/core/js/custom.js' %}"></script>
+        <!--<script src="{% static 'apps/core/js/custom.js' %}"></script>-->
 
         {% block javascript %}
         {% endblock javascript %}

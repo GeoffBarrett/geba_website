@@ -134,7 +134,6 @@ THIRD_PARTY_APPS = (
     # 'django_extensions',
     # 'django_rq',
     'django_summernote',
-    # 'easy_timezones',
     # 'floppyforms',
     'formtools',
     'grappelli',
@@ -146,10 +145,18 @@ THIRD_PARTY_APPS = (
     # 'tinymce',  # another WYSIWYG editor
 )
 
+# usually I would put these in 3rd party, but I need them in a specific order
+THREADEDCOMMENTS_APPS = (
+    'apps.threadedcomments',
+    'django_comments',
+    'django.contrib.sites',
+)
+
+COMMENTS_APP = 'apps.threadedcomments'
+
 PROJECT_APPS = (
     'apps.blog',  # the Blog app
     'apps.comments',
-    # 'apps.contact',
     'apps.core',  # adding the core page to the settings
     'apps.geba_auth',
     'apps.pages',
@@ -163,7 +170,7 @@ CSRF_USE_SESSIONS = False  # Djangos's default
 
 ##########################
 
-INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + THIRD_PARTY_APPS
+INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + THIRD_PARTY_APPS + THREADEDCOMMENTS_APPS
 
 MIDDLEWARE = (
     'django.middleware.security.SecurityMiddleware',
@@ -173,7 +180,6 @@ MIDDLEWARE = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # 'easy_timezones.middleware.EasyTimezoneMiddleware',
 )
 
 # A string representing the full Python import path to your root URLconf. For example: "mydjangoapps.urls".

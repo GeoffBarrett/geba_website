@@ -1,0 +1,10 @@
+{% autoescape off %}
+Hello {{ user.username }}!
+
+Please click on the link below to confirm your registration:
+
+http://{{ domain }}{% url 'geba_auth:activate' uidb64=uid token=token %}
+
+Sincerely,
+Geoff
+{% endautoescape %}

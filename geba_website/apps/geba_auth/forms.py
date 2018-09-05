@@ -5,6 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class UserCreationForm(forms.ModelForm):
+    email = forms.EmailField(max_length=254, help_text='Required. Use a valid email address.')
     password1 = forms.CharField(widget=forms.PasswordInput, label=_('Password'))
     password2 = forms.CharField(widget=forms.PasswordInput, label=_('Re-Type Password'))
 

@@ -2,9 +2,15 @@
     display:none!important;
 }
 
+/*
 p {
   line-height: 1.5;
   margin: 30px 0;
+}
+*/
+
+img.note-float-left {
+    margin-right: 10px;
 }
 
 p a {
@@ -27,8 +33,6 @@ a {
   -moz-transition: all 0.2s;
   transition: all 0.2s;
 }
-
-
 
 .section-heading {
   font-size: 36px;
@@ -263,18 +267,18 @@ a {
   #mainNav.is-fixed {
     /* when the user scrolls down, we hide the header right above the viewport */
     position: fixed;
-    top: -67px;
+    top: -67px!important;
     -webkit-transition: -webkit-transform 0.2s;
     -moz-transition: -moz-transform 0.2s;
     transition: transform 0.2s;
-    border-bottom: 1px solid white;
-    background-color: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid transparent;
+    background-color: rgba(0, 0, 0, 0.55);
   }
 
   #mainNav.is-fixed.is-visible {
     /* added this so that the geba icon does not show with both is-fixed and is-visible */
     position: fixed;
-    top: -50px;
+    top: -50px!important;
     -webkit-transition: -webkit-transform 0.2s;
     -moz-transition: -moz-transform 0.2s;
     transition: transform 0.2s;
@@ -319,6 +323,36 @@ a {
   }
 }
 
+#mainNav.is-fixed {
+  /* when the user scrolls down, we hide the header right above the viewport */
+  position: fixed;
+  top: -67px;
+  -webkit-transition: -webkit-transform 0.2s;
+  -moz-transition: -moz-transform 0.2s;
+  transition: transform 0.2s;
+  border-bottom: 1px solid transparent;
+  background-color: rgba(0, 0, 0, 0.55);
+}
+
+#mainNav.is-fixed.is-visible {
+  /* added this so that the geba icon does not show with both is-fixed and is-visible */
+  position: fixed;
+  top: -50px;
+  -webkit-transition: -webkit-transform 0.2s;
+  -moz-transition: -moz-transform 0.2s;
+  transition: transform 0.2s;
+  border-bottom: 1px solid transparent;
+  background-color: rgba(0, 0, 0, 0.55);
+}
+
+#mainNav.is-visible {
+  /* if the user changes the scrolling direction, we show the header */
+  -webkit-transform: translate3d(0, 100%, 0);
+  -moz-transform: translate3d(0, 100%, 0);
+  -ms-transform: translate3d(0, 100%, 0);
+  -o-transform: translate3d(0, 100%, 0);
+  transform: translate3d(0, 100%, 0);
+}
 
 @media(max-width:991px){
   .visible-xs-inline {
@@ -429,7 +463,7 @@ a {
 
 @media(min-width: 768px) {
 
-  #mainNav{
+  #mainNav {
     border-bottom: 1px solid transparent;
     background:transparent;
   }
@@ -768,6 +802,12 @@ a {
 
 #mainNav .navbar-nav.navbar-user {
   height: 100%;
+}
+
+#user-menu ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
 #mainNav .navbar-nav.navbar-user:hover #user-menu {
@@ -1140,7 +1180,8 @@ hr {
 }
 
 footer .links {
-    margin-bottom: 20px;
+    width: calc(100% - 40px);
+    /*width: 100%;*/
 }
 
 footer .links ul {
@@ -1148,7 +1189,6 @@ footer .links ul {
     padding: 0;
     margin: 0;
     float: left;
-    /*width: calc(100% - 150px);*/
 }
 
 footer .links ul li {
@@ -1158,6 +1198,7 @@ footer .links ul li {
 }
 
 footer {
+    height: 65px;
     color: #fff;
     padding: 20px;
     font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -1184,6 +1225,12 @@ div.social a {
     text-decoration: none;
 }
 
+.left-side a:hover {
+    color:#7A8288;
+    text-decoration: none;
+}
+
+
 div.social a:hover {
     color:white;
 }
@@ -1192,6 +1239,10 @@ div.social .fa-inverse:hover {
     color:#02178e;
 }
 
+
+footer p {
+  margin-top: 0px;
+}
 
 footer .links .social {
     float: right;

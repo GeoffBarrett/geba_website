@@ -1,8 +1,8 @@
 Contact Name:
 {{ contact_name }}
 
-Email:
+Reply Email:
 {{ contact_email }}
 
-Content:
+Message:
 {{ contact_content|safe|striptags }}

@@ -71,7 +71,7 @@
                     <ul>
                         <li><a class="dropdown-item" href="#">My Account</a></li>
                         {% if user.is_superuser %}
-                        <li><a class="dropdown-item" href="/admin">Admin</a></li>
+                        <li><a class="dropdown-item" href="/admin/">Admin</a></li>
                         {% endif %}
                         <li><a class="dropdown-item" href="{% url 'geba_auth:logout' %}">Logout</a></li>
                     </ul>

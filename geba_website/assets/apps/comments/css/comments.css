@@ -1,0 +1,187 @@
+.Comments-All {
+    padding: 0px;
+}
+
+div, i {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+.fRaBQc {
+    box-sizing: border-box;
+    padding-right: 16px;
+    padding-bottom: 16px;
+    margin: 16px 16px 0px 10px;
+    /* if you want to change the color of the entire comments section */
+    /*background: rgb(255, 255, 255);*/
+}
+
+.gxtxxZ {
+    padding: 0px;
+}
+
+.cMWqxb {
+    box-sizing: border-box;
+    padding-left: 16px;
+    position: relative;
+    width: 100%;
+    overflow: visible;
+    transition: background 1s ease 0s;
+}
+
+.jDSCcP {
+    bottom: 0px;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    z-index: 2;
+}
+
+.czhQfm {
+    box-sizing: border-box;
+    display: inline-block;
+    height: 100%;
+    vertical-align: top;
+}
+
+.czhQfm .threadline-container-0 {
+    bottom: 0px;
+    height: calc(100% - 56px);
+    position: absolute;
+}
+
+.dsTpoY {
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    height: 100%;
+    margin-left: 5px;
+    vertical-align: top;
+    width: 16px;
+}
+
+.dsTpoY > .threadline {
+    display: block;
+    height: 100%;
+    width: 50%;
+    border-right: 2px solid rgb(237, 239, 241);
+}
+
+.cWZcoW.top-level {
+    margin-top: 16px;
+}
+
+.cWZcoW {
+    display: flex;
+    margin-left: -23px;
+    position: relative;
+    border-radius: 4px;
+    padding: 8px 4px 0px 0px;
+    transition: color 0.5s ease 0s, fill 0.5s ease 0s, background 1s ease 0s;
+    background: transparent;
+}
+
+.TUZqt {
+    -webkit-box-align: center;
+    align-items: center;
+    display: flex;
+    fill: inherit;
+    flex-direction: column;
+    min-width: 24px;
+    max-height: 40px;
+    text-align: center;
+    z-index: 3;
+    margin: 6px -1px -2px 9px;
+}
+
+.kcgtcY {
+    box-sizing: border-box;
+    opacity: 1;
+    margin-left: 4px;
+    padding-left: 4px;
+    padding-top: 4px;
+    max-width: 800px;
+    width: 100%;
+    border-width: 1px;
+    border-style: solid;
+    border-color: transparent;
+    border-image: initial;
+    border-radius: 4px;
+}
+
+.knzxDr {
+    -webkit-box-align: baseline;
+    align-items: baseline;
+    line-height: 16px;
+    display: flex;
+    margin-left: 0px;
+    min-height: 18px;
+    transition: opacity 0.2s ease 0s;
+}
+
+.hPglCh {
+    display: inline-block;
+    flex: 0 0 auto;
+}
+
+.eHkfHQ:last-child {
+    padding-right: 8px;
+}
+
+.eHkfHQ {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    color: rgb(124, 124, 124);
+    padding-left: 8px;
+    flex: 0 0 auto;
+}
+
+.fCAQfK {
+    width: 100%;
+    padding: 2px 0px;
+}
+
+/*
+.ckueCN {
+    font-family: "Noto Sans", "Helvetica Neue", "Segoe UI", Helvetica, Verdana, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    color: rgb(28, 28, 28);
+    word-break: break-word;
+    padding: 5px 8px;
+    overflow: auto;
+}*/
+
+p.Comment-Content {
+    margin-bottom: 0px;
+}
+
+.iEJDri:last-child {
+    padding-bottom: 0px;
+}
+
+.iEJDri:first-child {
+    padding-top: 0px;
+}
+
+.iEJDri {
+    padding: 0.25em 0px;
+}
+
+.bMNdIG {
+    display: flex;
+    flex-direction: row;
+    -webkit-box-align: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    color: rgb(135, 138, 140);
+    margin: 4px 0px 8px;
+}

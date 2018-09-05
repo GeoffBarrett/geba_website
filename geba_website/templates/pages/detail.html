@@ -9,12 +9,16 @@
 
 {% endblock header %}
 
+{% block css %}
+    <link rel='stylesheet' href="{% static 'apps/pages/css/pages.css' %}"/>
+{% endblock css %}
+
 {% block content %}
 
     <!-- Page Header -->
     {% if page.header_image %}
         <header class="masthead" style="background-image: url({{ page.header_image.url }})">
-          <div class="container">
+          <div class="container-fluid">
             <div class="row">
               <div class="col-lg-8 col-md-10 mx-auto">
                 <div class="post-heading">
@@ -29,11 +33,11 @@
     {% endif %}
 
     <article>
-        <div class="container">
+        <div class="container-fluid">
             {% if page.header_image == '' %}
-                <div class="row no-header justify-content-md-center">
+                <div class="row no-header justify-content-center">
                     {% if user.is_superuser %}
-                        <div class="col-8 offset-1">
+                        <div class="col-10 offset-1">
                             <div class="post-heading">
                                 <h1>{{ page.title }}</h1>
                             </div>
@@ -44,7 +48,7 @@
                                 <span class="fa fa-pencil"></span></a>
                         </div>
                     {% else %}
-                        <div class="col-8">
+                        <div class="col-10">
                             <div class="post-heading">
                                 <h1>{{ page.title }}</h1>
                                 <hr>
@@ -54,9 +58,9 @@
                 </div>
             {% endif %}
 
-            <div class="row justify-content-md-center mt-3">
+            <div class="row justify-content-center mt-3">
                 {% if user.is_superuser %}
-                    <div class="col-8 content-markdown">
+                    <div class="col-10 content-markdown">
                         <div class="post-body">{{ page.get_html }}</div>
                     </div>
                     {% if page.header_image %}
@@ -65,7 +69,7 @@
                         </div>
                     {% endif %}
                 {% else %}
-                    <div class="col-8 content-markdown">
+                    <div class="col-10 content-markdown">
                         <div class="post-body">{{ page.get_html }}</div>
                     </div>
                 {% endif %}

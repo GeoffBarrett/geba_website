@@ -29,9 +29,9 @@
     {% endif %}
 
     <article>
-        <div class="container">
+        <div class="container-fluid">
             {% if page.header_image == '' %}
-                <div class="row no-header justify-content-md-center">
+                <div class="row no-header justify-content-center">
                     {% if user.is_superuser %}
                         <div class="col-8 offset-1">
                             <div class="post-heading">
@@ -54,7 +54,7 @@
                 </div>
             {% endif %}
 
-            <div class="row justify-content-md-center mt-3">
+            <div class="row justify-content-center mt-3">
                 {% if user.is_superuser %}
                     <div class="col-8 content-markdown">
                         <div class="post-body">{{ page.get_html }}</div>

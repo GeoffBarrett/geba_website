@@ -1,0 +1,48 @@
+{% for comment in comments %}
+    <hr>
+    <div class="row">
+        <div class="col-1">
+            {% include "comments/comment_vote.html" %}
+        </div>
+        <div class="col-8">
+            <blockquote>
+                <p>{{ comment.content }}</p>
+
+                {% children_annotate comment user.id as child_comments %}
+
+                {% include 'comments/comment_footer.html' %}
+
+                <div class="comment-reply">
+
+                    {% for child_comment in child_comments %}
+                        <hr>
+                        <div class="row">
+                            <div class="col-1">
+                                {% include "comments/child_comment_vote.html" %}
+                            </div>
+                            <div class="col-8">
+                                {% include 'comments/child_comment.html' %}
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                    <form method="POST" action="{% url 'blog:detail' post.slug %}">
+                        {% csrf_token %}
+                        {{ comment_form|crispy }}
+                        <input type="hidden" name="parent_id" value="{{ comment.id }}">
+                        <input type="submit" value="Reply" class="btn btn-default">
+                    </form>
+
+                    <!-- toggle-able help text -->
+                    <a class="markdown-help-btn" href="#">Formatting Help</a>
+
+                    <div class="markdown-help">
+                        {% markdown_cheatsheet %}
+                    </div>
+                </div>
+
+            </blockquote>
+        </div>
+    </div>
+
+{% endfor %}

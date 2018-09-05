@@ -30,7 +30,10 @@ class ProjectPostManager(models.Manager):
         return super(ProjectPostManager, self).filter(draft=False, publish_date__lte=timezone.now())
 
     def latest(self, *args, **kwargs):
-        return super(ProjectPostManager, self).filter(draft=False, publish_date__lte=timezone.now())[0]
+        try:
+            return super(ProjectPostManager, self).filter(draft=False, publish_date__lte=timezone.now())[0]
+        except IndexError:
+            return []
 
 
 class ProjectManager(models.Manager):
@@ -41,8 +44,11 @@ class ProjectManager(models.Manager):
                                                   authors__isnull=False).exclude(description__exact='')
 
     def latest(self, *args, **kwargs):
-        return super(ProjectManager, self).filter(draft=False, publish_date__lte=timezone.now(),
-                                                  authors__isnull=False).exclude(description__exact='')[0]
+        try:
+            return super(ProjectManager, self).filter(draft=False, publish_date__lte=timezone.now(),
+                                                      authors__isnull=False).exclude(description__exact='')[0]
+        except IndexError:
+            return []
 
 
 class ProjectPost(VoteModel, TimeStampModel):

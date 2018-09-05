@@ -1,0 +1,50 @@
+{% extends "core/base.html" %} <!--  extends path starting from templates directory, concatenates all contents of templates -->
+
+{% block title %}GEBA - Sign In{% endblock %}
+
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block css %}
+<link rel='stylesheet' href="{% static 'apps/core/css/form_style.css' %}"/>
+
+{% endblock css %}
+
+{% block header %}
+
+<header class="masthead">
+  <div class="container">
+    <div class="row">
+      <div class="col-8 mx-auto">
+        <div class="site-heading">
+          <h1>Sign In!</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+{% endblock header %}
+
+
+{% block content %}
+<!-- Top content -->
+<article>
+
+    <div class="container-fluid">
+
+        <div class="row justify-content-center">
+            <div class="col-5">
+                <h3>Email Activation Sent!</h3>
+                <p>An e-mail has been sent to your account, please activate so you can do all the cool things on this website.</p>
+            </div>
+        </div>
+    </div>
+
+</article>
+
+{% endblock content %}
+
+{% block java %}
+
+{% endblock java %}

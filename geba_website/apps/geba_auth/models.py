@@ -20,3 +20,4 @@ class User(AbstractUser):
     width_field = models.IntegerField(default=0)
     height_field = models.IntegerField(default=0)
 
+    email_confirmed = models.BooleanField(default=False)
