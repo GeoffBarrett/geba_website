@@ -154,7 +154,7 @@
                                             {% csrf_token %}
                                             {{ comment_form|crispy }}
                                             <input type="hidden" name="parent_id" value="{{ comment.id }}">
-                                            <input type="submit" value="Reply" class="btn btn-default">
+                                            <input type="submit" value="Reply" class="btn btn-primary">
                                         </form>
 
                                         <!-- toggle-able help text -->
@@ -196,7 +196,6 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="DeleteProjectPostModalLabel">Delete Post</h4>
               </div>
               <div class="modal-body">
@@ -205,8 +204,8 @@
               <div class="modal-footer">
                 <form method="POST" action="{% url 'project:delete_post' projectpost.slug %}">
                     {% csrf_token %}
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <input type="submit" value="Delete" class="btn btn-default"/>
+                    <button type="button submit" class="btn btn-primary" value="Delete" >Delete</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </form>
               </div>
             </div>

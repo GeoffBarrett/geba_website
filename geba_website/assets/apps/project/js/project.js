@@ -8,10 +8,11 @@ $('#DeleteProjectModalIndex').on('show.bs.modal', function (event) {
     var csrf = button.data('csrf');
     modal.find('.modal-title').text('Delete Project!')
 
-    modal.find('.modal-body ').text('Do you want to delete the following Project: ' + content + "?")
+    modal.find('.modal-body ').text('Do you want to delete the following Project:\n\n ' + content + "?")
 
     modal.find('.modal-footer ').html(
     '<form method="POST" ' + url + csrf +
-    '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>' +
-    '<input type="submit" value="Delete" class="btn btn-default"/></form>')
+    '<button type="button submit" class="btn btn-primary modal_btn">Delete</button>' +
+    '<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>' +
+    '</form>')
 })
