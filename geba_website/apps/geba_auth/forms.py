@@ -6,19 +6,31 @@ from django.utils.translation import ugettext_lazy as _
 
 class UserCreationForm(forms.ModelForm):
     email = forms.EmailField(max_length=254, help_text='Required. Use a valid email address.')
-    password1 = forms.CharField(widget=forms.PasswordInput, label=_('Password'))
+    password1 = forms.CharField(widget=forms.PasswordInput, label=_('Password'),
+                                help_text='Required. Passwords must have at least 8 characters!')
     password2 = forms.CharField(widget=forms.PasswordInput, label=_('Re-Type Password'))
 
     class Meta:
         model = User
         fields = ('username', 'email', 'password1', 'password2')
 
+    def clean_password1(self):
+        password1 = self.cleaned_data.get("password1")
+        if len(password1) < 8:
+            raise forms.ValidationError("Password must have at least 8 characters!")
+
+        return password1
+
     def clean_password2(self):
         # Check that the two password entries match
         password1 = self.cleaned_data.get("password1")
         password2 = self.cleaned_data.get("password2")
         if password1 and password2 and password1 != password2:
-            raise forms.ValidationError("Passwords don't match")
+            raise forms.ValidationError("Passwords don't match!")
+
+        if len(password2) < 8:
+            raise forms.ValidationError("Password must have at least 8 characters!")
+
         return password2
 
     def clean_username(self):
