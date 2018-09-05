@@ -59,7 +59,7 @@
         <ul class="nav navbar-nav navbar-right navbar-user">
             <li class="nav-item dropdown">
                 <a href="#" class="nav-link" data-toggle="dropdown" role="button"
-                   aria-haspopup="true" aria-expanded="false" id="navbarDropDown">
+                   aria-haspopup="true" aria-expanded="false" id="mobile-user-avatar">
                     {% if user.avatar %}
                     <img class="avatar" height="30" src="{{ user.avatar }}">
                     {% else %}
@@ -129,6 +129,16 @@
             <li><a href="{% url 'blog:index' %}">Blog</a></li>
             <li><a href="{% url 'project:index' %}">Projects</a></li>
             <li><a href="/">Forum</a></li>
+        </ul>
+    </div>
+
+    <div class="mobile-nav flex-row" id="mobile-user-nav">
+        <ul>
+            <li><a href="#">My Account</a></li>
+            {% if user.is_superuser %}
+            <li><a href="/admin/">Admin</a></li>
+            {% endif %}
+            <li><a href="{% url 'geba_auth:logout' %}">Logout</a></li>
         </ul>
     </div>
 

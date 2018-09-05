@@ -145,6 +145,7 @@ $('#LoginVoteModal').on('show.bs.modal', function (event) {
 
     modal.find('.modal-footer ').html(
     '<form method="POST" ' + url + csrf +
-    '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>' +
-    '<input type="submit" value="Delete" class="btn btn-default"/></form>')
+    '<button type="button submit" class="btn btn-primary modal_btn">Delete</button>' +
+    '<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>' +
+    '</form>')
 })
