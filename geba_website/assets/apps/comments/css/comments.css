@@ -11,6 +11,82 @@ div, i {
     vertical-align: baseline;
 }
 
+.test-size {
+  height: 24px;
+  width: 24px;
+}
+
+.jR747Vd1NbfaLusf5bHre {
+    display: inline-block;
+    overflow: hidden;
+    width: 16px;
+    height: 18px;
+    line-height: 16px;
+    font-size: 16px;
+}
+
+
+.ffsMLm {
+    -webkit-box-align: center;
+    align-items: center;
+    display: flex;
+    fill: inherit;
+    flex-direction: column;
+    min-width: 24px;
+    max-height: 40px;
+    text-align: center;
+    z-index: 3;
+    margin: 6px -1px -2px 9px;
+}
+
+/*
+.ffsMLm .midcol-comments {
+    padding: 2px;
+}
+*/
+
+.kHKydv {
+    cursor: pointer;
+    color: rgb(135, 138, 140);
+    border-radius: 2px;
+    transition: background-color 0.1s ease 0s;
+}
+
+button {
+    background: transparent;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    padding: initial;
+}
+
+.ffsMLm .cYUyoUM3wmgRXEHv1LlZv:focus {
+    background-color: rgba(26, 26, 27, 0.1);
+    border-radius: 2px;
+    outline: none;
+}
+
+.ffsMLm .cYUyoUM3wmgRXEHv1LlZv {
+    height: 20px;
+}
+
+.ffsMLm .cYUyoUM3wmgRXEHv1LlZv:focus {
+    background-color: rgba(26, 26, 27, 0.1);
+    border-radius: 2px;
+    outline: none;
+}
+
+.cYUyoUM3wmgRXEHv1LlZv {
+    height: 24px;
+    width: 24px;
+}
+
+.jeSweH {
+    display: inline-block;
+    margin-right: 12px;
+    transition: color 0.1s ease 0s;
+}
+
 .fRaBQc {
     box-sizing: border-box;
     padding-right: 16px;
@@ -67,7 +143,8 @@ div, i {
 .dsTpoY > .threadline {
     display: block;
     height: 100%;
-    width: 50%;
+    /*width: 50%;*/
+    width: 10px;
     border-right: 2px solid rgb(237, 239, 241);
 }
 
@@ -184,4 +261,13 @@ p.Comment-Content {
     line-height: 16px;
     color: rgb(135, 138, 140);
     margin: 4px 0px 8px;
+}
+
+.byBYdJ {
+    box-sizing: border-box;
+    padding-left: 37px;
+    position: relative;
+    width: 100%;
+    overflow: visible;
+    transition: background 1s ease 0s;
 }

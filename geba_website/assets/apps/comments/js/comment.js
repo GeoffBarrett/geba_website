@@ -1,7 +1,8 @@
  // this script is to toggle the reply comments
 $(".comment-reply-btn").click(function(event){
     event.preventDefault();
-    $(this).parent().next(".comment-reply").fadeToggle();
+    console.log("hi");
+    $(this).parent().parent().next(".comment-reply").fadeToggle();
 })
 
 // this script is to toggle the markdown help
