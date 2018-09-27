@@ -9,9 +9,10 @@
 
 
 .midcol-comments {
-    float: left;
+    /*float: left;
     margin-right: 0px;
-    margin-left: 0px;
+    margin-left: 0px;*/
+    margin-left: auto;
     background: transparent;
     overflow: hidden;
     text-align: center;
