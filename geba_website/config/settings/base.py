@@ -158,6 +158,7 @@ PROJECT_APPS = (
     'apps.blog',  # the Blog app
     'apps.comments',
     'apps.core',  # adding the core page to the settings
+    'apps.forum',
     'apps.geba_auth',
     'apps.pages',
     'apps.polls',

@@ -1,0 +1,61 @@
+{% extends "core/base.html" %}
+
+{% block title %}GEBA - Forum{% endblock %}
+
+
+{% block css %}
+    {% load static %}
+    <link rel='stylesheet' href="{% static 'apps/vote/css/vote.css' %}"/>
+{% endblock css %}
+
+{% block content %}
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('http://placehold.it/700x300')">
+      <div class="container">
+        <div class="row">
+          <div class="col-8 col-10 mx-auto">
+            <div class="site-heading">
+              <h1>Forum</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-8 offset-1">
+                {% if messages %}
+                    {% include "forum/messages.html" %}
+                {% endif %}
+            </div>
+        </div>
+
+        {% if object_list|length == 0 %}
+            <div class="row justify-content-center">
+                <div class="col-10 mb-3">
+
+                    <h5>I haven't coded this section of the website yet. If you think you'd benefit from a forum,
+                        feel free to drop me a message via <a href="{% url 'pages:detail' 'contact' %}">Contacts</a>.
+                    With enough interest I'll hire this cat to code the forum section for me.</h5>
+                </div>
+                <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" width="480" height="480">
+            </div>
+        {% else %}
+
+            <p>Hi</p>
+
+        {% endif %}
+    </div>
+
+    {% include "blog/delete_post_modal.html" %}
+    {% include "vote/login_vote_modal.html" %}
+
+{% endblock %}
+
+{% block javascript %}
+    <script src="{% static 'apps/blog/js/blog.js' %}"></script>
+    <script src="{% static 'apps/core/js/badge.js' %}"></script>
+    <script src="{% static 'apps/vote/js/vote.js' %}"></script>
+{% endblock javascript %}

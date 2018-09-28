@@ -35,6 +35,7 @@ urlpatterns = [
     re_path(r'^polls/', include(('apps.polls.urls', "polls"))),
     re_path(r'^comments/', include(('apps.comments.urls', "comments"))),
     re_path(r'^project/', include(('apps.project.urls', "project"))),
+    re_path(r'^forum/', include(('apps.forum.urls', "forum"))),  # Blog app
 
     # ------------ third party urls -------------------- #
     re_path(r'^grappelli/', include('grappelli.urls')),  # grappelli URLS

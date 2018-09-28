@@ -43,12 +43,18 @@
             </div>
         </div>
 
-
         <!--{% include 'project/project_search.html' %}-->
 
-
         {% if object_list|length == 0 %}
-            <h5>There are currently no active projects, thanks for your interest!</h5>
+            <div class="row justify-content-center mt-3">
+                <div class="col-10 mb-3">
+                    <h5>There are currently no active projects, thanks for your interest! Below is a video of
+                    me working hard on these projects.</h5>
+                </div>
+
+                <img src="https://media.giphy.com/media/pFwRzOLfuGHok/giphy.gif" width="480" height="300">
+
+            </div>
         {% else %}
 
             <div class="row justify-content-center mt-3">

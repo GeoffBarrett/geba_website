@@ -9,10 +9,10 @@
 
 <p class='lead'>Comments</p>
 
-<form method="POST" action="{% url 'blog:detail' post.slug %}">
+<form method="POST" action="{% url 'project:detail' projectpost.slug %}">
     {% csrf_token %}
     {{ comment_form|crispy }}
-    <input type="submit" value="Post comment" class="btn btn-primary">
+    <input type="submit" value="Post Comment" class="btn btn-primary">
 </form>
 
 <div class="Comments-All-Container fRaBQc">
@@ -62,7 +62,7 @@
                                         </div>
                                     </div>
                                     <div class="comment-reply">
-                                        <form method="POST" action="{% url 'blog:detail' post.slug %}">
+                                        <form method="POST" action="{% url 'project:detail' projectpost.slug %}">
                                             {% csrf_token %}
                                             {{ comment_form|crispy }}
                                             <input type="hidden" name="parent_id" value="{{ comment.id }}">

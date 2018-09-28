@@ -115,7 +115,7 @@
                 <a class="nav-link" href="{% url 'project:index' %}">Projects</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/">Forum</a>
+                <a class="nav-link" href="{% url 'forum:index' %}">Forum</a>
             </li>
         </ul>
 
@@ -124,8 +124,8 @@
     <div class="mobile-nav flex-row" id="mobile-nav">
         <ul>
             <li><a href="/">Home</a></li>
-            <li><a href="/">About</a></li>
-            <li><a href="/">Contact</a></li>
+            <li><a href="{% url 'pages:detail' 'about' %}">About</a></li>
+            <li><a href="{% url 'pages:detail' 'contact' %}">Contact</a></li>
             <li><a href="{% url 'blog:index' %}">Blog</a></li>
             <li><a href="{% url 'project:index' %}">Projects</a></li>
             <li><a href="/">Forum</a></li>
