@@ -70,12 +70,11 @@ class _VotableManager(models.Manager):
                     vote.action = action
                     vote.save()
 
-                    # will delete your up if you vote down some instance that
-                    # you have vote up
-
+                    # get the field to remove a vote from
                     voted_field = self.through.ACTION_FIELD.get(
                         int(not action))
 
+                    # subtracts the vote
                     setattr(self.instance, voted_field,
                             getattr(self.instance, voted_field) - 1)
 
@@ -85,14 +84,18 @@ class _VotableManager(models.Manager):
                                                 object_id=self.instance.pk,
                                                 action=action)
 
+                # get the field that you want to add a vote to
                 statistics_field = self.through.ACTION_FIELD.get(action)
+
+                # adds the vote
                 setattr(self.instance, statistics_field,
                         getattr(self.instance, statistics_field) + 1)
 
                 self.instance.save()
 
             return True
-        except (OperationalError, IntegrityError):
+        except (OperationalError, IntegrityError) as error:
+            # print(error)
             return False
 
     @instance_required
@@ -135,7 +138,7 @@ class _VotableManager(models.Manager):
 
             return True
         except (OperationalError, IntegrityError) as error:
-            print(error)
+            # print(error)
             # concurrent request may decrease num_vote field to negative
             return False
 
@@ -200,8 +203,8 @@ class _VotableManager(models.Manager):
 
         if ids is not None:
             objects = self.model.objects.filter(id__in=ids)
-
             objects = sorted(objects, key=lambda x: ids.index(x.id))
+
             return add_field_to_objects(self.model, objects, user_id)
         else:
             return VotedQuerySet(model=queryset.model, query=queryset.query,

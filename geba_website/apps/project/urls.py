@@ -18,11 +18,13 @@ urlpatterns = [
 
     #  -------------------Project Post URLS ------------------
 
-    re_path(r'^create_project_post/$', views.ProjectPostCreationPostView.as_view(), name='create_project_post'),
+    # re_path(r'^create_project_post/$', views.ProjectPostCreationPostView.as_view(), name='create_project_post'),
 
     re_path(r'^(?P<slug>[\w-]+)/update_post/$', views.ProjectPostUpdateView.as_view(), name='update_post'),
+
     re_path(r'^(?P<slug>[\w-]+)/(?P<post_order>[0-9]+)/create_post/$', views.ProjectPostCreateView.as_view(),
             name='create_post'),
+
     re_path(r'^(?P<slug>[\w-]+)/delete_post/$', views.ProjectPostDeleteView.as_view(), name='delete_post'),
 
     re_path(r'^api/(?P<slug>[\w-]+)/like/$', views.ProjectPostLikeToggleAjax.as_view(), name='post_like_toggle_api'),

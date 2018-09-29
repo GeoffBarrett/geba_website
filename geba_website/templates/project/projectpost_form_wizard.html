@@ -13,18 +13,32 @@
 
 {% block content %}
 
-    {% if messages %}
-        {% include "project/messages.html" %}
-    {% endif %}
+    <header class="masthead">
+      <div class="container">
+        <div class="row">
+          <div class="col-8 mx-auto">
+            <div class="site-heading">
+              <h1>Create Project Post!</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class = "col--7">
                 <div class="panel panel-default">
                     <div class="panel-body">
 
+                        {% if messages %}
+                            {% include "project/messages.html" %}
+                        {% endif %}
+
                         <form class="form-horizontal" id='PostForm' action="" method="post" enctype="multipart/form-data">
                             {% csrf_token %}
 
+                            {{ wizard.form.media }}
                             {{ wizard.management_form }}
 
                             {{ wizard.form|crispy }}
@@ -32,10 +46,9 @@
                             <div class="form-group">
                                 <div class="col-offset-2 col_sm-10">
                                     {% if wizard.steps.prev %}
-                                    <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">Back</button>
+                                        <button name="wizard_goto_step" class="btn btn-primary" type="submit" value="{{ wizard.steps.prev }}">Back</button>
                                     {% endif %}
                                     <button type="submit" class="btn btn-success">Create</button>
-
                                 </div>
                             </div>
 

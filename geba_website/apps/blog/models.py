@@ -3,7 +3,7 @@ from django.db import models
 from django.conf import settings
 from django.urls import reverse
 from django.utils import timezone
-from django.db.models.signals import pre_save, pre_delete  # before saving it emits this signal
+from django.db.models.signals import pre_save, pre_delete, post_save  # before saving it emits this signal
 from django.utils.text import slugify  # turns our title into a slug
 from ..core.models import TimeStampModel
 from django.utils.safestring import mark_safe
@@ -129,6 +129,16 @@ def pre_save_post_signal_receiver(sender, instance, *args, **kwargs):
         instance.slug = create_slug(instance=instance)
 
 
+def post_save_post_signal_receiver(sender, instance, *args, **kwargs):
+    """This signal is sent at the after the save() method,
+    sender = models class,
+    instance = instance being saved,
+    """
+
+    if kwargs['created']:
+        instance.votes.up(instance.author.id)
+
+
 def pre_delete_post_signal_receiver(sender, instance, *args, **kwargs):
     """This will ensure to modify the authors ManytoManyField if necessary and delete an author if
     there are no more posts in the project with that authors name."""
@@ -156,4 +166,5 @@ def delete_image(instance):
 
 
 pre_save.connect(pre_save_post_signal_receiver, sender=Post)  # connects the signal with the signal receiver
+# post_save.connect(post_save_post_signal_receiver, sender=Post)  # connects the signal with the signal receiver
 pre_delete.connect(pre_delete_post_signal_receiver, sender=Post)  # connects the signal with the signal receiver

@@ -3,7 +3,6 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.utils import timezone
 import pytz
-# from pytz import timezone as tz
 from .managers import VotableManager
 
 from math import log, sqrt
@@ -46,13 +45,11 @@ class Vote(models.Model):
     }
 
     user_id = models.BigIntegerField()  # keep track of who voted
-
-    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)  # get the content type of the model that the vote belongs to
+    # get the content type of the model that the vote belongs to
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()  # get the id of the object voted on
     content_object = GenericForeignKey()  # the object that was voted on
-
     action = models.PositiveSmallIntegerField(default=UP)  # field for the vote choices
-
     create_at = models.DateTimeField(auto_now_add=True)  # time the vote was created
 
     objects = VoteManager()  # defines the manager
@@ -79,11 +76,8 @@ class VoteModel(models.Model):
     score_method = 'hot_score'  # defaults as 'hot_score'
 
     vote_score = models.FloatField(default=0, db_index=True)  # score value
-
     num_vote_up = models.PositiveIntegerField(default=0, db_index=True)  # number of up votes
-
     num_vote_down = models.PositiveIntegerField(default=0, db_index=True)  # number of down votes
-
     votes = VotableManager()
 
     class Meta:
@@ -143,10 +137,8 @@ class VoteModel(models.Model):
     def is_voted_down(self, value):
         self._is_voted_down = value
 
-
     @property
     def unvoted_net_likes(self):
-
         n = int(self.num_vote_up - self.num_vote_down)
         if self.is_voted_up:
             return n - 1
@@ -157,12 +149,10 @@ class VoteModel(models.Model):
 
     @property
     def calculate_confidence(self):
-
         n = self.num_vote_up + self.num_vote_down
         if n == 0:
             confidence = 0
         else:
-
             z = 1.281551565545
             p = float(self.num_vote_up) / n
             left = p + 1 / (2 * n) * z * z

@@ -12,6 +12,7 @@ from django.utils.encoding import force_text
 from ..geba_auth.models import User
 from django.utils.http import urlsafe_base64_decode
 from django.urls import reverse_lazy
+from django.http import HttpResponseForbidden, HttpResponseRedirect
 # Create your views here.
 
 
@@ -39,7 +40,8 @@ class LoginFormView(FormView):
             if user is not None:
                 login(request, user)  # can now refer to them as request.geba_auth.username
 
-            return super(LoginFormView, self).form_valid(form)
+            return HttpResponseRedirect('/')
+            # return super(LoginFormView, self).form_valid(form)
 
         else:
             return render(request, self.template_name, {'login_form': form, 'register_form': register_form})
@@ -80,7 +82,8 @@ class RegisterFormView(FormView):
 
             user.email_user(subject, message)
 
-            return super(RegisterFormView, self).form_valid(form)
+            return HttpResponseRedirect(self.success_url)
+            # return super(RegisterFormView, self).form_valid(form)
 
         else:
             return render(request, self.template_name, {'form': form})

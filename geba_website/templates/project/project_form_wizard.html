@@ -10,9 +10,17 @@
 
 {% block content %}
 
-    {% if messages %}
-        {% include "project/messages.html" %}
-    {% endif %}
+    <header class="masthead">
+      <div class="container">
+        <div class="row">
+          <div class="col-8 mx-auto">
+            <div class="site-heading">
+              <h1>Create Project!</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
 
     {% load crispy_forms_tags %}
     <div class="container-fluid">
@@ -21,44 +29,15 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
 
+                        {% if messages %}
+                            {% include "project/messages.html" %}
+                        {% endif %}
+
                         <form class="form-horizontal" id='ProjectForm' action="" method="post" enctype="multipart/form-data">
                             {% csrf_token %}
 
                             {{ wizard.form.media }}
                             {{ wizard.management_form }}
-
-                            <!--<div class="form-group">
-                                <div id="error_{{ wizard.form.title.id_for_label }}">
-                                    <span class="text-danger small">{{ wizard.form.title.errors }}</span>
-                                </div>
-                                {{ wizard.form.title.label_tag }}
-                                {% if wizard.form.title.field.required %}(*){% endif %}
-                                <input type="text" name="{{ wizard.form.title.name }}" placeholder="Title..." class="form-control"
-                                       id="{{ wizard.form.title.id_for_label }}">
-                            </div>
-
-                            <div class="form-group">
-                                {{ wizard.form.image.label_tag }}
-                                <input type="file" class="form-control-file" name="image" id="{{ wizard.form.image.id_for_label }}">
-                            </div>
-
-                            <div class="form-group">
-                                {{ wizard.form.image_caption.label_tag }}
-                                <textarea class="form-control" id="{{ wizard.form.image_caption.id_for_label }}"
-                                          name="image_caption" placeholder="Image Caption..." rows="3"></textarea>
-                            </div>
-
-                            <div class="form-group">
-                                {{ wizard.form.draft.label_tag }}
-                                <input id="{{ wizard.form.draft.id_for_label }}" name="draft" type="checkbox">
-                            </div>
-
-                            <div class="form-group">
-                                {{ wizard.form.publish_date.label_tag }}
-                                {{ wizard.form.publish_date }}
-                            </div>
-
-                            {{ wizard.form.as_p }}-->
 
                             {{ wizard.form|crispy }}
 

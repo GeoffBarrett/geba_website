@@ -19,18 +19,6 @@ def vote_exists(model, user=AnonymousUser()):
     else:
         return False
 
-'''
-@register.filter
-def vote_exists(model, geba_auth=AnonymousUser()):
-    if geba_auth.is_anonymous():
-        return False
-    if model.votes.exists(geba_auth.pk, action=UP):
-        return "UP"
-    elif model.votes.exists(geba_auth.pk, action=DOWN):
-        return "DOWN"
-    else:
-        return False
-'''
 
 @register.simple_tag
 def up_vote_exists(model, user=AnonymousUser(), action=UP):

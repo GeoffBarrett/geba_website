@@ -123,7 +123,8 @@ class ProjectWizard(SessionWizardView):
 
                 instance_post.votes.up(self.request.user.id)  # up voting the project post
 
-        return HttpResponseRedirect(reverse_lazy('project:index'))
+        return HttpResponseRedirect(reverse_lazy('project:detail', kwargs={'slug': instance_post.slug}))
+        # return HttpResponseRedirect(reverse_lazy('project:index'))
 
 
 class ProjectIndexView(ListView):
@@ -237,7 +238,8 @@ class ProjectDetailView(View):
 
 # ---------- PROJECT POST VIEW  ---------- #
 
-class ProjectPostCreationPostView(FormView):
+'''
+class ProjectPostCreationPostView(ProjectActionMixin, FormView):
 
     project_form = ProjectForm
     post_form = ProjectPostForm
@@ -286,13 +288,13 @@ class ProjectPostCreationPostView(FormView):
 
             instance_post.votes.up(request.user.id)  # up voting the project post
 
-        else:
+            return HttpResponseRedirect(reverse_lazy('project:detail', kwargs={'slug': instance_post.slug}))
 
+        else:
             # figure out what to do if this
             # return render_to_response(self.template_name, {'project_form': project_form, 'post_form': post_form})
             return render(request, self.template_name, {'project_form': project_form, 'post_form': post_form})
-
-        return super(ProjectPostCreationPostView, self).form_valid(post_form)
+'''
 
 
 class ProjectPostDetailGetView(DetailView):
@@ -511,8 +513,8 @@ class ProjectPostCreateView(ProjectActionMixin, CreateView):
             # obj = get_object_or_404(ProjectPost, id=instance.id)
             instance.votes.up(request.user.id)
 
-            # return HttpResponseRedirect(self.get_success_url())
-            return super(ProjectPostCreateView, self).form_valid(form)
+            return HttpResponseRedirect(reverse_lazy('project:detail', kwargs={'slug': instance.slug}))
+            # return super(ProjectPostCreateView, self).form_valid(form)
 
         else:
             return render_to_response(self.template_name, {'form': form, 'project_slug': kwargs['slug'],

@@ -71,18 +71,6 @@ class BlogIndexView(ListView):
                 #Q(body__text__icontains=query)
             ).distinct()
 
-        '''
-        paginator = Paginator(query_set_list, 5)  # shows 25 posts per page
-        page_request_var = 'page'
-        page = self.request.GET.get(page_request_var)
-        try:
-            queryset = paginator.page(page)
-        except PageNotAnInteger:
-            queryset = paginator.page(1)
-        except EmptyPage:
-            queryset = paginator.page(paginator.num_pages)
-        '''
-
         query_set_list = Post.votes.annotate(queryset=query_set_list, user_id=self.request.user.id)
 
         return query_set_list
@@ -101,15 +89,15 @@ class BlogCreateView(BlogActionMixin, CreateView):
         request = check_blog_rights(request)
         return super(BlogCreateView, self).dispatch(request, *args, **kwargs)
 
-    def form_valid(self, form):
-        return super(BlogCreateView, self).form_valid(form)
+    # def form_valid(self, form):
+    #    return super(BlogCreateView, self).form_valid(form)
 
     def get(self, request):
         """when the geba_auth executes a get request, display blank registration form"""
         form = self.form_class(request.GET or None, request.FILES or None)
         return render(request, self.template_name, {'form': form})
 
-    def post(self, request):
+    def post(self, request, *args, **kwargs):
         """performs a post request"""
         form = self.form_class(request.POST or None, request.FILES or None)
 
@@ -128,9 +116,14 @@ class BlogCreateView(BlogActionMixin, CreateView):
 
             instance.votes.up(request.user.id)
 
-            return super(BlogCreateView, self).form_valid(form)
+            return HttpResponseRedirect(reverse_lazy('blog:detail', kwargs={'slug': instance.slug}))
+            # return super(BlogCreateView, self).form_valid(form)
         else:
             return render_to_response(self.template_name, {'form': form})
+
+    '''def done(self, request, *args, **kwargs):
+        
+        instance.votes.up(request.user.id)'''
 
 
 class BlogUpdateView(BlogActionMixin, UpdateView):
@@ -143,7 +136,8 @@ class BlogUpdateView(BlogActionMixin, UpdateView):
     def get(self, request, slug):
         """when the geba_auth executes a get request, display blank registration form"""
         self.object = self.get_object()
-        self.success_url = reverse_lazy('blog:detail', args=self.object.slug)
+        self.sucess_url = reverse_lazy('blog:detail', kwargs={'slug': self.object.slug})
+        # self.success_url = reverse_lazy('blog:detail', args=self.object.slug)
         form = self.form_class(request.GET or None, request.FILES or None, instance=self.object)
         return render(request, self.template_name, {'form': form})
 
@@ -212,7 +206,8 @@ class BlogDetailGetView(DetailView):
         # context['object'] provides the instance for us
 
         comments_qs = context['object'].comments
-        context['comments'] = Comment.votes.annotate(queryset=comments_qs, user_id=self.request.user.id)  # getting the vote info
+        # getting the vote info
+        context['comments'] = Comment.votes.annotate(queryset=comments_qs, user_id=self.request.user.id)
         # context['comments'] = context['object'].comments
 
         # context['comment_form'] = CommentForm()
@@ -338,6 +333,7 @@ class PostDislikeToggleAjax(APIView):
             # check if the geba_auth is authenticated
             # check if the geba_auth has already voted on this object
             if obj.votes.exists(user.id, action=DOWN):
+
                 obj.votes.delete(user.id)
                 disliked = False
             else:

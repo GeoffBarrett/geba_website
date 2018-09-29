@@ -6,13 +6,11 @@
 
 {% block header %}
     {% load staticfiles %}
-    <!--<link rel='stylesheet' href="{% static 'apps/project/css/project.css' %}"/>-->
     <link rel='stylesheet' href="{% static 'apps/vote/css/vote.css' %}"/>
 {% endblock header %}
 
 {% block content %}
 
-    <!-- Page Header -->
     <header class="masthead" style="background-image: url('http://placehold.it/700x300')">
       <div class="container">
         <div class="row">
@@ -68,7 +66,6 @@
                                     {% if project.is_voted_up %}
                                         <div class="link center" current_class="likes">
                                             <div class="midcol likes">
-
                                                 {% if user.is_authenticated %}
                                                     <div class="arrow up upvote-btn login-required access-required upmod"
                                                      data-event-action="upvote" title="upvote"
