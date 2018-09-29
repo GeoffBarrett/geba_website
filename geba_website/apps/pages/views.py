@@ -10,7 +10,7 @@ from ..blog.models import Post
 from ..project.models import Project, ProjectPost
 from django.urls import reverse_lazy
 from .utils import check_page_rights
-from django.core.mail import EmailMessage, send_mail
+from django.core.mail import send_mail
 from django.template.loader import get_template
 # Create your views here.
 
@@ -86,6 +86,7 @@ class HomeView(DetailView):
         self.object = self.get_object()
         context = self.get_context_data(object=self.object)
 
+        latest_num = 0
         context['Latest'] = []
         context['Latest_List'] = self.latest_models_list
         for i, latest_model in enumerate(self.latest_models):
@@ -93,6 +94,7 @@ class HomeView(DetailView):
             latest_m = latest_model.objects.latest()
             if latest_m:
                 context['Latest'].append([self.latest_models_list[i], latest_m])
+                latest_num += 1
 
         return self.render_to_response(context)
 

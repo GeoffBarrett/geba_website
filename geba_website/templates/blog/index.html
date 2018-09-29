@@ -10,7 +10,7 @@
 
 {% block content %}
     <!-- Page Header -->
-    <header class="masthead" style="background-image: url('http://placehold.it/700x300')">
+    <header class="masthead" style="background-image: url('')">
       <div class="container">
         <div class="row">
           <div class="col-8 col-10 mx-auto">
@@ -244,8 +244,8 @@
                                     <div class="card-footer text-muted">
                                         Published by
                                         {% if post.author %}
-                                            <a href="#">{{ post.author }}</a>
-                                            | {{ post.publish_date|date:"m-d-Y" }}
+                                            <a href="#">{{ post.author }}, </a>
+                                            {{ post.publish_date|timesince }} ago.
                                         {% else %}
                                             <span style='color:red;'> No Authors! </span>
                                         {% endif %}

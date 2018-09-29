@@ -227,3 +227,5 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+SUMMERNOTE_THEME = 'bs4'  # Show summernote with Bootstrap4

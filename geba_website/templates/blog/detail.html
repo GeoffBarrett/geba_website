@@ -20,12 +20,12 @@
         {% if post.image %}
             style="background-image: url({{ post.image.url }})">
         {% else %}
-            style="background-image: url('http://placehold.it/700x300')">
+            style="background-image: url('')">
         {% endif %}
 
       <div class="container">
         <div class="row">
-          <div class="col-10 mx-auto">
+          <div class="col-8 mx-auto">
             <div class="post-heading">
               <h1>{{ post.title }}
             {% if post.draft %}
