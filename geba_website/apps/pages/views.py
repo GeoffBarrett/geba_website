@@ -90,11 +90,12 @@ class HomeView(DetailView):
         context['Latest'] = []
         context['Latest_List'] = self.latest_models_list
         for i, latest_model in enumerate(self.latest_models):
-            print(latest_model)
             latest_m = latest_model.objects.latest()
             if latest_m:
                 context['Latest'].append([self.latest_models_list[i], latest_m])
                 latest_num += 1
+
+        context['latest_num'] = latest_num
 
         return self.render_to_response(context)
 

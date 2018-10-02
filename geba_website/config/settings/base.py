@@ -17,7 +17,8 @@ from unipath import Path
 
 def get_env_variable(var_name):
     try:
-        return os.environ[var_name]
+        # return os.environ[var_name]
+        return os.environ.get(var_name)
     except KeyError:
         error_msg = "Set the %s environment variable" % var_name
         raise ImproperlyConfigured(error_msg)
@@ -39,7 +40,7 @@ APPS_DIR = DJANGO_ROOT.child("apps")
 path.append(DJANGO_ROOT)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+# DEBUG = False
 
 # A list of all the people who get code error notifications.
 ADMINS = (
@@ -108,7 +109,8 @@ STATICFILES_FINDERS = (
 )
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = get_env_variable("secret_key")
+SECRET_KEY = os.environ.get("secret_key")
+# SECRET_KEY = get_env_variable("secret_key")
 # A list of strings representing the host/domain names that this Django site can serve.
 # This is a security measure to prevent HTTP Host header attacks, which are possible even under many seemingly-safe
 # web server configurations.
@@ -147,12 +149,12 @@ THIRD_PARTY_APPS = (
 
 # usually I would put these in 3rd party, but I need them in a specific order
 THREADEDCOMMENTS_APPS = (
-    'apps.threadedcomments',
+    # 'apps.threadedcomments',
     'django_comments',
     'django.contrib.sites',
 )
 
-COMMENTS_APP = 'apps.threadedcomments'
+# COMMENTS_APP = 'apps.threadedcomments'
 
 PROJECT_APPS = (
     'apps.blog',  # the Blog app

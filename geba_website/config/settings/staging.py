@@ -11,12 +11,36 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 from .base import *
 import os
-
+import boto3
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+ALLOWED_HOSTS = ['www.geba.technology', '127.0.0.1']
+
+# ------------- EMAIL CONFIGURATION -------------------- #
+# https://docs.djangoproject.com/en/dev/ref/settings/#email-use-tls
+EMAIL_USE_TLS = True
+
+# https://docs.djangoproject.com/en/dev/ref/settings/#email-backend
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+# https://docs.djangoproject.com/en/dev/ref/settings/#default-from-email
+DEFAULT_FROM_EMAIL = 'geoff@geba.technology'
+
+# https://docs.djangoproject.com/en/dev/ref/settings/#email-host
+EMAIL_HOST = 'smtp.gmail.com'
+
+# https://docs.djangoproject.com/en/dev/ref/settings/#email-port
+EMAIL_PORT = 587
+
+# https://docs.djangoproject.com/en/dev/ref/settings/#email-host-user
+EMAIL_HOST_USER = 'geoff@geba.technology'
+
+# https://docs.djangoproject.com/en/dev/ref/settings/#email-host-password
+EMAIL_HOST_PASSWORD = get_env_variable('gmail_password')
+# --------------- END EMAIL CONFIGURATION --------------- #
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
@@ -49,4 +73,6 @@ INSTALLED_APPS += (
 MIDDLEWARE += (
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
+
+s3 = boto3.resource('s3')
 

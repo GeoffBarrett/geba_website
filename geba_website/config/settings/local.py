@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 from .base import *
-
+import boto3
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -80,4 +80,3 @@ MEDIA_ROOT = os.path.normpath(os.path.join(DJANGO_ROOT, 'media'))
 MEDIA_URL = '/media/'
 
 CACHE_TIMEOUT = 30
-

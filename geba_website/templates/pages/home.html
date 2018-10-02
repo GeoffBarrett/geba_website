@@ -58,8 +58,10 @@
                 {% if user.is_superuser %}
                     <div class="col-9 content-markdown">
                         <div class="post-body">{{ page.get_html }}</div>
+                        {% if latest_num > 0 %}
                         <h2 class="mt-4">Latest Content</h2>
                         <hr>
+                        {% endif %}
                     </div>
                     <div class="col-1">
                         <a href="{% url 'pages:update' page.slug %}"><span class="fa fa-pencil"></span></a>
@@ -67,18 +69,22 @@
                 {% else %}
                     <div class="col-9 content-markdown mb-3">
                         <div class="post-body">{{ page.get_html }}</div>
+
+                        {% if latest_num > 0 %}
                         <h2 class="mt-4">Latest Content</h2>
                         <hr>
+                        {% endif %}
                     </div>
                 {% endif %}
 
             </div>
 
             <div class="geba-layout">
-                <div class="row geba-row">
+                <div class="row geba-row justify-content-center">
                     <div class="col geba-col-12">
                         <div class="geba-block">
                             {% for latest_model in Latest %}
+
                                 <div class="col geba-col-4">
                                     <div class="geba-block">
                                         <div class="image-outer-wrapper layout-caption-overlay">

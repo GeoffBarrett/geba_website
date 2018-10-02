@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 from .base import *
+import boto3
 from os import environ
 
 
@@ -18,7 +19,7 @@ DEBUG = False
 
 # -------------------- HOST CONFIGURATION ----------------------- #
 # See: https://docs.djangoproject.com/en/1.5/releases/1.5/#allowed-hosts-required-in-production
-ALLOWED_HOSTS = ['www.geba.technology']
+ALLOWED_HOSTS = ['www.geba.technology', '127.0.0.1']
 # ---------------- END HOST CONFIGURATION --------------------- #
 
 
@@ -49,6 +50,7 @@ EMAIL_HOST_PASSWORD = get_env_variable('gmail_password')
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -57,6 +59,18 @@ DATABASES = {
         'PASSWORD': get_env_variable('database_password'),
         'HOST': 'localhost',
         'PORT': '',
+    }
+}
+'''
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': get_env_variable('dbname'),
+        'USER': get_env_variable('dbuser'),
+        'PASSWORD': get_env_variable('dbpassword'),
+        'HOST': get_env_variable('dbhost'),
+        'PORT': '5432',
     }
 }
 
@@ -86,8 +100,12 @@ GOOGLE_ANALYTICS_SITE_SPEED = True
 
 # ------------------- amazon aws s3 ----------------- #
 # the sub-directories of media and static files
+
+# s3 = boto3.resource('s3')
+
 STATICFILES_LOCATION = 'static'
 MEDIAFILES_LOCATION = 'media'
+
 
 S3_USE_SIGV4 = True
 
@@ -122,7 +140,7 @@ STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
 ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 
 MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
-
+''''''
 # --------------- end of amazon --------------------------- #
 
 
