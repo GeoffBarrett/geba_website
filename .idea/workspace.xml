@@ -5,83 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df093060-28c8-46a3-87ad-ac27d7285a35" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/pages/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/apps/pages/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/.travis.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/AUTHORS.rst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/CHANGELOG.rst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/MANIFEST.in" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/README.rst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/docs/conf.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/docs/index.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/docs/pinax.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/examples/core/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/examples/core/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/examples/core/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/examples/core/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/examples/core/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/examples/core/templates/comments/base.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/examples/core/templates/comments/core/form.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/examples/core/templates/comments/core/list.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/examples/core/templates/comments/posted.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/examples/core/templates/core/base.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/examples/core/templates/core/home.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/examples/core/templates/core/message.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/examples/core/templates/core/message_inline_sample.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/examples/core/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/examples/example-data.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/examples/example/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/examples/example/settings.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/examples/example/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/examples/manage.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/examples/readme.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/examples/requirements.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/runtests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/setup.cfg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/setup.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/threadedcomments/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/threadedcomments/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/threadedcomments/fixtures/simple_tree.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/threadedcomments/forms.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/threadedcomments/locale/nl/LC_MESSAGES/django.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/threadedcomments/management/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/threadedcomments/management/commands/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/threadedcomments/management/commands/migrate_comments.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/threadedcomments/management/commands/migrate_threaded_comments.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/threadedcomments/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/threadedcomments/migrations/0002_auto_20150521_2011.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/threadedcomments/migrations/0003_threadedcomment_newest_activity.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/threadedcomments/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/threadedcomments/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/threadedcomments/sql/threadedcomment.mysql.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/threadedcomments/templates/comments/list.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/threadedcomments/templates/sample_tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/threadedcomments/templatetags/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/threadedcomments/templatetags/threadedcomments_tags.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/threadedcomments/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/threadedcomments/util.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/threadedcomments/tox.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/assets/img/GEBA_Logo.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/assets/img/GEBA_Logo_With_Name_old.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/assets/img/GEBA_Logo_old.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/assets/img/GEBA_Logo_old.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/assets/img/artificial-intelligence-3382521.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/assets/img/cell-3089947.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/assets/img/home_image2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/assets/img/milky-way-1023340.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/assets/img/network-3396348.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/config/settings/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/config/settings/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/config/settings/local.py" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/config/settings/local.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geba_website/config/settings/production.py" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/config/settings/production.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/config/settings/staging.py" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/config/settings/staging.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/config/settings/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/config/settings/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/config/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/config/wsgi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/manage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/templates/pages/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/templates/pages/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -98,12 +23,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/geba_website/templates/project/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="393">
+            <state relative-caret-position="4420">
               <caret line="260" column="62" selection-start-line="260" selection-start-column="62" selection-end-line="260" selection-end-column="62" />
-              <folding>
-                <element signature="e#401#461#0" expanded="true" />
-                <element signature="e#17674#17692#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -111,7 +32,7 @@
       <file leaf-file-name="detail.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/geba_website/templates/blog/detail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
+            <state relative-caret-position="731">
               <caret line="43" column="64" selection-start-line="43" selection-start-column="64" selection-end-line="43" selection-end-column="64" />
               <folding>
                 <element signature="e#652#703#0" expanded="true" />
@@ -123,22 +44,20 @@
       <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/geba_website/templates/pages/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
+            <state relative-caret-position="1054">
               <caret line="62" column="28" selection-start-line="62" selection-start-column="28" selection-end-line="62" selection-end-column="28" />
               <folding>
                 <element signature="e#409#467#0" expanded="true" />
-                <element signature="e#3165#3191#0" expanded="true" />
-                <element signature="e#3285#3331#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="production.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="production.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/geba_website/config/settings/production.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="64" selection-start-line="64" selection-end-line="64" />
+            <state relative-caret-position="493">
+              <caret line="29" column="67" lean-forward="true" selection-start-line="29" selection-start-column="67" selection-end-line="29" selection-end-column="67" />
               <folding>
                 <element signature="e#315#334#0" expanded="true" />
               </folding>
@@ -146,19 +65,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="wsgi.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/geba_website/config/wsgi.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" selection-start-line="17" selection-end-line="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/geba_website/config/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
+            <state relative-caret-position="731">
               <caret line="48" selection-start-line="48" selection-end-line="48" />
               <folding>
                 <element signature="e#646#686#0" expanded="true" />
@@ -167,25 +77,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="base.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/geba_website/config/settings/base.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="134" column="19" selection-start-line="134" selection-start-column="19" selection-end-line="134" selection-end-column="19" />
+            <state relative-caret-position="214">
+              <caret line="111" selection-start-line="111" selection-end-line="111" selection-end-column="10" />
               <folding>
                 <element signature="e#315#324#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="local.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/geba_website/config/settings/local.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1122">
-              <caret line="81" column="18" selection-start-line="81" selection-start-column="18" selection-end-line="81" selection-end-column="18" />
-              <folding>
-                <element signature="e#315#334#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -194,7 +92,7 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/geba_website/apps/pages/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
+            <state relative-caret-position="1326">
               <caret line="91" column="61" selection-start-line="91" selection-start-column="61" selection-end-line="91" selection-end-column="61" />
               <folding>
                 <element signature="e#0#55#0" expanded="true" />
@@ -215,7 +113,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>.bMNdIG</find>
       <find>vote4</find>
       <find>blog</find>
       <find />
@@ -242,9 +139,10 @@
       <find>form_valid</find>
       <find>votes.up</find>
       <find>Summernote</find>
-      <find />
-      <find />
       <find>Settings</find>
+      <find>config</find>
+      <find>secret_key</find>
+      <find>secret_KEY</find>
     </findStrings>
     <replaceStrings>
       <replace>post_form.</replace>
@@ -319,12 +217,12 @@
         <option value="$PROJECT_DIR$/geba_website/apps/pages/views.py" />
         <option value="$PROJECT_DIR$/geba_website/config/wsgi.py" />
         <option value="$PROJECT_DIR$/geba_website/manage.py" />
-        <option value="$PROJECT_DIR$/geba_website/config/settings/production.py" />
         <option value="$PROJECT_DIR$/geba_website/config/settings/base.py" />
+        <option value="$PROJECT_DIR$/geba_website/config/settings/production.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="14" />
     <option name="y" value="9" />
     <option name="width" value="1278" />
@@ -578,7 +476,6 @@
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15052083" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49367756" weight="0.32900432" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50208336" side_tool="true" visible="true" weight="0.20828906" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49791667" weight="0.32624868" />
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Python Console" order="8" sideWeight="0.49367756" weight="0.22186147" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -588,10 +485,11 @@
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4947313" weight="0.30393198" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49791667" weight="0.32624868" />
     </layout>
   </component>
   <component name="UnknownFeatures">
@@ -646,21 +544,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/geba_website/apps/project/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-51">
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
+        <state relative-caret-position="-51" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/geba_website/apps/project/serializers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/geba_website/assets/apps/vote/js/vote.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -670,13 +558,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/geba_website/apps/vote/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/geba_website/apps/vote/forms.py">
       <provider selected="true" editor-type-id="text-editor" />
@@ -685,13 +567,7 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/geba_website/apps/vote/apps.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/geba_website/apps/vote/tests.py">
       <provider selected="true" editor-type-id="text-editor" />
@@ -700,9 +576,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="595">
           <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -717,9 +590,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="e#24#62#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -727,9 +597,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="325">
           <caret line="140" column="26" lean-forward="true" selection-start-line="140" selection-start-column="26" selection-end-line="140" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#57#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -737,9 +604,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="296">
           <caret line="154" column="13" selection-start-line="154" selection-start-column="13" selection-end-line="154" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -754,19 +618,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="177">
           <caret line="138" column="45" lean-forward="true" selection-start-line="138" selection-start-column="8" selection-end-line="138" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/geba_website/apps/project/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4896">
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
+        <state relative-caret-position="-4896" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/geba_website/apps/project/urls.py">
@@ -780,9 +637,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="277">
           <caret line="119" column="59" selection-start-line="119" selection-start-column="49" selection-end-line="119" selection-end-column="59" />
-          <folding>
-            <element signature="e#0#33#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -790,9 +644,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
           <caret line="29" column="57" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="57" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -803,9 +654,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="81" lean-forward="true" selection-start-line="81" selection-end-line="81" />
-          <folding>
-            <element signature="e#38#84#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -814,11 +662,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/geba_website/apps/polls/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-221">
-          <folding>
-            <element signature="e#0#54#0" expanded="true" />
-          </folding>
-        </state>
+        <state relative-caret-position="-221" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/geba_website/apps/vote/views.py">
@@ -828,13 +672,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="23" column="53" selection-start-line="23" selection-start-column="53" selection-end-line="23" selection-end-column="53" />
-          <folding>
-            <element signature="e#4973#6179#0" />
-            <element signature="e#6243#7312#0" />
-            <element signature="e#7356#8000#0" />
-            <element signature="e#8078#8989#0" />
-            <element signature="e#11105#13663#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -869,9 +706,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="25" lean-forward="true" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
-          <folding>
-            <element signature="e#284#344#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -879,9 +713,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="23" column="19" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
-          <folding>
-            <element signature="e#666#724#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -889,10 +720,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4199">
           <caret line="247" column="82" selection-start-line="247" selection-start-column="82" selection-end-line="247" selection-end-column="82" />
-          <folding>
-            <element signature="e#283#343#0" expanded="true" />
-            <element signature="e#16450#16468#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -919,19 +746,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/geba_website/templates/pages/home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
+        <state relative-caret-position="1054">
           <caret line="62" column="28" selection-start-line="62" selection-start-column="28" selection-end-line="62" selection-end-column="28" />
           <folding>
             <element signature="e#409#467#0" expanded="true" />
-            <element signature="e#3165#3191#0" expanded="true" />
-            <element signature="e#3285#3331#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/geba_website/config/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
+        <state relative-caret-position="731">
           <caret line="48" selection-start-line="48" selection-end-line="48" />
           <folding>
             <element signature="e#646#686#0" expanded="true" />
@@ -943,9 +768,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="534">
           <caret line="53" selection-start-line="53" selection-end-line="53" selection-end-column="25" />
-          <folding>
-            <element signature="e#315#334#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -953,15 +775,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-248">
           <caret line="32" column="29" lean-forward="true" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
-          <folding>
-            <element signature="e#315#334#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/geba_website/apps/pages/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
+        <state relative-caret-position="1326">
           <caret line="91" column="61" selection-start-line="91" selection-start-column="61" selection-end-line="91" selection-end-column="61" />
           <folding>
             <element signature="e#0#55#0" expanded="true" />
@@ -972,27 +791,16 @@
     <entry file="file://$PROJECT_DIR$/geba_website/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/geba_website/config/wsgi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/geba_website/templates/project/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
+        <state relative-caret-position="4420">
           <caret line="260" column="62" selection-start-line="260" selection-start-column="62" selection-end-line="260" selection-end-column="62" />
-          <folding>
-            <element signature="e#401#461#0" expanded="true" />
-            <element signature="e#17674#17692#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/geba_website/templates/blog/detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
+        <state relative-caret-position="731">
           <caret line="43" column="64" selection-start-line="43" selection-start-column="64" selection-end-line="43" selection-end-column="64" />
           <folding>
             <element signature="e#652#703#0" expanded="true" />
@@ -1004,26 +812,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
-          <folding>
-            <element signature="e#22#31#0" expanded="true" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geba_website/config/wsgi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/geba_website/config/settings/local.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1122">
-          <caret line="81" column="18" selection-start-line="81" selection-start-column="18" selection-end-line="81" selection-end-column="18" />
-          <folding>
-            <element signature="e#315#334#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geba_website/config/settings/production.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="64" selection-start-line="64" selection-end-line="64" />
+        <state relative-caret-position="-88">
+          <caret line="45" column="23" selection-start-line="45" selection-start-column="17" selection-end-line="45" selection-end-column="23" />
           <folding>
             <element signature="e#315#334#0" expanded="true" />
           </folding>
@@ -1032,10 +834,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/geba_website/config/settings/base.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="134" column="19" selection-start-line="134" selection-start-column="19" selection-end-line="134" selection-end-column="19" />
+        <state relative-caret-position="214">
+          <caret line="111" selection-start-line="111" selection-end-line="111" selection-end-column="10" />
           <folding>
             <element signature="e#315#324#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geba_website/config/settings/production.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="67" lean-forward="true" selection-start-line="29" selection-start-column="67" selection-end-line="29" selection-end-column="67" />
+          <folding>
+            <element signature="e#315#334#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -127,7 +127,7 @@ STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
 ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 
 MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
-''''''
+
 # --------------- end of amazon --------------------------- #
 
 
