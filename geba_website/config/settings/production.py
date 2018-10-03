@@ -15,11 +15,11 @@ from os import environ
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # -------------------- HOST CONFIGURATION ----------------------- #
 # See: https://docs.djangoproject.com/en/1.5/releases/1.5/#allowed-hosts-required-in-production
-ALLOWED_HOSTS = ['www.geba.technology', '127.0.0.1', get_env_variable('host_ip')]
+ALLOWED_HOSTS = ['geba.technology', 'www.geba.technology', '127.0.0.1', get_env_variable('host_ip')]
 # ---------------- END HOST CONFIGURATION --------------------- #
 
 

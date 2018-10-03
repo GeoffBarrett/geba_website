@@ -19,7 +19,7 @@ DEBUG = True
 
 # -------------------- HOST CONFIGURATION ----------------------- #
 # See: https://docs.djangoproject.com/en/1.5/releases/1.5/#allowed-hosts-required-in-production
-ALLOWED_HOSTS = ['www.geba.technology', '0.0.0.0', get_env_variable('host_ip')]
+ALLOWED_HOSTS = ['geba.technology', 'www.geba.technology', '0.0.0.0', get_env_variable('host_ip')]
 # ---------------- END HOST CONFIGURATION --------------------- #
 
 
@@ -70,8 +70,8 @@ CACHES = {
 }
 # ------------------ END CACHE CONFIGURATION --------------------- #
 
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
 
 # ------------------ analytics settings ---------------------- #
 
