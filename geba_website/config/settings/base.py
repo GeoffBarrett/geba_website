@@ -11,18 +11,8 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 import os
 from sys import path
-from django.core.exceptions import ImproperlyConfigured
 from unipath import Path
-
-
-def get_env_variable(var_name):
-    try:
-        # return os.environ[var_name]
-        return os.environ.get(var_name)
-    except KeyError:
-        error_msg = "Set the %s environment variable" % var_name
-        raise ImproperlyConfigured(error_msg)
-
+from .utils import get_env_variable
 
 DJANGO_ROOT = Path(__file__).ancestor(3)  # /geba_website/geba_website
 
