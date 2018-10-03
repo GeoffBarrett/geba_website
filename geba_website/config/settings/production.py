@@ -14,14 +14,14 @@ import boto3
 from os import environ
 
 
+
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # -------------------- HOST CONFIGURATION ----------------------- #
 # See: https://docs.djangoproject.com/en/1.5/releases/1.5/#allowed-hosts-required-in-production
 ALLOWED_HOSTS = ['geba.technology', 'www.geba.technology', '127.0.0.1', get_env_variable('host_ip')]
 # ---------------- END HOST CONFIGURATION --------------------- #
-
 
 # ------------- EMAIL CONFIGURATION -------------------- #
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-use-tls
@@ -107,6 +107,7 @@ AWS_SECRET_ACCESS_KEY = get_env_variable('AWS_SECRET_ACCESS_KEY')
 
 AWS_QUERYSTRING_AUTH = False
 
+
 # Tell django-storages that when coming up with the URL for an item in S3 storage, keep
 # it simple - just use this domain plus the path. (If this isn't set, things get complicated).
 # This controls how the `static` template tag from `staticfiles` gets expanded, if you're using it.
@@ -129,6 +130,4 @@ ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
 
 # --------------- end of amazon --------------------------- #
-
-
 

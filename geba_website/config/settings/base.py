@@ -42,6 +42,7 @@ path.append(DJANGO_ROOT)
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = False
 
+
 # A list of all the people who get code error notifications.
 ADMINS = (
     ('Geoffrey Barrett', 'geoff@geba.technology')
@@ -109,8 +110,8 @@ STATICFILES_FINDERS = (
 )
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("secret_key")
-# SECRET_KEY = get_env_variable("secret_key")
+# SECRET_KEY = os.environ.get("secret_key")
+SECRET_KEY = get_env_variable("secret_key")
 # A list of strings representing the host/domain names that this Django site can serve.
 # This is a security measure to prevent HTTP Host header attacks, which are possible even under many seemingly-safe
 # web server configurations.
@@ -207,6 +208,8 @@ TEMPLATES = [
 ]
 
 AUTH_USER_MODEL = 'geba_auth.User'
+
+
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
