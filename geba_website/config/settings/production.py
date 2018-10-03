@@ -19,7 +19,7 @@ DEBUG = False
 
 # -------------------- HOST CONFIGURATION ----------------------- #
 # See: https://docs.djangoproject.com/en/1.5/releases/1.5/#allowed-hosts-required-in-production
-ALLOWED_HOSTS = ['www.geba.technology', '127.0.0.1']
+ALLOWED_HOSTS = ['www.geba.technology', '127.0.0.1', get_env_variable('host_ip')]
 # ---------------- END HOST CONFIGURATION --------------------- #
 
 
@@ -49,19 +49,6 @@ EMAIL_HOST_PASSWORD = get_env_variable('gmail_password')
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
-
-'''
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': "geba_website",
-        'USER': 'Geoff',
-        'PASSWORD': get_env_variable('database_password'),
-        'HOST': 'localhost',
-        'PORT': '',
-    }
-}
-'''
 
 DATABASES = {
     'default': {

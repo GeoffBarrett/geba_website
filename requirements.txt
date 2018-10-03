@@ -22,7 +22,7 @@ django-markdown-deux==1.0.5
 django-pagedown==1.0.5
 django-registration==2.4.1
 django-storages==1.6.6
-django-summernote==0.8.8.7
+django-summernote==0.8.10.0
 djangorestframework==3.8.2
 docutils==0.14
 durationpy==0.5
@@ -36,7 +36,6 @@ markdown2==2.3.5
 olefile==0.44
 Pillow==4.0.0
 placebo==0.8.2
-psycopg2==2.6.2
 pyasn1==0.4.4
 pygeoip==0.3.2
 python-dateutil==2.6.1
