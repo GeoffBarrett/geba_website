@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 import os
 from sys import path
 from unipath import Path
-from .utils import get_env_variable
+from .utils import get_env_variable, get_secret
 
 DJANGO_ROOT = Path(__file__).ancestor(3)  # /geba_website/geba_website
 
@@ -101,7 +101,9 @@ STATICFILES_FINDERS = (
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-SECRET_KEY = get_env_variable("secret_key")
+# when using uWSGI the environmental variables didn't work so I stored variables in a secretes.json file
+# SECRET_KEY = get_env_variable("secret_key")
+SECRET_KEY = get_secret("secret_key")
 
 # A list of strings representing the host/domain names that this Django site can serve.
 # This is a security measure to prevent HTTP Host header attacks, which are possible even under many seemingly-safe

@@ -13,14 +13,12 @@ from .base import *
 # import boto3
 # from os import environ
 
-print('secret_key============================', SECRET_KEY)
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
 # -------------------- HOST CONFIGURATION ----------------------- #
 # See: https://docs.djangoproject.com/en/1.5/releases/1.5/#allowed-hosts-required-in-production
-ALLOWED_HOSTS = ['geba.technology', 'www.geba.technology', '127.0.0.1', get_env_variable('host_ip')]
+ALLOWED_HOSTS = ['geba.technology', 'www.geba.technology', '127.0.0.1', get_secret('host_ip')]
 # ---------------- END HOST CONFIGURATION --------------------- #
 
 # ------------- EMAIL CONFIGURATION -------------------- #
@@ -43,7 +41,7 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'geoff@geba.technology'
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-host-password
-EMAIL_HOST_PASSWORD = get_env_variable('gmail_password')
+EMAIL_HOST_PASSWORD = get_secret('gmail_password')
 # --------------- END EMAIL CONFIGURATION --------------- #
 
 
@@ -53,10 +51,10 @@ EMAIL_HOST_PASSWORD = get_env_variable('gmail_password')
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': get_env_variable('dbname'),
-        'USER': get_env_variable('dbuser'),
-        'PASSWORD': get_env_variable('dbpassword'),
-        'HOST': get_env_variable('dbhost'),
+        'NAME': get_secret('dbname'),
+        'USER': get_secret('dbuser'),
+        'PASSWORD': get_secret('dbpassword'),
+        'HOST': get_secret('dbhost'),
         'PORT': '5432',
     }
 }
@@ -75,11 +73,11 @@ CSRF_COOKIE_SECURE = True
 
 # ------------------ analytics settings ---------------------- #
 
-CLICKY_SITE_ID = get_env_variable('CLICKY_SITE_ID')
+CLICKY_SITE_ID = get_secret('CLICKY_SITE_ID')
 CRAZY_EGG_ACCOUNT_NUMBER = 'xxxxxxxx'
 
 ANALYTICAL_INTERNAL_IPS = ['192.XXX.X.XX']
-GOOGLE_ANALYTICS_PROPERTY_ID = get_env_variable('GOOGLE_ANALYTICS_PROPERTY_ID')
+GOOGLE_ANALYTICS_PROPERTY_ID = get_secret('GOOGLE_ANALYTICS_PROPERTY_ID')
 GOOGLE_ANALYTICS_DISPLAY_ADVERTISING = True
 GOOGLE_ANALYTICS_SITE_SPEED = True
 
@@ -99,9 +97,9 @@ S3_USE_SIGV4 = True
 # if False it will create unique file names for every uploaded file
 AWS_S3_FILE_OVERWRITE = False
 
-AWS_STORAGE_BUCKET_NAME = get_env_variable('AWS_STORAGE_BUCKET_NAME')
-AWS_ACCESS_KEY_ID = get_env_variable('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = get_env_variable('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = get_secret('AWS_STORAGE_BUCKET_NAME')
+AWS_ACCESS_KEY_ID = get_secret('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = get_secret('AWS_SECRET_ACCESS_KEY')
 
 # This will make sure that the file URL does not have unnecessary parameters like your access key.
 
