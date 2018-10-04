@@ -152,20 +152,12 @@
                                         <img class="card-img-top" src="http://placehold.it/700x300" alt="">
                                      {% endif %}
 
-                                    <!--
-                                    <div class="card-img-overlay">
-                                        <p class="card-text-right">Test</p>
-                                    </div>-->
-
                                     <div class="card-body">
 
                                         <h2 class="card-title">
                                             <div class="row">
-                                                {% if request.user == post.author or request.user.is_superuser %}
+
                                                 <div class="col-11">
-                                                {% else %}
-                                                <div class="col-12">
-                                                {% endif %}
 
                                                 {{ post.title }}
 
@@ -211,7 +203,11 @@
                                                                    data-slug="{{ post.slug }}"
                                                                    id="publish_{{ post.slug }}">Publish</a>
                                                             {% endif %}
-                                                            <a class="dropdown-item" data-toggle="modal" data-target="#DeletePostModalIndex" data-content="{{ post }}" data-url="{{ post.get_delete_url }}" data-csrf="{% csrf_token %}">
+                                                            <a class="dropdown-item" data-toggle="modal"
+                                                               data-target="#DeletePostModalIndex"
+                                                               data-content="{{ post }}"
+                                                               data-url="{{ post.get_delete_url }}"
+                                                               data-csrf="{% csrf_token %}">
                                                                 Delete Blog</a>
                                                           </div>
                                                         </div>
