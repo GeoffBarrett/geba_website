@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df093060-28c8-46a3-87ad-ac27d7285a35" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/geba_website/templates/blog/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/templates/blog/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/templates/project/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/templates/project/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,6 +19,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/geba_website/templates/project/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="192">
+              <caret line="222" column="136" selection-start-line="222" selection-start-column="136" selection-end-line="222" selection-end-column="136" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="production.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/geba_website/config/settings/production.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -54,19 +63,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="340">
               <caret line="20" column="6" lean-forward="true" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/geba_website/templates/blog/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="491">
-              <caret line="212" column="92" lean-forward="true" selection-start-line="212" selection-start-column="92" selection-end-line="212" selection-end-column="92" />
-              <folding>
-                <element signature="e#15291#15309#0" expanded="true" />
-                <element signature="e#16425#16443#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -140,7 +136,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>sett</find>
       <find>geba</find>
       <find>src=</find>
       <find>object</find>
@@ -168,8 +163,9 @@
       <find>secret_KEY</find>
       <find>SECRET_KEY</find>
       <find>settings</find>
-      <find>get_env</find>
       <find>Delete Blog</find>
+      <find>csrf</find>
+      <find>get_env</find>
     </findStrings>
     <replaceStrings>
       <replace>post_form.</replace>
@@ -229,7 +225,6 @@
         <option value="$PROJECT_DIR$/geba_website/templates/project/post_detail.html" />
         <option value="$PROJECT_DIR$/geba_website/templates/forum/index.html" />
         <option value="$PROJECT_DIR$/geba_website/templates/blog/detail.html" />
-        <option value="$PROJECT_DIR$/geba_website/templates/project/index.html" />
         <option value="$PROJECT_DIR$/geba_website/templates/pages/contact.html" />
         <option value="$PROJECT_DIR$/geba_website/templates/pages/detail.html" />
         <option value="$PROJECT_DIR$/geba_website/templates/pages/page_form_update.html" />
@@ -246,6 +241,7 @@
         <option value="$PROJECT_DIR$/geba_website/config/settings/production.py" />
         <option value="$PROJECT_DIR$/geba_website/templates/blog/post_confirm_delete.html" />
         <option value="$PROJECT_DIR$/geba_website/templates/blog/index.html" />
+        <option value="$PROJECT_DIR$/geba_website/templates/project/index.html" />
       </list>
     </option>
   </component>
@@ -309,6 +305,13 @@
               <item name="geba_website" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="blog" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geba_website" type="b2602c69:ProjectViewProjectNode" />
+              <item name="geba_website" type="462c0819:PsiDirectoryNode" />
+              <item name="geba_website" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -701,13 +704,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/geba_website/templates/project/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4420">
-          <caret line="260" column="62" selection-start-line="260" selection-start-column="62" selection-end-line="260" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/geba_website/config/settings/local.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -799,13 +795,6 @@
     <entry file="file://$PROJECT_DIR$/geba_website/templates/blog/post_search.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/geba_website/templates/blog/post_confirm_delete.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="6" lean-forward="true" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/geba_website/templates/blog/detail.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1165">
@@ -825,12 +814,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/geba_website/templates/blog/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="491">
-          <caret line="212" column="92" lean-forward="true" selection-start-line="212" selection-start-column="92" selection-end-line="212" selection-end-column="92" />
+        <state relative-caret-position="277">
+          <caret line="215" column="62" lean-forward="true" selection-start-line="215" selection-start-column="62" selection-end-line="215" selection-end-column="62" />
           <folding>
             <element signature="e#15291#15309#0" expanded="true" />
             <element signature="e#16425#16443#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geba_website/templates/blog/post_confirm_delete.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="6" lean-forward="true" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geba_website/templates/project/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="222" column="136" selection-start-line="222" selection-start-column="136" selection-end-line="222" selection-end-column="136" />
         </state>
       </provider>
     </entry>

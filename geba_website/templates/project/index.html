@@ -222,7 +222,7 @@
                                                             {% endif %}
                                                             <a class="dropdown-item" data-toggle="modal" data-target="#DeleteProjectModalIndex"
                                                                data-content="{{ project.title }}"
-                                                               data-url="{{ project.get_delete_url }}" data-csrf="{% csrf_token %}">
+                                                               data-url="{{ project.get_delete_url }}" data-csrf='{% csrf_token %}'>
                                                                 Delete Project</a>
                                                           </div>
                                                         </div>
