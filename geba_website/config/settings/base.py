@@ -15,6 +15,7 @@ from unipath import Path
 import json
 from django.core.exceptions import ImproperlyConfigured
 
+
 def get_env_variable(var_name):
     try:
         # return os.environ[var_name]
@@ -225,8 +226,6 @@ TEMPLATES = [
 ]
 
 AUTH_USER_MODEL = 'geba_auth.User'
-
-
 
 WSGI_APPLICATION = 'config.wsgi.application'
 

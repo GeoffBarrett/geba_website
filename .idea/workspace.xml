@@ -6,8 +6,71 @@
   <component name="ChangeListManager">
     <list default="true" id="df093060-28c8-46a3-87ad-ac27d7285a35" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/assets/apps/core/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/assets/apps/core/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geba_website/config/settings/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/config/settings/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/config/settings/utils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/css/base.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/css/changelists.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/css/dashboard.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/css/fonts.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/css/forms.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/css/login.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/css/pagedown.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/css/rtl.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/css/widgets.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/fonts/LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/fonts/README.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/fonts/Roboto-Bold-webfont.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/fonts/Roboto-Light-webfont.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/fonts/Roboto-Regular-webfont.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/img/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/img/README.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/img/calendar-icons.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/img/gis/move_vertex_off.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/img/gis/move_vertex_on.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/img/icon-addlink.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/img/icon-alert.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/img/icon-calendar.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/img/icon-changelink.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/img/icon-clock.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/img/icon-deletelink.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/img/icon-no.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/img/icon-unknown-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/img/icon-unknown.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/img/icon-yes.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/img/inline-delete.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/img/search.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/img/selector-icons.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/img/sorting-icons.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/img/tooltag-add.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/img/tooltag-arrowright.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/SelectBox.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/SelectFilter2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/actions.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/actions.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/admin/DateTimeShortcuts.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/admin/RelatedObjectLookups.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/calendar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/cancel.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/change_form.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/collapse.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/collapse.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/core.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/inlines.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/inlines.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/jquery.init.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/pagedown.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/popup_response.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/prepopulate.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/prepopulate.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/prepopulate_init.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/timeparse.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/urlify.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/jquery/LICENSE-JQUERY.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/jquery/jquery.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/jquery/jquery.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/xregexp/LICENSE-XREGEXP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/xregexp/xregexp.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/xregexp/xregexp.min.js" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -63,6 +126,15 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/geba_website/assets/apps/core/css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="346">
+              <caret line="599" column="14" lean-forward="true" selection-start-line="599" selection-start-column="14" selection-end-line="599" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="production.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/geba_website/config/settings/production.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -72,11 +144,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="base.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/geba_website/config/settings/base.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="28" column="60" selection-start-line="28" selection-start-column="60" selection-end-line="28" selection-end-column="60" />
+            <state relative-caret-position="950">
+              <caret line="252" selection-start-line="252" selection-end-line="252" />
               <folding>
                 <element signature="e#315#324#0" expanded="true" />
               </folding>
@@ -181,7 +253,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/geba_website/templates/comments/child_comment_vote3.html" />
         <option value="$PROJECT_DIR$/geba_website/templates/comments/comment_vote4.html" />
         <option value="$PROJECT_DIR$/geba_website/templates/comments/child_comment_vote4.html" />
         <option value="$PROJECT_DIR$/geba_website/assets/apps/comments/css/comments.css" />
@@ -232,6 +303,7 @@
         <option value="$PROJECT_DIR$/geba_website/assets/apps/pages/css/pages.css" />
         <option value="$PROJECT_DIR$/geba_website/config/settings/utils.py" />
         <option value="$PROJECT_DIR$/geba_website/config/settings/base.py" />
+        <option value="$PROJECT_DIR$/geba_website/assets/apps/core/css/style.css" />
       </list>
     </option>
   </component>
@@ -283,7 +355,16 @@
               <item name="geba_website" type="462c0819:PsiDirectoryNode" />
               <item name="assets" type="462c0819:PsiDirectoryNode" />
               <item name="apps" type="462c0819:PsiDirectoryNode" />
-              <item name="comments" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geba_website" type="b2602c69:ProjectViewProjectNode" />
+              <item name="geba_website" type="462c0819:PsiDirectoryNode" />
+              <item name="geba_website" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="geba_website" type="b2602c69:ProjectViewProjectNode" />
@@ -314,6 +395,12 @@
               <item name="geba_website" type="462c0819:PsiDirectoryNode" />
               <item name="config" type="462c0819:PsiDirectoryNode" />
               <item name="settings" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geba_website" type="b2602c69:ProjectViewProjectNode" />
+              <item name="geba_website" type="462c0819:PsiDirectoryNode" />
+              <item name="geba_website" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="geba_website" type="b2602c69:ProjectViewProjectNode" />
@@ -470,9 +557,9 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1359375" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1359375" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49367756" weight="0.32900432" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="7" sideWeight="0.50208336" side_tool="true" visible="true" weight="0.19978745" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50208336" side_tool="true" visible="true" weight="0.19978745" />
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Python Console" order="8" sideWeight="0.49367756" weight="0.22186147" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -535,9 +622,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/geba_website/apps/vote/templatetags/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/geba_website/apps/vote/apps.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -845,13 +929,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/geba_website/assets/apps/pages/css/pages.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="128" column="12" lean-forward="true" selection-start-line="128" selection-start-column="12" selection-end-line="128" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/geba_website/config/settings/utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -864,11 +941,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/geba_website/config/settings/base.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="28" column="60" selection-start-line="28" selection-start-column="60" selection-end-line="28" selection-end-column="60" />
+        <state relative-caret-position="950">
+          <caret line="252" selection-start-line="252" selection-end-line="252" />
           <folding>
             <element signature="e#315#324#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geba_website/assets/apps/pages/css/pages.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="128" column="12" lean-forward="true" selection-start-line="128" selection-start-column="12" selection-end-line="128" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geba_website/assets/apps/core/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="346">
+          <caret line="599" column="14" lean-forward="true" selection-start-line="599" selection-start-column="14" selection-end-line="599" selection-end-column="14" />
         </state>
       </provider>
     </entry>

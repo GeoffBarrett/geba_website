@@ -601,6 +601,11 @@ a {
     display: none;
   }
 
+  header.masthead .page-heading h1, header.masthead .site-heading h1 {
+    font-size: 35px!important;
+    margin-top: 0;
+   }
+
   #mainNav .navbar-nav > li.nav-item > a {
     padding: 10px 10px;
     color: white;
