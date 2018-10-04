@@ -9,10 +9,8 @@ https://docs.djangoproject.com/en/1.10/howto/deployment/wsgi/
 
 import os
 
-os.environ["DJANGO_SETTINGS_MODULE"] = "config.settings.production"
-# os.environ["DJANGO_SETTINGS_MODULE"] = "config.settings.staging"
+from django.core.wsgi import get_wsgi_application
 
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings.production")
 
-from django.core.wsgi import get_wsgi_application, WSGIHandler
 application = get_wsgi_application()
-# application = WSGIHandler()
