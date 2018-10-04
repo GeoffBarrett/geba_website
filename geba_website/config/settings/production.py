@@ -13,6 +13,8 @@ from .base import *
 # import boto3
 # from os import environ
 
+print('secret_key============================', SECRET_KEY)
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 

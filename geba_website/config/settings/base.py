@@ -100,8 +100,9 @@ STATICFILES_FINDERS = (
 )
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = os.environ.get("secret_key")
+
 SECRET_KEY = get_env_variable("secret_key")
+
 # A list of strings representing the host/domain names that this Django site can serve.
 # This is a security measure to prevent HTTP Host header attacks, which are possible even under many seemingly-safe
 # web server configurations.
