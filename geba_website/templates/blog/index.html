@@ -156,8 +156,11 @@
 
                                         <h2 class="card-title">
                                             <div class="row">
-
+                                                {% if request.user == post.author or request.user.is_superuser %}
                                                 <div class="col-11">
+                                                {% else %}
+                                                <div class="col-12">
+                                                {% endif %}
 
                                                 {{ post.title }}
 
@@ -207,7 +210,7 @@
                                                                data-target="#DeletePostModalIndex"
                                                                data-content="{{ post }}"
                                                                data-url="{{ post.get_delete_url }}"
-                                                               data-csrf="{% csrf_token %}">
+                                                               data-csrf="">
                                                                 Delete Blog</a>
                                                           </div>
                                                         </div>
