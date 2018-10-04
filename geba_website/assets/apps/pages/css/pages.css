@@ -126,6 +126,11 @@
     overflow-y: auto;
 }
 
+img.no_img {
+    background: rgba(194, 198, 206, .4);
+}
+
+
 .geba-col-4 {
     width: 33.3333%;
     padding-right: 0px;
