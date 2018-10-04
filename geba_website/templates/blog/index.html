@@ -211,9 +211,7 @@
                                                                    data-slug="{{ post.slug }}"
                                                                    id="publish_{{ post.slug }}">Publish</a>
                                                             {% endif %}
-                                                            <a class="dropdown-item" data-toggle="modal" data-target="#DeletePostModalIndex"
-                                                               data-content="{{ post }}"
-                                                               data-url="{{ post.get_delete_url }}" data-csrf="{% csrf_token %}">
+                                                            <a class="dropdown-item" data-toggle="modal" data-target="#DeletePostModalIndex" data-content="{{ post }}" data-url="{{ post.get_delete_url }}" data-csrf="{% csrf_token %}">
                                                                 Delete Blog</a>
                                                           </div>
                                                         </div>
