@@ -210,7 +210,7 @@
                                                                data-target="#DeletePostModalIndex"
                                                                data-content="{{ post }}"
                                                                data-url="{{ post.get_delete_url }}"
-                                                               data-csrf="">
+                                                               data-csrf='{% csrf_token %}'>
                                                                 Delete Blog</a>
                                                           </div>
                                                         </div>
