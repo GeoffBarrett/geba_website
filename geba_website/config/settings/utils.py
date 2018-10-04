@@ -12,8 +12,6 @@ def get_env_variable(var_name):
         raise ImproperlyConfigured(error_msg)
 
 
-print('cwdddddddddddddddd', os.getcwd())
-
 with open("secrets.json") as f:
     secrets = json.loads(f.read())
 
