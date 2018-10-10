@@ -78,8 +78,8 @@ class ProjectPost(VoteModel, TimeStampModel):
                               width_field="width_field",
                               height_field="height_field")
 
-    width_field = models.IntegerField(default=0)
-    height_field = models.IntegerField(default=0)
+    width_field = models.IntegerField(default=0, null=True)
+    height_field = models.IntegerField(default=0, null=True)
 
     image_caption = models.CharField(blank=True, null=True, max_length=200)
 
@@ -169,8 +169,8 @@ class Project(VoteModel, TimeStampModel):
                               width_field="width_field",
                               height_field="height_field")
 
-    width_field = models.IntegerField(default=0)
-    height_field = models.IntegerField(default=0)
+    width_field = models.IntegerField(default=0, null=True)
+    height_field = models.IntegerField(default=0, null=True)
 
     image_caption = models.CharField(blank=True, null=True, max_length=200)
 

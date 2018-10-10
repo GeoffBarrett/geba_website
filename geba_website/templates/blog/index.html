@@ -149,7 +149,12 @@
                                      {% if post.image %}
                                         <img class="card-img-top" src="{{ post.image.url }}" alt="">
                                      {% else %}
-                                        <img class="card-img-top" src="http://placehold.it/700x300" alt="">
+                                        <img class="card-img-top no_img" data-image=""
+                                             data-image-dimensions="900x300" data-image-focal-point="0.5,0.5" data-load="false"
+                                             data-image-id="1" data-type="image" data-position-mode="standard"
+                                             style="left: 0%; top: 0%; width: 100%; height: 100%; position: absolute;"
+                                             src="" alt=""
+                                             data-image-resolution="500w">
                                      {% endif %}
 
                                     <div class="card-body">

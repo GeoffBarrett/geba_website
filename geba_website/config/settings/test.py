@@ -11,13 +11,14 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 from .base import *
 # import os
-# import boto3
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+ALLOWED_HOSTS = ['127.0.0.1']
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
@@ -50,6 +51,4 @@ INSTALLED_APPS += (
 MIDDLEWARE += (
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
-
-s3 = boto3.resource('s3')
 

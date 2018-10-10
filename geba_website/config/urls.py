@@ -20,6 +20,9 @@ from django.conf.urls.static import static
 
 from django.views.generic import RedirectView
 
+handler404 = 'apps.core.views.handler404'
+handler500 = 'apps.core.views.handler500'
+
 urlpatterns = [
     # -------------------- social link redirects -------------------------------
     re_path(r'^youtube$', RedirectView.as_view(url='https://www.youtube.com/channel/UCoTtKQQhQHXMpCBSINlpO-A',

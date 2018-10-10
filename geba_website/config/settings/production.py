@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 from .base import *
-# import boto3
+
 # from os import environ
 
 # SECURITY WARNING: don't run with debug turned on in production!
