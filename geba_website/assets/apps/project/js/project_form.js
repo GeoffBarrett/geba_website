@@ -8,14 +8,6 @@ function ProjectAjaxSuccess(project_form, post_form){
     }
 }
 
-/*
-function ProjectAjaxError(jqXHR, textStatus, errorThrown){
-    console.log(jqXHR)
-    console.log(textStatus)
-    console.log(errorThrown)
-}
-*/
-
 function ProjectAjaxError(data, textStatus, jqXHR){
     var errors = $.parseJSON(data.responseText);
     $.each(errors, function(index, value) {
@@ -27,31 +19,6 @@ function ProjectAjaxError(data, textStatus, jqXHR){
     });
 }
 
-/*
-$("#SaveCreate").click(function(event){
-
-    event.preventDefault();
-
-    var project_form = $(document.getElementById('ProjectForm'));
-    var post_form = $(document.getElementById('PostForm'));
-
-    var button = $(event.target); // Button that triggered the modal
-    var $thisURL = project_form.attr('data-url') || window.location.href // or set your own url
-    var $formData = project_form.serialize();
-
-    $.ajax({
-        method: "POST",
-        url: $thisURL,
-        data: $formData,
-        beforeSend: clear_form_field_errors(project_form),
-        success: function(data){
-            console.log(data);
-            ProjectAjaxSuccess(project_form, post_form);
-            },
-        error: ProjectAjaxError,
-    })
-});
-*/
 
 $("#BackProject").click(function(event){
     event.preventDefault();
@@ -72,62 +39,3 @@ $("#BackProject").click(function(event){
     }
 
 });
-
-/*
-$(document).ready(function(){
-
-    var project_form = $(document.getElementById('ProjectForm'));
-    var post_form = $(document.getElementById('PostForm'));
-
-    post_form.submit(function(event){
-        event.preventDefault()
-
-        var ProjectformData = project_form.serialize();
-
-        console.log(ProjectformData);
-
-        var Projectform_url = ProjectformData.attr('data-url') || window.location.href // or set your own url
-
-        console.log(Projectform_url);
-
-        $.ajax({
-            method: "POST",
-            url: Projectform_url,
-            data: ProjectformData,
-            success: handleFormSuccess,
-            error: handleFormError,
-        })
-
-
-        var postformData = $(this).serialize()
-        var postform_url = postformData.attr('data-url') || window.location.href // or set your own url
-
-        console.log(postform_url);
-
-        $.ajax({
-            method: "POST",
-            url: postform_url,
-            data: postformData,
-            success: handleFormSuccess,
-            error: handleFormError,
-        })
-
-        // document.getElementById("PostForm").reset(); // reset form data
-        // document.getElementById("ProjectForm").reset(); // reset form data
-
-    })
-
-    function handleFormSuccess(data, textStatus, jqXHR){
-        console.log(data)
-        console.log(textStatus)
-        console.log(jqXHR)
-
-    }
-
-    function handleFormError(jqXHR, textStatus, errorThrown){
-        console.log(jqXHR)
-        console.log(textStatus)
-        console.log(errorThrown)
-    }
-})
-*/

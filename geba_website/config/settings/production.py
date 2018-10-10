@@ -91,7 +91,6 @@ GOOGLE_ANALYTICS_SITE_SPEED = True
 STATICFILES_LOCATION = 'static'
 MEDIAFILES_LOCATION = 'media'
 
-
 S3_USE_SIGV4 = True
 
 # if False it will create unique file names for every uploaded file
@@ -104,7 +103,6 @@ AWS_SECRET_ACCESS_KEY = get_secret('AWS_SECRET_ACCESS_KEY')
 # This will make sure that the file URL does not have unnecessary parameters like your access key.
 
 AWS_QUERYSTRING_AUTH = False
-
 
 # Tell django-storages that when coming up with the URL for an item in S3 storage, keep
 # it simple - just use this domain plus the path. (If this isn't set, things get complicated).

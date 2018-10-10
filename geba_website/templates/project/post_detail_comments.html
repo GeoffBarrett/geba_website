@@ -55,7 +55,7 @@
                                             </a>
                                             {% if request.user == comment.author %}
                                                 <a class="" href="" data-toggle="modal" data-target="#DeleteCommentModal" data-content="{{ comment.content }}"
-                                                data-url="{% url 'comments:delete' comment.id %}" data-csrf="{% csrf_token %}">
+                                                data-url="{% url 'comments:delete' comment.id %}">
                                                     <span class="fa fa-trash jeSweH"> Delete</span>
                                                 </a>
                                             {% endif %}
@@ -124,7 +124,7 @@
                                                 </a>
                                                 {% if request.user == child_comment.author %}
                                                     <a class="" href="" data-toggle="modal" data-target="#DeleteCommentModal" data-content="{{ child_comment.content }}"
-                                                    data-url="{% url 'comments:delete' child_comment.id %}" data-csrf="{% csrf_token %}">
+                                                    data-url="{% url 'comments:delete' child_comment.id %}">
                                                         <span class="fa fa-trash jeSweH"> Delete</span>
                                                     </a>
                                                 {% endif %}

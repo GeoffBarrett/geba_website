@@ -222,7 +222,7 @@
                                                             {% endif %}
                                                             <a class="dropdown-item" data-toggle="modal" data-target="#DeleteProjectModalIndex"
                                                                data-content="{{ project.title }}"
-                                                               data-url="{{ project.get_delete_url }}" data-csrf='{% csrf_token %}'>
+                                                               data-url="{{ project.get_delete_url }}">
                                                                 Delete Project</a>
                                                           </div>
                                                         </div>
@@ -287,6 +287,7 @@
 {% endblock %}
 
 {% block javascript %}
+    <script src="{% static 'apps/core/js/csrf_cookie.js' %}"></script>
     <script src="{% static 'apps/project/js/project.js' %}"></script>
     <script src="{% static 'apps/core/js/badge.js' %}"></script>
     <script src="{% static 'apps/vote/js/vote.js' %}"></script>
