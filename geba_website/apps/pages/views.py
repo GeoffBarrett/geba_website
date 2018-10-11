@@ -38,8 +38,9 @@ class PageActionMixin(object):
 def handler404(request, *args, **argv):
     context = RequestContext(request)
     page = get_object_or_404(Page, slug='404')
+    user = request.user
     err_code = 404
-    response = render_to_response('pages/detail.html', {"code": err_code, "page": page}, context)
+    response = render_to_response('pages/detail.html', {"code": err_code, "page": page, "user": user}, context)
     response.status_code = 404
     return response
 
@@ -47,8 +48,9 @@ def handler404(request, *args, **argv):
 def handler500(request, *args, **argv):
     context = RequestContext(request)
     page = get_object_or_404(Page, slug='500')
+    user = request.user
     err_code = 500
-    response = render_to_response('pages/detail.html', {"code": err_code, "page": page}, context)
+    response = render_to_response('pages/detail.html', {"code": err_code, "page": page, "user": user}, context)
     response.status_code = 500
     return response
 
@@ -56,8 +58,9 @@ def handler500(request, *args, **argv):
 def handler403(request, *args, **argv):
     context = RequestContext(request)
     page = get_object_or_404(Page, slug='403')
+    user = request.user
     err_code = 403
-    response = render_to_response('pages/detail.html', {"code": err_code, "page": page}, context)
+    response = render_to_response('pages/detail.html', {"code": err_code, "page": page, "user": user}, context)
     response.status_code = 403
     return response
 
@@ -65,8 +68,9 @@ def handler403(request, *args, **argv):
 def handler400(request, *args, **argv):
     context = RequestContext(request)
     page = get_object_or_404(Page, slug='400')
+    user = request.user
     err_code = 400
-    response = render_to_response('pages/detail.html', {"code": err_code, "page": page}, context)
+    response = render_to_response('pages/detail.html', {"code": err_code, "page": page, "user": user}, context)
     response.status_code = 400
     return response
 
