@@ -12,6 +12,7 @@ from django.urls import reverse_lazy
 from .utils import check_page_rights
 from django.core.mail import send_mail
 from django.template.loader import get_template
+from django.template import RequestContext
 # Create your views here.
 
 
@@ -32,6 +33,42 @@ class PageActionMixin(object):
                                            [form.instance])[1:-1]
         ModelFormFailureHistory.objects.create(form_data=form_data, model_data=model_data)
         return super(PageActionMixin, self).form_invalid(form)
+
+
+def handler404(request, *args, **argv):
+    context = RequestContext(request)
+    page = get_object_or_404(Page, slug='404')
+    err_code = 404
+    response = render_to_response('pages/detail.html', {"code": err_code, "page": page}, context)
+    response.status_code = 404
+    return response
+
+
+def handler500(request, *args, **argv):
+    context = RequestContext(request)
+    page = get_object_or_404(Page, slug='500')
+    err_code = 500
+    response = render_to_response('pages/detail.html', {"code": err_code, "page": page}, context)
+    response.status_code = 500
+    return response
+
+
+def handler403(request, *args, **argv):
+    context = RequestContext(request)
+    page = get_object_or_404(Page, slug='403')
+    err_code = 403
+    response = render_to_response('pages/detail.html', {"code": err_code, "page": page}, context)
+    response.status_code = 403
+    return response
+
+
+def handler400(request, *args, **argv):
+    context = RequestContext(request)
+    page = get_object_or_404(Page, slug='400')
+    err_code = 400
+    response = render_to_response('pages/detail.html', {"code": err_code, "page": page}, context)
+    response.status_code = 400
+    return response
 
 
 class PageDetailView(DetailView):
