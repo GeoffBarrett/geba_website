@@ -36,10 +36,13 @@
                 <div class="row no-header justify-content-center">
                     {% if user.is_superuser %}
                         <div class="col-10 offset-1">
-                            <div class="post-heading">
-                                <h1>{{ page.title }}</h1>
-                            </div>
-                            <hr>
+                            {% if page.show_title %}
+                                <div class="post-heading">
+
+                                    <h1>{{ page.title }}</h1>
+                                </div>
+                                <hr>
+                            {% endif %}
                         </div>
                         <div class="col-1">
                             <a href="{% url 'pages:update' page.slug %}">
@@ -47,10 +50,12 @@
                         </div>
                     {% else %}
                         <div class="col-10">
-                            <div class="post-heading">
-                                <h1>{{ page.title }}</h1>
-                                <hr>
-                            </div>
+                            {% if page.show_title %}
+                                <div class="post-heading">
+                                    <h1>{{ page.title }}</h1>
+                                    <hr>
+                                </div>
+                            {% endif %}
                         </div>
                     {% endif %}
                 </div>

@@ -2,19 +2,9 @@
     display:none!important;
 }
 
-/*
-p {
-  line-height: 1.5;
-  margin: 30px 0;
-}
-*/
-
-/**/
 .modal_btn {
   margin: 0px 3px;
 }
-
-
 
 img.note-float-left {
     margin-right: 10px;
@@ -57,17 +47,6 @@ a {
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
 }
-
-/* not sure if this is necessary
-.navbar-fixed-top,.navbar-fixed-bottom{
-  position:fixed;
-  right:0;
-  left:0;
-  z-index:1030;
-  -webkit-transform:translate3d(0,0,0);
-  transform:translate3d(0,0,0)
-}
-*/
 
 #mainNav #navBrand .bottom-wrapper{
   position:absolute;
@@ -1222,6 +1201,7 @@ footer {
     padding: 20px;
     font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 13px;
+    bottom: 0;
 }
 
 footer .list-inline {

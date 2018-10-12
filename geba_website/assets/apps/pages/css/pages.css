@@ -6,6 +6,10 @@
     position: relative;
 }
 
+.container-fluid {
+    min-height: calc(100vh - 233px)!important;
+}
+
 .image-outer-wrapper .image-wrapper {
     line-height: 0;
     text-align: center;

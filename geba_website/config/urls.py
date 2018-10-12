@@ -20,8 +20,6 @@ from django.conf.urls.static import static
 
 from django.views.generic import RedirectView
 
-# handler404 = 'apps.core.views.handler404'
-# handler500 = 'apps.core.views.handler500'
 
 handler404 = 'apps.pages.views.handler404'
 handler500 = 'apps.pages.views.handler500'
