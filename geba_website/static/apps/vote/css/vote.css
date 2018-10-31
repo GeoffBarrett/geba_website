@@ -1,0 +1,93 @@
+.midcol {
+    float: left;
+    margin-right: 7px;
+    margin-left: 7px;
+    background: transparent;
+    overflow: hidden;
+    text-align: center;
+}
+
+
+.midcol-comments {
+    /*float: left;
+    margin-right: 0px;
+    margin-left: 0px;*/
+    margin-left: auto;
+    background: transparent;
+    overflow: hidden;
+    text-align: center;
+}
+
+.arrow {
+    margin: 0px 0px 0px 0px;
+    width: 100%;
+    height: 16px;
+    display: block;
+    cursor: pointer;
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    outline: none;
+}
+
+.arrow.up {
+    background-image: url(../img/sprite-reddit.png);
+    background-position: -84px -1618px;
+    background-repeat: no-repeat;
+}
+
+.arrow.up:hover {
+    background-image: url(../img/sprite-reddit.png);
+    background-position: -105px -1618px;
+    background-repeat: no-repeat;
+}
+
+.arrow.down {
+    background-image: url(../img/sprite-reddit.png);
+    background-position: -42px -1618px;
+    background-repeat: no-repeat;
+}
+
+.arrow.down:hover {
+    background-image: url(../img/sprite-reddit.png);
+    background-position: -63px -1618px;
+    background-repeat: no-repeat;
+}
+
+.arrow.upmod {
+    background-image: url(../img/sprite-reddit.png);
+    background-position: -105px -1618px;
+    background-repeat: no-repeat;
+}
+
+.arrow.downmod {
+    background-image: url(../img/sprite-reddit.png);
+    background-position: -63px -1618px;
+    background-repeat: no-repeat;
+}
+
+.link .score {
+    text-align: center;
+    color: #c6c6c6;
+}
+
+.link .score.dislikes{
+    color:#9494FF
+}
+
+.link .score.likes{
+    color:#dec145
+}
+
+
+.likes .score.likes, .unvoted .score.unvoted, .dislikes .score.dislikes {
+    display: inline;
+}
+
+.likes .score.dislikes, .likes .score.unvoted, .unvoted .score.likes, .unvoted .score.dislikes,
+.dislikes .score.unvoted, .dislikes .score.likes {
+    display: none;
+}
+
