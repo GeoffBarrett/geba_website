@@ -180,6 +180,7 @@ PROJECT_APPS = (
     'apps.comments',
     'apps.core',  # adding the core page to the settings
     'apps.forum',
+    'apps.geba_analytics',
     'apps.geba_auth',
     'apps.pages',
     'apps.polls',

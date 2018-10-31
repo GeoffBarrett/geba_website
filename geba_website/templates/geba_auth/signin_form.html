@@ -6,8 +6,6 @@
 {% load crispy_forms_tags %}
 
 {% block css %}
-<link rel='stylesheet' href="{% static 'apps/core/css/form_style.css' %}"/>
-
 {% endblock css %}
 
 {% block header %}
@@ -26,11 +24,8 @@
 
 {% endblock header %}
 
-
 {% block content %}
-<!-- Top content -->
 <article>
-
     <div class="container-fluid">
 
         <div class="row justify-content-center">
@@ -38,16 +33,15 @@
                 <h3>Login to GEBA Tech!</h3>
                 <p>Enter username and password to log on:</p>
 
-
                 <form role="form" action="{% url 'geba_auth:login' %}" method="post">
                     {% csrf_token %}
 
                     {{ form|crispy }}
 
-                    <button type="submit" name="login_btn" class="btn btn-primary">Sign in</button>
+                    <button type="submit" class="btn btn-primary">Sign in</button>
                 </form>
 
-
+                <!--
                 <div class="social-login">
                     <h3 class="mt-1">...or login with:</h3>
                     <div class="social-login-buttons">
@@ -61,7 +55,7 @@
                             <i class="fa fa-github"></i> GitHub
                         </a>
                     </div>
-                </div>
+                </div>-->
 
             </div>
         </div>

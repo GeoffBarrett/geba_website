@@ -2,6 +2,7 @@
 from .models import User
 from django import forms
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.auth import authenticate
 
 
 class UserCreationForm(forms.ModelForm):
@@ -62,3 +63,25 @@ class LoginForm(forms.Form):
 
     username = forms.CharField(label='Username')
     password = forms.CharField(label='Password', widget=forms.PasswordInput)
+
+    def clean_username(self):
+        username = self.cleaned_data.get('username')
+        try:
+            existing_user = User.objects.get(username=username)
+        except User.DoesNotExist:
+            raise forms.ValidationError("Username does not exist!")
+        return username
+
+    def clean_password(self):
+        username = self.cleaned_data.get('username')
+        password = self.cleaned_data.get('password')
+        user = authenticate(username=username, password=password)
+        if not user or not user.is_active:
+            raise forms.ValidationError("Invalid Username/Password!")
+        return password
+
+    def login(self, request):
+        username = self.cleaned_data.get('username')
+        password = self.cleaned_data.get('password')
+        user = authenticate(username=username, password=password)
+        return user
