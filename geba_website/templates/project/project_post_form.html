@@ -1,11 +1,14 @@
 {% extends "core/base.html" %} <!-- extends path starting from templates directory, concatenates all contents of templates -->
 
+{% block header %}
+
 {% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% endblock header %}
+
 
 {% block css %}
-
-<link rel='stylesheet' href="{% static 'apps/core/css/form_style.css' %}"/>
-
 {% endblock css %}
 
 {% block title %}GEBA - New Project Post{% endblock title %}
@@ -16,7 +19,7 @@
       <div class="container">
         <div class="row">
           <div class="col-8 mx-auto">
-            <div class="post-heading">
+            <div class="site-heading">
               <h1>Create Post</h1>
             </div>
           </div>
@@ -24,14 +27,13 @@
       </div>
     </header>
 
-    {% if messages %}
-        {% include "project/messages.html" %}
-    {% endif %}
-
-    {% load crispy_forms_tags %}
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class = "col-7">
+                {% if messages %}
+                    {% include "project/messages.html" %}
+                {% endif %}
+
                 <div class="panel panel-default">
                     <div class="panel-body">
 

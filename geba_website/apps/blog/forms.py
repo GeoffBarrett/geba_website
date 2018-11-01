@@ -9,7 +9,7 @@ from django_summernote.widgets import SummernoteWidget
 class BlogPostForm(forms.ModelForm):
 
     publish_date = forms.DateTimeField(widget=forms.SelectDateWidget)
-    body = forms.CharField(widget=SummernoteWidget())
+    body = forms.CharField(widget=SummernoteWidget(attrs={'summernote': {'width': '100%', 'height': '480'}}))
 
     class Meta:
         model = Post

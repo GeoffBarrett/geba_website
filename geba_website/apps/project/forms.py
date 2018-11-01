@@ -20,7 +20,7 @@ class ProjectPostForm(forms.ModelForm):
     # publish_date = forms.DateInput(attrs={'class': 'date_picker'})
 
     # body = forms.CharField(widget=PagedownWidget())  # this is for pagedown wysiwyg
-    body = forms.CharField(widget=SummernoteWidget())
+    body = forms.CharField(widget=SummernoteWidget(attrs={'summernote': {'width': '100%', 'height': '480'}}))
 
     class Meta:
         model = ProjectPost

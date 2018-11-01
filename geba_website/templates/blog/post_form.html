@@ -1,16 +1,11 @@
 {% extends "core/base.html" %} <!-- extends path starting from templates directory, concatenates all contents of templates -->
 
 {% load staticfiles %}
-
-{% block css %}
-<!--<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" media="screen"
- href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">-->
-<link rel='stylesheet' href="{% static 'apps/core/css/form_style.css' %}"/>
-
-{% endblock css %}
+{% load crispy_forms_tags %}
 
 {% block title %}GEBA - New Blog{% endblock title %}
+
+{{ form.media }}
 
 {% block content %}
 
@@ -26,16 +21,15 @@
       </div>
     </header>
 
-    {% load crispy_forms_tags %}
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class = "col-7">
+                {% if messages %}
+                    {% include "blog/messages.html" %}
+                {% endif %}
+
                 <div class="panel panel-default">
                     <div class="panel-body">
-
-                        {% if messages %}
-                            {% include "blog/messages.html" %}
-                        {% endif %}
 
                         <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
                             {% csrf_token %}

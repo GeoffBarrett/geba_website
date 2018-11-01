@@ -8,7 +8,8 @@ from django_summernote.widgets import SummernoteWidget
 
 class PageForm(forms.ModelForm):
 
-    body = forms.CharField(widget=SummernoteWidget(), required=False)
+    body = forms.CharField(widget=SummernoteWidget(attrs={'summernote': {'width': '100%', 'height': '480'}}),
+                           required=False)
 
     class Meta:
         model = Page
