@@ -14,6 +14,7 @@ from django.core.mail import send_mail
 from django.template.loader import get_template
 from django.template import RequestContext
 # Create your views here.
+from ..geba_analytics.mixins import ObjectViewMixin
 
 
 class PageActionMixin(object):
@@ -75,7 +76,7 @@ def handler400(request, *args, **argv):
     return response
 
 
-class PageDetailView(DetailView):
+class PageDetailView(ObjectViewMixin, DetailView):
     """This view will be used to view the details"""
     # success_msg = 'Comment Added!'
     model = Page  # generic views need to know which model to act upon
@@ -107,7 +108,7 @@ class PageUpdateView(PageActionMixin, UpdateView):
         return super(PageUpdateView, self).form_valid(form)
 
 
-class HomeView(DetailView):
+class HomeView(ObjectViewMixin, DetailView):
     """This view will be used to GET the detail data"""
     # success_msg = 'Comment Added!'
     model = Page  # generic views need to know which model to act upon
@@ -141,7 +142,7 @@ class HomeView(DetailView):
         return self.render_to_response(context)
 
 
-class ContactView(DetailView):
+class ContactView(ObjectViewMixin, DetailView):
     """This view will be used to GET the detail data"""
     # success_msg = 'Comment Added!'
     model = Page  # generic views need to know which model to act upon

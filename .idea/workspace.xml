@@ -5,849 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df093060-28c8-46a3-87ad-ac27d7285a35" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/geba_website/apps/geba_analytics/signals.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geba_website/apps/geba_analytics/utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/blog/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/apps/blog/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/pages/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/apps/pages/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/project/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/apps/project/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/manage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/css/autocomplete.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/css/base.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/css/changelists.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/css/dashboard.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/css/fonts.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/css/forms.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/css/login.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/css/pagedown.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/css/responsive.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/css/responsive_rtl.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/css/rtl.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/css/vendor/select2/LICENSE-SELECT2.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/css/vendor/select2/select2.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/css/vendor/select2/select2.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/css/widgets.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/fonts/LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/fonts/README.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/fonts/Roboto-Bold-webfont.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/fonts/Roboto-Light-webfont.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/fonts/Roboto-Regular-webfont.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/img/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/img/README.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/img/calendar-icons.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/img/gis/move_vertex_off.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/img/gis/move_vertex_on.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/img/icon-addlink.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/img/icon-alert.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/img/icon-calendar.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/img/icon-changelink.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/img/icon-clock.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/img/icon-deletelink.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/img/icon-no.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/img/icon-unknown-alt.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/img/icon-unknown.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/img/icon-viewlink.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/img/icon-yes.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/img/inline-delete.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/img/search.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/img/selector-icons.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/img/sorting-icons.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/img/tooltag-add.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/img/tooltag-arrowright.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/SelectBox.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/SelectFilter2.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/actions.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/actions.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/admin/DateTimeShortcuts.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/admin/RelatedObjectLookups.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/autocomplete.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/calendar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/cancel.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/change_form.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/collapse.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/collapse.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/core.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/inlines.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/inlines.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/jquery.init.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/pagedown.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/popup_response.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/prepopulate.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/prepopulate.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/prepopulate_init.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/timeparse.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/urlify.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/jquery/LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/jquery/jquery.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/jquery/jquery.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/LICENSE.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/ar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/az.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/bg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/ca.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/cs.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/da.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/de.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/el.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/en.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/es.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/et.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/eu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/fa.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/fi.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/fr.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/gl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/he.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/hi.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/hr.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/hu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/id.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/is.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/it.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/ja.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/km.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/ko.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/lt.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/lv.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/mk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/ms.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/nb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/nl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/pl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/pt-BR.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/pt.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/ro.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/ru.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/sk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/sr-Cyrl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/sr.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/sv.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/th.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/tr.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/uk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/vi.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/zh-CN.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/i18n/zh-TW.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/select2.full.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/select2/select2.full.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/xregexp/LICENSE-XREGEXP.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/xregexp/LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/xregexp/xregexp.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/admin/js/vendor/xregexp/xregexp.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/debug_toolbar/css/print.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/debug_toolbar/css/toolbar.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/debug_toolbar/img/ajax-loader.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/debug_toolbar/img/back.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/debug_toolbar/img/back_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/debug_toolbar/img/close.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/debug_toolbar/img/close_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/debug_toolbar/img/djdt_vertical.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/debug_toolbar/img/indicator.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/debug_toolbar/js/jquery_existing.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/debug_toolbar/js/jquery_post.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/debug_toolbar/js/jquery_pre.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/debug_toolbar/js/toolbar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/debug_toolbar/js/toolbar.profiling.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/debug_toolbar/js/toolbar.sql.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/debug_toolbar/js/toolbar.template.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/debug_toolbar/js/toolbar.timer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/backgrounds/changelist-results.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/backgrounds/loading-small.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/backgrounds/messagelist.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/backgrounds/nav-grabber.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/backgrounds/ui-sortable-placeholder.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons-s79f97b581c.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons-small-s36415c1223.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons-small/add-link.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons-small/add-link_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons-small/change-link.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons-small/change-link_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons-small/delete-link.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons-small/filter-choice-selected.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons-small/link-external-rtl.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons-small/link-external-rtl_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons-small/link-external.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons-small/link-external_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons-small/link-internal-rtl.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons-small/link-internal-rtl_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons-small/link-internal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons-small/link-internal_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons-small/sort-remove.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/add-another.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/add-another_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/back-link-rtl.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/back-link-rtl_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/back-link.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/back-link_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/breadcrumbs-rtl.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/breadcrumbs-rtl_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/breadcrumbs.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/breadcrumbs_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/date-hierarchy-back-rtl.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/date-hierarchy-back-rtl_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/date-hierarchy-back.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/date-hierarchy-back_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/datepicker.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/datepicker_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/datetime-now.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/datetime-now_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/form-select.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/link-internal-rtl.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/link-internal-rtl_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/object-tools-add-link.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/object-tools-viewsite-link.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/pulldown-handler.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/pulldown-handler_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/pulldown-handler_selected.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/related-lookup-m2m.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/related-lookup-m2m_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/related-lookup.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/related-lookup_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/related-remove.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/related-remove_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/searchbox.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/selector-add-m2m-horizontal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/selector-add-m2m-horizontal_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/selector-add-m2m-vertical.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/selector-add-m2m-vertical_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/selector-filter.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/selector-remove-m2m-horizontal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/selector-remove-m2m-horizontal_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/selector-remove-m2m-vertical.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/selector-remove-m2m-vertical_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/sort-remove.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/sort-remove_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/sorted-ascending.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/sorted-descending.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/status-no.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/status-unknown.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/status-yes.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/th-ascending.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/th-descending.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/timepicker.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/timepicker_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/tools-add-handler.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/tools-add-handler_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/tools-arrow-down-handler.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/tools-arrow-down-handler_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/tools-arrow-up-handler.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/tools-arrow-up-handler_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/tools-close-handler.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/tools-close-handler_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/tools-delete-handler-predelete.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/tools-delete-handler.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/tools-delete-handler_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/tools-drag-handler.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/tools-drag-handler_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/tools-edit-handler.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/tools-edit-handler_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/tools-open-handler.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/tools-open-handler_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/tools-remove-handler.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/tools-remove-handler_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/tools-trash-handler.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/tools-trash-handler_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/tools-trash-list-toggle-handler.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/tools-trash-list-toggle-handler_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/tools-viewsite-link.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/tools-viewsite-link_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/ui-datepicker-next.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/ui-datepicker-next_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/ui-datepicker-prev.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/images/icons/ui-datepicker-prev_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/img/admin/arrow-down.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/img/admin/arrow-up.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/jquery/LICENSE-JQUERY.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/jquery/jquery.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/jquery/ui/images/ui-bg_diagonals-thick_18_b81900_40x40.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/jquery/ui/images/ui-bg_diagonals-thick_20_666666_40x40.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/jquery/ui/images/ui-bg_flat_10_000000_40x100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/jquery/ui/images/ui-bg_glass_100_f6f6f6_1x400.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/jquery/ui/images/ui-bg_glass_100_fdf5ce_1x400.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/jquery/ui/images/ui-bg_glass_65_ffffff_1x400.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/jquery/ui/images/ui-bg_gloss-wave_35_f6a828_500x100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/jquery/ui/images/ui-bg_highlight-soft_100_eeeeee_1x100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/jquery/ui/images/ui-bg_highlight-soft_75_ffe45c_1x100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/jquery/ui/images/ui-icons_222222_256x240.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/jquery/ui/images/ui-icons_228ef1_256x240.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/jquery/ui/images/ui-icons_ef8c08_256x240.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/jquery/ui/images/ui-icons_ffd27a_256x240.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/jquery/ui/images/ui-icons_ffffff_256x240.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/jquery/ui/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/jquery/ui/jquery-ui.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/jquery/ui/jquery-ui.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/jquery/ui/jquery-ui.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/jquery/ui/jquery-ui.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/jquery/ui/jquery-ui.structure.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/jquery/ui/jquery-ui.structure.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/jquery/ui/jquery-ui.theme.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/jquery/ui/jquery-ui.theme.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/js/grappelli.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/js/grappelli.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/js/jquery.grp_autocomplete_fk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/js/jquery.grp_autocomplete_generic.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/js/jquery.grp_autocomplete_m2m.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/js/jquery.grp_collapsible.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/js/jquery.grp_collapsible_group.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/js/jquery.grp_inline.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/js/jquery.grp_related_fk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/js/jquery.grp_related_generic.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/js/jquery.grp_related_m2m.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/js/jquery.grp_timepicker.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/stylesheets/mueller/grid/output-rtl.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/stylesheets/mueller/grid/output.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/stylesheets/mueller/screen.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/stylesheets/partials/custom/tinymce.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/stylesheets/rtl.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/stylesheets/screen.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/changelog.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/examples/accessibility.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/examples/css/content.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/examples/css/word.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/examples/custom_formats.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/examples/full.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/examples/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/examples/lists/image_list.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/examples/lists/link_list.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/examples/lists/media_list.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/examples/lists/template_list.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/examples/media/logo.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/examples/media/logo_over.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/examples/media/sample.avi" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/examples/media/sample.dcr" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/examples/media/sample.flv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/examples/media/sample.mov" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/examples/media/sample.ram" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/examples/media/sample.rm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/examples/media/sample.swf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/examples/menu.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/examples/simple.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/examples/skins.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/examples/templates/layout1.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/examples/templates/snippet1.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/examples/word.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/langs/en.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/license.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/advhr/css/advhr.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/advhr/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/advhr/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/advhr/js/rule.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/advhr/langs/en_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/advhr/rule.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/advimage/css/advimage.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/advimage/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/advimage/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/advimage/image.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/advimage/img/sample.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/advimage/js/image.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/advimage/langs/en_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/advimage_orig/css/advimage.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/advimage_orig/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/advimage_orig/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/advimage_orig/image.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/advimage_orig/img/sample.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/advimage_orig/js/image.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/advimage_orig/langs/en_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/advlink/css/advlink.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/advlink/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/advlink/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/advlink/js/advlink.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/advlink/langs/en_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/advlink/link.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/advlink_orig/css/advlink.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/advlink_orig/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/advlink_orig/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/advlink_orig/js/advlink.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/advlink_orig/langs/en_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/advlink_orig/link.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/advlist/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/advlist/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/autolink/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/autolink/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/autoresize/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/autoresize/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/autosave/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/autosave/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/bbcode/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/bbcode/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/contextmenu/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/contextmenu/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/directionality/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/directionality/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/emotions/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/emotions/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/emotions/emotions.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/emotions/img/smiley-cool.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/emotions/img/smiley-cry.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/emotions/img/smiley-embarassed.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/emotions/img/smiley-foot-in-mouth.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/emotions/img/smiley-frown.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/emotions/img/smiley-innocent.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/emotions/img/smiley-kiss.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/emotions/img/smiley-laughing.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/emotions/img/smiley-money-mouth.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/emotions/img/smiley-sealed.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/emotions/img/smiley-smile.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/emotions/img/smiley-surprised.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/emotions/img/smiley-tongue-out.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/emotions/img/smiley-undecided.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/emotions/img/smiley-wink.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/emotions/img/smiley-yell.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/emotions/js/emotions.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/emotions/langs/en_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/example/dialog.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/example/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/example/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/example/img/example.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/example/js/dialog.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/example/langs/en.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/example/langs/en_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/example_dependency/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/example_dependency/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/fullpage/css/fullpage.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/fullpage/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/fullpage/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/fullpage/fullpage.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/fullpage/js/fullpage.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/fullpage/langs/en_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/fullscreen/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/fullscreen/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/fullscreen/fullscreen.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/grappelli/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/grappelli/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/grappelli/img/show_advanced.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/grappelli/img/visualchars.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/grappelli/langs/cs.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/grappelli/langs/de.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/grappelli/langs/en.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/grappelli/langs/fr.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/grappelli/langs/pl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/grappelli/langs/ru.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/grappelli_contextmenu/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/grappelli_contextmenu/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/grappelli_contextmenu/langs/cs.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/grappelli_contextmenu/langs/de.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/grappelli_contextmenu/langs/en.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/grappelli_contextmenu/langs/fr.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/grappelli_contextmenu/langs/pl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/grappelli_contextmenu/langs/ru.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/iespell/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/iespell/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/inlinepopups/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/inlinepopups/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/inlinepopups/skins/clearlooks2/img/alert.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/inlinepopups/skins/clearlooks2/img/button.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/inlinepopups/skins/clearlooks2/img/buttons.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/inlinepopups/skins/clearlooks2/img/confirm.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/inlinepopups/skins/clearlooks2/img/corners.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/inlinepopups/skins/clearlooks2/img/horizontal.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/inlinepopups/skins/clearlooks2/img/vertical.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/inlinepopups/skins/clearlooks2/window.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/inlinepopups/template.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/insertdatetime/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/insertdatetime/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/layer/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/layer/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/legacyoutput/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/legacyoutput/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/lists/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/lists/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/media/css/media.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/media/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/media/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/media/js/embed.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/media/js/media.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/media/langs/en_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/media/media.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/media/moxieplayer.swf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/media_orig/css/media.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/media_orig/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/media_orig/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/media_orig/js/embed.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/media_orig/js/media.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/media_orig/langs/en_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/media_orig/media.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/media_orig/moxieplayer.swf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/nonbreaking/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/nonbreaking/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/noneditable/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/noneditable/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/pagebreak/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/pagebreak/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/paste/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/paste/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/paste/js/pastetext.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/paste/js/pasteword.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/paste/langs/en_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/paste/pastetext.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/paste/pasteword.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/paste_orig/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/paste_orig/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/paste_orig/js/pastetext.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/paste_orig/js/pasteword.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/paste_orig/langs/en_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/paste_orig/pastetext.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/paste_orig/pasteword.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/preview/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/preview/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/preview/example.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/preview/jscripts/embed.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/preview/preview.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/print/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/print/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/save/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/save/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/searchreplace/css/searchreplace.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/searchreplace/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/searchreplace/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/searchreplace/js/searchreplace.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/searchreplace/langs/en_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/searchreplace/searchreplace.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/searchreplace_orig/css/searchreplace.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/searchreplace_orig/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/searchreplace_orig/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/searchreplace_orig/js/searchreplace.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/searchreplace_orig/langs/en_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/searchreplace_orig/searchreplace.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/spellchecker/css/content.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/spellchecker/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/spellchecker/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/spellchecker/img/wline.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/style/css/props.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/style/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/style/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/style/js/props.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/style/langs/en_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/style/props.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/style/readme.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/tabfocus/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/tabfocus/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/table/cell.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/table/css/cell.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/table/css/row.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/table/css/table.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/table/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/table/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/table/js/cell.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/table/js/merge_cells.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/table/js/row.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/table/js/table.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/table/langs/en_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/table/merge_cells.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/table/row.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/table/table.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/template/blank.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/template/css/template.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/template/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/template/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/template/js/template.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/template/langs/en_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/template/template.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/template_orig/blank.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/template_orig/css/template.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/template_orig/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/template_orig/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/template_orig/js/template.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/template_orig/langs/en_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/template_orig/template.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/visualblocks/css/visualblocks.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/visualblocks/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/visualblocks/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/visualchars/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/visualchars/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/wordcount/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/wordcount/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/xhtmlxtras/abbr.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/xhtmlxtras/acronym.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/xhtmlxtras/attributes.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/xhtmlxtras/cite.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/xhtmlxtras/css/attributes.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/xhtmlxtras/css/popup.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/xhtmlxtras/del.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/xhtmlxtras/editor_plugin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/xhtmlxtras/editor_plugin_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/xhtmlxtras/ins.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/xhtmlxtras/js/abbr.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/xhtmlxtras/js/acronym.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/xhtmlxtras/js/attributes.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/xhtmlxtras/js/cite.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/xhtmlxtras/js/del.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/xhtmlxtras/js/element_common.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/xhtmlxtras/js/ins.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/plugins/xhtmlxtras/langs/en_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/about.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/anchor.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/charmap.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/color_picker.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/editor_template.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/editor_template_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/image.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/img/colorpicker.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/img/flash.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/img/icons.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/img/iframe.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/img/pagebreak.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/img/quicktime.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/img/realmedia.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/img/shockwave.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/img/trans.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/img/video.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/img/windowsmedia.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/js/about.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/js/anchor.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/js/charmap.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/js/color_picker.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/js/image.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/js/link.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/js/source_editor.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/langs/en.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/langs/en_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/shortcuts.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/default/content.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/default/dialog.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/default/img/buttons.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/default/img/items.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/default/img/menu_arrow.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/default/img/menu_check.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/default/img/progress.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/default/img/tabs.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/default/ui.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/content.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/content_base.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/content_documentstructure.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/content_documentstructure_cs.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/content_documentstructure_de.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/content_documentstructure_en.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/content_documentstructure_pl.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/content_grid.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/content_typography.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/customized.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/dialog.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/img/buttons/blockquote.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/img/buttons/bold.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/img/buttons/bullist.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/img/buttons/charmap.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/img/buttons/cleanup.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/img/buttons/code.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/img/buttons/fullscreen.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/img/buttons/image.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/img/buttons/italic.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/img/buttons/justifycenter.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/img/buttons/justifyfull.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/img/buttons/justifyleft.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/img/buttons/justifyright.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/img/buttons/link.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/img/buttons/media.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/img/buttons/numlist.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/img/buttons/pasteword.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/img/buttons/redo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/img/buttons/search.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/img/buttons/show_advanced.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/img/buttons/table.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/img/buttons/table_cell_props.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/img/buttons/table_col_after.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/img/buttons/table_col_before.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/img/buttons/table_delete_col.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/img/buttons/table_delete_row.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/img/buttons/table_merge_cells.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/img/buttons/table_row_after.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/img/buttons/table_row_before.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/img/buttons/table_row_props.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/img/buttons/table_split_cells.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/img/buttons/template.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/img/buttons/underline.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/img/buttons/undo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/img/buttons/unlink.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/img/buttons/visualchars.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/img/customized/button_pagebreak.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/img/customized/pagebreak.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/img/icons/icon-fb_show-hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/img/icons/icon-fb_show.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/img/icons/icon-mceResize.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/img/menu/icon-mceOpen.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/grappelli/ui.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/highcontrast/content.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/highcontrast/dialog.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/highcontrast/ui.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/o2k7/content.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/o2k7/dialog.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/o2k7/img/button_bg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/o2k7/img/button_bg_black.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/o2k7/img/button_bg_silver.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/o2k7/ui.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/o2k7/ui_black.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/skins/o2k7/ui_silver.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/advanced/source_editor.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/simple/editor_template.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/simple/editor_template_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/simple/img/icons.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/simple/langs/en.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/simple/skins/default/content.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/simple/skins/default/ui.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/simple/skins/o2k7/content.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/simple/skins/o2k7/img/button_bg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/themes/simple/skins/o2k7/ui.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/tiny_mce.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/tiny_mce_popup.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/tiny_mce_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/utils/editable_selects.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/utils/form_utils.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/utils/mctabs.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce/jscripts/tiny_mce/utils/validate.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/grappelli/tinymce_setup/tinymce_setup.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/pagedown-extra/Markdown.Extra.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/pagedown-extra/pagedown/Markdown.Converter.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/pagedown/LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/pagedown/Markdown.Converter.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/pagedown/Markdown.Editor.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/pagedown/Markdown.Sanitizer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/pagedown/demo/browser/demo.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/pagedown/demo/browser/demo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/pagedown/demo/node/demo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/pagedown/local/Markdown.local.fr.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/pagedown/node-pagedown.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/pagedown/wmd-buttons.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/rest_framework/css/bootstrap-theme.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/rest_framework/css/bootstrap-tweaks.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/rest_framework/css/bootstrap.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/rest_framework/css/default.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/rest_framework/css/font-awesome-4.0.3.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/rest_framework/css/prettify.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/rest_framework/docs/css/base.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/rest_framework/docs/css/highlight.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/rest_framework/docs/css/jquery.json-view.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/rest_framework/docs/img/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/rest_framework/docs/img/grid.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/rest_framework/docs/js/api.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/rest_framework/docs/js/highlight.pack.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/rest_framework/docs/js/jquery.json-view.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/rest_framework/fonts/fontawesome-webfont.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/rest_framework/fonts/fontawesome-webfont.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/rest_framework/fonts/fontawesome-webfont.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/rest_framework/fonts/fontawesome-webfont.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/rest_framework/fonts/glyphicons-halflings-regular.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/rest_framework/fonts/glyphicons-halflings-regular.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/rest_framework/fonts/glyphicons-halflings-regular.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/rest_framework/fonts/glyphicons-halflings-regular.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/rest_framework/fonts/glyphicons-halflings-regular.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/rest_framework/img/glyphicons-halflings-white.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/rest_framework/img/glyphicons-halflings.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/rest_framework/img/grid.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/rest_framework/js/ajax-form.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/rest_framework/js/bootstrap.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/rest_framework/js/coreapi-0.1.1.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/rest_framework/js/csrf.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/rest_framework/js/default.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/rest_framework/js/jquery-3.3.1.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/rest_framework/js/prettify-min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/ResizeSensor.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/SOURCE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/django_summernote.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/django_summernote_inplace.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/font/summernote.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/font/summernote.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/font/summernote.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/jquery.fileupload.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/jquery.iframe-transport.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/jquery.ui.widget.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-ar-AR.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-ar-AR.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-bg-BG.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-bg-BG.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-ca-ES.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-ca-ES.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-cs-CZ.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-cs-CZ.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-da-DK.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-da-DK.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-de-DE.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-de-DE.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-el-GR.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-el-GR.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-en-US.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-en-US.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-es-ES.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-es-ES.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-es-EU.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-es-EU.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-fa-IR.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-fa-IR.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-fi-FI.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-fi-FI.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-fr-FR.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-fr-FR.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-gl-ES.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-gl-ES.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-he-IL.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-he-IL.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-hr-HR.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-hr-HR.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-hu-HU.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-hu-HU.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-id-ID.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-id-ID.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-it-IT.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-it-IT.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-ja-JP.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-ja-JP.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-ko-KR.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-ko-KR.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-lt-LT.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-lt-LT.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-lt-LV.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-lt-LV.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-mn-MN.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-mn-MN.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-nb-NO.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-nb-NO.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-nl-NL.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-nl-NL.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-pl-PL.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-pl-PL.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-pt-BR.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-pt-BR.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-pt-PT.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-pt-PT.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-ro-RO.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-ro-RO.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-ru-RU.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-ru-RU.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-sk-SK.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-sk-SK.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-sl-SI.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-sl-SI.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-sr-RS-Latin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-sr-RS-Latin.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-sr-RS.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-sr-RS.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-sv-SE.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-sv-SE.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-ta-IN.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-ta-IN.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-th-TH.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-th-TH.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-tr-TR.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-tr-TR.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-uk-UA.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-uk-UA.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-uz-UZ.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-uz-UZ.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-vi-VN.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-vi-VN.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-zh-CN.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-zh-CN.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-zh-TW.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/lang/summernote-zh-TW.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/summernote-bs4.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/summernote-bs4.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/summernote-lite.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/summernote-lite.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/summernote.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/static/summernote/summernote.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/apps/blog/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/apps/blog/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/apps/comments/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/apps/comments/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/apps/geba_analytics/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/apps/geba_analytics/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/apps/geba_analytics/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/apps/geba_analytics/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/apps/pages/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/apps/pages/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geba_website/apps/project/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/apps/project/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geba_website/templates/blog/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/templates/blog/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/templates/blog/post_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/templates/blog/post_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/templates/blog/post_form_update.html" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/templates/blog/post_form_update.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/templates/pages/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/templates/pages/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/templates/project/project_post_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/templates/project/project_post_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/templates/project/projectpost_form_wizard.html" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/templates/project/projectpost_form_wizard.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -859,125 +26,93 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
-  <component name="DockManager">
-    <window id="4">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file leaf-file-name="projectpost_form_wizard.html" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/geba_website/templates/project/projectpost_form_wizard.html">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="425">
-                    <caret line="29" column="29" lean-forward="true" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/geba_website/templates/core/base.html">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/geba_website/apps/geba_analytics/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
-              <caret line="104" column="66" selection-start-line="104" selection-start-column="66" selection-end-line="104" selection-end-column="66" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="detail.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/geba_website/templates/pages/detail.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-416">
-              <caret line="15" column="19" lean-forward="true" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+            <state relative-caret-position="510">
+              <caret line="30" column="18" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
               <folding>
-                <element signature="e#420#478#0" expanded="true" />
+                <element signature="e#0#28#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pages.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/geba_website/assets/apps/pages/css/pages.css">
+      <file leaf-file-name="admin.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/geba_website/apps/geba_analytics/admin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" selection-start-line="3" selection-end-line="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/geba_website/apps/blog/forms.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="26" lean-forward="true" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
+            <state relative-caret-position="187">
+              <caret line="11" column="32" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
               <folding>
-                <element signature="e#0#24#0" expanded="true" />
+                <element signature="e#0#32#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/geba_website/config/settings/base.py">
+      <file leaf-file-name="signals.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/geba_website/apps/geba_analytics/signals.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="764">
-              <caret line="253" lean-forward="true" selection-start-line="253" selection-end-line="253" />
-              <folding>
-                <element signature="e#315#324#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="34">
+              <caret line="2" column="20" selection-start-line="2" selection-end-line="2" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="manage.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/geba_website/manage.py">
+      <file leaf-file-name="mixins.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/geba_website/apps/geba_analytics/mixins.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+            <state relative-caret-position="170">
+              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="local.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/geba_website/config/settings/local.py">
+      <file leaf-file-name="utils.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/geba_website/apps/geba_analytics/utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-409">
-              <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
+            <state relative-caret-position="153">
+              <caret line="9" column="47" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="47" />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/geba_website/apps/geba_auth/views.py">
+        <entry file="file://$PROJECT_DIR$/geba_website/apps/geba_analytics/views.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/geba_website/apps/blog/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="363">
-              <caret line="36" selection-start-line="36" selection-end-line="36" />
+            <state relative-caret-position="-391">
+              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
               <folding>
-                <element signature="e#38#84#0" expanded="true" />
+                <element signature="e#0#33#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="forms.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/geba_website/apps/project/forms.py">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/geba_website/apps/project/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-35">
-              <caret line="7" column="48" lean-forward="true" selection-start-line="7" selection-start-column="48" selection-end-line="7" selection-end-column="48" />
+            <state relative-caret-position="187">
+              <caret line="11" column="74" lean-forward="true" selection-start-line="11" selection-start-column="74" selection-end-line="11" selection-end-column="74" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/geba_website/apps/pages/forms.py">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/geba_website/apps/pages/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="45" lean-forward="true" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
+            <state relative-caret-position="-35">
+              <caret line="144" column="26" selection-start-line="144" selection-start-column="26" selection-end-line="144" selection-end-column="26" />
+              <folding>
+                <element signature="e#0#55#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -994,10 +129,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>reverse_lazy</find>
-      <find>ProjectDetailView</find>
-      <find>project:</find>
-      <find>ProjectPostDetailGetView</find>
       <find>ProjectPostCreationPostView</find>
       <find>create_post</find>
       <find>form_valid</find>
@@ -1024,6 +155,10 @@
       <find>show_title</find>
       <find>crispy</find>
       <find>A user with that username already exists.</find>
+      <find>user</find>
+      <find>sett</find>
+      <find>DetailView</find>
+      <find>object_viewed</find>
     </findStrings>
     <replaceStrings>
       <replace>post_form.</replace>
@@ -1049,15 +184,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/geba_website/apps/project/views.py" />
-        <option value="$PROJECT_DIR$/geba_website/templates/forum/index.html" />
-        <option value="$PROJECT_DIR$/geba_website/templates/pages/contact.html" />
-        <option value="$PROJECT_DIR$/geba_website/templates/pages/page_form_update.html" />
-        <option value="$PROJECT_DIR$/geba_website/config/settings/staging.py" />
-        <option value="$PROJECT_DIR$/geba_website/config/wsgi.py" />
-        <option value="$PROJECT_DIR$/geba_website/secrets.json" />
-        <option value="$PROJECT_DIR$/geba_website/templates/blog/post_confirm_delete.html" />
-        <option value="$PROJECT_DIR$/geba_website/config/settings/utils.py" />
         <option value="$PROJECT_DIR$/geba_website/apps/geba_auth/models.py" />
         <option value="$PROJECT_DIR$/geba_website/apps/blog/models.py" />
         <option value="$PROJECT_DIR$/geba_website/apps/pages/models.py" />
@@ -1077,7 +203,6 @@
         <option value="$PROJECT_DIR$/geba_website/templates/blog/detail.html" />
         <option value="$PROJECT_DIR$/geba_website/templates/project/post_detail_comments.html" />
         <option value="$PROJECT_DIR$/geba_website/templates/core/404.html" />
-        <option value="$PROJECT_DIR$/geba_website/apps/pages/views.py" />
         <option value="$PROJECT_DIR$/geba_website/config/urls.py" />
         <option value="$PROJECT_DIR$/geba_website/apps/core/views.py" />
         <option value="$PROJECT_DIR$/geba_website/templates/pages/detail.html" />
@@ -1091,7 +216,6 @@
         <option value="$PROJECT_DIR$/geba_website/apps/geba_auth/forms.py" />
         <option value="$PROJECT_DIR$/geba_website/templates/project/project_post_form.html" />
         <option value="$PROJECT_DIR$/geba_website/templates/blog/post_form_update.html" />
-        <option value="$PROJECT_DIR$/geba_website/templates/blog/index.html" />
         <option value="$PROJECT_DIR$/geba_website/templates/pages/home.html" />
         <option value="$PROJECT_DIR$/geba_website/templates/project/projectpost_form_wizard.html" />
         <option value="$PROJECT_DIR$/geba_website/templates/blog/post_form.html" />
@@ -1100,6 +224,17 @@
         <option value="$PROJECT_DIR$/geba_website/apps/blog/forms.py" />
         <option value="$PROJECT_DIR$/geba_website/apps/project/forms.py" />
         <option value="$PROJECT_DIR$/geba_website/apps/pages/forms.py" />
+        <option value="$PROJECT_DIR$/geba_website/templates/blog/index.html" />
+        <option value="$PROJECT_DIR$/geba_website/apps/geba_analytics/signals.py" />
+        <option value="$PROJECT_DIR$/geba_website/apps/blog/mixins.py" />
+        <option value="$PROJECT_DIR$/geba_website/apps/geba_analytics/admin.py" />
+        <option value="$PROJECT_DIR$/geba_website/apps/blog/views.py" />
+        <option value="$PROJECT_DIR$/geba_website/apps/project/views.py" />
+        <option value="$PROJECT_DIR$/geba_website/apps/comments/views.py" />
+        <option value="$PROJECT_DIR$/geba_website/apps/pages/views.py" />
+        <option value="$PROJECT_DIR$/geba_website/apps/geba_analytics/utils.py" />
+        <option value="$PROJECT_DIR$/geba_website/apps/geba_analytics/mixins.py" />
+        <option value="$PROJECT_DIR$/geba_website/apps/geba_analytics/models.py" />
       </list>
     </option>
   </component>
@@ -1136,7 +271,7 @@
               <item name="geba_website" type="462c0819:PsiDirectoryNode" />
               <item name="geba_website" type="462c0819:PsiDirectoryNode" />
               <item name="apps" type="462c0819:PsiDirectoryNode" />
-              <item name="blog" type="462c0819:PsiDirectoryNode" />
+              <item name="geba_analytics" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="geba_website" type="b2602c69:ProjectViewProjectNode" />
@@ -1379,7 +514,7 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1703125" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1734375" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24973656" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -1389,7 +524,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4947313" weight="0.30393198" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49789253" weight="0.32837406" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50208336" side_tool="true" visible="true" weight="0.19234857" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50208336" side_tool="true" weight="0.19234857" />
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -1427,105 +562,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/geba_website/config/wsgi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#229#238#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geba_website/apps/pages/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="566">
-          <caret line="69" column="46" selection-start-line="69" selection-start-column="46" selection-end-line="69" selection-end-column="46" />
-          <folding>
-            <element signature="e#0#55#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geba_website/config/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
-          <folding>
-            <element signature="e#646#686#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geba_website/templates/pages/contact.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="13" column="24" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
-          <folding>
-            <element signature="e#300#358#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geba_website/apps/pages/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="20" column="14" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geba_website/apps/geba_auth/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geba_website/apps/geba_auth/apps.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geba_website/apps/geba_auth/tests.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geba_website/apps/geba_auth/tokens.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#66#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geba_website/apps/geba_auth/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="10" column="44" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geba_website/assets/apps/core/js/ajax_form_errors.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="508">
-          <caret line="31" column="43" lean-forward="true" selection-start-line="31" selection-start-column="43" selection-end-line="31" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geba_website/assets/apps/core/js/badge.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-750" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geba_website/assets/apps/core/js/csrf_cookie.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="55" lean-forward="true" selection-start-line="20" selection-start-column="55" selection-end-line="20" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/geba_website/assets/apps/core/js/navbar.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-665" />
@@ -1629,27 +665,6 @@
         <state relative-caret-position="-2397" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/geba_website/templates/blog/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2514">
-          <caret line="244" column="50" lean-forward="true" selection-start-line="244" selection-start-column="50" selection-end-line="244" selection-end-column="50" />
-          <folding>
-            <element signature="e#15666#15684#0" expanded="true" />
-            <element signature="e#16699#16717#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geba_website/apps/project/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="60" column="1" lean-forward="true" selection-start-line="60" selection-start-column="1" selection-end-line="60" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#33#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/geba_website/apps/geba_auth/forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="737">
@@ -1697,13 +712,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-409">
           <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geba_website/templates/project/projectpost_form_wizard.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="29" column="29" lean-forward="true" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -1765,16 +773,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/geba_website/apps/blog/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="26" lean-forward="true" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/geba_website/apps/pages/forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -1786,6 +784,150 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-35">
           <caret line="7" column="48" lean-forward="true" selection-start-line="7" selection-start-column="48" selection-end-line="7" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geba_website/templates/project/projectpost_form_wizard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="29" column="29" lean-forward="true" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geba_website/templates/blog/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="149" column="92" selection-start-line="149" selection-start-column="92" selection-end-line="149" selection-end-column="92" />
+          <folding>
+            <element signature="e#9297#9331#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geba_website/apps/blog/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="26" lean-forward="true" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geba_website/apps/project/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geba_website/apps/blog/mixins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+          <folding>
+            <element signature="e#0#49#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geba_website/apps/blog/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" selection-start-line="7" selection-end-line="21" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geba_website/apps/geba_analytics/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="32" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geba_website/apps/geba_analytics/signals.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="20" selection-start-line="2" selection-end-line="2" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geba_website/apps/comments/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="33" lean-forward="true" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geba_website/apps/geba_analytics/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="47" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geba_website/apps/pages/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-255">
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geba_website/apps/project/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="74" lean-forward="true" selection-start-line="11" selection-start-column="74" selection-end-line="11" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geba_website/apps/blog/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-391">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geba_website/apps/pages/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-35">
+          <caret line="144" column="26" selection-start-line="144" selection-start-column="26" selection-end-line="144" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#55#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geba_website/apps/geba_analytics/mixins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geba_website/apps/geba_analytics/views.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geba_website/apps/geba_analytics/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="30" column="18" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

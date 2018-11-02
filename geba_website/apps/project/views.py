@@ -27,6 +27,7 @@ from formtools.wizard.views import SessionWizardView
 from .forms import ProjectPostForm, ProjectForm
 from django.core.files.storage import FileSystemStorage
 from django.conf import settings
+from ..geba_analytics.mixins import ObjectViewMixin
 
 
 class ProjectActionMixin(object):
@@ -297,7 +298,7 @@ class ProjectPostCreationPostView(ProjectActionMixin, FormView):
 '''
 
 
-class ProjectPostDetailGetView(DetailView):
+class ProjectPostDetailGetView(ObjectViewMixin, DetailView):
     """This view will be used to GET the detail data"""
     # success_msg = 'Comment Added!'
     model = ProjectPost  # generic views need to know which model to act upon

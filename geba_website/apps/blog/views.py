@@ -2,14 +2,10 @@ from django.utils import timezone
 # from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
 from django.views.generic import CreateView, UpdateView, DetailView, ListView, DeleteView, FormView, View
-from django.contrib import messages
 from django.core.exceptions import PermissionDenied
-from django.core import serializers
 from .utils import check_blog_rights
-import json
 from django.shortcuts import render, render_to_response, get_object_or_404
 from .models import Post
-from ..core.models import ModelFormFailureHistory
 from .forms import BlogPostForm
 from ..comments.forms import CommentForm
 from ..comments.models import Comment
@@ -21,27 +17,9 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import authentication, permissions
 # from ..vote.models import Vote
-
-
-class BlogActionMixin(object):
-    # the fields that geba_auth will be able to type in the forms for CreateView
-    # fields = ('published', 'title', 'body')
-
-    @property
-    def success_msg(self):
-        return NotImplemented
-
-    def form_valid(self, form):
-        messages.info(self.request, self.success_msg)
-        return super(BlogActionMixin, self).form_valid(form)
-
-    def form_invalid(self, form):
-        """saves invalid form and model data for later reference."""
-        form_data = json.dumps(form.cleaned_data)
-        model_data = serializers.serialize("json",
-                                           [form.instance])[1:-1]
-        ModelFormFailureHistory.objects.create(form_data=form_data, model_data=model_data)
-        return super(BlogActionMixin, self).form_invalid(form)
+from .mixins import BlogActionMixin
+# from ..geba_analytics.signals import object_viewed_signal
+from ..geba_analytics.mixins import ObjectViewMixin
 
 
 class BlogIndexView(ListView):
@@ -121,10 +99,6 @@ class BlogCreateView(BlogActionMixin, CreateView):
         else:
             return render_to_response(self.template_name, {'form': form})
 
-    '''def done(self, request, *args, **kwargs):
-        
-        instance.votes.up(request.user.id)'''
-
 
 class BlogUpdateView(BlogActionMixin, UpdateView):
     model = Post
@@ -137,7 +111,6 @@ class BlogUpdateView(BlogActionMixin, UpdateView):
         """when the geba_auth executes a get request, display blank registration form"""
         self.object = self.get_object()
         self.sucess_url = reverse_lazy('blog:detail', kwargs={'slug': self.object.slug})
-        # self.success_url = reverse_lazy('blog:detail', args=self.object.slug)
         form = self.form_class(request.GET or None, request.FILES or None, instance=self.object)
         return render(request, self.template_name, {'form': form})
 
@@ -151,9 +124,7 @@ class BlogUpdateView(BlogActionMixin, UpdateView):
 
 
 class BlogDeleteView(DeleteView):
-    # template_name = 'blog/post_confirm_delete.html'
     model = Post
-    # success_msg = 'Blog Deleted!'
     success_url = reverse_lazy('blog:index')
 
     def get(self, request, *args, **kwargs):
@@ -166,7 +137,7 @@ class BlogDeleteView(DeleteView):
         return super(BlogDeleteView, self).dispatch(request, *args, **kwargs)
 
 
-class BlogDetailGetView(DetailView):
+class BlogDetailGetView(ObjectViewMixin, DetailView):
     """This view will be used to GET the detail data"""
     # success_msg = 'Comment Added!'
     model = Post  # generic views need to know which model to act upon
@@ -199,6 +170,7 @@ class BlogDetailGetView(DetailView):
         # don't use annotate, use vote_by in this case, annotate only works when __iter__ is called
         instance = Post.votes.vote_by(self.request.user.id, ids=[instance.id])[0]
 
+        # object_viewed_signal.send(instance.__class__, instance=instance, request=self.request)
         return instance
 
     def get_context_data(self, **kwargs):

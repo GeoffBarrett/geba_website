@@ -15,6 +15,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import authentication, permissions
 # Create your views here.
+from ..geba_analytics.mixins import ObjectViewMixin
 
 
 class CommentActionMixin(object):
@@ -38,7 +39,7 @@ class CommentActionMixin(object):
         return super(CommentActionMixin, self).form_invalid(form)
 
 
-class CommentThreadGetView(DetailView):
+class CommentThreadGetView(ObjectViewMixin, DetailView):
     """This view will be used to GET the detail data"""
     # success_msg = 'Comment Added!'
     model = Comment  # generic views need to know which model to act upon
