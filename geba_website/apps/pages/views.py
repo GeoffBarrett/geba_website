@@ -14,6 +14,7 @@ from django.core.mail import send_mail
 from django.template.loader import get_template
 from django.template import RequestContext
 # Create your views here.
+from ..geba_analytics.signals import object_viewed_signal
 from ..geba_analytics.mixins import ObjectViewMixin
 
 
@@ -142,7 +143,7 @@ class HomeView(ObjectViewMixin, DetailView):
         return self.render_to_response(context)
 
 
-class ContactView(ObjectViewMixin, DetailView):
+class ContactView(DetailView):
     """This view will be used to GET the detail data"""
     # success_msg = 'Comment Added!'
     model = Page  # generic views need to know which model to act upon
@@ -153,11 +154,17 @@ class ContactView(ObjectViewMixin, DetailView):
         # make it so only the admin can see items in the future or that are drafts
         # don't use annotate, use vote_by in this case, annotate only works when __iter__ is called
         instance = get_object_or_404(Page, slug='contact')
+
+        # for some reason the Contact page doesn't trigger a get_object_data, so ObjectViewedMixin doesn't work
+        # connected the signal here
+        if instance:
+            object_viewed_signal.send(instance.__class__, instance=instance, request=self.request)
         return instance
 
     def get(self, request, *args, **kwargs):
         self.object = self.get_object()
         form = self.form_class(request.GET or None, request.FILES or None)
+
         return render(request, self.template_name, {'form': form, 'page': self.object})
 
     def post(self, request, *args, **kwargs):

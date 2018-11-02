@@ -9,7 +9,6 @@ class ObjectViewMixin(object):
         # define instance
         instance = context['object']
 
-        print(instance, '-------------------')
         if instance:
             # if instance exists, emit signal
             object_viewed_signal.send(instance.__class__, instance=instance, request=self.request)
