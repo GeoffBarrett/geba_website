@@ -30,7 +30,8 @@ class ObjectViewed(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self, ):
-        return "%s viewed: %s" % (self.content_object, self.timestamp)
+        # return "%s viewed: %s" % (self.content_object, self.timestamp)
+        return "%s viewed" % self.content_object
 
     class Meta:
         ordering = ['-timestamp']
