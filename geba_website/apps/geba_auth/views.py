@@ -14,6 +14,7 @@ from django.utils.http import urlsafe_base64_decode
 from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
 # Create your views here.
+from .signals import user_logged_in
 
 
 def logout_view(request):
@@ -39,6 +40,7 @@ class LoginFormView(FormView):
 
             if user is not None:
                 login(request, user)  # can now refer to them as request.geba_auth.username
+                user_logged_in.send(user.__class__, instance=user, request=request)
                 return HttpResponseRedirect('/')
             else:
                 return render(request, self.template_name, {'form': form})
