@@ -125,7 +125,7 @@ def user_logged_in_receiver(sender, instance, request, *args, **kwargs):
     user = instance
     ip_address = get_client_ip(request)
     session_key = request.session.session_key
-    
+
     UserSession.objects.create(
         user=user,
         ip_address=ip_address,

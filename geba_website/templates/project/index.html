@@ -152,9 +152,9 @@
 
                                 <div class="card mb-4">
                                      {% if project.image %}
-                                        <img class="card-img-top" src="{{ project.image.url }}" alt="">
+                                        <img class="card-img-top" src="{{ project.image.url }}"  style="width:100%; height:auto;">
                                      {% else %}
-                                        <img class="card-img-top" src="http://placehold.it/700x300" alt="">
+                                        <img class="card-img-top no_img">
                                      {% endif %}
 
                                     <div class="card-body">
