@@ -37,6 +37,7 @@ urlpatterns = [
     # --------- custom urls ---------------------- #
     re_path(r'^', include(('apps.pages.urls', "pages"))),
     re_path(r'^auth/', include(('apps.geba_auth.urls', "geba_auth"))),  # geba_auth app
+    re_path(r'^analytics/', include(('apps.geba_analytics.urls', "geba_analytics"))),  # geba_analytics app
     re_path(r'^blog/', include(('apps.blog.urls', "blog"))),  # Blog app
     re_path(r'^polls/', include(('apps.polls.urls', "polls"))),
     re_path(r'^comments/', include(('apps.comments.urls', "comments"))),

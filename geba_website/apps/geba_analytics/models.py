@@ -5,14 +5,37 @@ from django.contrib.contenttypes.models import ContentType
 # Create your models here.
 from .signals import object_viewed_signal
 from .utils import get_client_ip
-from django.db.models.signals import pre_save, post_save
+from django.db.models.signals import post_save
 from django.contrib.sessions.models import Session
 from ..geba_auth.signals import user_logged_in
+from django.utils import timezone
 
 
 FORCE_SESSION_TO_ONE = getattr(settings, 'FORCE_SESSION_TO_ONE', False)
 FORCE_INACTIVE_USER_END_SESSION = getattr(settings, 'FORCE_INACTIVE_USER_END_SESSION', False)
 
+
+class ObjectViewedManager(models.Manager):
+    def today(self, *args, **kwargs):
+        """overwriting Post.objects.all()"""
+        return super(ObjectViewedManager, self).filter(timestamp__gte=timezone.now().replace(
+            hour=0, minute=0, second=0), timestamp__lte=timezone.now().replace(hour=23, minute=59, second=59))
+
+    '''
+    def monthly(self, *args, **kwargs):
+        """overwriting Post.objects.all()"""
+        timezone.
+        print(timezone.now().replace(year=today.year+1, month=1, day=1))
+        return super(ObjectViewedManager, self).filter(timestamp__gte=timezone.now().replace(
+            hour=0, minute=0, second=0), timestamp__lte=timezone.now().replace(hour=23, minute=59, second=59))
+    
+    def yearly(self, *args, **kwargs):
+        """overwriting Post.objects.all()"""
+        timezone.
+        print(timezone.now().replace(year=today.year+1, month=1, day=1))
+        return super(ObjectViewedManager, self).filter(timestamp__gte=timezone.now().replace(
+            hour=0, minute=0, second=0), timestamp__lte=timezone.now().replace(hour=23, minute=59, second=59))
+    '''
 
 class ObjectViewed(models.Model):
     """
@@ -20,6 +43,9 @@ class ObjectViewed(models.Model):
     information.
 
     """
+
+    objects = ObjectViewedManager()
+
     user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, on_delete=models.SET_NULL)
     ip_address = models.CharField(max_length=120, blank=True, null=True)
 

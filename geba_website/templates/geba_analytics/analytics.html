@@ -1,0 +1,46 @@
+{% extends "core/base.html" %} <!-- extends path starting from templates directory, concatenates all contents of templates -->
+
+{% block title %}GEBA - Project{% endblock title %}
+
+{% block header %}
+{% endblock header %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('')">
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-8 mx-auto">
+            <div class="site-heading">
+              <h1>
+                  Analytics
+              </h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <article>
+        <div class="container">
+
+            <div id="DataContainer" class="row" url_endpoint="{% url 'geba_analytics:api-data' %}">
+                <div class="col-8">
+                    <canvas id="myChart" width="400" height="400"></canvas>
+                </div>
+            </div>
+
+        </div>
+    </article>
+
+
+{% endblock content %}
+
+{% block javascript %}
+    <script src="{% static 'apps/geba_analytics/js/geba_analytics.js' %}"></script>
+{% endblock javascript %}
+
