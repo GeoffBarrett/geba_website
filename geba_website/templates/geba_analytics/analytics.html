@@ -1,6 +1,6 @@
 {% extends "core/base.html" %} <!-- extends path starting from templates directory, concatenates all contents of templates -->
 
-{% block title %}GEBA - Project{% endblock title %}
+{% block title %}GEBA - Analytics{% endblock title %}
 
 {% block header %}
 {% endblock header %}
@@ -26,15 +26,30 @@
     </header>
 
     <article>
-        <div class="container">
+        <div class="container-fluid" id="DataContainer" url_endpoint="{% url 'geba_analytics:api-data' %}">
 
-            <div id="DataContainer" class="row" url_endpoint="{% url 'geba_analytics:api-data' %}">
-                <div class="col-8">
-                    <canvas id="myChart" width="400" height="400"></canvas>
-                </div>
+            <div class="row justify-content-center">
+                <h1>Views</h1>
             </div>
 
+            <div class="row justify-content-center">
+
+
+
+                <div class="col-4">
+                    <div class="row">
+                        <canvas id="todayViewedChart" width="400" height="400" role="img" aria-label=""></canvas>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="row">
+                        <canvas id="monthlyViewedChart" width="400" height="400" role="img" aria-label=""></canvas>
+                    </div>
+                </div>
+            </div>
         </div>
+
     </article>
 
 

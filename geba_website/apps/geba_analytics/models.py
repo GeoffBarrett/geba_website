@@ -9,7 +9,10 @@ from django.db.models.signals import post_save
 from django.contrib.sessions.models import Session
 from ..geba_auth.signals import user_logged_in
 from django.utils import timezone
+from calendar import monthrange
 
+
+tz = getattr(settings, 'TIME_ZONE', 'UTC')
 
 FORCE_SESSION_TO_ONE = getattr(settings, 'FORCE_SESSION_TO_ONE', False)
 FORCE_INACTIVE_USER_END_SESSION = getattr(settings, 'FORCE_INACTIVE_USER_END_SESSION', False)
@@ -18,24 +21,43 @@ FORCE_INACTIVE_USER_END_SESSION = getattr(settings, 'FORCE_INACTIVE_USER_END_SES
 class ObjectViewedManager(models.Manager):
     def today(self, *args, **kwargs):
         """overwriting Post.objects.all()"""
-        return super(ObjectViewedManager, self).filter(timestamp__gte=timezone.now().replace(
+        viewed_today = super(ObjectViewedManager, self).filter(timestamp__gte=timezone.now().replace(
             hour=0, minute=0, second=0), timestamp__lte=timezone.now().replace(hour=23, minute=59, second=59))
 
-    '''
+        anonymous_views = viewed_today.filter(user=None).count()
+
+        return viewed_today.count(), anonymous_views
+
     def monthly(self, *args, **kwargs):
         """overwriting Post.objects.all()"""
-        timezone.
-        print(timezone.now().replace(year=today.year+1, month=1, day=1))
-        return super(ObjectViewedManager, self).filter(timestamp__gte=timezone.now().replace(
-            hour=0, minute=0, second=0), timestamp__lte=timezone.now().replace(hour=23, minute=59, second=59))
-    
+
+        current_month = timezone.now().month
+        current_year = timezone.now().year
+
+        monthly_views = []
+        monthly_anonymous_views = []
+        monthly_views_labels = []
+
+        for i in range(current_month):
+            date_string = '%d-%02d-%02d' % (current_year, i+1, 1)
+            start_time = timezone.datetime.strptime(date_string, "%Y-%m-%d")  # # Expects "YYYY-MM-DD" string
+
+            last_of_month = monthrange(current_year, i + 1)[-1]
+            date_string = '%d-%02d-%02d' % (current_year, i + 1, last_of_month)
+            stop_time = timezone.datetime.strptime(date_string, "%Y-%m-%d").replace(hour=23, minute=59, second=59)
+
+            monthly_qs = super(ObjectViewedManager, self).filter(timestamp__gte=start_time, timestamp__lte=stop_time)
+
+            monthly_views.append(monthly_qs.count())
+            monthly_anonymous_views.append(monthly_qs.filter(user=None).count())
+            monthly_views_labels.append(start_time.strftime('%B'))
+
+        return monthly_views_labels, monthly_views, monthly_anonymous_views
+
     def yearly(self, *args, **kwargs):
         """overwriting Post.objects.all()"""
-        timezone.
-        print(timezone.now().replace(year=today.year+1, month=1, day=1))
-        return super(ObjectViewedManager, self).filter(timestamp__gte=timezone.now().replace(
-            hour=0, minute=0, second=0), timestamp__lte=timezone.now().replace(hour=23, minute=59, second=59))
-    '''
+        current_year = timezone.now().year
+
 
 class ObjectViewed(models.Model):
     """

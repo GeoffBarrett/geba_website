@@ -28,13 +28,16 @@ class AnalyticsData(APIView):
     permission_classes = (permissions.IsAdminUser,)
 
     def get(self, request, format=None):
-        viewed_today = ObjectViewed.objects.today()
+        viewed_today, anonymous_daily_views = ObjectViewed.objects.today()
 
-        anonymous_views = viewed_today.filter(user=None).count()
+        monthly_view_labels, monthly_views, monthly_anonymous_views = ObjectViewed.objects.monthly()
 
         data = {
-            'labels': ['Viewed Today', 'Anonymous Views'],
-            'analytics_data': [viewed_today.count(), anonymous_views]
+            'today_labels': ['Viewed Today', 'Anonymous Views'],
+            'today_data': [viewed_today, anonymous_daily_views],
+            'monthly_labels': monthly_view_labels,
+            'monthly_data': monthly_views,
+            'monthly_anon_data': monthly_anonymous_views,
         }
 
         return Response(data)
