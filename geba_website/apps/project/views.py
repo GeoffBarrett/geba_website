@@ -2,16 +2,14 @@ from django.utils import timezone
 # from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
 from django.views.generic import CreateView, UpdateView, DetailView, ListView, DeleteView, FormView, View
-from django.contrib import messages
+
 # from django.utils.decorators import method_decorator
 # from django.contrib.geba_auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
-from django.core import serializers
+
 from .utils import check_project_rights
-import json
 from django.shortcuts import render, render_to_response, get_object_or_404
 from .models import Project, ProjectPost
-from ..core.models import ModelFormFailureHistory
 from ..comments.forms import CommentForm
 from ..comments.models import Comment
 from django.urls import reverse, reverse_lazy
@@ -28,27 +26,8 @@ from .forms import ProjectPostForm, ProjectForm
 from django.core.files.storage import FileSystemStorage
 from django.conf import settings
 from ..geba_analytics.mixins import ObjectViewMixin
-
-
-class ProjectActionMixin(object):
-    # the fields that geba_auth will be able to type in the forms for CreateView
-    # fields = ('published', 'title', 'body')
-
-    @property
-    def success_msg(self):
-        return NotImplemented
-
-    def form_valid(self, form):
-        messages.info(self.request, self.success_msg)
-        return super(ProjectActionMixin, self).form_valid(form)
-
-    def form_invalid(self, form):
-        """saves invalid form and model data for later reference."""
-        form_data = json.dumps(form.cleaned_data)
-        model_data = serializers.serialize("json",
-                                           [form.instance])[1:-1]
-        ModelFormFailureHistory.objects.create(form_data=form_data, model_data=model_data)
-        return super(ProjectActionMixin, self).form_invalid(form)
+from ..geba_auth.forms import UserCreationForm
+from .mixins import ProjectActionMixin
 
 
 # ---------- PROJECT VIEWS ---------- #
@@ -131,6 +110,16 @@ class ProjectWizard(SessionWizardView):
 class ProjectIndexView(ListView):
     template_name = 'project/index.html'  # tells the view to use this template instead of it's default
     context_object_name = 'object_list'  # tell the view to use this context_object_name instead of the default
+
+    def get_context_data(self, *args, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        # Add in the publisher
+
+        form = UserCreationForm(self.request.GET or None, self.request.FILES or None)
+
+        context['register_form'] = form
+        return context
 
     def get_queryset(self, *args, **kwargs):
         """
@@ -319,6 +308,10 @@ class ProjectPostDetailGetView(ObjectViewMixin, DetailView):
         }
         comment_form = self.form_class(request.POST or None, initial=initial_data)
         context['comment_form'] = comment_form
+
+        register_form = UserCreationForm(self.request.GET or None, self.request.FILES or None)
+        context['register_form'] = register_form
+
         return self.render_to_response(context)
 
     def get_object(self):

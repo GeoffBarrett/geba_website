@@ -1,17 +1,27 @@
+{% load crispy_forms_tags %}
+
 <div class="modal fade" id="LoginVoteModal" tabindex="-1" role="dialog" aria-labelledby="LoginVoteModalLabel">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title" id="LoginVoteModalLabel">Sign </h4>
-          </div>
-          <div class="modal-body">
-              <p>Creating a GEBA account will change your life. You can vote, and do other wicked cool stuff...</p>
-              <form role="form" action="{% url 'geba_auth:register' %}" method="post">
+        <form role="form" action="{% url 'geba_auth:register' %}" method="post">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="LoginVoteModalLabel">Register</h4>
+              </div>
+              <div class="modal-body">
+                  <p>Creating a GEBA account will change your life. You can vote, and do other wicked cool stuff...</p>
+
                     {% csrf_token %}
-            </form>
-          </div>
-          <div class="modal-footer">
-          </div>
-        </div>
+
+                    {{ register_form|crispy }}
+
+                    Already have an account? <a href="{% url 'geba_auth:login' %}">Sign In</a>
+              </div>
+
+              <div class="modal-footer">
+                  <button type="submit" class="btn btn-primary">Register</button>
+                  <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
+              </div>
+            </div>
+        </form>
     </div>
 </div>

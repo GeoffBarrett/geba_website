@@ -20,11 +20,22 @@ from rest_framework import authentication, permissions
 from .mixins import BlogActionMixin
 # from ..geba_analytics.signals import object_viewed_signal
 from ..geba_analytics.mixins import ObjectViewMixin
+from ..geba_auth.forms import UserCreationForm
 
 
 class BlogIndexView(ListView):
     template_name = 'blog/index.html'  # tells the view to use this template instead of it's default
     context_object_name = 'object_list'  # tell the view to use this context_object_name instead of the default
+
+    def get_context_data(self, *args, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        # Add in the publisher
+
+        form = UserCreationForm(self.request.GET or None, self.request.FILES or None)
+
+        context['register_form'] = form
+        return context
 
     def get_queryset(self, *args, **kwargs):
         """
@@ -152,12 +163,17 @@ class BlogDetailGetView(ObjectViewMixin, DetailView):
         # attribute 'object' in this DetailView
         instance = self.object
         context = self.get_context_data(object=self.object)
+
         initial_data = {
             'content_type': instance.get_content_type,
             'object_id': instance.id,
         }
         comment_form = self.form_class(request.POST or None, initial=initial_data)
         context['comment_form'] = comment_form
+
+        register_form = UserCreationForm(self.request.GET or None, self.request.FILES or None)
+        context['register_form'] = register_form
+        
         return self.render_to_response(context)
 
     def get_object(self):

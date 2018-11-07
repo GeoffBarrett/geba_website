@@ -32,12 +32,19 @@ class AnalyticsData(APIView):
 
         monthly_view_labels, monthly_views, monthly_anonymous_views = ObjectViewed.objects.monthly()
 
+        daily_view_labels, daily_views, daily_anonymous_views = ObjectViewed.objects.daily()
+
         data = {
             'today_labels': ['Viewed Today', 'Anonymous Views'],
             'today_data': [viewed_today, anonymous_daily_views],
+
             'monthly_labels': monthly_view_labels,
             'monthly_data': monthly_views,
             'monthly_anon_data': monthly_anonymous_views,
+
+            'daily_labels': daily_view_labels,
+            'daily_data': daily_views,
+            'daily_anon_data': daily_anonymous_views,
         }
 
         return Response(data)

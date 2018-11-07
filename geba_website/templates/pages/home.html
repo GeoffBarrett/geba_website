@@ -52,7 +52,7 @@
 
             <div class="row justify-content-center mt-3">
                 {% if user.is_superuser %}
-                    <div class="col-9 content-markdown">
+                    <div class="col-8 content-markdown">
                         <div class="post-body">{{ page.get_html }}</div>
                         {% if latest_num > 0 %}
                         <h2 class="mt-4">Latest Content</h2>
@@ -63,7 +63,7 @@
                         <a href="{% url 'pages:update' page.slug %}"><span class="fa fa-pencil"></span></a>
                     </div>
                 {% else %}
-                    <div class="col-9 content-markdown mb-3">
+                    <div class="col-8 content-markdown mb-3">
                         <div class="post-body">{{ page.get_html }}</div>
 
                         {% if latest_num > 0 %}
@@ -77,7 +77,7 @@
 
             <div class="row justify-content-center">
                 {% for latest_model in Latest %}
-                    <div class="col-9 mt-3">
+                    <div class="col-8 mt-3">
                         <div class="image-outer-wrapper layout-caption-overlay">
                             <div class="intrinsic">
                                 <div class="image-wrapper has-aspect-ratio" style="overflow: hidden;">

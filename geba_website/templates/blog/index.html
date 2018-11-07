@@ -2,7 +2,6 @@
 
 {% block title %}GEBA - Blog{% endblock %}
 
-
 {% block css %}
     {% load static %}
     <link rel='stylesheet' href="{% static 'apps/vote/css/vote.css' %}"/>
@@ -32,8 +31,8 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-10 offset-1">
+        <div class="row justify-content-center">
+            <div class="col-8 offset-1">
                 {% if user.is_staff or user.is_superuser %}
                     <a class="btn btn-primary" href="{% url 'blog:create' %}" role="button">New Blog</a>
                 {% endif %}
@@ -57,7 +56,7 @@
                     {% load markdown_deux_tags %}
 
                     {% for post in object_list %} <!-- object_list is returned from the ListView of objects.all()-->
-                        <div class="row">
+                        <div class="row justify-content-center">
                             <div class="col-1">
                                 {% with post.unvoted_net_likes as "unvoted_likes" %}
                                     {% if post.is_voted_up %}
@@ -143,7 +142,7 @@
                                 {% endwith %}
                             </div>
 
-                            <div class="col-10">
+                            <div class="col-8">
 
                                 <div class="card mb-4">
                                      {% if post.image %}
@@ -224,7 +223,7 @@
                                                 {{ post.description }}
                                             {% else %}
                                                 {% if post.get_html %}
-                                                    {{ post.get_html|truncatechars_html:250 }}
+                                                    {{ post.get_html|truncatechars_html:500 }}
                                                 {% else %}
                                                     <span style='color:red;'> No Description! </span>
                                                 {% endif %}

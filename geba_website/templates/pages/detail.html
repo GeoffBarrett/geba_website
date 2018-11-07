@@ -35,7 +35,7 @@
             {% if page.header_image == '' %}
                 <div class="row no-header justify-content-center">
                     {% if user.is_superuser %}
-                        <div class="col-10 offset-1">
+                        <div class="col-8 offset-1">
                             {% if page.show_title %}
                                 <div class="post-heading">
 
@@ -49,7 +49,7 @@
                                 <span class="fa fa-pencil"></span></a>
                         </div>
                     {% else %}
-                        <div class="col-10">
+                        <div class="col-8">
                             {% if page.show_title %}
                                 <div class="post-heading">
                                     <h1>{{ page.title }}</h1>
@@ -63,7 +63,7 @@
 
             <div class="row justify-content-center mt-3">
                 {% if user.is_superuser %}
-                    <div class="col-10 content-markdown">
+                    <div class="col-8 content-markdown">
                         <div class="post-body">{{ page.get_html }}</div>
                     </div>
                     {% if page.header_image %}
@@ -72,7 +72,7 @@
                         </div>
                     {% endif %}
                 {% else %}
-                    <div class="col-10 content-markdown">
+                    <div class="col-8 content-markdown">
                         <div class="post-body">{{ page.get_html }}</div>
                     </div>
                 {% endif %}

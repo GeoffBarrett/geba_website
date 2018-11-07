@@ -10,7 +10,13 @@ $(document).ready(function(){
         success: function(data){
             today_data_labels = data.today_labels
             today_data_values = data.today_data
+            setTodayChart()
+
+            daily_labels = data.daily_labels
+            daily_data = data.daily_data
+            daily_anon_data = data.daily_anon_data
             setDailyChart()
+
             monthly_labels = data.monthly_labels
             monthly_data = data.monthly_data
             monthly_anon_data = data.monthly_anon_data
@@ -23,7 +29,7 @@ $(document).ready(function(){
     })
 
 
-function setDailyChart(){
+function setTodayChart(){
     var ctx = document.getElementById("todayViewedChart");
     var myChart = new Chart(ctx, {
         type: 'bar',
@@ -49,6 +55,38 @@ function setDailyChart(){
                 'rgba(255, 159, 64, 1)'
             ],
             borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true, // setting this value to false will make it so the height doesn't scale
+        //maintainAspectRatio: false, // this will make it so it uses the width and height given
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+    });
+}
+
+function setDailyChart(){
+    var ctx = document.getElementById("dailyViewedChart");
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+        labels: daily_labels,
+        datasets: [
+        {
+            label: 'Daily Views',
+            backgroundColor: 'rgba(255, 99, 132, 0.4)',
+            data: daily_data,
+        },
+        {
+            label: 'Daily Anonymous Views',
+            backgroundColor: 'rgba(54, 162, 235, 0.4)',
+            data: daily_anon_data,
         }]
     },
     options: {

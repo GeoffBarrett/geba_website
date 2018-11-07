@@ -132,6 +132,8 @@ $('.downvote-btn').click(function(event){
 })
 
 // this script is for deleting comments
+
+/*
 $('#LoginVoteModal').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget) // Button that triggered the modal
     var content = button.data('content') // extract the content of the comment
@@ -149,3 +151,4 @@ $('#LoginVoteModal').on('show.bs.modal', function (event) {
     '<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>' +
     '</form>')
 })
+*/

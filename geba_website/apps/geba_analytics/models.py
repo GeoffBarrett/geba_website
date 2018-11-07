@@ -26,7 +26,32 @@ class ObjectViewedManager(models.Manager):
 
         anonymous_views = viewed_today.filter(user=None).count()
 
-        return viewed_today.count(), anonymous_views
+        return viewed_today.count() - anonymous_views, anonymous_views
+
+    def daily(self, *args, **kwargs):
+        """overwriting Post.objects.all()"""
+
+        current_month = timezone.now().month
+        current_year = timezone.now().year
+
+        daily_labels = []
+        daily_data = []
+        daily_anonymous_data = []
+
+        for i in range(1, monthrange(current_year, current_month)[-1]+1):
+            date_string = '%d-%02d-%02d' % (current_year, current_month, i)
+            start_time = timezone.datetime.strptime(date_string, "%Y-%m-%d")  # # Expects "YYYY-MM-DD" string
+            stop_time = timezone.datetime.strptime(date_string, "%Y-%m-%d").replace(hour=23, minute=59, second=59)
+
+            daily_qs = super(ObjectViewedManager, self).filter(timestamp__gte=start_time, timestamp__lte=stop_time)
+
+            anon_count = daily_qs.filter(user=None).count()
+
+            daily_data.append(daily_qs.count()-anon_count)
+            daily_anonymous_data.append(anon_count)
+            daily_labels.append(i)
+
+        return daily_labels, daily_data, daily_anonymous_data
 
     def monthly(self, *args, **kwargs):
         """overwriting Post.objects.all()"""
@@ -48,8 +73,10 @@ class ObjectViewedManager(models.Manager):
 
             monthly_qs = super(ObjectViewedManager, self).filter(timestamp__gte=start_time, timestamp__lte=stop_time)
 
-            monthly_views.append(monthly_qs.count())
-            monthly_anonymous_views.append(monthly_qs.filter(user=None).count())
+            anon_count = monthly_qs.filter(user=None).count()
+
+            monthly_views.append(monthly_qs.count() - anon_count)
+            monthly_anonymous_views.append(anon_count)
             monthly_views_labels.append(start_time.strftime('%B'))
 
         return monthly_views_labels, monthly_views, monthly_anonymous_views
