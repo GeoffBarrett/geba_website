@@ -33,12 +33,13 @@ class ObjectViewedManager(models.Manager):
 
         current_month = timezone.now().month
         current_year = timezone.now().year
+        current_day = timezone.now().day
 
         daily_labels = []
         daily_data = []
         daily_anonymous_data = []
 
-        for i in range(1, monthrange(current_year, current_month)[-1]+1):
+        for i in range(1, current_day+1):
             date_string = '%d-%02d-%02d' % (current_year, current_month, i)
             start_time = timezone.datetime.strptime(date_string, "%Y-%m-%d")  # # Expects "YYYY-MM-DD" string
             stop_time = timezone.datetime.strptime(date_string, "%Y-%m-%d").replace(hour=23, minute=59, second=59)

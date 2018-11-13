@@ -81,11 +81,15 @@ function setDailyChart(){
         {
             label: 'Daily Views',
             backgroundColor: 'rgba(255, 99, 132, 0.4)',
+            borderColor: 'rgba(255,99,132,1)',
+            borderWidth: 1,
             data: daily_data,
         },
         {
             label: 'Daily Anonymous Views',
             backgroundColor: 'rgba(54, 162, 235, 0.4)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1,
             data: daily_anon_data,
         }]
     },
@@ -113,11 +117,15 @@ function setMonthlyChart(){
         {
             label: 'Monthly Views',
             backgroundColor: 'rgba(255, 99, 132, 0.4)',
+            borderColor: 'rgba(255,99,132,1)',
+            borderWidth: 1,
             data: monthly_data,
         },
         {
             label: 'Monthly Anonymous Views',
             backgroundColor: 'rgba(54, 162, 235, 0.4)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1,
             data: monthly_anon_data,
         }]
     },
