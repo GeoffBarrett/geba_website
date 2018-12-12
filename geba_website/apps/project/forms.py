@@ -43,10 +43,14 @@ class ProjectForm(forms.ModelForm):
 
     publish_date = forms.DateTimeField(widget=forms.SelectDateWidget)
 
+    body = forms.CharField(widget=SummernoteWidget(attrs={'summernote': {'width': '100%', 'height': '480'}}),
+                           required=False)
+
     class Meta:
 
         model = Project
         fields = ('title',
+                  'body',
                   'image',
                   'image_caption',
                   'publish_date',

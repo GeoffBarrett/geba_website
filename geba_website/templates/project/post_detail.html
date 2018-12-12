@@ -38,10 +38,8 @@
 
                 {% if projectpost.is_future_publication %}
                     <span class="badge-geba"  id="future-{{ projectpost.id }}">Future Post</span>
-                    <!--<span style='color:red;'>| Future Post </span>-->
                 {% endif %}
               </h1>
-              <!--<span class="subheading">Have questions? I have answers (maybe).</span>-->
               <span class="meta">Posted by <a href="#">{{ projectpost.author }},</a>
                 {% if projectpost.publish_date == projectpost.modified %}
                 Published: {{ projectpost.publish_date|timesince }} ago
@@ -104,12 +102,6 @@
                 <!-- this div will contain the contents of the post, including comments -->
                 <div class="col-8 content-markdown">
                     <div class="post-body">{{ projectpost.get_html|safe }}</div>
-
-                    <div class="row">
-                        <div class="col">
-                            <a class="btn btn-primary" href="#Top">Top of Page</a>
-                        </div>
-                    </div>
 
                     <hr>
 

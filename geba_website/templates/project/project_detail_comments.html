@@ -1,0 +1,143 @@
+{% block header %}
+
+    {% load staticfiles %}
+    {% load crispy_forms_tags %}
+    {% load comment %}
+    {% load markdown_deux_tags %}
+
+{% endblock header %}
+
+<p class='lead'>Comments</p>
+
+<form method="POST" action="{% url 'project:detail' project.slug %}">
+    {% csrf_token %}
+    {{ comment_form|crispy }}
+    <input type="submit" value="Post Comment" class="btn btn-primary">
+</form>
+
+<div class="Comments-All-Container fRaBQc">
+    <div class="Comments-All gxtxxZ">
+        {% for comment in comments %}
+            <div>
+                <div>
+                    <div class="Comment-Container cMWqxb" tabindex="-1" id="{{ comment.slug }}">
+                        <div class="threadline-container-1 jDSCcP">
+                            <div class="threadline-container-2 czhQfm">
+                                <div class="{{ comment.slug }} threadline-container-0 dsTpoY">
+                                    <i class="threadline"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="Comment {{ comment.slug }} Comment-Container-5 cWZcoW">
+                            <div class="Comment-Container-2 ffsMLm">
+                                {% include "comments/comment_vote2.html" %}
+                            </div>
+                            <div class="Comment-Container-4 kcgtcY">
+                                <div class="Comment-Container-3 knzxDr">
+                                    <div class="Comment-Name hPglCh">
+                                        {{ comment.author }}
+                                    </div>
+                                    <a class="Comment-Time eHkfHQ" href="{{ comment.get_absolute_url }}">
+                                        <span>{{ comment.timestamp|timesince }} ago</span>
+                                    </a>
+                                </div>
+                                <div>
+                                    <div class="Comment-Container-6 fCAQfK ckueCN">
+                                        <p class="Comment-Content iEJDri">
+                                            {{ comment.content }}
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <div class="Comment-Buttons bMNdIG">
+                                            <a class="comment-reply-btn comment-btn" href="#"><i class="fa fa-comment jeSweH"> Reply</i></a>
+                                            <a class="comment-btn" href="{{ comment.get_absolute_url }}">
+                                                <i class="fa fa-archive jeSweH"> Thread</i>
+                                            </a>
+                                            {% if request.user == comment.author %}
+                                                <a class="" href="" data-toggle="modal" data-target="#DeleteCommentModal" data-content="{{ comment.content }}"
+                                                data-url="{% url 'comments:delete' comment.id %}">
+                                                    <span class="fa fa-trash jeSweH"> Delete</span>
+                                                </a>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="comment-reply">
+                                        <form method="POST" action="{% url 'project:detail' project.slug %}">
+                                            {% csrf_token %}
+                                            {{ comment_form|crispy }}
+                                            <input type="hidden" name="parent_id" value="{{ comment.id }}">
+                                            <input type="submit" value="Reply" class="btn btn-primary">
+                                        </form>
+                                        <!-- toggle-able help text -->
+                                        <a class="markdown-help-btn" href="#">Formatting Help</a>
+                                        <div class="markdown-help">
+                                            {% markdown_cheatsheet %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% children_annotate comment user.id as child_comments %}
+
+            {% for child_comment in child_comments %}
+                <div>
+                    <div>
+                        <div class="Comment-Container byBYdJ" tabindex="-1" id="{{ child_comment.slug }}">
+                            <div class="threadline-container-1 jDSCcP">
+                                <div class="{{ child_comment.slug }} threadline-container-0 dsTpoY">
+                                    <i class="threadline"></i>
+                                </div>
+                                <div class="threadline-container-2 czhQfm">
+                                    <div class="{{ comment.slug }} threadline-container-0 dsTpoY">
+                                        <i class="threadline"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="Comment {{ child_comment.slug }} Comment-Container-5 cWZcoW">
+                                <div class="Comment-Container-2 ffsMLm">
+                                    {% include "comments/child_comment_vote2.html" %}
+                                </div>
+                                <div class="Comment-Container-4 kcgtcY">
+                                    <div class="Comment-Container-3 knzxDr">
+                                        <div class="Comment-Name hPglCh">
+                                            {{ child_comment.author }}
+                                        </div>
+                                        <a class="Comment-Time eHkfHQ" href="{{ child_comment.get_absolute_url }}">
+                                            <span>{{ child_comment.timestamp|timesince }} ago</span>
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <div class="Comment-Container-6 fCAQfK ckueCN">
+                                            <p class="Comment-Content iEJDri">
+                                                {{ child_comment.content }}
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <div class="Comment-Buttons bMNdIG">
+                                                <!--<a class="comment-reply-btn comment-btn" href="#"><i class="fa fa-comment jeSweH"> Reply</i></a>-->
+                                                <a class="comment-btn" href="{{ child_comment.get_absolute_url }}">
+                                                    <i class="fa fa-archive jeSweH"> Thread</i>
+                                                </a>
+                                                {% if request.user == child_comment.author %}
+                                                    <a class="" href="" data-toggle="modal" data-target="#DeleteCommentModal" data-content="{{ child_comment.content }}"
+                                                    data-url="{% url 'comments:delete' child_comment.id %}">
+                                                        <span class="fa fa-trash jeSweH"> Delete</span>
+                                                    </a>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+        {% endfor %}
+    </div>
+</div>

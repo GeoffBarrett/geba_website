@@ -149,8 +149,8 @@ class ProjectIndexView(ListView):
 class ProjectUpdateView(ProjectActionMixin, UpdateView):
     model = Project
     success_msg = 'Project Updated!'
-    form_class = ProjectPostForm
-    template_name = 'project/project_post_form.html'
+    form_class = ProjectForm
+    template_name = 'project/project_form_update.html'
     success_url = reverse_lazy('project:index')
 
     def get(self, request, slug):
@@ -190,6 +190,111 @@ class ProjectDeleteView(DeleteView):
         return super(ProjectDeleteView, self).dispatch(request, *args, **kwargs)
 
 
+class ProjectDetailGetView(ObjectViewMixin, DetailView):
+    """This view will be used to GET the detail data"""
+    # success_msg = 'Comment Added!'
+    model = Project  # generic views need to know which model to act upon
+    template_name = 'project/detail.html'  # tells the view to use this template instead of it's default
+    success_url = reverse_lazy('project:index')
+    form_class = CommentForm
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        # the original get defines self.object, this is required otherwise you get an error stating that there is no
+        # attribute 'object' in this DetailView
+
+        instance = self.object
+        context = self.get_context_data(object=self.object)
+        initial_data = {
+            'content_type': instance.get_content_type,
+            'object_id': instance.id,
+        }
+        comment_form = self.form_class(request.POST or None, initial=initial_data)
+        context['comment_form'] = comment_form
+
+        register_form = UserCreationForm(self.request.GET or None, self.request.FILES or None)
+        context['register_form'] = register_form
+
+        return self.render_to_response(context)
+
+    def get_object(self):
+        # make it so only the admin can see items in the future or that are drafts
+        instance = super(ProjectDetailGetView, self).get_object()
+        if instance.draft or instance.publish_date > timezone.now():
+            if not self.request.user.is_staff or not self.request.user.is_superuser:
+                raise PermissionDenied
+
+        # qs = Project.objects.filter(slug=self.kwargs.get('slug'))
+
+        # don't use annotate, use vote_by in this case, annotate only works when __iter__ is called
+        instance = Project.votes.vote_by(self.request.user.id, ids=[instance.id])[0]
+
+        return instance
+
+    def get_context_data(self, **kwargs):
+        context = super(ProjectDetailGetView, self).get_context_data(**kwargs)
+        # context['object'] provides the instance for us
+
+        comment_qs = context['object'].comments
+        # getting the vote info
+
+        # context['comments'] = comment_qs
+        context['comments'] = Comment.votes.annotate(queryset=comment_qs, user_id=self.request.user.id)
+
+        # context['comment_form'] = CommentForm()
+        return context
+
+
+class ProjectDetailPostView(SingleObjectMixin, FormView):
+    """This view will be used to POST the detail data
+
+    SingleObjectMixin = Provides a mechanism for looking up an object associated with the current HTTP request.
+    """
+    template_name = 'project/detail.html'  # tells the view to use this template instead of it's default
+    form_class = CommentForm
+    model = Project  # generic views need to know which model to act upon
+
+    def post(self, request, *args, **kwargs):
+        # comment_form = self.form_class(request.POST, request.FILES)
+        if not request.user.is_authenticated:
+            return HttpResponseForbidden()
+
+        self.object = self.get_object()
+        self.object = Project.votes.annotate(queryset=Project.objects.filter(slug=self.kwargs.get('slug')),
+                                                 user_id=self.request.user.id)[0]
+
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            content_type = ContentType.objects.get_for_model(Project)
+            object_id = form.cleaned_data.get("object_id")
+            content_data = form.cleaned_data.get("content")
+            parent_object = None
+
+            # check if it has a parent_id
+            try:
+                parent_id = int(request.POST.get("parent_id"))
+            except:
+                parent_id = None
+
+            if parent_id:
+                parent_qs = Comment.objects.filter(id=parent_id)
+                if parent_qs.exists():
+                    parent_object = parent_qs.first()  # get the first object in that queryset
+
+            new_comment, created = Comment.objects.get_or_create(
+                author=request.user,
+                content_type=content_type,
+                object_id=object_id,
+                content=content_data,
+                parent=parent_object
+            )
+
+        return super().post(request, *args, **kwargs)
+
+    def get_success_url(self):
+        return reverse('project:detail', kwargs={'slug': self.object.slug})
+
+
 # ----------  Both View  ---------- #
 
 
@@ -205,8 +310,8 @@ class ProjectDetailView(View):
 
         if qs.exists():
             # Then it is a Project slug
-            # view = ProjectDetailGetView.as_view()
-            pass
+            view = ProjectDetailGetView.as_view()
+            # pass
         else:
             view = ProjectPostDetailGetView.as_view()
 
@@ -218,8 +323,8 @@ class ProjectDetailView(View):
 
         if qs.exists():
             # Then it is a Project slug
-            # view = ProjectDetailPostView.as_view()
-            pass
+            view = ProjectDetailPostView.as_view()
+            # pass
         else:
             view = ProjectPostDetailPostView.as_view()
 
@@ -328,7 +433,7 @@ class ProjectPostDetailGetView(ObjectViewMixin, DetailView):
             if not self.request.user.is_staff or not self.request.user.is_superuser:
                 raise PermissionDenied
 
-        qs = ProjectPost.objects.filter(slug=self.kwargs.get('slug'))
+        # qs = ProjectPost.objects.filter(slug=self.kwargs.get('slug'))
 
         # instance = ProjectPost.votes.annotate(queryset=qs, user_id=self.request.geba_auth.id)[0]
         # don't use annotate, use vote_by in this case, annotate only works when __iter__ is called

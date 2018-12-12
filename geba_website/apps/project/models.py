@@ -41,12 +41,12 @@ class ProjectManager(models.Manager):
         """overwriting Post.objects.all()"""
         # return super(ProjectManager, self).filter(draft=False).filter(publish_date__lte=timezone.now())
         return super(ProjectManager, self).filter(draft=False, publish_date__lte=timezone.now(),
-                                                  authors__isnull=False).exclude(description__exact='')
+                                                  authors__isnull=False).exclude(body__exact='')
 
     def latest(self, *args, **kwargs):
         try:
             return super(ProjectManager, self).filter(draft=False, publish_date__lte=timezone.now(),
-                                                      authors__isnull=False).exclude(description__exact='')[0]
+                                                      authors__isnull=False).exclude(body__exact='')[0]
         except IndexError:
             return []
 
@@ -150,7 +150,7 @@ class Project(VoteModel, TimeStampModel):
 
     authors = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True)
 
-    description = models.TextField(blank=True, null=True)
+    body = models.TextField(blank=True, null=True)
 
     score_method = 'hot_score'
 
@@ -178,6 +178,12 @@ class Project(VoteModel, TimeStampModel):
 
     keywords = models.TextField(blank=True, null=True)
 
+    def get_html(self):
+        '''converts the body to markdown so we don\'t have to use the |markdown filter'''
+        body = self.body
+        # return mark_safe(markdown(body))
+        return mark_safe(body)
+
     def get_delete_url(self):
         return reverse("project:delete", kwargs={"slug": self.slug})
 
@@ -185,17 +191,21 @@ class Project(VoteModel, TimeStampModel):
         ordering = ["-vote_score", "-num_vote_up", "-publish_date", "-modified"]
 
     def get_absolute_url(self):
-        # object = get_object_or_404(Project, slug=self.slug)
-        object = Project.objects.filter(slug=self.slug)
 
-        # posts = get_object_or_404(ProjectPost, object_id=object[0].id)
-        posts = ProjectPost.objects.filter(object_id=object[0].id)
-        if len(posts) == 0:
-            # returns the same url if the project has no ProjectPosts
-            return '#'
+        if self.body == '':
+            # object = get_object_or_404(Project, slug=self.slug)
+            object = Project.objects.filter(slug=self.slug)
+
+            # posts = get_object_or_404(ProjectPost, object_id=object[0].id)
+            posts = ProjectPost.objects.filter(object_id=object[0].id)
+            if len(posts) == 0:
+                # returns the same url if the project has no ProjectPosts
+                return '#'
+            else:
+                # return the first page in the project
+                return reverse('project:detail', kwargs={'slug': posts[0].slug})
         else:
-            # return the first page in the project
-            return reverse('project:detail', kwargs={'slug': posts[0].slug})
+            return reverse('project:detail', kwargs={'slug': self.slug})
 
     def get_api_like_url(self):
         return reverse("project:project_like_toggle_api", kwargs={'slug': self.slug})
