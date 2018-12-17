@@ -1,10 +1,8 @@
-import os
 from django.db import models
 from django.conf import settings
 from django.urls import reverse
 from django.utils import timezone
-from django.db.models.signals import pre_save, pre_delete  # before saving it emits this signal
-from django.utils.text import slugify  # turns our title into a slug
+from django.db.models.signals import pre_save, pre_delete, post_save  # before saving it emits this signal
 from ..core.models import TimeStampModel
 from django.utils.safestring import mark_safe
 # from markdown_deux import markdown
@@ -15,6 +13,8 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 # from tinymce.models import HTMLField
 # from django.shortcuts import get_object_or_404
 # from django.db import transaction
+import os
+from django.utils.text import slugify  # turns our title into a slug
 
 # Create your models here.
 
@@ -148,6 +148,10 @@ class ProjectPost(VoteModel, TimeStampModel):
 class Project(VoteModel, TimeStampModel):
     """This model will contain attributes related to Projects"""
 
+    # this is the individual that created the
+    # author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
+
+    # list of all the authors for this project, could make this a property... probably should.
     authors = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True)
 
     body = models.TextField(blank=True, null=True)
@@ -207,6 +211,16 @@ class Project(VoteModel, TimeStampModel):
         else:
             return reverse('project:detail', kwargs={'slug': self.slug})
 
+    def get_description(self):
+        if self.body == '':
+            object = Project.objects.filter(slug=self.slug)
+            posts = ProjectPost.objects.filter(object_id=object[0].id)
+            content = posts[0].body
+
+            return content
+        else:
+            return self.body
+
     def get_api_like_url(self):
         return reverse("project:project_like_toggle_api", kwargs={'slug': self.slug})
 
@@ -221,6 +235,14 @@ class Project(VoteModel, TimeStampModel):
         """This method will return the post order when a new post is being created, it will default as the
         immediate next post"""
         return int(len(ProjectPost.objects.filter(object_id=self.id)) + 1)
+
+    '''
+    @property
+    def authors(self):
+        """This is if I decide that I want to convert the authors list into a property instead of a model field"""
+        authors = [post.author for post in self.pages.all()]
+        return list(set(authors + [self.author]))
+    '''
 
     @property
     def comments(self):
@@ -240,7 +262,7 @@ class Project(VoteModel, TimeStampModel):
         return self.publish_date > timezone.now()
 
 
-def create_slug(instance, new_slug=None):
+def create_slug(instance, prepend_slug=None, new_slug=None):
     """
     Appends an id at the end of the slug, if the slug is found
     this will check if the slug exists for the project slug or the project post slug, making sure that they both
@@ -250,6 +272,11 @@ def create_slug(instance, new_slug=None):
     slug = slugify(instance.title)  # create a slug of the file
     if new_slug is not None:
         slug = new_slug
+
+    if prepend_slug is not None:
+        # if the model is a project post, we will prepend the project slug to the beginning
+        slug = '%s-%s' % (prepend_slug, slug)
+
     qs = ProjectPost.objects.filter(slug=slug).order_by("-id")
     qs2 = Project.objects.filter(slug=slug).order_by("-id")
 
@@ -264,15 +291,59 @@ def create_slug(instance, new_slug=None):
     return slug
 
 
-def pre_save_signal_receiver(sender, instance, *args, **kwargs):
+def has_image(instance):
+
+    if instance.image == '':
+        return False
+    elif instance.image is None:
+        return False
+
+    return True
+
+
+def pre_save_project_signal_receiver(sender, instance, *args, **kwargs):
     """This signal is sent at the beginning of the save() method,
     sender = models class,
     instance = instance being saved,
     """
-    # print('---------------- creating slug--------------------', sender)
     if not instance.slug:
         # if there is no slug, create one
         instance.slug = create_slug(instance=instance)
+    else:
+        # then the project already exists
+        project_instance = Project.objects.filter(pk=instance.pk)[0]
+
+        if has_image(instance) and has_image(project_instance):
+            if project_instance.image.url != instance.image.url:
+                # then we can delete the old image
+
+                delete_image(project_instance)
+
+        elif not has_image(instance) and has_image(project_instance):
+            # then you have removed the old image
+            delete_image(project_instance)
+
+
+def pre_save_signal_projectpost_receiver(sender, instance, *args, **kwargs):
+    """This signal is sent at the beginning of the save() method,
+    sender = models class,
+    instance = instance being saved,
+    """
+    if not instance.slug:
+        # if there is no slug, create one
+        instance.slug = create_slug(instance=instance)
+    else:
+        # then the projectpost already exists
+        post_instance = Project.objects.filter(pk=instance.pk)[0]
+
+        if has_image(instance) and has_image(post_instance):
+            if post_instance.image.url != instance.image.url:
+                # then we can delete the old image
+                delete_image(post_instance)
+
+        elif not has_image(instance) and has_image(post_instance):
+            # then you have removed the old image
+            delete_image(post_instance)
 
 
 def pre_delete_projectpost_signal_receiver(sender, instance, *args, **kwargs):
@@ -326,8 +397,12 @@ def delete_image(instance):
                 os.rmdir(img_dir)
 
 
-pre_save.connect(pre_save_signal_receiver, sender=ProjectPost)  # connects the signal with the signal receiver
-pre_save.connect(pre_save_signal_receiver, sender=Project)  # connects the signal with the signal receiver
+# connects the signal with the signal receiver
+pre_save.connect(pre_save_signal_projectpost_receiver, sender=ProjectPost)
+pre_save.connect(pre_save_project_signal_receiver, sender=Project)  # connects the signal with the signal receiver
+
+# post_save.connect(post_save_projectpost_signal_receiver, sender=ProjectPost)
+# post_save.connect(post_save_project_signal_receiver, sender=Project)  # connects the signal with the signal receiver
 
 pre_delete.connect(pre_delete_projectpost_signal_receiver, sender=ProjectPost)
 pre_delete.connect(pre_delete_project_signal_receiver, sender=Project)

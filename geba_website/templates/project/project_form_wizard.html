@@ -43,10 +43,8 @@
 
                             <div class="form-group">
                                 <div class="col-offset-2 col_sm-10">
-                                    <button type="submit" class="btn btn-success" id="SaveProject"
-                                            data-href=".">Save Project</button>
-                                    <button type="submit" class="btn btn-success" id="SaveCreate">Save & Create Post</button>
-
+                                    <button name="wizard_goto_done" type="submit" value="submit" class="btn btn-primary">Create Project</button>
+                                    <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.next }}" class="btn btn-primary">Save & Create Post</button>
                                 </div>
                             </div>
 

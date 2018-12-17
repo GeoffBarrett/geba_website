@@ -39,7 +39,26 @@
                     <span class="badge-geba"  id="future-{{ project.id }}">Future Post</span>
                 {% endif %}
               </h1>
-              <span class="meta">Posted by <a href="#">{{ project.author }},</a>
+              <span class="meta">Posted by
+                  {% if project.authors.count > 0 %}
+
+                    {% for author in project.authors.all %}
+
+                        {% if forloop.last %}
+                            {% if forloop.first %}
+                                <a href="#">{{ author }},</a>
+                            {% else %}
+                                <span>and <a href="#">{{ author }}</a></span>
+                            {% endif %}
+                        {% else %}
+                            <a href="#">{{ author }}, </a>
+                        {% endif %}
+
+                    {% endfor %}
+                  {% else %}
+                    <span style='color:red;'> No Authors! </span>
+                  {% endif %}</a>
+
                 {% if project.publish_date == project.modified %}
                 Published: {{ project.publish_date|timesince }} ago
                 {% else %}
@@ -80,13 +99,13 @@
                             <a class="btn btn-primary draft-btn hidebtn" data-href="{% url 'project:draft_post_ajax' project.slug %}"
                                data-slug="{{ project.slug }}" id="draft_{{ project.slug }}" href="#" role="button">Set as Draft</a>
                         {% else %}
-                            <a class="btn btn-primary draft-btn" data-href="{% url 'project:draft_post_ajax' project.slug %}"
+                            <a class="btn btn-primary draft-btn" data-href="{% url 'project:draft_project_ajax' project.slug %}"
                                data-slug="{{ project.slug }}" id="draft_{{ project.slug }}" href="#" role="button">Set as Draft</a>
-                            <a class="btn btn-primary publish-btn hidebtn" data-href="{% url 'project:publish_post_ajax' project.slug %}"
+                            <a class="btn btn-primary publish-btn hidebtn" data-href="{% url 'project:publish_project_ajax' project.slug %}"
                                data-slug="{{ project.slug }}" id="publish_{{ project.slug }}" href="#" role="button">Publish</a>
                         {% endif %}
 
-                        <a class="btn btn-primary" href='#' data-toggle="modal" data-target="#DeleteProjectModal">Delete Post</a>
+                        <a class="btn btn-primary" href='#' data-toggle="modal" data-target="#DeleteProjectModal">Delete Project</a>
                     {% endif %}
 
                 </div>
@@ -229,7 +248,7 @@
                   <p>Are you sure you want to delete the following project: "{{ object }}"?</p>
               </div>
               <div class="modal-footer">
-                <form method="POST" action="{% url 'project:delete_post' project.slug %}">
+                <form method="POST" action="{% url 'project:delete' project.slug %}">
                     {% csrf_token %}
                     <button type="button submit" class="btn btn-primary" value="Delete" >Delete</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

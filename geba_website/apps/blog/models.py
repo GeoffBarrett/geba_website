@@ -119,6 +119,16 @@ def create_slug(instance, new_slug=None):
     return slug
 
 
+def has_image(instance):
+
+    if instance.image == '':
+        return False
+    elif instance.image is None:
+        return False
+
+    return True
+
+
 def pre_save_post_signal_receiver(sender, instance, *args, **kwargs):
     """This signal is sent at the beginning of the save() method,
     sender = models class,
@@ -127,8 +137,22 @@ def pre_save_post_signal_receiver(sender, instance, *args, **kwargs):
     if not instance.slug:
         # if there is no slug, create one
         instance.slug = create_slug(instance=instance)
+    else:
+        # then the post already exists
+        post_instance = Post.objects.filter(pk=instance.pk)[0]
+
+        if has_image(instance) and has_image(post_instance):
+            if post_instance.image.url != instance.image.url:
+                # then we can delete the old image
+
+                delete_image(post_instance)
+
+        elif not has_image(instance) and has_image(post_instance):
+            # then you have removed the old image
+            delete_image(post_instance)
 
 
+'''
 def post_save_post_signal_receiver(sender, instance, *args, **kwargs):
     """This signal is sent at the after the save() method,
     sender = models class,
@@ -137,6 +161,7 @@ def post_save_post_signal_receiver(sender, instance, *args, **kwargs):
 
     if kwargs['created']:
         instance.votes.up(instance.author.id)
+'''
 
 
 def pre_delete_post_signal_receiver(sender, instance, *args, **kwargs):
@@ -166,5 +191,6 @@ def delete_image(instance):
 
 
 pre_save.connect(pre_save_post_signal_receiver, sender=Post)  # connects the signal with the signal receiver
-# post_save.connect(post_save_post_signal_receiver, sender=Post)  # connects the signal with the signal receiver
 pre_delete.connect(pre_delete_post_signal_receiver, sender=Post)  # connects the signal with the signal receiver
+
+# post_save.connect(post_save_post_signal_receiver, sender=Post)  # connects the signal with the signal receiver

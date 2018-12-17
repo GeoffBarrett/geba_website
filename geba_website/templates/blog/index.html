@@ -31,19 +31,19 @@
             </div>
         </div>
 
-        <div class="row justify-content-center">
-            <div class="col-8 offset-1">
-                {% if user.is_staff or user.is_superuser %}
-                    <a class="btn btn-primary" href="{% url 'blog:create' %}" role="button">New Blog</a>
-                {% endif %}
-            </div>
-        </div>
-
         <!--{% include 'blog/post_search.html' %}-->
 
         {% if object_list|length == 0 %}
+            <div class="row justify-content-center">
+                <div class="col-8">
+                    {% if user.is_staff or user.is_superuser %}
+                        <a class="btn btn-primary" href="{% url 'blog:create' %}" role="button">New Blog</a>
+                    {% endif %}
+                </div>
+            </div>
+
             <div class="row justify-content-center mt-3">
-                <div class="col-10 mb-3">
+                <div class="col-8 mb-3">
                     <h5>There are currently no active blog posts, thanks for your interest! I have attached an accurate
                     rendition of me researching blog topics to write about. Yes, those are prescription glasses.</h5>
                 </div>
@@ -53,6 +53,15 @@
                 <img src="{% static 'img/monkey-750x400.jpg' %}">
             </div>
         {% else %}
+
+            <div class="row justify-content-center">
+                <div class="col-8 offset-1">
+                    {% if user.is_staff or user.is_superuser %}
+                        <a class="btn btn-primary" href="{% url 'blog:create' %}" role="button">New Blog</a>
+                    {% endif %}
+                </div>
+            </div>
+
             <div class="row justify-content-center mt-3">
                 <div class="col-12">
                     {% load markdown_deux_tags %}

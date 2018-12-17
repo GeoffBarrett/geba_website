@@ -1,8 +1,11 @@
 from django.utils import timezone
 # from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from collections import OrderedDict
 from django.db.models import Q
 from django.views.generic import CreateView, UpdateView, DetailView, ListView, DeleteView, FormView, View
-
+from django.core.exceptions import SuspiciousOperation
+from django.utils.translation import ugettext as _
+from formtools.wizard.forms import ManagementForm
 # from django.utils.decorators import method_decorator
 # from django.contrib.geba_auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
@@ -48,6 +51,92 @@ class ProjectWizard(SessionWizardView):
     def get_template_names(self):
         return [TRANSFER_TEMPLATES[self.steps.current]]
 
+    def post(self, *args, **kwargs):
+        """
+        This method handles POST requests.
+        The wizard will render either the current step (if form validation
+        wasn't successful), the next step (if the current step was stored
+        successful) or the done view (if no more steps are available)
+        """
+        # Look for a wizard_goto_step element in the posted data which
+        # contains a valid step name. If one was found, render the requested
+        # form. (This makes stepping back a lot easier).
+        wizard_goto_step = self.request.POST.get('wizard_goto_step', None)
+
+        if wizard_goto_step and wizard_goto_step in self.get_form_list():
+            return self.render_goto_step(wizard_goto_step)
+
+        # added this step to the default so I could skip steps if I wanted to
+        wizard_goto_done = self.request.POST.get('wizard_goto_done', None)
+        if wizard_goto_done is not None:
+            wizard_goto_done = True
+        else:
+            wizard_goto_done = False
+
+        # Check if form was refreshed
+        management_form = ManagementForm(self.request.POST, prefix=self.prefix)
+        if not management_form.is_valid():
+            raise SuspiciousOperation(_('ManagementForm data is missing or has been tampered.'))
+
+        form_current_step = management_form.cleaned_data['current_step']
+        if (form_current_step != self.steps.current and
+                self.storage.current_step is not None):
+            # form refreshed, change current step
+            self.storage.current_step = form_current_step
+
+        # get the form for the current step
+        form = self.get_form(data=self.request.POST, files=self.request.FILES)
+
+        # and try to validate
+        if form.is_valid():
+            # if the form is valid, store the cleaned data and files.
+            self.storage.set_step_data(self.steps.current, self.process_step(form))
+            self.storage.set_step_files(self.steps.current, self.process_step_files(form))
+
+            # check if the user wants to skip the rest of the steps
+            if wizard_goto_done:
+                return self.render_done_to_current(form, self.steps.current, **kwargs)
+
+            # check if the current step is the last step
+            if self.steps.current == self.steps.last:
+                # no more steps, render done view
+                return self.render_done(form, **kwargs)
+            else:
+                # proceed to the next step
+                return self.render_next_step(form)
+        return self.render(form)
+
+    def render_done_to_current(self, form, current_step, **kwargs):
+        """
+        This method gets called you have called the wizard_goto_done process. The method should also
+        re-validate all steps until the step that initiated this process to prevent manipulation. If any form fails to
+        validate, `render_revalidation_failure` should get called.
+        If everything is fine call `done`.
+        """
+        final_forms = OrderedDict()
+
+        # walk through the form list and try to validate the data again.
+        for form_key in self.get_form_list():
+
+            form_obj = self.get_form(
+                step=form_key,
+                data=self.storage.get_step_data(form_key),
+                files=self.storage.get_step_files(form_key)
+            )
+            if not form_obj.is_valid():
+                return self.render_revalidation_failure(form_key, form_obj, **kwargs)
+            final_forms[form_key] = form_obj
+
+            if form_key == current_step:
+                break
+
+        # render the done view and reset the wizard before returning the
+        # response. This is needed to prevent from rendering done with the
+        # same data twice.
+        done_response = self.done(final_forms.values(), form_dict=final_forms, **kwargs)
+        self.storage.reset()
+        return done_response
+
     def done(self, form_list, **kwargs):
 
         for form_key in self.get_form_list():
@@ -73,38 +162,38 @@ class ProjectWizard(SessionWizardView):
 
             project_instance.save()
 
+            # adding the authors
+            project_instance = Project.objects.get(slug=project_instance.slug)
+            project_instance.authors.add(self.request.user)
+            project_instance.save()
+
             project_instance.votes.up(self.request.user.id)  # up voting the project
 
             if post_form.is_valid():
 
-                object_slug = project_instance.slug
-
-                project_instance = Project.objects.get(slug=object_slug)
+                # object_slug = project_instance.slug
+                # project_instance = Project.objects.get(slug=object_slug)
 
                 instance_post = post_form.save(commit=False)
                 # creates object from the form, doesn't save it to the database just yet
 
-                if self.request.user.get_username() == 'admin':
-                    # instance_post.author = User.objects.get(username='Geoff')
-                    instance_post.author = self.request.user
-                    pass
-                else:
-                    instance_post.author = self.request.user
+                instance_post.author = self.request.user
 
-                project_instance.authors.add(instance_post.author)
-                project_instance.save()
+                # we already added this above, don't need to do it again
+                # project_instance.authors.add(instance_post.author)
+                # project_instance.save()
 
                 instance_post.post_order = 1  # set the default to the 1st post
                 instance_post.content_type = project_instance.get_content_type
                 instance_post.object_id = project_instance.id
 
-                # project_instance.save()
                 instance_post.save()
 
                 instance_post.votes.up(self.request.user.id)  # up voting the project post
 
-        return HttpResponseRedirect(reverse_lazy('project:detail', kwargs={'slug': instance_post.slug}))
-        # return HttpResponseRedirect(reverse_lazy('project:index'))
+                return HttpResponseRedirect(reverse_lazy('project:detail', kwargs={'slug': instance_post.slug}))
+
+            return HttpResponseRedirect(reverse_lazy('project:detail', kwargs={'slug': project_instance.slug}))
 
 
 class ProjectIndexView(ListView):
@@ -156,13 +245,8 @@ class ProjectUpdateView(ProjectActionMixin, UpdateView):
     def get(self, request, slug):
         """when the geba_auth executes a get request, display blank registration form"""
         self.object = self.get_object()
-        # self.success_url = reverse_lazy('project:detail', args=self.object.slug)
         form = self.form_class(request.GET or None, request.FILES or None, instance=self.object)
         return render(request, self.template_name, {'form': form})
-
-    # def get_object(self, queryset=None):
-    #     obj = Post.objects.get(slug=self.kwargs['slug'])
-    #     return obj
 
     # make it so you have to be staff or super-geba_auth to update blog
     def dispatch(self, request, *args, **kwargs):
@@ -174,14 +258,11 @@ class ProjectUpdateView(ProjectActionMixin, UpdateView):
 
 
 class ProjectDeleteView(DeleteView):
-    # template_name = 'blog/post_confirm_delete.html'
     model = Project
-    # success_msg = 'Blog Deleted!'
     success_url = reverse_lazy('project:index')
 
     def get(self, request, *args, **kwargs):
         self.object = self.get_object()
-        # print(reverse('project:detail', args=(self.object.slug)))
         return HttpResponseRedirect(reverse('project:detail', args=(self.object.slug)))
 
     # make it so you have to be a super-geba_auth or staff to delete
@@ -192,7 +273,6 @@ class ProjectDeleteView(DeleteView):
 
 class ProjectDetailGetView(ObjectViewMixin, DetailView):
     """This view will be used to GET the detail data"""
-    # success_msg = 'Comment Added!'
     model = Project  # generic views need to know which model to act upon
     template_name = 'project/detail.html'  # tells the view to use this template instead of it's default
     success_url = reverse_lazy('project:index')
@@ -224,8 +304,6 @@ class ProjectDetailGetView(ObjectViewMixin, DetailView):
             if not self.request.user.is_staff or not self.request.user.is_superuser:
                 raise PermissionDenied
 
-        # qs = Project.objects.filter(slug=self.kwargs.get('slug'))
-
         # don't use annotate, use vote_by in this case, annotate only works when __iter__ is called
         instance = Project.votes.vote_by(self.request.user.id, ids=[instance.id])[0]
 
@@ -233,15 +311,12 @@ class ProjectDetailGetView(ObjectViewMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(ProjectDetailGetView, self).get_context_data(**kwargs)
-        # context['object'] provides the instance for us
 
         comment_qs = context['object'].comments
         # getting the vote info
 
-        # context['comments'] = comment_qs
         context['comments'] = Comment.votes.annotate(queryset=comment_qs, user_id=self.request.user.id)
 
-        # context['comment_form'] = CommentForm()
         return context
 
 
@@ -261,7 +336,7 @@ class ProjectDetailPostView(SingleObjectMixin, FormView):
 
         self.object = self.get_object()
         self.object = Project.votes.annotate(queryset=Project.objects.filter(slug=self.kwargs.get('slug')),
-                                                 user_id=self.request.user.id)[0]
+                                             user_id=self.request.user.id)[0]
 
         form = self.form_class(request.POST)
         if form.is_valid():
@@ -332,65 +407,6 @@ class ProjectDetailView(View):
 
 
 # ---------- PROJECT POST VIEW  ---------- #
-
-'''
-class ProjectPostCreationPostView(ProjectActionMixin, FormView):
-
-    project_form = ProjectForm
-    post_form = ProjectPostForm
-
-    # form_class = ProjectForm
-    template_name = 'project/project_form.html'
-
-    success_url = '/'
-
-    def post(self, request, *args, **kwargs):
-
-        # project_form = self.project_form(request.POST)
-
-        project_form = self.request.session['project_form']
-
-        post_form = self.post_form(request.POST or None)
-
-        if post_form.is_valid():
-            project_instance = project_form.save(commit=False)
-            project_instance.save()
-            project_instance.votes.up(request.user.id)  # up voting the project
-
-            object_slug = project_instance.slug
-
-            project_instance = Project.objects.get(slug=object_slug)
-
-            instance_post = post_form.save(commit=False)
-            # creates object from the form, doesn't save it to the database just yet
-
-            if request.user.get_username() == 'admin':
-                # instance_post.author = User.objects.get(username='Geoff')
-                instance_post.author = request.user
-                pass
-            else:
-                instance_post.author = request.user
-
-            project_instance.authors.add(instance_post.author)
-            project_instance.save()
-
-            instance_post.post_order = 1  # set the default to the 1st post
-            instance_post.content_type = project_instance.get_content_type
-            instance_post.object_id = project_instance.id
-
-            # project_instance.save()
-            instance_post.save()
-
-            instance_post.votes.up(request.user.id)  # up voting the project post
-
-            return HttpResponseRedirect(reverse_lazy('project:detail', kwargs={'slug': instance_post.slug}))
-
-        else:
-            # figure out what to do if this
-            # return render_to_response(self.template_name, {'project_form': project_form, 'post_form': post_form})
-            return render(request, self.template_name, {'project_form': project_form, 'post_form': post_form})
-'''
-
 
 class ProjectPostDetailGetView(ObjectViewMixin, DetailView):
     """This view will be used to GET the detail data"""
@@ -550,7 +566,6 @@ class ProjectPostCreateView(ProjectActionMixin, CreateView):
     model = ProjectPost
     success_msg = 'Post Created!'
     form_class = ProjectPostForm
-    # template_name = 'project/project_post_form2.html'
     template_name = 'project/project_post_form.html'
     # success_url = '/'  # if no success_url is given, it will use the get_absolute_url() on the object if available
     # Don't need to specify template name due to the html file being named ModelName_form.html

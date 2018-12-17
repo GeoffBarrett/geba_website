@@ -33,17 +33,17 @@
             </div>
         </div>
 
-        <div class="row justify-content-center">
-            <div class="col-8 offset-1">
-                {% if user.is_staff or user.is_superuser %}
-                    <a class="btn btn-primary" href="{% url 'project:create' %}" role="button">New Project</a>
-                {% endif %}
-            </div>
-        </div>
-
         <!--{% include 'project/project_search.html' %}-->
 
         {% if object_list|length == 0 %}
+            <div class="row justify-content-center">
+                <div class="col-8">
+                    {% if user.is_staff or user.is_superuser %}
+                        <a class="btn btn-primary" href="{% url 'project:create' %}" role="button">New Project</a>
+                    {% endif %}
+                </div>
+            </div>
+
             <div class="row justify-content-center mt-3">
                 <div class="col-8 mb-3">
                     <h5>There are currently no active projects, thanks for your interest! Below is a video of
@@ -55,6 +55,14 @@
                 <img src="https://media.giphy.com/media/pFwRzOLfuGHok/giphy.gif" width="480" height="300">
             </div>
         {% else %}
+
+            <div class="row justify-content-center">
+                <div class="col-8 offset-1">
+                    {% if user.is_staff or user.is_superuser %}
+                        <a class="btn btn-primary" href="{% url 'project:create' %}" role="button">New Project</a>
+                    {% endif %}
+                </div>
+            </div>
 
             <div class="row justify-content-center mt-3">
                 <div class="col-12">
@@ -171,10 +179,9 @@
                                         Published by
                                         {% if project.authors.count > 0 %}
                                             {% for author in project.authors.all %}
-
                                                 {% if forloop.last %}
                                                     {% if forloop.first %}
-                                                        <a href="#">{{ author }}</a>
+                                                        <a href="#">{{ author }},</a>
                                                     {% else %}
                                                         <span>and <a href="#">{{ author }}</a></span>
                                                     {% endif %}
@@ -182,7 +189,7 @@
                                                     <a href="#">{{ author }}, </a>
                                                 {% endif %}
 
-                                            {% endfor %}, {{ project.publish_date|timesince }} ago.
+                                            {% endfor %}{{ project.publish_date|timesince }} ago.
                                         {% else %}
                                             <span style='color:red;'> No Authors! </span>
                                         {% endif %}
