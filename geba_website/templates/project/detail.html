@@ -203,21 +203,10 @@
                         </div>
 
                         <div class="card-footer text-muted">
-                            Published by
-                            {% if post.authors.count > 0 %}
-                                {% for author in post.authors.all %}
-
-                                    {% if forloop.last %}
-                                        {% if forloop.first %}
-                                            <a href="#">{{ author }}</a>
-                                        {% else %}
-                                            <span>and <a href="#">{{ author }}</a></span>
-                                        {% endif %}
-                                    {% else %}
-                                        <a href="#">{{ author }}, </a>
-                                    {% endif %}
-
-                                {% endfor %}, {{ post.publish_date|timesince }} ago.
+                            Published by 
+                            {% if post.author %}
+                                <a href="#">{{ post.author }}, </a>
+                                {{ post.publish_date|timesince }} ago.
                             {% else %}
                                 <span style='color:red;'> No Authors! </span>
                             {% endif %}

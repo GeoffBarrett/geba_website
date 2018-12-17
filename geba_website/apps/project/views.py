@@ -170,7 +170,6 @@ class ProjectWizard(SessionWizardView):
             project_instance.votes.up(self.request.user.id)  # up voting the project
 
             if post_form.is_valid():
-
                 # object_slug = project_instance.slug
                 # project_instance = Project.objects.get(slug=object_slug)
 

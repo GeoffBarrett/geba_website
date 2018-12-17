@@ -287,7 +287,7 @@ def create_slug(instance, prepend_slug=None, new_slug=None):
             new_slug = "%s-%s" % (slug, qs.first().id)
         elif exists2:
             new_slug = "%s-%s" % (slug, qs2.first().id)
-        return create_slug(instance, new_slug=new_slug)
+        return create_slug(instance, prepend_slug=prepend_slug, new_slug=new_slug)
     return slug
 
 
@@ -330,11 +330,14 @@ def pre_save_signal_projectpost_receiver(sender, instance, *args, **kwargs):
     instance = instance being saved,
     """
     if not instance.slug:
+
+        project_instance = Project.objects.filter(id=instance.object_id)[0]
+
         # if there is no slug, create one
-        instance.slug = create_slug(instance=instance)
+        instance.slug = create_slug(instance=instance, prepend_slug=project_instance.slug)
     else:
         # then the projectpost already exists
-        post_instance = Project.objects.filter(pk=instance.pk)[0]
+        post_instance = ProjectPost.objects.filter(pk=instance.pk)[0]
 
         if has_image(instance) and has_image(post_instance):
             if post_instance.image.url != instance.image.url:
@@ -400,9 +403,6 @@ def delete_image(instance):
 # connects the signal with the signal receiver
 pre_save.connect(pre_save_signal_projectpost_receiver, sender=ProjectPost)
 pre_save.connect(pre_save_project_signal_receiver, sender=Project)  # connects the signal with the signal receiver
-
-# post_save.connect(post_save_projectpost_signal_receiver, sender=ProjectPost)
-# post_save.connect(post_save_project_signal_receiver, sender=Project)  # connects the signal with the signal receiver
 
 pre_delete.connect(pre_delete_projectpost_signal_receiver, sender=ProjectPost)
 pre_delete.connect(pre_delete_project_signal_receiver, sender=Project)
