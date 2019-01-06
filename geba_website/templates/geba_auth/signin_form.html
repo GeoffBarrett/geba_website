@@ -6,6 +6,7 @@
 {% load crispy_forms_tags %}
 
 {% block css %}
+    <link rel='stylesheet' href="{% static 'apps/geba_auth/css/geba_auth.css' %}"/>
 {% endblock css %}
 
 {% block header %}
@@ -29,7 +30,7 @@
     <div class="container-fluid">
 
         <div class="row justify-content-center">
-            <div class="col-5">
+            <div class="geba_reg-col">
                 <h3>Login to GEBA Tech!</h3>
                 <p>Enter username and password to log on:</p>
 

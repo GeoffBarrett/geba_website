@@ -2,10 +2,8 @@
 <html lang="en">
 
     <head>
-        <!--{% load analytical %}-->
         {% load staticfiles %}
 
-        <!--{% analytical_head_top %}-->
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         {% block viewport %}
@@ -30,16 +28,10 @@
     <body class="body">
 
         <div>
-
-            <!--{% analytical_body_top %}-->
-
-
             {% block header %}{% endblock header %}
 
             {% block content %}{% endblock content %}
         </div>
-
-        <!--{% analytical_body_bottom %}-->
 
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <!--Placed at the end of the document so the pages load faster -->
