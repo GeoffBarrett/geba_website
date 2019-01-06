@@ -15,6 +15,9 @@
         //check if user is scrolling up
 
         if (currentTop < this.previousTop) {
+          $('#mainNav').removeClass('open');
+          $('#mobile-nav').removeClass('open');
+          $('#mobile-nav-button').removeClass('open');
           //if scrolling up...
           if (currentTop > 0 && $('#mainNav').hasClass('is-fixed')) {
             $('#mainNav').addClass('is-visible');
@@ -23,6 +26,9 @@
           }
         } else if (currentTop > this.previousTop) {
           //if scrolling down...
+          $('#mainNav').removeClass('open');
+          $('#mobile-nav').removeClass('open');
+          $('#mobile-nav-button').removeClass('open');
           $('#mainNav').removeClass('is-visible');
           if (currentTop > headerHeight && !$('#mainNav').hasClass('is-fixed')) $('#mainNav').addClass('is-fixed');
         }

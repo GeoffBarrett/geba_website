@@ -654,9 +654,19 @@ a {
     z-index:10
   }
 
-  .mobile-nav.open {
-    top: 45px;
+  #mainNav.fixed-top .mobile-nav.open  {
+    top: 50px;
     background: rgba(0,0,0,.9);
+  }
+
+  #mainNav.fixed-top.is-visible .mobile-nav.open  {
+    top: 49px;
+    background: rgba(0,0,0,.55);
+  }
+
+  #mainNav.fixed-top.is-fixed .mobile-nav.open,  {
+    top:-80px;
+    background:rgba(0,0,0,.6);
   }
 
   .mobile-nav ul{
