@@ -7,7 +7,7 @@
     {% load staticfiles %}
     {% load crispy_forms_tags %}
     {% load comment %}
-    <link rel='stylesheet' href="{% static 'apps/blog/css/custom.css' %}"/>
+    <link rel='stylesheet' href="{% static 'apps/blog/css/blog.css' %}"/>
     <link rel='stylesheet' href="{% static 'apps/vote/css/vote.css' %}"/>
     <link rel='stylesheet' href="{% static 'apps/comments/css/comments.css' %}"/>
 
@@ -57,7 +57,7 @@
         <div class="container-fluid">
 
             <div class="row justify-content-center">
-                <div class="col-8 offset-1">
+                <div class="geba_body-col geba_vote-offset">
                     {% if messages %}
                         {% include "blog/messages.html" %}
                     {% endif %}
@@ -66,7 +66,7 @@
             </div>
 
             <div class="row justify-content-center">
-                <div class="col-8 offset-1">
+                <div class="geba_body-col geba_vote-offset">
                     {% if user.is_staff or user.is_superuser %}
                         <a class="btn btn-primary" href="{% url 'blog:create' %}" role="button">New Blog</a>
                         <a class="btn btn-primary" href="{% url 'blog:update' post.slug %}" role="button">Edit Blog</a>
@@ -92,21 +92,13 @@
             <div class="row justify-content-center mt-3">
 
                 <!-- This div will contain the voting -->
-                <div class="col-1">
+                <div class="geba_vote-col">
                     {% include "blog/blog_vote.html" %}
                 </div>
 
                 <!-- this div will contain the contents of the post, including comments -->
-                <div class="col-8 content-markdown">
+                <div class="geba_body-col content-markdown">
                     <div class="post-body">{{ post.get_html }}</div>
-
-                    <!--
-                    <div class="row">
-                        <div class="col">
-                            <a class="btn btn-primary" href="#Top">Top of Page</a>
-                        </div>
-                    </div>
-                    -->
 
                     <hr>
 

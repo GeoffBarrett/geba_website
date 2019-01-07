@@ -7,6 +7,7 @@
 {% block header %}
     {% load staticfiles %}
     <link rel='stylesheet' href="{% static 'apps/vote/css/vote.css' %}"/>
+    <link rel='stylesheet' href="{% static 'apps/project/css/project.css' %}"/>
 {% endblock header %}
 
 {% block content %}
@@ -26,7 +27,7 @@
     <div class="container-fluid">
 
         <div class="row justify-content-center">
-            <div class="col-8 offset-1">
+            <div class="geba_body_index-col geba_vote-offset">
                 {% if messages %}
                     {% include "project/messages.html" %}
                 {% endif %}
@@ -37,7 +38,7 @@
 
         {% if object_list|length == 0 %}
             <div class="row justify-content-center">
-                <div class="col-8">
+                <div class="geba_body_index-col">
                     {% if user.is_staff or user.is_superuser %}
                         <a class="btn btn-primary" href="{% url 'project:create' %}" role="button">New Project</a>
                     {% endif %}
@@ -45,7 +46,7 @@
             </div>
 
             <div class="row justify-content-center mt-3">
-                <div class="col-8 mb-3">
+                <div class="geba_body_index-col mb-3">
                     <h5>There are currently no active projects, thanks for your interest! Below is a video of
                     me working hard on these projects.</h5>
                 </div>
@@ -57,7 +58,7 @@
         {% else %}
 
             <div class="row justify-content-center">
-                <div class="col-8 offset-1">
+                <div class="geba_body_index-col geba_vote-offset">
                     {% if user.is_staff or user.is_superuser %}
                         <a class="btn btn-primary" href="{% url 'project:create' %}" role="button">New Project</a>
                     {% endif %}
@@ -70,11 +71,11 @@
 
                     {% for project in object_list %} <!-- object_list is returned from the ListView of objects.all()-->
                         <div class="row justify-content-center">
-                            <div class="col-1">
+                            <div class="geba_vote-col">
                                 {% include "project/project_vote.html" %}
                             </div>
 
-                            <div class="col-8">
+                            <div class="geba_body_index-col">
 
                                 <div class="card mb-4">
                                      {% if project.image %}

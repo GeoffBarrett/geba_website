@@ -1,0 +1,170 @@
+.geba_body-col {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 70%;
+    flex: 0 0 70%;
+    max-width: 70%;
+}
+
+.geba_body-col {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.geba_body_index-col {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 75%;
+    flex: 0 0 75%;
+    max-width: 75%;
+}
+
+.geba_body_index-col {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.list-group-item-project {
+    background-color: #3c4146;
+}
+
+.geba-toggle {
+    margin-left: auto;
+    text-align: right;
+    padding-right: 0px;
+}
+
+.geba-large {
+    display: block;
+}
+
+.geba-mobile {
+    display: none;
+}
+
+@media (max-width: 920px) {
+    .btn.btn-project {
+        padding: 6px 5px;
+    }
+}
+
+@media (max-width: 840px) {
+    .geba-large {
+        display: none;
+    }
+
+    .geba-mobile {
+        display: block;
+    }
+
+    .geba_body-col {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 80%;
+        flex: 0 0 80%;
+        max-width: 80%;
+    }
+}
+
+@media (max-width: 650px) {
+    .geba_body-col {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 90%;
+        flex: 0 0 90%;
+        max-width: 90%;
+    }
+}
+
+.geba-menu-btn {
+    border: 0px;
+}
+
+.geba-menu-btn:hover {
+    border-color: rgba(0,0,0,0);
+}
+
+.geba-menu-btn:focus {
+    box-shadow: 0 0 0 0 rgba(0,0,0,0);
+}
+
+#menu-toggle.menuDisplayed .fa.fa-caret-left {
+    display: none;
+}
+
+#menu-toggle .fa.fa-caret-right {
+    display: none;
+}
+
+#menu-toggle.menuDisplayed .fa.fa-caret-right {
+    display: inline-block;
+}
+
+.geba-caret-right-padding {
+    padding-right: 0px;
+}
+
+.geba-caret-left-padding {
+    padding-left: 0px;
+}
+
+
+/* Sidebar */
+#sidebar-wrapper {
+    z-index: 1;
+    position: absolute;
+    width: 0;
+    /*height: 73%;*/ /* 100% was strange */
+    overflow-y: hidden;
+    /*background: #32383e;*/
+    background: #3c4146;
+    border: 1px solid rgba(0,0,0,0.6);
+    border-bottom-right-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+    border-top-left-radius: 0.25rem;
+    right: 0;
+}
+
+/* Change with of sidebar from 0 to 250px */
+#sidebar-wrapper.menuDisplayed {
+    width: 200px;
+}
+
+/* Since we added left padding, we need to shrink the width by 250px */
+#page-content-wrapper.menuDisplayed {
+    padding-right: 200px;
+}
+
+/* Sidebar styling - the entire ul list */
+.sidebar-nav {
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #ddd;
+}
+
+.sidebar-nav li a:hover {
+    background: #16A085;
+}
+
+.center-btn {
+   display: flex;
+   display: -webkit-flex;
+   display: flex;
+   -webkit-align-items: center;
+   align-items: center;
+   -webkit-justify-content: center;
+   justify-content: center;
+}
