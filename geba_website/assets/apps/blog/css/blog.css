@@ -12,3 +12,37 @@
     padding-right: 15px;
     padding-left: 15px;
 }
+
+.geba-large {
+    display: flex;
+}
+
+.geba-mobile {
+    display: none;
+}
+
+@media (max-width: 840px) {
+    .geba-large {
+        display: none;
+    }
+
+    .geba-mobile {
+        display: block;
+    }
+
+    .geba_body-col {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 80%;
+        flex: 0 0 80%;
+        max-width: 80%;
+    }
+}
+
+@media (max-width: 700px) {
+    .geba_body-col {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 90%;
+        flex: 0 0 90%;
+        max-width: 90%;
+    }
+}

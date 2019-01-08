@@ -7,6 +7,7 @@
     {% load staticfiles %}
     {% load crispy_forms_tags %}
     {% load comment %}
+    <link rel='stylesheet' href="{% static 'apps/core/css/sidebar.css' %}"/>
     <link rel='stylesheet' href="{% static 'apps/project/css/project.css' %}"/>
     <link rel='stylesheet' href="{% static 'apps/vote/css/vote.css' %}"/>
     <link rel='stylesheet' href="{% static 'apps/comments/css/comments.css' %}"/>
@@ -85,10 +86,8 @@
             </div>
 
             <div class="row geba-large">
-
                 <!-- all the buttons for the projects -->
                 <div class="geba_body-col geba_vote-offset">
-
                     {% if user.is_staff or user.is_superuser %}
                         <a class="btn btn-primary btn-project"
                            href="{% url 'project:create_post' project.slug project.get_next_post_order %}"
@@ -109,9 +108,7 @@
 
                         <a class="btn btn-primary btn-project" href='#' data-toggle="modal" data-target="#DeleteProjectModal">Delete Project</a>
                     {% endif %}
-
                 </div>
-
             </div>
 
             <div class="row justify-content-center">
@@ -309,5 +306,6 @@
     <script src="{% static 'apps/core/js/badge.js' %}"></script>
     <script src="{% static 'apps/comments/js/comment.js' %}"></script>
     <script src="{% static 'apps/project/js/project.js' %}"></script>
+    <script src="{% static 'apps/core/js/sidebar.js' %}"></script>
     <script src="{% static 'apps/vote/js/vote.js' %}"></script>
 {% endblock javascript %}
