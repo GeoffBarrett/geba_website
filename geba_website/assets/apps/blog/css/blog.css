@@ -23,10 +23,10 @@
 }
 
 .geba-large, .geba-medium {
-    display: flex;
+    display: block;
 }
 
-.geba-mobile, .geba-small {
+.geba-mobile, .geba-small, .geba-small-flex {
     display: none;
 }
 
@@ -36,7 +36,7 @@
     }
 
     .geba-mobile {
-        display: flex;
+        display: block;
     }
 
     .geba_body-col, .geba_body-col-index {
@@ -68,6 +68,10 @@
     }
 
     .geba-small {
+        display: block;
+    }
+
+    .geba-small-flex {
         display: flex;
     }
 
