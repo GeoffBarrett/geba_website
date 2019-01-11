@@ -40,6 +40,8 @@
                     {{ form|crispy }}
 
                     <button type="submit" class="btn btn-primary">Sign in</button>
+
+                    <p style="margin-top: 1rem;">Not a member? <a href="{% url 'geba_auth:register' %}">Register now!</a></p>
                 </form>
 
                 <!--
