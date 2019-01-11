@@ -136,7 +136,6 @@
                     </ul>
                 </div>
 
-
                 <!-- This div will contain the voting -->
                 <div class="geba_vote-col">
                     {% include "project/projectpost_vote.html" %}
@@ -145,11 +144,8 @@
                 <!-- this div will contain the contents of the post, including comments -->
                 <div class="geba_body-col content-markdown">
                     <div class="post-body">{{ projectpost.get_html|safe }}</div>
-
                     <hr>
-
                     {% include "project/post_detail_comments.html" %}
-
                 </div>
 
                 <div class="col-3 ml-sm-auto">
@@ -163,9 +159,7 @@
                         {% endfor %}
                     </div>
                 </div>
-
             </div>
-
         </div>
     </article>
 

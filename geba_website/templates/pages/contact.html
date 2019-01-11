@@ -9,6 +9,10 @@
 
 {% endblock header %}
 
+{% block css %}
+    <link rel='stylesheet' href="{% static 'apps/pages/css/pages.css' %}"/>
+{% endblock css %}
+
 {% block content %}
 
     <!-- Page Header -->
@@ -31,22 +35,25 @@
             {% if page.header_image == '' %}
                 <div class="row no-header justify-content-center">
                     {% if user.is_superuser %}
-                        <div class="col-8 offset-1">
-                            <div class="post-heading">
-                                <h1>{{ page.title }}</h1>
-                            </div>
-                            <hr>
-                        </div>
-                        <div class="col-1">
-                            <a href="{% url 'pages:update' page.slug %}">
-                                <span class="fa fa-pencil"></span></a>
-                        </div>
-                    {% else %}
-                        <div class="col-8">
-                            <div class="post-heading">
-                                <h1>{{ page.title }}</h1>
+                        {% if page.show_title %}
+                            <div class="geba_pages-col">
+                                <div class="row" style="padding-left: 15px;">
+                                    <h1>{{ page.title }}</h1>
+                                    <a href="{% url 'pages:update' page.slug %}">
+                                    <span class="fa fa-pencil" style="padding-left: 5px;"></span></a>
+                                </div>
                                 <hr>
                             </div>
+                        {% endif %}
+
+                    {% else %}
+                        <div class="geba_pages-col">
+                            {% if page.show_title %}
+                                <div class="post-heading">
+                                    <h1>{{ page.title }}</h1>
+                                    <hr>
+                                </div>
+                            {% endif %}
                         </div>
                     {% endif %}
                 </div>
@@ -54,20 +61,24 @@
 
             <div class="row justify-content-center mt-3">
                 {% if user.is_superuser %}
-                    <div class="col-8 content-markdown">
-                        <div class="post-body">{{ page.get_html }}</div>
-                    </div>
                     {% if page.header_image %}
+                        <div class="geba_pages-body-col content-markdown">
+                            <div class="post-body">{{ page.get_html }}</div>
+                        </div>
                         <div class="col-1">
                             <a href="{% url 'pages:update' page.slug %}"><span class="fa fa-pencil"></span></a>
                         </div>
+                    {% else %}
+                        <div class="geba_pages-col content-markdown">
+                            <div class="post-body">{{ page.get_html }}</div>
+                        </div>
                     {% endif %}
                 {% else %}
-                    <div class="col-8 content-markdown">
+                    <div class="geba_pages-col content-markdown">
                         <div class="post-body">{{ page.get_html }}</div>
                     </div>
                 {% endif %}
-                <div class="col-8">
+                <div class="geba_pages-col">
                     <form role="form" action="" method="post">
                         {% csrf_token %}
                         {{ form|crispy }}
