@@ -1,0 +1,85 @@
+{% with post.unvoted_net_likes as "unvoted_likes" %}
+    {% if post.is_voted_up %}
+        <div class="link" current_class="likes">
+            <div class="likes-mobile mobile-link">
+
+                {% if user.is_authenticated %}
+                    <div class="arrow up upvote-btn login-required access-required upmod arrow-mobile"
+                     data-event-action="upvote" title="upvote"
+                     role="button" aria-label="upvote" data-object="{{ post }}"
+                     data-href="{% url 'blog:like_toggle_api' post.slug %}"></div>
+                {% else %}
+                    {% include "vote/unauthenticated_upvote.html" %}
+                {% endif %}
+
+                <div class="score dislikes" title="{{ unvoted_likes|add:'-1' }}">{{ unvoted_likes|add:"-1" }}</div>
+                <div class="score unvoted" title="{{ unvoted_likes|add:'0' }}">{{ unvoted_likes|add:'0' }}</div>
+                <div class="score likes" title="{{ unvoted_likes|add:'1' }}">{{ unvoted_likes|add:"1" }}</div>
+
+                {% if user.is_authenticated %}
+                    <div class="arrow down downvote-btn login-required access-required arrow-mobile"
+                         data-event-action="downvote" role="button"
+                         aria-label="downvote" title="downvote" data-object="{{ post }}"
+                         data-href="{% url 'blog:dislike_toggle_api' post.slug %}"></div>
+                {% else %}
+                    {% include "vote/unauthenticated_downvote.html" %}
+                {% endif %}
+            </div>
+        </div>
+    {% elif  post.is_voted_down %}
+        <div class="link" current_class="dislikes">
+            <div class="dislikes-mobile mobile-link">
+
+                {% if user.is_authenticated %}
+                    <div class="arrow up upvote-btn login-required access-required arrow-mobile"
+                     data-event-action="upvote" title="upvote"
+                     role="button" aria-label="upvote" data-object="{{ post }}"
+                     data-href="{% url 'blog:like_toggle_api' post.slug %}"></div>
+                {% else %}
+                    {% include "vote/unauthenticated_upvote.html" %}
+                {% endif %}
+
+                <div class="score dislikes" title="{{ unvoted_likes|add:'-1' }}">{{ unvoted_likes|add:"-1" }}</div>
+                <div class="score unvoted" title="{{ unvoted_likes|add:'0' }}">{{ unvoted_likes|add:'0' }}</div>
+                <div class="score likes" title="{{ unvoted_likes|add:'1' }}">{{ unvoted_likes|add:"1" }}</div>
+
+                {% if user.is_authenticated %}
+                    <div class="arrow down downvote-btn login-required access-required downmod arrow-mobile"
+                         data-event-action="downvote" role="button"
+                         aria-label="downvote" title="downvote" data-object="{{ post }}"
+                         data-href="{% url 'blog:dislike_toggle_api' post.slug %}"></div>
+                {% else %}
+                    {% include "vote/unauthenticated_downvote.html" %}
+                {% endif %}
+
+            </div>
+        </div>
+    {% else %}
+        <div class="link" current_class="unvoted">
+            <div class="unvoted-mobile mobile-link">
+
+                {% if user.is_authenticated %}
+                    <div class="arrow up upvote-btn login-required access-required arrow-mobile"
+                     data-event-action="upvote" title="upvote"
+                     role="button" aria-label="upvote" data-object="{{ post }}"
+                     data-href="{% url 'blog:like_toggle_api' post.slug %}"></div>
+                {% else %}
+                    {% include "vote/unauthenticated_upvote.html" %}
+                {% endif %}
+
+                <div class="score dislikes" title="{{ unvoted_likes|add:'-1' }}">{{ unvoted_likes|add:"-1" }}</div>
+                <div class="score unvoted" title="{{ unvoted_likes|add:'0' }}">{{ unvoted_likes|add:'0' }}</div>
+                <div class="score likes" title="{{ unvoted_likes|add:'1' }}">{{ unvoted_likes|add:"1" }}</div>
+
+                {% if user.is_authenticated %}
+                    <div class="arrow down downvote-btn login-required access-required arrow-mobile"
+                         data-event-action="downvote" role="button"
+                         aria-label="downvote" title="downvote" data-object="{{ post }}"
+                         data-href="{% url 'blog:dislike_toggle_api' post.slug %}"></div>
+                {% else %}
+                    {% include "vote/unauthenticated_downvote.html" %}
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+{% endwith %}

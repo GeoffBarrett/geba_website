@@ -58,7 +58,12 @@
         {% else %}
 
             <div class="row justify-content-center">
-                <div class="geba_body_index-col geba_vote-offset">
+                <div class="geba_body_index-col geba_vote-offset geba-medium">
+                    {% if user.is_staff or user.is_superuser %}
+                        <a class="btn btn-primary" href="{% url 'project:create' %}" role="button">New Project</a>
+                    {% endif %}
+                </div>
+                <div class="geba_body_index-col geba-small">
                     {% if user.is_staff or user.is_superuser %}
                         <a class="btn btn-primary" href="{% url 'project:create' %}" role="button">New Project</a>
                     {% endif %}
@@ -71,7 +76,7 @@
 
                     {% for project in object_list %} <!-- object_list is returned from the ListView of objects.all()-->
                         <div class="row justify-content-center">
-                            <div class="geba_vote-col">
+                            <div class="geba_vote-col geba-medium">
                                 {% include "project/project_vote.html" %}
                             </div>
 
@@ -90,7 +95,7 @@
 
                                             <div class="row">
                                                 {% if request.user == project.author or request.user.is_superuser %}
-                                                    <div class="col-11">
+                                                    <div class="col-10">
                                                 {% else %}
                                                     <div class="col-12">
                                                 {% endif %}
@@ -114,9 +119,9 @@
                                                 </div>
 
                                                 {% if request.user == project.author or request.user.is_superuser %}
-                                                    <div class="col-1">
-                                                        <div class="btn-group">
-                                                            <a href="#" class="nav-link dropdown-toggle pt-0 dropdown-toggle-top"
+                                                    <div class="geba-caret-col">
+                                                        <div class="btn-group float-right">
+                                                            <a href="#" class="nav-link nav-link-geba dropdown-toggle pt-0 dropdown-toggle-top"
                                                                data-toggle="dropdown" role="button" aria-haspopup="true"
                                                                aria-expanded="false" id="DropDown{{ project.id }}">
                                                               <span class="caret"></span>
@@ -157,43 +162,69 @@
                                             </div>
                                         </h2>
 
-                                        <p class="card-text">
-
-                                            {% if project.description %}
-                                                {{ project.description }}
+                                        {% if project.description %}
+                                            <div class="geba-medium">{{ project.description }}</div>
+                                        {% else %}
+                                            {% if project.get_html %}
+                                                <div class="geba-medium">{{ project.get_html|truncatechars_html:500 }}</div>
                                             {% else %}
-                                                {% if project.get_html %}
-                                                    {{ project.get_html|truncatechars_html:500 }}
-                                                {% else %}
-                                                    <span style='color:red;'> No Description! </span>
-                                                {% endif %}
+                                                <span style='color:red;'> No Description! </span>
                                             {% endif %}
-
-                                        </p>
-                                        {% if project.keywords %}
-                                            <p class="card-text">Keywords: {{ post.keywords }}</p>
                                         {% endif %}
-                                        <a class="btn btn-primary" href="{{ project.get_absolute_url }}">Read More →</a>
+
+                                        {% if project.keywords %}
+                                            <div class="geba-medium"><p>Keywords: </p>{{ post.keywords }}</div>
+                                        {% endif %}
+                                        <div class="geba-medium">
+                                            <a class="btn btn-primary" href="{{ project.get_absolute_url }}">Read More →</a>
+                                        </div>
                                     </div>
 
                                     <div class="card-footer text-muted">
-                                        Published by
-                                        {% if project.authors.count > 0 %}
-                                            {% for author in project.authors.all %}
-                                                {% if forloop.last %}
-                                                    {% if forloop.first %}
-                                                        <a href="#">{{ author }},</a>
+                                        <div class="row geba-medium">
+                                            Published by
+                                            {% if project.authors.count > 0 %}
+                                                {% for author in project.authors.all %}
+                                                    {% if forloop.last %}
+                                                        {% if forloop.first %}
+                                                            <a href="#">{{ author }},</a>
+                                                        {% else %}
+                                                            <span>and <a href="#">{{ author }}</a></span>
+                                                        {% endif %}
                                                     {% else %}
-                                                        <span>and <a href="#">{{ author }}</a></span>
+                                                        <a href="#">{{ author }}, </a>
                                                     {% endif %}
-                                                {% else %}
-                                                    <a href="#">{{ author }}, </a>
-                                                {% endif %}
 
-                                            {% endfor %}{{ project.publish_date|timesince }} ago.
-                                        {% else %}
-                                            <span style='color:red;'> No Authors! </span>
-                                        {% endif %}
+                                                {% endfor %}{{ project.publish_date|timesince }} ago.
+                                            {% else %}
+                                                <span style='color:red;'> No Authors! </span>
+                                            {% endif %}
+                                        </div>
+
+                                        <div class="row geba-small">
+                                            <div class="col-10">
+                                                Published by
+                                                {% if project.authors.count > 0 %}
+                                                    {% for author in project.authors.all %}
+                                                        {% if forloop.last %}
+                                                            {% if forloop.first %}
+                                                                <a href="#">{{ author }},</a>
+                                                            {% else %}
+                                                                <span>and <a href="#">{{ author }}</a></span>
+                                                            {% endif %}
+                                                        {% else %}
+                                                            <a href="#">{{ author }}, </a>
+                                                        {% endif %}
+
+                                                    {% endfor %}{{ project.publish_date|timesince }} ago.
+                                                {% else %}
+                                                    <span style='color:red;'> No Authors! </span>
+                                                {% endif %}
+                                            </div>
+                                            <div class="geba-vote-mobile-col">
+                                                {% include "project/project_vote_mobile.html" %}
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

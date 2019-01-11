@@ -15,9 +15,9 @@
 
 .geba_body_index-col {
     -webkit-box-flex: 0;
-    -ms-flex: 0 0 75%;
-    flex: 0 0 75%;
-    max-width: 75%;
+    -ms-flex: 0 0 80%;
+    flex: 0 0 80%;
+    max-width: 80%;
 }
 
 .geba_body_index-col {
@@ -28,11 +28,11 @@
     padding-left: 15px;
 }
 
-.geba-large {
-    display: block;
+.geba-large, .geba-medium {
+    display: flex;
 }
 
-.geba-mobile {
+.geba-mobile, .geba-small {
     display: none;
 }
 
@@ -48,7 +48,7 @@
     }
 
     .geba-mobile {
-        display: block;
+        display: flex;
     }
 
     .geba_body-col {
@@ -56,6 +56,13 @@
         -ms-flex: 0 0 80%;
         flex: 0 0 80%;
         max-width: 80%;
+    }
+
+    .geba_body_index-col {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 85%;
+        flex: 0 0 85%;
+        max-width: 85%;
     }
 }
 
@@ -66,5 +73,28 @@
         flex: 0 0 90%;
         max-width: 90%;
     }
+    .geba_body_index-col {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 99%;
+        flex: 0 0 99%;
+        max-width: 99%;
+    }
+
+    .geba-small {
+        display: flex;
+    }
+
+    .geba-large, .geba-medium {
+        display: none;
+    }
 }
 
+
+.geba-caret-col {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 16.6666666667%;
+    flex: 0 0 16.6666666667%;
+    max-width: 16.6666666667%;
+    margin-right: 0px;
+    padding-right: 5px;
+}

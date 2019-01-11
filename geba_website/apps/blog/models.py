@@ -77,9 +77,8 @@ class Post(VoteModel, TimeStampModel):
         return reverse("blog:delete", kwargs={"slug": self.slug})
 
     def get_html(self):
-        '''converts the body to markdown so we don\'t have to use the |markdown filter'''
+        """converts the body to markdown so we don\'t have to use the |markdown filter"""
         body = self.body
-        # return mark_safe(markdown(body))
         return mark_safe(body)
 
     def get_api_like_url(self):
@@ -90,7 +89,7 @@ class Post(VoteModel, TimeStampModel):
 
     @property
     def comments(self):
-        '''creating a method to allow the post form to grab the post comments'''
+        """creating a method to allow the post form to grab the post comments"""
         instance = self
         return Comment.objects.filter_by_instance(instance)
 

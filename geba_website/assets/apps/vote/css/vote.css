@@ -17,6 +17,26 @@
     padding-left: 15px;
 }
 
+.mobile-link {
+    display: inline-flex;
+    text-align: center;
+    float: right;
+    align-self: center;
+}
+
+.arrow-mobile {
+    align-self: center;
+    /*vertical-align: middle;*/
+}
+
+.geba-vote-mobile-col {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 16.6666666667%;
+    flex: 0 0 16.6666666667%;
+    max-width: 16.6666666667%;
+    margin-right: 0px;
+    padding-right: 5px;
+}
 
 .midcol {
     float: left;
@@ -106,7 +126,18 @@
     display: inline;
 }
 
+.likes-mobile .score.likes, .unvoted-mobile .score.unvoted, .dislikes-mobile .score.dislikes {
+    display: inline;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
 .likes .score.dislikes, .likes .score.unvoted, .unvoted .score.likes, .unvoted .score.dislikes,
+.dislikes .score.unvoted, .dislikes .score.likes {
+    display: none;
+}
+
+.likes-mobile .score.dislikes, .likes-mobile .score.unvoted, .unvoted-mobile .score.likes, .unvoted-mobile .score.dislikes,
 .dislikes .score.unvoted, .dislikes .score.likes {
     display: none;
 }
