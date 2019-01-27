@@ -49,7 +49,7 @@ urlpatterns = [
     re_path(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     re_path(r'^admin/', admin.site.urls),
     re_path(r'^summernote/', include('django_summernote.urls')),
-    # re_path(r'^tinymce/', include('tinymce.urls')),
+    re_path(r'^tinymce/', include('tinymce.urls')),
     # re_path(r'^comments/', include('django_comments.urls')),
 
 ]

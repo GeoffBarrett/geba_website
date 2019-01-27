@@ -12,6 +12,8 @@ from ..comments.models import Comment
 from ..vote.models import VoteModel
 from django.contrib.contenttypes.models import ContentType
 # from django.db import transaction
+from tinymce.widgets import TinyMCE
+# from datetime import datetime
 
 
 def upload_location(instance, filename):
@@ -40,7 +42,7 @@ class Post(VoteModel, TimeStampModel):
 
     slug = models.SlugField(unique=True)
 
-    publish_date = models.DateTimeField(blank=True, null=True)
+    publish_date = models.DateTimeField(blank=True, null=True, default=timezone.now())
 
     title = models.CharField(max_length=200)
 

@@ -68,7 +68,7 @@ class ProjectPost(VoteModel, TimeStampModel):
 
     slug = models.SlugField(unique=True)
 
-    publish_date = models.DateTimeField(blank=True, null=True)
+    publish_date = models.DateTimeField(blank=True, null=True, default=timezone.now())
 
     title = models.CharField(max_length=200)
 
@@ -162,7 +162,7 @@ class Project(VoteModel, TimeStampModel):
 
     slug = models.SlugField(unique=True)
 
-    publish_date = models.DateTimeField(blank=True, null=True)
+    publish_date = models.DateTimeField(blank=True, null=True, default=timezone.now())
 
     title = models.CharField(max_length=200)
     pages = models.ManyToManyField(ProjectPost, blank=True)
@@ -183,7 +183,7 @@ class Project(VoteModel, TimeStampModel):
     keywords = models.TextField(blank=True, null=True)
 
     def get_html(self):
-        '''converts the body to markdown so we don\'t have to use the |markdown filter'''
+        """converts the body to markdown so we don\'t have to use the |markdown filter"""
         body = self.body
         # return mark_safe(markdown(body))
         return mark_safe(body)

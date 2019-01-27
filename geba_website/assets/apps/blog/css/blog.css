@@ -26,6 +26,10 @@
     display: block;
 }
 
+.geba-large-flex {
+    display: flex;
+}
+
 .geba-mobile, .geba-small, .geba-small-flex {
     display: none;
 }
@@ -49,7 +53,7 @@
 
 @media (max-width: 650px) {
 
-    .geba-large, .geba-medium {
+    .geba-large, .geba-medium, .geba-large-flex {
         display: none;
     }
 
