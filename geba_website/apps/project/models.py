@@ -64,7 +64,6 @@ class ProjectPost(VoteModel, TimeStampModel):
 
     object_id = models.PositiveIntegerField()  # the id of the object with that model that the project belongs to
     content_object = GenericForeignKey('content_type', 'object_id')  # the project object
-    # parent = models.ForeignKey('self', null=True, blank=True)
 
     slug = models.SlugField(unique=True)
 
@@ -122,14 +121,14 @@ class ProjectPost(VoteModel, TimeStampModel):
         ordering = ["post_order", "-num_vote_up", "-publish_date", "-modified"]
 
     def get_html(self):
-        '''converts the body to markdown so we don\'t have to use the |markdown filter'''
+        """converts the body to markdown so we don\'t have to use the |markdown filter"""
         body = self.body
         # return mark_safe(markdown(body))
         return mark_safe(body)
 
     @property
     def comments(self):
-        '''creating a method to allow the post form to grab the post comments'''
+        """creating a method to allow the post form to grab the post comments"""
         instance = self
         qs = Comment.objects.filter_by_instance(instance)
         return qs
@@ -147,9 +146,6 @@ class ProjectPost(VoteModel, TimeStampModel):
 
 class Project(VoteModel, TimeStampModel):
     """This model will contain attributes related to Projects"""
-
-    # this is the individual that created the
-    # author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
 
     # list of all the authors for this project, could make this a property... probably should.
     authors = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True)
@@ -302,7 +298,8 @@ def has_image(instance):
 
 
 def pre_save_project_signal_receiver(sender, instance, *args, **kwargs):
-    """This signal is sent at the beginning of the save() method,
+    """
+    This signal is sent at the beginning of the save() method,
     sender = models class,
     instance = instance being saved,
     """
@@ -325,7 +322,8 @@ def pre_save_project_signal_receiver(sender, instance, *args, **kwargs):
 
 
 def pre_save_signal_projectpost_receiver(sender, instance, *args, **kwargs):
-    """This signal is sent at the beginning of the save() method,
+    """
+    This signal is sent at the beginning of the save() method,
     sender = models class,
     instance = instance being saved,
     """
@@ -350,8 +348,10 @@ def pre_save_signal_projectpost_receiver(sender, instance, *args, **kwargs):
 
 
 def pre_delete_projectpost_signal_receiver(sender, instance, *args, **kwargs):
-    """This will ensure to modify the authors ManytoManyField if necessary and delete an author if
-    there are no more posts in the project with that authors name."""
+    """
+    This will ensure to modify the authors ManytoManyField if necessary and delete an author if
+    there are no more posts in the project with that authors name.
+    """
 
     try:
         project_instance = Project.objects.filter(id=instance.object_id)[0]
@@ -376,7 +376,9 @@ def pre_delete_projectpost_signal_receiver(sender, instance, *args, **kwargs):
 
 
 def pre_delete_project_signal_receiver(sender, instance, *args, **kwargs):
-    """This will be used to delete the project posts that go along with the project"""
+    """
+    This will be used to delete the project posts that go along with the project
+    """
 
     project_posts = instance.get_project_posts()
 

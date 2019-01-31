@@ -156,6 +156,7 @@ THIRD_PARTY_APPS = (
     # 'django_rq',
     'django_summernote',
     # 'floppyforms',
+    'filebrowser',
     'formtools',
     'grappelli',
     'markdown_deux',
@@ -164,6 +165,7 @@ THIRD_PARTY_APPS = (
     'rest_framework',
     'storages',
     'tinymce',  # another WYSIWYG editor
+
 )
 
 # usually I would put these in 3rd party, but I need them in a specific order
@@ -286,6 +288,11 @@ TINYMCE_DEFAULT_CONFIG = {
     'menubar': True,
     'statusbar': True,
 }
+
+TINYMCE_FILEBROWSER = True
+
+FILEBROWSER_DIRECTORY = ''
+DIRECTORY = ''
 
 # TINYMCE_SPELLCHECKER = True
 # TINYMCE_COMPRESSOR = True

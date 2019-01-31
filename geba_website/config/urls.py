@@ -17,7 +17,7 @@ from django.urls import re_path, include
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
-
+from filebrowser.sites import site
 from django.views.generic import RedirectView
 
 
@@ -46,6 +46,7 @@ urlpatterns = [
 
     # ------------ third party urls -------------------- #
     re_path(r'^grappelli/', include('grappelli.urls')),  # grappelli URLS
+    re_path(r'^admin/filebrowser/', site.urls),
     re_path(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     re_path(r'^admin/', admin.site.urls),
     re_path(r'^summernote/', include('django_summernote.urls')),

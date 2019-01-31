@@ -7,7 +7,7 @@
 
 {% endblock header %}
 
-<p class='lead'>Comments</p>
+<h1 class='lead'>Comments</h1>
 
 <form method="POST" action="{% url 'project:detail' projectpost.slug %}">
     {% csrf_token %}

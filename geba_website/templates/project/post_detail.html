@@ -150,11 +150,15 @@
 
                 <div class="col-3 ml-sm-auto">
                     <div class="list-group">
+                        {% with projectpost.get_project as project %}
+                            <a href="{% url 'project:detail' project.slug %}" class="list-group-item">{{ project.title }}</a>
+                        {% endwith %}
+
                         {% for post in projectpost.get_project_posts %}
                             {% if projectpost.slug == post.slug %}
-                            <a href="#" class="list-group-item active">{{ post.title }}</a>
+                                <a href="#" class="list-group-item active">{{ post.title }}</a>
                             {% else %}
-                            <a href="{% url 'project:detail' post.slug %}" class="list-group-item">{{ post.title }}</a>
+                                <a href="{% url 'project:detail' post.slug %}" class="list-group-item">{{ post.title }}</a>
                             {% endif %}
                         {% endfor %}
                     </div>

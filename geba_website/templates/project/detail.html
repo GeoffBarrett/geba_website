@@ -166,6 +166,7 @@
                 <!-- sidebar -->
                 <div class="col-3 ml-sm-auto geba-large">
                     <div class="list-group">
+                        <a href="{% url 'project:detail' project.slug %}" class="list-group-item active">{{ project.title }}</a>
                         {% for post in project.get_project_posts %}
                             <a href="{% url 'project:detail' post.slug %}" class="list-group-item">{{ post.title }}</a>
                         {% endfor %}
@@ -177,7 +178,7 @@
             <!-- header before the project post index -->
 
             <div class="row justify-content-center">
-                 <div class="geba_body-col geba_vote-offset">
+                 <div class="geba_body-col geba_vote-offset mt-3">
                      <h2>Project Contents</h2>
                      <hr>
                  </div>
