@@ -389,11 +389,11 @@ def pre_delete_project_signal_receiver(sender, instance, *args, **kwargs):
     delete_image(instance)
 
 
-
 def delete_image(instance):
     if instance.image:
         # if an image exists, delete it
         try:
+            # this only really works locally when it accepts fullpaths
             img_path = instance.image.path
 
             if os.path.isfile(img_path):
@@ -404,6 +404,8 @@ def delete_image(instance):
                     # if the directory that the image is in is empty, delete it
                     os.rmdir(img_dir)
         except NotImplementedError:
+            # you have to use the delete function to properly do it with S3, probably can just do this from the
+            # beginning
             instance.image.delete(save=False)
 
 

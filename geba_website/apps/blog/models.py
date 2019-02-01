@@ -181,14 +181,21 @@ def pre_delete_post_signal_receiver(sender, instance, *args, **kwargs):
 def delete_image(instance):
     if instance.image:
         # if an image exists, delete it
-        img_path = instance.image.path
+        try:
+            # this only really works locally when it accepts fullpaths
+            img_path = instance.image.path
 
-        if os.path.isfile(img_path):
-            img_dir = os.path.dirname(img_path)
-            os.remove(img_path)
-            if len(os.listdir(img_dir)) == 0:
-                # if the directory that the image is in is empty, delete it
-                os.rmdir(img_dir)
+            if os.path.isfile(img_path):
+                img_dir = os.path.dirname(img_path)
+                os.remove(img_path)
+
+                if len(os.listdir(img_dir)) == 0:
+                    # if the directory that the image is in is empty, delete it
+                    os.rmdir(img_dir)
+        except NotImplementedError:
+            # you have to use the delete function to properly do it with S3, probably can just do this from the
+            # beginning
+            instance.image.delete(save=False)
 
 
 pre_save.connect(pre_save_post_signal_receiver, sender=Post)  # connects the signal with the signal receiver
