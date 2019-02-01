@@ -1,7 +1,7 @@
 # custom_storages.py
 from django.conf import settings
 from storages.backends.s3boto3 import S3Boto3Storage
-
+from filebrowser.storage import S3BotoStorageMixin
 '''
 class StaticStorage(S3Boto3Storage):
     location = settings.STATICFILES_LOCATION
@@ -33,6 +33,14 @@ class MediaStorage(S3Boto3Storage):
         return name
 '''
 
+# StaticStorage = lambda: S3Boto3Storage(location='static')
 
-StaticStorage = lambda: S3Boto3Storage(location='static')
-MediaStorage = lambda: S3Boto3Storage(location='media')
+
+class StaticStorage(S3Boto3Storage, S3BotoStorageMixin):
+    location = 'static'
+
+# MediaStorage = lambda: S3Boto3Storage(location='media')
+
+
+class MediaStorage(S3Boto3Storage, S3BotoStorageMixin):
+    location = 'media'

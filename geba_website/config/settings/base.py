@@ -267,6 +267,7 @@ TINYMCE_DEFAULT_CONFIG = {
     'custom_undo_redo_levels': 20,
     'selector': 'textarea',
     'theme': 'modern',
+    'browser_spellcheck': True,
     'plugins': '''
             textcolor save link image media preview codesample contextmenu
             table code lists fullscreen  insertdatetime  nonbreaking
@@ -293,6 +294,3 @@ TINYMCE_FILEBROWSER = True
 
 FILEBROWSER_DIRECTORY = ''
 DIRECTORY = ''
-
-# TINYMCE_SPELLCHECKER = True
-# TINYMCE_COMPRESSOR = True
