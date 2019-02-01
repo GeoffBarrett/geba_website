@@ -389,17 +389,22 @@ def pre_delete_project_signal_receiver(sender, instance, *args, **kwargs):
     delete_image(instance)
 
 
+
 def delete_image(instance):
     if instance.image:
         # if an image exists, delete it
-        img_path = instance.image.path
+        try:
+            img_path = instance.image.path
 
-        if os.path.isfile(img_path):
-            img_dir = os.path.dirname(img_path)
-            os.remove(img_path)
-            if len(os.listdir(img_dir)) == 0:
-                # if the directory that the image is in is empty, delete it
-                os.rmdir(img_dir)
+            if os.path.isfile(img_path):
+                img_dir = os.path.dirname(img_path)
+                os.remove(img_path)
+
+                if len(os.listdir(img_dir)) == 0:
+                    # if the directory that the image is in is empty, delete it
+                    os.rmdir(img_dir)
+        except NotImplementedError:
+            instance.image.delete(save=False)
 
 
 # connects the signal with the signal receiver
