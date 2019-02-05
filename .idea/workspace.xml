@@ -5,28 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df093060-28c8-46a3-87ad-ac27d7285a35" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/comments/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/apps/comments/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/comments/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/apps/comments/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/apps/project/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/apps/project/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geba_website/apps/vote/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/apps/vote/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/config/settings/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/config/settings/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/config/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/config/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/templates/blog/blog_vote.html" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/templates/blog/blog_vote.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/templates/blog/blog_vote_mobile.html" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/templates/blog/blog_vote_mobile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/templates/blog/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/templates/blog/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/templates/blog/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/templates/blog/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/templates/comments/child_comment_vote.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/templates/comments/child_comment_vote2.html" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/templates/comments/child_comment_vote2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/templates/comments/comment_vote.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/templates/comments/comment_vote2.html" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/templates/comments/comment_vote2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/templates/comments/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/templates/comments/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/templates/project/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/templates/project/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/templates/project/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/templates/project/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/templates/project/project_detail_comments.html" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/templates/project/project_detail_comments.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/templates/project/project_vote.html" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/templates/project/project_vote.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/templates/project/project_vote_mobile.html" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/templates/project/project_vote_mobile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geba_website/templates/project/projectpost_vote.html" beforeDir="false" afterPath="$PROJECT_DIR$/geba_website/templates/project/projectpost_vote.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -78,27 +57,6 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/geba_website/config/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="593">
-              <caret line="52" column="6" selection-start-line="52" selection-start-column="6" selection-end-line="52" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/geba_website/apps/blog/forms.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-              <folding>
-                <element signature="e#0#24#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/geba_website/apps/comments/forms.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -108,20 +66,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/geba_website/templates/project/project_detail_comments.html">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/geba_website/apps/vote/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="17" selection-start-line="17" selection-end-line="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/geba_website/apps/project/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" selection-start-line="6" selection-end-line="6" selection-end-column="45" />
+            <state relative-caret-position="280">
+              <caret line="142" lean-forward="true" selection-start-line="142" selection-end-line="142" />
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -235,7 +187,6 @@
         <option value="$PROJECT_DIR$/geba_website/apps/blog/models.py" />
         <option value="$PROJECT_DIR$/geba_website/apps/core/custom_storages.py" />
         <option value="$PROJECT_DIR$/geba_website/templates/blog/detail_comments.html" />
-        <option value="$PROJECT_DIR$/geba_website/apps/vote/models.py" />
         <option value="$PROJECT_DIR$/geba_website/templates/project/projectpost_vote.html" />
         <option value="$PROJECT_DIR$/geba_website/templates/comments/child_comment_vote2.html" />
         <option value="$PROJECT_DIR$/geba_website/templates/comments/comment_vote2.html" />
@@ -257,6 +208,7 @@
         <option value="$PROJECT_DIR$/geba_website/apps/comments/forms.py" />
         <option value="$PROJECT_DIR$/geba_website/config/settings/base.py" />
         <option value="$PROJECT_DIR$/geba_website/config/urls.py" />
+        <option value="$PROJECT_DIR$/geba_website/apps/vote/models.py" />
       </list>
     </option>
   </component>
@@ -592,16 +544,6 @@
     <entry file="file://$PROJECT_DIR$/geba_website/apps/blog/urls.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/geba_website/apps/vote/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="103">
-          <caret line="132" column="30" lean-forward="true" selection-start-line="132" selection-start-column="30" selection-end-line="132" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/geba_website/templates/project/delete_project_modal.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -839,10 +781,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/geba_website/apps/comments/forms.py">
+    <entry file="file://$PROJECT_DIR$/geba_website/config/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="2" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
+        <state relative-caret-position="304">
+          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
         </state>
       </provider>
     </entry>
@@ -856,10 +798,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/geba_website/config/urls.py">
+    <entry file="file://$PROJECT_DIR$/geba_website/apps/comments/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="593">
-          <caret line="52" column="6" selection-start-line="52" selection-start-column="6" selection-end-line="52" selection-end-column="6" />
+        <state relative-caret-position="34">
+          <caret line="2" column="2" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geba_website/apps/vote/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="142" lean-forward="true" selection-start-line="142" selection-end-line="142" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
