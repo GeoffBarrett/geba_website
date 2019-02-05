@@ -127,11 +127,12 @@
                     </div>
                 {% endif %}
 
-                <!-- This div will contain the voting -->
-                <div class="geba_vote-col">
-                    {% include "blog/blog_vote.html" %}
-                </div>
-
+                {% with post.unvoted_net_likes as unvoted_likes %}
+                    <!-- This div will contain the voting -->
+                    <div class="geba_vote-col">
+                        {% include "blog/blog_vote.html" %}
+                    </div>
+                {% endwith %}
                 <!-- this div will contain the contents of the post, including comments -->
                 <div class="geba_body-col content-markdown">
                     <div class="post-body">{{ post.get_html }}</div>
@@ -141,7 +142,6 @@
                     {% include "blog/detail_comments.html" %}
 
                 </div>
-
 
             </div>
         </div>

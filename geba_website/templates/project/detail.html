@@ -152,10 +152,12 @@
                     </ul>
                 </div>
 
-                <!-- This div will contain the voting -->
-                <div class="geba_vote-col">
-                    {% include "project/project_vote.html" %}
-                </div>
+                {% with project.unvoted_net_likes as unvoted_likes %}
+                    <!-- This div will contain the voting -->
+                    <div class="geba_vote-col">
+                        {% include "project/project_vote.html" %}
+                    </div>
+                {% endwith %}
 
                 <!-- this div will contain the contents of the post -->
                 <div class="geba_body-col content-markdown">

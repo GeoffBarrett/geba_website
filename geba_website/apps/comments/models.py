@@ -3,6 +3,7 @@ from django.conf import settings
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.urls import reverse
+from django.utils.safestring import mark_safe
 from ..vote.models import VoteModel
 # Create your models here.
 
@@ -41,11 +42,15 @@ class Comment(VoteModel, models.Model):
         ordering = ["-vote_score", "-num_vote_up", "-timestamp"]  # order by newest comments
 
     def __str__(self):
-        return str(self.author.username)
+        return str(self.content)
 
     def children(self, user_id):
         qs = Comment.objects.filter(parent=self)
         return Comment.votes.annotate(queryset=qs, user_id=user_id)
+
+    @property
+    def get_content(self):
+        return mark_safe(self.content)
 
     @property
     def is_parent(self):

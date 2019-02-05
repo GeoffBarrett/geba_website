@@ -140,6 +140,7 @@ class VoteModel(models.Model):
     @property
     def unvoted_net_likes(self):
         n = int(self.num_vote_up - self.num_vote_down)
+        print('nnnnnnnnnnnnnnn', n)
         if self.is_voted_up:
             return n - 1
         elif self.is_voted_down:
@@ -165,8 +166,10 @@ class VoteModel(models.Model):
 
     @property
     def calculate_hot_score(self):
-        """This score is similar to how Reddit scores their posts, we will not have downvotes since these
-        posts aren't geba_auth submitted"""
+        """
+        This score is similar to how Reddit scores their posts, we will not have downvotes since these
+        posts aren't geba_auth submitted
+        """
 
         s = self.num_vote_up
         date = datetime.now(timezone.utc)

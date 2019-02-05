@@ -224,12 +224,16 @@ class Project(VoteModel, TimeStampModel):
         return reverse("project:project_dislike_toggle_api", kwargs={'slug': self.slug})
 
     def get_project_posts(self):
-        """This method will be used in post_detail.html to have a list of related posts"""
+        """
+        This method will be used in post_detail.html to have a list of related posts
+        """
         return ProjectPost.objects.filter(object_id=self.id)
 
     def get_next_post_order(self):
-        """This method will return the post order when a new post is being created, it will default as the
-        immediate next post"""
+        """
+        This method will return the post order when a new post is being created, it will default as the
+        immediate next post
+        """
         return int(len(ProjectPost.objects.filter(object_id=self.id)) + 1)
 
     '''
@@ -242,7 +246,7 @@ class Project(VoteModel, TimeStampModel):
 
     @property
     def comments(self):
-        '''creating a method to allow the post form to grab the post comments'''
+        """creating a method to allow the post form to grab the post comments"""
         instance = self
         qs = Comment.objects.filter_by_instance(instance)
         return qs

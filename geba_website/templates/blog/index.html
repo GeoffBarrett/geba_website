@@ -54,7 +54,6 @@
                 <img src="{% static 'img/monkey-750x400.jpg' %}">
             </div>
         {% else %}
-
             <div class="row justify-content-center">
                 <div class="geba_body-col-index geba_vote-offset geba-medium">
                     {% if user.is_staff or user.is_superuser %}
@@ -73,126 +72,128 @@
                     {% load markdown_deux_tags %}
 
                     {% for post in object_list %} <!-- object_list is returned from the ListView of objects.all()-->
-                        <div class="row justify-content-center">
-                            <div class="geba_vote-col geba-medium">
-                                {% include "blog/blog_vote.html" %}
-                            </div>
+                        {% with post.unvoted_net_likes as unvoted_likes %}
+                            <div class="row justify-content-center">
+                                <div class="geba_vote-col geba-medium">
+                                    {% include "blog/blog_vote.html" %}
+                                </div>
 
-                            <div class="geba_body-col-index">
+                                <div class="geba_body-col-index">
 
-                                <div class="card mb-4">
-                                     {% if post.image %}
-                                        <img class="card-img-top" src="{{ post.image.url }}" style="width:100%; height:auto;">
-                                     {% else %}
-                                        <img class="card-img-top no_img">
-                                     {% endif %}
+                                    <div class="card mb-4">
+                                         {% if post.image %}
+                                            <img class="card-img-top" src="{{ post.image.url }}" style="width:100%; height:auto;">
+                                         {% else %}
+                                            <img class="card-img-top no_img">
+                                         {% endif %}
 
-                                    <div class="card-body">
+                                        <div class="card-body">
 
-                                        <h2 class="card-title">
-                                            <div class="row">
-                                                {% if request.user == post.author or request.user.is_superuser %}
-                                                <div class="col-10">
-                                                {% else %}
-                                                <div class="col-12">
-                                                {% endif %}
-                                                    {{ post.title }}
-
-                                                    {% if post.draft %}
-                                                      <span class="badge-geba" id="draft-{{ post.slug }}">Draft</span>
+                                            <h2 class="card-title">
+                                                <div class="row">
+                                                    {% if request.user == post.author or request.user.is_superuser %}
+                                                    <div class="col-10">
                                                     {% else %}
-                                                      <span class="badge-geba hidebadge" id="draft-{{ post.slug }}">Draft</span>
+                                                    <div class="col-12">
                                                     {% endif %}
+                                                        {{ post.title }}
 
-                                                    {% if post.is_future_publication %}
-                                                      <span class="badge-geba" >Future Blog</span>
+                                                        {% if post.draft %}
+                                                          <span class="badge-geba" id="draft-{{ post.slug }}">Draft</span>
+                                                        {% else %}
+                                                          <span class="badge-geba hidebadge" id="draft-{{ post.slug }}">Draft</span>
+                                                        {% endif %}
+
+                                                        {% if post.is_future_publication %}
+                                                          <span class="badge-geba" >Future Blog</span>
+                                                        {% endif %}
+                                                    </div>
+
+                                                    {% if request.user == post.author or request.user.is_superuser %}
+                                                        <div class="geba-caret-col">
+                                                            <div class="btn-group float-right">
+                                                                <a href="#" class="nav-link nav-link-geba dropdown-toggle pt-0 dropdown-toggle-top"
+                                                                   data-toggle="dropdown" role="button" aria-haspopup="true"
+                                                                   aria-expanded="false" id="DropDown{{ post.id }}">
+                                                                  <span class="caret"></span>
+                                                                </a>
+
+                                                              <div class="dropdown-menu" aria-labelledby="DropDown{{ post.id }}">
+                                                                <a class="dropdown-item" href="{% url 'blog:update' post.slug %}">Edit Blog</a>
+                                                                {% if post.draft %}
+                                                                    <a class="dropdown-item publish-btn"
+                                                                       data-href="{% url 'blog:publish_ajax' post.slug %}"
+                                                                       data-slug="{{ post.slug }}"
+                                                                       id="publish_{{ post.slug }}">Publish</a>
+                                                                    <a class="dropdown-item draft-btn hidebtn"
+                                                                       data-href="{% url 'blog:draft_ajax' post.slug %}"
+                                                                       data-slug="{{ post.slug }}"
+                                                                       id="draft_{{ post.slug }}">Set as Draft</a>
+                                                                {% else %}
+                                                                    <a class="dropdown-item draft-btn"
+                                                                       data-href="{% url 'blog:draft_ajax' post.slug %}"
+                                                                       data-slug="{{ post.slug }}"
+                                                                       id="draft_{{ post.slug }}">Set as Draft</a>
+                                                                    <a class="dropdown-item publish-btn hidebtn"
+                                                                       data-href="{% url 'blog:publish_ajax' post.slug %}"
+                                                                       data-slug="{{ post.slug }}"
+                                                                       id="publish_{{ post.slug }}">Publish</a>
+                                                                {% endif %}
+                                                                <a class="dropdown-item" data-toggle="modal"
+                                                                   data-target="#DeletePostModalIndex"
+                                                                   data-content="{{ post }}"
+                                                                   data-url="{{ post.get_delete_url }}">
+                                                                    Delete Blog</a>
+                                                              </div>
+                                                            </div>
+                                                        </div>
                                                     {% endif %}
                                                 </div>
+                                            </h2>
+                                            {% if post.get_html %}
+                                                <div class="geba-medium">{{ post.get_html|truncatechars_html:500 }}</div>
+                                            {% else %}
+                                                <p class="card-text geba-medium"><span style='color:red;'> No Description! </span></p>
+                                            {% endif %}
 
-                                                {% if request.user == post.author or request.user.is_superuser %}
-                                                    <div class="geba-caret-col">
-                                                        <div class="btn-group float-right">
-                                                            <a href="#" class="nav-link nav-link-geba dropdown-toggle pt-0 dropdown-toggle-top"
-                                                               data-toggle="dropdown" role="button" aria-haspopup="true"
-                                                               aria-expanded="false" id="DropDown{{ post.id }}">
-                                                              <span class="caret"></span>
-                                                            </a>
+                                            {% if post.keywords %}
+                                                <div class="geba-medium"><p>Keywords: </p>{{ post.keywords }}</div>
+                                            {% endif %}
+                                            <div class="geba-medium">
+                                            <a class="btn btn-primary" href="{{ post.get_absolute_url }}">Read More →</a>
+                                            </div>
+                                        </div>
 
-                                                          <div class="dropdown-menu" aria-labelledby="DropDown{{ post.id }}">
-                                                            <a class="dropdown-item" href="{% url 'blog:update' post.slug %}">Edit Blog</a>
-                                                            {% if post.draft %}
-                                                                <a class="dropdown-item publish-btn"
-                                                                   data-href="{% url 'blog:publish_ajax' post.slug %}"
-                                                                   data-slug="{{ post.slug }}"
-                                                                   id="publish_{{ post.slug }}">Publish</a>
-                                                                <a class="dropdown-item draft-btn hidebtn"
-                                                                   data-href="{% url 'blog:draft_ajax' post.slug %}"
-                                                                   data-slug="{{ post.slug }}"
-                                                                   id="draft_{{ post.slug }}">Set as Draft</a>
-                                                            {% else %}
-                                                                <a class="dropdown-item draft-btn"
-                                                                   data-href="{% url 'blog:draft_ajax' post.slug %}"
-                                                                   data-slug="{{ post.slug }}"
-                                                                   id="draft_{{ post.slug }}">Set as Draft</a>
-                                                                <a class="dropdown-item publish-btn hidebtn"
-                                                                   data-href="{% url 'blog:publish_ajax' post.slug %}"
-                                                                   data-slug="{{ post.slug }}"
-                                                                   id="publish_{{ post.slug }}">Publish</a>
-                                                            {% endif %}
-                                                            <a class="dropdown-item" data-toggle="modal"
-                                                               data-target="#DeletePostModalIndex"
-                                                               data-content="{{ post }}"
-                                                               data-url="{{ post.get_delete_url }}">
-                                                                Delete Blog</a>
-                                                          </div>
-                                                        </div>
-                                                    </div>
+                                        <div class="card-footer text-muted">
+                                            <div class="row geba-medium">
+                                                Published by
+                                                {% if post.author %}
+                                                    <a href="#">{{ post.author }}, </a>
+                                                    {{ post.publish_date|timesince }} ago.
+                                                {% else %}
+                                                    <span style='color:red;'> No Authors! </span>
                                                 {% endif %}
                                             </div>
-                                        </h2>
-                                        {% if post.get_html %}
-                                            <div class="geba-medium">{{ post.get_html|truncatechars_html:500 }}</div>
-                                        {% else %}
-                                            <p class="card-text geba-medium"><span style='color:red;'> No Description! </span></p>
-                                        {% endif %}
-
-                                        {% if post.keywords %}
-                                            <div class="geba-medium"><p>Keywords: </p>{{ post.keywords }}</div>
-                                        {% endif %}
-                                        <div class="geba-medium">
-                                        <a class="btn btn-primary" href="{{ post.get_absolute_url }}">Read More →</a>
-                                        </div>
-                                    </div>
-
-                                    <div class="card-footer text-muted">
-                                        <div class="row geba-medium">
-                                            Published by
-                                            {% if post.author %}
-                                                <a href="#">{{ post.author }}, </a>
-                                                {{ post.publish_date|timesince }} ago.
-                                            {% else %}
-                                                <span style='color:red;'> No Authors! </span>
-                                            {% endif %}
-                                        </div>
-                                        <div class="row geba-small-flex">
-                                            <div class="col-10">
-                                            Published by
-                                            {% if post.author %}
-                                                <a href="#">{{ post.author }}, </a>
-                                                {{ post.publish_date|timesince }} ago.
-                                            {% else %}
-                                                <span style='color:red;'> No Authors! </span>
-                                            {% endif %}
-                                            </div>
-                                            <div class="geba-vote-mobile-col">
-                                            {% include "blog/blog_vote_mobile.html" %}
+                                            <div class="row geba-small-flex">
+                                                <div class="col-10">
+                                                Published by
+                                                {% if post.author %}
+                                                    <a href="#">{{ post.author }}, </a>
+                                                    {{ post.publish_date|timesince }} ago.
+                                                {% else %}
+                                                    <span style='color:red;'> No Authors! </span>
+                                                {% endif %}
+                                                </div>
+                                                <div class="geba-vote-mobile-col">
+                                                {% include "blog/blog_vote_mobile.html" %}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        {% endfor %}
+                        {% endwith %}
+                    {% endfor %}
                 </div>
             </div>
 
