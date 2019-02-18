@@ -177,11 +177,19 @@
                                                 <div class="geba-medium"><p>
                                                 {% for keyword in project.keywords.all %}
                                                     <a href="#" class="badge badge-primary badge-tag">
-                                                        <img src="{{ keyword.image.url }}" style="width: 20px; height: 20px;">
-                                                        {{ keyword.keyword }}</a>
+                                                        {% if keyword.image %}
+                                                            <img src="{{ keyword.image.url }}" style="width: 20px; height: 20px;">
+                                                        {{ keyword.keyword }}
+                                                        {% else %}
+                                                            <img src="" style="width: 0px; height: 20px;">
+                                                        {{ keyword.keyword }}
+                                                        <img src="" style="width: 0px; height: 20px;">
+                                                        {% endif %}
+                                                        </a>
                                                 {% endfor %}
                                                 </p></div>
                                             {% endif %}
+
                                             <div class="geba-medium">
                                                 <a class="btn btn-primary" href="{{ project.get_absolute_url }}">Read More →</a>
                                             </div>

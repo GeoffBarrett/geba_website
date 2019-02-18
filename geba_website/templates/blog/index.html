@@ -160,8 +160,15 @@
                                                 <div class="geba-medium"><p>
                                                 {% for keyword in post.keywords.all %}
                                                     <a href="#" class="badge badge-primary badge-tag">
-                                                        <img src="{{ keyword.image.url }}" style="width: 20px; height: 20px;">
-                                                        {{ keyword.keyword }}</a>
+                                                        {% if keyword.image %}
+                                                            <img src="{{ keyword.image.url }}" style="width: 20px; height: 20px;">
+                                                        {{ keyword.keyword }}
+                                                        {% else %}
+                                                            <img src="" style="width: 0px; height: 20px;">
+                                                        {{ keyword.keyword }}
+                                                        <img src="" style="width: 0px; height: 20px;">
+                                                        {% endif %}
+                                                        </a>
                                                 {% endfor %}
                                                 </p></div>
                                             {% endif %}
