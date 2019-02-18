@@ -185,6 +185,7 @@ PROJECT_APPS = (
     'apps.forum',
     'apps.geba_analytics',
     'apps.geba_auth',
+    'apps.keyword',
     'apps.pages',
     'apps.polls',
     'apps.profiles',

@@ -30,7 +30,7 @@
                         </div>
                         <div class="Comment {{ comment.slug }} Comment-Container-5 cWZcoW">
                             <div class="Comment-Container-2 ffsMLm">
-                                {% include "comments/comment_vote2.html" %}
+                                {% include "comments/comment_vote.html" %}
                             </div>
                             <div class="Comment-Container-4 kcgtcY">
                                 <div class="Comment-Container-3 knzxDr">
@@ -44,7 +44,7 @@
                                 <div>
                                     <div class="Comment-Container-6 fCAQfK ckueCN">
                                         <p class="Comment-Content iEJDri">
-                                            {{ comment.content }}
+                                            {{ comment.content|markdown }}
                                         </p>
                                     </div>
                                     <div>
@@ -99,7 +99,7 @@
                             </div>
                             <div class="Comment {{ child_comment.slug }} Comment-Container-5 cWZcoW">
                                 <div class="Comment-Container-2 ffsMLm">
-                                    {% include "comments/child_comment_vote2.html" %}
+                                    {% include "comments/child_comment_vote.html" %}
                                 </div>
                                 <div class="Comment-Container-4 kcgtcY">
                                     <div class="Comment-Container-3 knzxDr">
@@ -113,7 +113,7 @@
                                     <div>
                                         <div class="Comment-Container-6 fCAQfK ckueCN">
                                             <p class="Comment-Content iEJDri">
-                                                {{ child_comment.content }}
+                                                {{ child_comment.content|markdown }}
                                             </p>
                                         </div>
                                         <div>

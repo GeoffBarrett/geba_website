@@ -10,9 +10,10 @@ from django.utils.safestring import mark_safe
 # from markdown_deux import markdown
 from ..comments.models import Comment
 from ..vote.models import VoteModel
+from ..keyword.models import Keyword
 from django.contrib.contenttypes.models import ContentType
 # from django.db import transaction
-from tinymce.widgets import TinyMCE
+# from tinymce.widgets import TinyMCE
 # from datetime import datetime
 
 
@@ -64,7 +65,8 @@ class Post(VoteModel, TimeStampModel):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
     # author = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True)
 
-    keywords = models.TextField(blank=True, null=True)
+    # keywords = models.TextField(blank=True, null=True)
+    keywords = models.ManyToManyField(Keyword, blank=True)
 
     def get_absolute_url(self):
         return reverse('blog:detail', kwargs={'slug': self.slug})

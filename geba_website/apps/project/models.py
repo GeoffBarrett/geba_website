@@ -13,6 +13,7 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 # from tinymce.models import HTMLField
 # from django.shortcuts import get_object_or_404
 # from django.db import transaction
+from ..keyword.models import Keyword
 import os
 from django.utils.text import slugify  # turns our title into a slug
 
@@ -88,7 +89,8 @@ class ProjectPost(VoteModel, TimeStampModel):
 
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
 
-    keywords = models.TextField(blank=True, null=True)
+    # keywords = models.TextField(blank=True, null=True)
+    keywords = models.ManyToManyField(Keyword, blank=True)
 
     def get_project_posts(self):
         """This method will be used in post_detail.html to have a list of related posts"""
@@ -176,7 +178,8 @@ class Project(VoteModel, TimeStampModel):
 
     draft = models.BooleanField(default=False)
 
-    keywords = models.TextField(blank=True, null=True)
+    # keywords = models.TextField(blank=True, null=True)
+    keywords = models.ManyToManyField(Keyword, blank=True)
 
     def get_html(self):
         """converts the body to markdown so we don\'t have to use the |markdown filter"""

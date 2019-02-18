@@ -14,9 +14,10 @@ class BlogPostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ('title',
-                  'body',
                   'image',
                   'image_caption',
+                  'body',
+                  'keywords',
                   'draft',
                   'publish_date',
                   )

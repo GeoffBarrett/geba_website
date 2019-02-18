@@ -1,3 +1,13 @@
+a.badge-tag {
+    text-decoration: none;
+}
+
+.badge-tag {
+    background-color: #585858;
+    border-radius: 0.5rem;
+}
+
+
 .geba_body-col, .geba_body-col-index {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 80%;

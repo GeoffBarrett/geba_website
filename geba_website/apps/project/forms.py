@@ -28,6 +28,7 @@ class ProjectPostForm(forms.ModelForm):
                   'body',
                   'image',
                   'image_caption',
+                  'keywords',
                   'draft',
                   'publish_date',
                   )
@@ -55,6 +56,8 @@ class ProjectForm(forms.ModelForm):
                   'body',
                   'image',
                   'image_caption',
-                  'publish_date',
+                  'keywords',
                   'draft',
+                  'publish_date',
+
                   )

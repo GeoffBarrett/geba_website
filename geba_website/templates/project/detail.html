@@ -246,8 +246,14 @@
                                             {% endif %}
 
                                         </p>
-                                        {% if post.keywords %}
-                                            <p class="card-text">Keywords: {{ post.keywords }}</p>
+                                        {% if post.keywords.count > 0 %}
+                                            <div class="geba-medium"><p>
+                                            {% for keyword in post.keywords.all %}
+                                                <a href="#" class="badge badge-primary badge-tag">
+                                                    <img src="{{ keyword.image.url }}" style="width: 20px; height: 20px;">
+                                                    {{ keyword.keyword }}</a>
+                                            {% endfor %}
+                                            </p></div>
                                         {% endif %}
                                         <a class="btn btn-primary" href="{{ post.get_absolute_url }}">Read More →</a>
                                     </div>
