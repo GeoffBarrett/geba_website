@@ -205,7 +205,7 @@ a {
 
 /*This is for the unscrolled navbar*/
 #mainNav .navbar-nav > li.nav-item > a:hover {
-    color: #011d3c;
+    color: #9c9c9c;
     background-color: transparent!important;
     background-image: none;
     border-left: none;
@@ -213,7 +213,7 @@ a {
 
 /* this is for the scrolled navbar */
 #mainNav.is-fixed .navbar-nav > li.nav-item > a:hover, #mainNav.is-fixed.is-visible .navbar-nav > li.nav-item > a:hover{
-    color: #011d3c;
+    color: #9c9c9c;
     background-color: transparent!important;
     background-image: none;
     border-left: none;
