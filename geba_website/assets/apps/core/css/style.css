@@ -176,11 +176,6 @@ a {
   transition:all .5s;
 }
 
-#mainNav #header-search #header-search-type a {
-  color:#000;
-  cursor:pointer;
-}
-
 #mainNav #header-search #header-search-type.shown {
   opacity:1;
 }
@@ -875,6 +870,7 @@ a {
 .btn_header {
     display: inline-block;
     margin-bottom: 0;
+    margin-left: 2px;
     font-weight: 400;
     text-align: center;
     cursor: pointer;

@@ -15,6 +15,7 @@ from django.contrib.contenttypes.models import ContentType
 # from django.db import transaction
 # from tinymce.widgets import TinyMCE
 # from datetime import datetime
+from django.db.models import Q
 
 
 def upload_location(instance, filename):
@@ -23,6 +24,18 @@ def upload_location(instance, filename):
 
 
 class PostManager(models.Manager):
+
+    def search(self, query=None):
+        """This will search based off of the query"""
+        qs = self.get_queryset()
+        if query is not None:
+            or_lookup = (Q(title__icontains=query) |
+                         Q(body__icontains=query) |
+                         Q(slug__icontains=query)
+                         )
+            qs = qs.filter(or_lookup).distinct()  # distinct() is often necessary with Q lookups
+        return qs
+
     def active(self, *args, **kwargs):
         """overwriting Post.objects.all()"""
         return super(PostManager, self).filter(draft=False, publish_date__lte=timezone.now())

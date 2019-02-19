@@ -38,28 +38,34 @@
 
 })(jQuery); // End of use strict
 
-
+// this will search for whatever is searched for
 $("#header-search-button").off("click").click(function(){
+    $(this).hasClass("btn-primary")?($(this).removeClass("btn-primary"),
+    $("#header-search").removeClass("open"),
+    $("#header-search-type").removeClass("shown"),
+    $("#header-search-query").removeClass("open")):
+        ($(this).addClass("btn-primary"),
+        $("#header-search").addClass("open"),
+        $("#header-search-type").addClass("shown"),
+        $("#header-search-query").addClass("open").keypress(function(t){
+            if(t=t||window.event,27==t.keyCode)
+                $(this).removeClass("open").blur(),
+                $("#header-search-button").removeClass("btn-primary"),
+                $("#header-search-type").removeClass("shown");
+            else if(13==t.keyCode)
+                return $("#header-search").submit(),
+                !1
+        })
+        ,setTimeout(function(){
+            $("#header-search-query").focus()},isTouchDevice?250:100))
+})
 
-   $(this).hasClass("btn-primary")?($(this).removeClass("btn-primary"),
-   $("#header-shop").removeClass("search-open"),
-   $("#header-search").removeClass("open"),
-   $("#header-search-type").removeClass("shown"),
-   $("#header-search-query").removeClass("open")):
-       ($(this).addClass("btn-primary"),
-       $("#header-search").addClass("open"),
-       $("#header-search-type").addClass("shown"),
-       $("#header-search-query").addClass("open").keypress(function(t){
-           if(t=t||window.event,27==t.keyCode)
-               $(this).removeClass("open").blur(),
-               $("#header-search-button").removeClass("btn-primary"),
-               $("#header-search-type").removeClass("shown");
-           else if(13==t.keyCode)
-               return
-               $("#header-search").submit(),
-               !1
-           }),
-           setTimeout(function(){$("#header-search-query").focus()}))
+// this will change the search type to the chosen value from the drop-down menu
+$("#header-search-type a").click(function(){
+    $("#header-search-type .dropdown-toggle .title").html($(this).html()+" "),
+    //$("#header-search").attr("action","/search/"+$(this).attr("data-type")),
+    $("#header-search").attr("action",$(this).attr("data-type")) + "/q=/"
+    $("#header-search").hasClass("open")&&$("#header-search-query").select()
 })
 
 $("#mobile-nav-button").click(function(t){

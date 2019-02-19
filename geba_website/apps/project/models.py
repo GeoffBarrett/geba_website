@@ -1,8 +1,9 @@
+import os
 from django.db import models
 from django.conf import settings
 from django.urls import reverse
 from django.utils import timezone
-from django.db.models.signals import pre_save, pre_delete, post_save  # before saving it emits this signal
+from django.db.models.signals import pre_save, pre_delete  # , post_save  # before saving it emits this signal
 from ..core.models import TimeStampModel
 from django.utils.safestring import mark_safe
 # from markdown_deux import markdown
@@ -14,8 +15,8 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 # from django.shortcuts import get_object_or_404
 # from django.db import transaction
 from ..keyword.models import Keyword
-import os
 from django.utils.text import slugify  # turns our title into a slug
+from django.db.models import Q
 
 # Create your models here.
 
@@ -26,6 +27,17 @@ def upload_location(instance, filename):
 
 
 class ProjectPostManager(models.Manager):
+    def search(self, query=None):
+        """This will search based off of the query"""
+        qs = self.get_queryset()
+        if query is not None:
+            or_lookup = (Q(title__icontains=query) |
+                         Q(body__icontains=query) |
+                         Q(slug__icontains=query)
+                         )
+            qs = qs.filter(or_lookup).distinct()  # distinct() is often necessary with Q lookups
+        return qs
+
     def active(self, *args, **kwargs):
         """overwriting Post.objects.all()"""
         return super(ProjectPostManager, self).filter(draft=False, publish_date__lte=timezone.now())
@@ -38,6 +50,17 @@ class ProjectPostManager(models.Manager):
 
 
 class ProjectManager(models.Manager):
+    def search(self, query=None):
+        """This will search based off of the query"""
+        qs = self.get_queryset()
+        if query is not None:
+            or_lookup = (Q(title__icontains=query) |
+                         Q(body__icontains=query) |
+                         Q(slug__icontains=query)
+                         )
+            qs = qs.filter(or_lookup).distinct()  # distinct() is often necessary with Q lookups
+        return qs
+
     def active(self, *args, **kwargs):
         """overwriting Post.objects.all()"""
         # return super(ProjectManager, self).filter(draft=False).filter(publish_date__lte=timezone.now())
