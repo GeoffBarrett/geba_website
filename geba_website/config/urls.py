@@ -44,8 +44,6 @@ urlpatterns = [
     re_path(r'^project/', include(('apps.project.urls', "project"))),
     re_path(r'^forum/', include(('apps.forum.urls', "forum"))),  # Blog app
 
-    re_path(r'/search^$', include(('apps.forum.urls', 'search'))),  # r'^$' -> the base URL for the project
-
     # ------------ third party urls -------------------- #
     re_path(r'^grappelli/', include('grappelli.urls')),  # grappelli URLS
     re_path(r'^admin/filebrowser/', site.urls),
