@@ -5,6 +5,7 @@ a.badge-tag {
 .badge-tag {
     background-color: #515960;
     border-radius: 0.5rem;
+    border: 0.5px solid black;
 }
 
 

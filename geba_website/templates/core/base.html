@@ -10,7 +10,6 @@
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         {% endblock viewport %}
 
-
         <title>{% block title %}{% endblock title %}</title> <!-- This is the title that is seen in the tab -->
 
         <link rel='stylesheet' href="{% static 'apps/core/css/bootstrap.min.css' %}"/>
@@ -20,22 +19,15 @@
         <link rel="shortcut icon" type="image/png" href="{% static 'img/GEBA_Logo.ico' %}"/>
 
         {% block css %}{% endblock css %}
-
     </head>
 
     <body class="body">
-
         <div>
-
             {% include "core/navbar.html" %}
-
             {% block header %}{% endblock header %}
-
             {% block content %}{% endblock content %}
         </div>
-
         <hr>
-
         <footer>
             <div class="row justify-content-center">
                 <div class="links">
@@ -78,7 +70,7 @@
                             <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
                           </span>
                         </a>
-
+                        <!--
                         <a href="/twitter">
                           <span class="fa-stack fa-lg">
                             <i class="fa fa-circle fa-stack-2x"></i>
@@ -91,7 +83,7 @@
                             <i class="fa fa-circle fa-stack-2x"></i>
                             <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
                           </span>
-                        </a>
+                        </a>-->
                     </div>
                 </div>
             </div>
@@ -101,9 +93,7 @@
                 <p class="copyright text-muted">Copyright © GEBA Technologies 2019</p>
               </div>
             </div>
-
         </footer>
-
 
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <!--Placed at the end of the document so the pages load faster -->
@@ -129,8 +119,5 @@
 
         {% block javascript %}
         {% endblock javascript %}
-
     </body>
-
-
 </html>

@@ -35,6 +35,8 @@ urlpatterns = [
 
     re_path(r'^(?P<slug>[\w-]+)$', views.ProjectDetailView.as_view(), name='detail'),
 
+    re_path(r'^search/', views.ProjectSearchIndexView.as_view(), name='search'),
+
     #  --------------------  draft / publish  -----------------------------
     re_path(r'^api/(?P<slug>[\w-]+)/publish_post/$', views.PublishProjectPostAjax.as_view(), name='publish_post_ajax'),
 

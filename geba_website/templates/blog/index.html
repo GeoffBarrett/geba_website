@@ -32,8 +32,6 @@
             </div>
         </div>
 
-        <!--{% include 'blog/post_search.html' %}-->
-
         {% if object_list|length == 0 %}
             <div class="row justify-content-center">
                 <div class="geba_body-col-index">
@@ -159,7 +157,7 @@
                                             {% if post.keywords.count > 0 %}
                                                 <div class="geba-medium"><p>
                                                 {% for keyword in post.keywords.all %}
-                                                    <a href="#" class="badge badge-primary badge-tag">
+                                                    <a href="?tag={{ keyword.slug }}" class="badge badge-primary badge-tag">
                                                         {% if keyword.image %}
                                                             <img src="{{ keyword.image.url }}" style="width: 20px; height: 20px;">
                                                         {{ keyword.keyword }}
@@ -182,7 +180,7 @@
                                             <div class="row geba-medium">
                                                 Published by
                                                 {% if post.author %}
-                                                    <a href="#">{{ post.author }}, </a>
+                                                    <a href="?author={{ post.author }}">{{ post.author }}, </a>
                                                     {{ post.publish_date|timesince }} ago.
                                                 {% else %}
                                                     <span style='color:red;'> No Authors! </span>
@@ -223,6 +221,5 @@
     <script src="{% static 'apps/core/js/csrf_cookie.js' %}"></script>
     <script src="{% static 'apps/blog/js/blog.js' %}"></script>
     <script src="{% static 'apps/core/js/badge.js' %}"></script>
-    <script src="{% static 'apps/core/js/sidebar.js' %}"></script>
     <script src="{% static 'apps/vote/js/vote.js' %}"></script>
 {% endblock javascript %}

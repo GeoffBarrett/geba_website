@@ -16,6 +16,9 @@ from django.template import RequestContext
 # Create your views here.
 from ..geba_analytics.signals import object_viewed_signal
 from ..geba_analytics.mixins import ObjectViewMixin
+from itertools import chain
+from django.views.generic import ListView
+from ..geba_auth.forms import UserCreationForm
 
 
 class PageActionMixin(object):
@@ -197,3 +200,68 @@ class ContactView(DetailView):
 
         else:
             return render_to_response(self.template_name, {'form': form, 'page': self.object})
+
+
+class SearchAllView(ListView):
+    """This view will search be used for searching for all projects and project posts under one view."""
+
+    template_name = 'pages/search.html'  # tells the view to use this template instead of it's default
+    context_object_name = 'object_list'  # tell the view to use this context_object_name instead of the default
+
+    def get_context_data(self, *args, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        # Add in the publisher
+        form = UserCreationForm(self.request.GET or None, self.request.FILES or None)
+
+        context['register_form'] = form
+        return context
+
+    def get_queryset(self, *args, **kwargs):
+        """
+        Excludes any questions that aren't published yet.
+        """
+
+        if self.request.user.is_staff or self.request.user.is_superuser:
+            blog_qs = Post.objects.all().order_by("-publish_date")
+            project_qs = Project.objects.all().order_by("-publish_date")
+            project_post_qs = ProjectPost.objects.all().order_by("-publish_date")
+        else:
+            blog_qs = Post.objects.active()
+            project_qs = Project.objects.active()
+            project_post_qs = ProjectPost.objects.active()
+
+        query = self.request.GET.get("query")
+        if query:
+            # this is for searching using the search bar
+            blog_qs = Post.objects.search(qs=blog_qs, query=query)
+            project_qs = Project.objects.search(qs=project_qs, query=query)
+            project_post_qs = ProjectPost.objects.search(qs=project_post_qs, query=query)
+
+        author_query = self.request.GET.get("author")
+        if author_query:
+            # filter query list by author
+            blog_qs = Post.objects.search(qs=blog_qs, query=author_query)
+            project_qs = Project.objects.search(qs=project_qs, query=author_query)
+            project_post_qs = ProjectPost.objects.search(qs=project_post_qs, query=author_query)
+
+        tag_query = self.request.GET.get("tag")
+        if tag_query:
+            # filter query list by keyword/tag
+            blog_qs = Post.objects.search(qs=blog_qs, query=tag_query)
+            project_qs = Project.objects.search(qs=project_qs, query=tag_query)
+            project_post_qs = ProjectPost.objects.search(qs=project_post_qs, query=tag_query)
+
+        blog_qs = Post.votes.annotate(queryset=blog_qs, user_id=self.request.user.id)
+        project_qs = Project.votes.annotate(queryset=project_qs, user_id=self.request.user.id)
+        project_post_qs = ProjectPost.votes.annotate(queryset=project_post_qs, user_id=self.request.user.id)
+
+        queryset_chain = chain(
+            blog_qs,
+            project_qs,
+            project_post_qs,
+        )
+        qs = sorted(queryset_chain,
+                    key=lambda instance: instance.vote_score,
+                    reverse=True)
+        return qs

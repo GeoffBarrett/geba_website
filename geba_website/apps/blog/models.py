@@ -25,15 +25,40 @@ def upload_location(instance, filename):
 
 class PostManager(models.Manager):
 
-    def search(self, query=None):
+    def search(self, qs=None, query=None):
         """This will search based off of the query"""
-        qs = self.get_queryset()
+        if qs is None:
+            qs = self.get_queryset()
+
         if query is not None:
             or_lookup = (Q(title__icontains=query) |
                          Q(body__icontains=query) |
-                         Q(slug__icontains=query)
+                         Q(slug__icontains=query) |
+                         Q(author__username__icontains=query) |
+                         Q(keywords__keyword__icontains=query)
                          )
             qs = qs.filter(or_lookup).distinct()  # distinct() is often necessary with Q lookups
+        return qs
+
+    def search_author(self, qs=None, query=None):
+        """This will allow us to search by our author if they click on the author's link for a blog or project/
+        project/projectpost"""
+        if qs is None:
+            qs = self.get_queryset()
+
+        if query is not None:
+            lookup = (Q(author__username__iexact=query))
+            qs = qs.filter(lookup).distinct()  # distinct() is often necessary with Q lookups
+        return qs
+
+    def search_tags(self, qs=None, query=None):
+        """This will allow us to search by our keywords if the user selects the badge that contains a keyword"""
+        if qs is None:
+            qs = self.get_queryset()
+
+        if query is not None:
+            lookup = (Q(keywords__slug__iexact=query))
+            qs = qs.filter(lookup).distinct()  # distinct() is often necessary with Q lookups
         return qs
 
     def active(self, *args, **kwargs):

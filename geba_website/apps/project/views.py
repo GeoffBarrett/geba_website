@@ -31,7 +31,7 @@ from django.conf import settings
 from ..geba_analytics.mixins import ObjectViewMixin
 from ..geba_auth.forms import UserCreationForm
 from .mixins import ProjectActionMixin
-
+from itertools import chain
 
 # ---------- PROJECT VIEWS ---------- #
 TRANSFER_FORMS = [
@@ -178,10 +178,6 @@ class ProjectWizard(SessionWizardView):
 
                 instance_post.author = self.request.user
 
-                # we already added this above, don't need to do it again
-                # project_instance.authors.add(instance_post.author)
-                # project_instance.save()
-
                 instance_post.post_order = 1  # set the default to the 1st post
                 instance_post.content_type = project_instance.get_content_type
                 instance_post.object_id = project_instance.id
@@ -220,18 +216,84 @@ class ProjectIndexView(ListView):
         else:
             query_set_list = Project.objects.active()[:]
 
-        query = self.request.GET.get("q")
-
+        query = self.request.GET.get("query")
         if query:
-            query_set_list = query_set_list.filter(
-                Q(title__icontains=query)|
-                Q(author__username__icontains=query)
-                #Q(body__text__icontains=query)
-            ).distinct()
+            # this is for searching using the search bar
+            query_set_list = Project.objects.search(qs=query_set_list, query=query)
+
+        author_query = self.request.GET.get("author")
+        if author_query:
+            # filter query list by author
+            query_set_list = Project.objects.search(qs=query_set_list, query=author_query)
+
+        tag_query = self.request.GET.get("tag")
+        if tag_query:
+            # filter query list by keyword/tag
+            query_set_list = Project.objects.search_tags(qs=query_set_list, query=tag_query)
 
         query_set_list = Project.votes.annotate(queryset=query_set_list, user_id=self.request.user.id)
 
         return query_set_list
+
+
+class ProjectSearchIndexView(ListView):
+    """This view will search be used for searching for all projects and project posts under one view."""
+
+    template_name = 'project/searchIndex.html'  # tells the view to use this template instead of it's default
+    context_object_name = 'object_list'  # tell the view to use this context_object_name instead of the default
+
+    def get_context_data(self, *args, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        # Add in the publisher
+
+        form = UserCreationForm(self.request.GET or None, self.request.FILES or None)
+
+        context['register_form'] = form
+        return context
+
+    def get_queryset(self, *args, **kwargs):
+        """
+        Excludes any questions that aren't published yet.
+        """
+        # current_active_posts = Post.objects.filter(published__lte=timezone.now()).order_by("-published")[:]
+        # return Post.objects.filter(draft=False).filter(publish_date=timezone.now()).order_by("-publish_date")[:]
+        if self.request.user.is_staff or self.request.user.is_superuser:
+            project_qs = Project.objects.all().order_by("-publish_date")[:]
+            project_post_qs = ProjectPost.objects.all().order_by("-publish_date")[:]
+        else:
+            project_qs = Project.objects.active()[:]
+            project_post_qs = ProjectPost.objects.active()[:]
+
+        query = self.request.GET.get("query")
+        if query:
+            # this is for searching using the search bar
+            project_qs = Project.objects.search(qs=project_qs, query=query)
+            project_post_qs = ProjectPost.objects.search(qs=project_post_qs, query=query)
+
+        author_query = self.request.GET.get("author")
+        if author_query:
+            # filter query list by author
+            project_qs = Project.objects.search(qs=project_qs, query=author_query)
+            project_post_qs = ProjectPost.objects.search(qs=project_post_qs, query=author_query)
+
+        tag_query = self.request.GET.get("tag")
+        if tag_query:
+            # filter query list by keyword/tag
+            project_qs = Project.objects.search(qs=project_qs, query=tag_query)
+            project_post_qs = ProjectPost.objects.search(qs=project_post_qs, query=tag_query)
+
+        project_qs = Project.votes.annotate(queryset=project_qs, user_id=self.request.user.id)
+        project_post_qs = ProjectPost.votes.annotate(queryset=project_post_qs, user_id=self.request.user.id)
+
+        queryset_chain = chain(
+            project_qs,
+            project_post_qs,
+        )
+        qs = sorted(queryset_chain,
+                    key=lambda instance: instance.vote_score,
+                    reverse=True)
+        return qs
 
 
 class ProjectUpdateView(ProjectActionMixin, UpdateView):
@@ -329,7 +391,6 @@ class ProjectDetailPostView(SingleObjectMixin, FormView):
     model = Project  # generic views need to know which model to act upon
 
     def post(self, request, *args, **kwargs):
-        # comment_form = self.form_class(request.POST, request.FILES)
         if not request.user.is_authenticated:
             return HttpResponseForbidden()
 
@@ -379,26 +440,22 @@ class ProjectDetailView(View):
     """
 
     def get(self, request, *args, **kwargs):
-
         qs = Project.objects.filter(slug=kwargs['slug'])
 
         if qs.exists():
             # Then it is a Project slug
             view = ProjectDetailGetView.as_view()
-            # pass
         else:
             view = ProjectPostDetailGetView.as_view()
 
         return view(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
-
         qs = Project.objects.filter(slug=kwargs['slug'])
 
         if qs.exists():
             # Then it is a Project slug
             view = ProjectDetailPostView.as_view()
-            # pass
         else:
             view = ProjectPostDetailPostView.as_view()
 
@@ -409,7 +466,6 @@ class ProjectDetailView(View):
 
 class ProjectPostDetailGetView(ObjectViewMixin, DetailView):
     """This view will be used to GET the detail data"""
-    # success_msg = 'Comment Added!'
     model = ProjectPost  # generic views need to know which model to act upon
     template_name = 'project/post_detail.html'  # tells the view to use this template instead of it's default
     success_url = reverse_lazy('project:index')
@@ -448,9 +504,6 @@ class ProjectPostDetailGetView(ObjectViewMixin, DetailView):
             if not self.request.user.is_staff or not self.request.user.is_superuser:
                 raise PermissionDenied
 
-        # qs = ProjectPost.objects.filter(slug=self.kwargs.get('slug'))
-
-        # instance = ProjectPost.votes.annotate(queryset=qs, user_id=self.request.geba_auth.id)[0]
         # don't use annotate, use vote_by in this case, annotate only works when __iter__ is called
         instance = ProjectPost.votes.vote_by(self.request.user.id, ids=[instance.id])[0]
 
@@ -458,15 +511,12 @@ class ProjectPostDetailGetView(ObjectViewMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(ProjectPostDetailGetView, self).get_context_data(**kwargs)
-        # context['object'] provides the instance for us
 
         comment_qs = context['object'].comments
         # getting the vote info
 
-        # context['comments'] = comment_qs
         context['comments'] = Comment.votes.annotate(queryset=comment_qs, user_id=self.request.user.id)
 
-        # context['comment_form'] = CommentForm()
         return context
 
 
@@ -480,7 +530,6 @@ class ProjectPostDetailPostView(SingleObjectMixin, FormView):
     model = ProjectPost  # generic views need to know which model to act upon
 
     def post(self, request, *args, **kwargs):
-        # comment_form = self.form_class(request.POST, request.FILES)
         if not request.user.is_authenticated:
             return HttpResponseForbidden()
 
@@ -490,8 +539,6 @@ class ProjectPostDetailPostView(SingleObjectMixin, FormView):
 
         form = self.form_class(request.POST)
         if form.is_valid():
-            # c_type = form.cleaned_data.get("content_type")
-            # content_type = ContentType.objects.get(model=c_type)
             content_type = ContentType.objects.get_for_model(ProjectPost)
             object_id = form.cleaned_data.get("object_id")
             content_data = form.cleaned_data.get("content")
@@ -527,7 +574,6 @@ class ProjectPostUpdateView(ProjectActionMixin, UpdateView):
     success_msg = 'Post Updated!'
     form_class = ProjectPostForm
     template_name = 'project/project_post_form_update.html'
-    # success_url = reverse_lazy('project:index')
 
     def get(self, request, slug):
         """when the geba_auth executes a get request, display blank registration form"""
@@ -546,9 +592,7 @@ class ProjectPostUpdateView(ProjectActionMixin, UpdateView):
 
 
 class ProjectPostDeleteView(DeleteView):
-
     model = ProjectPost
-    # success_msg = 'Blog Deleted!'
     success_url = reverse_lazy('project:index')
 
     def get(self, request, *args, **kwargs):
@@ -566,7 +610,6 @@ class ProjectPostCreateView(ProjectActionMixin, CreateView):
     success_msg = 'Post Created!'
     form_class = ProjectPostForm
     template_name = 'project/project_post_form.html'
-    # success_url = '/'  # if no success_url is given, it will use the get_absolute_url() on the object if available
     # Don't need to specify template name due to the html file being named ModelName_form.html
 
     # make it so you have to be staff or super-geba_auth to create blog
@@ -581,22 +624,19 @@ class ProjectPostCreateView(ProjectActionMixin, CreateView):
     def get(self, request, *args, **kwargs):
         """when the geba_auth executes a get request, display blank registration form"""
         form = self.form_class(request.GET or None, request.FILES or None)
-        # context = self.get_context_data()
         return render(request, self.template_name, {'form': form, 'project_slug': kwargs['slug'],
                                                     'new_post_order': kwargs['post_order']})
 
     def post(self, request, *args, **kwargs):
-        """performs a post request"""
-
+        """
+        performs a post request
+        """
         form = self.form_class(request.POST or None, request.FILES or None)
 
         if form.is_valid():
-
-            # object_slug = kwargs['slug']
             object_slug = self.kwargs.get("slug")  # get the post slug
 
             project_instance = get_object_or_404(Project, slug=object_slug)  # get the project instance
-            # project_instance = Project.objects.get(slug=object_slug)
 
             instance = form.save(commit=False)
             # creates object from the form, doesn't save it to the database just yet
@@ -615,7 +655,6 @@ class ProjectPostCreateView(ProjectActionMixin, CreateView):
             instance.object_id = project_instance.id
             instance.save()
 
-            # instance = ProjectPost.objects.get(id=instance.id)
             project_instance.pages.add(instance)
 
             if instance.author not in project_instance.authors.all():
@@ -623,11 +662,9 @@ class ProjectPostCreateView(ProjectActionMixin, CreateView):
 
             project_instance.save()
 
-            # obj = get_object_or_404(ProjectPost, id=instance.id)
             instance.votes.up(request.user.id)
 
             return HttpResponseRedirect(reverse_lazy('project:detail', kwargs={'slug': instance.slug}))
-            # return super(ProjectPostCreateView, self).form_valid(form)
 
         else:
             return render_to_response(self.template_name, {'form': form, 'project_slug': kwargs['slug'],
@@ -641,14 +678,11 @@ DOWN = 1
 
 
 class ProjectPostLikeToggleAjax(APIView):
-
     authentication_classes = (authentication.SessionAuthentication, )
     permission_classes = (permissions.IsAuthenticated, )
 
     def get(self, request, slug=None, format=None):
-        # slug = self.kwargs.get("slug")
         obj = get_object_or_404(ProjectPost, slug=slug)
-        # url_ = obj.get_absolute_url()  # get the url of the project post
         user = self.request.user  # get the geba_auth
         updated = False
         liked = False
@@ -673,7 +707,6 @@ class ProjectPostLikeToggleAjax(APIView):
 
 
 class ProjectPostDislikeToggleAjax(APIView):
-
     authentication_classes = (authentication.SessionAuthentication, )
     permission_classes = (permissions.IsAuthenticated, )
 
@@ -686,7 +719,6 @@ class ProjectPostDislikeToggleAjax(APIView):
         disliked = False
 
         if user.is_authenticated:
-
             # check if the geba_auth is authenticated
             # check if the geba_auth has already voted on this object
             if obj.votes.exists(user.id, action=DOWN):
@@ -706,20 +738,16 @@ class ProjectPostDislikeToggleAjax(APIView):
 
 
 class ProjectLikeToggleAjax(APIView):
-
     authentication_classes = (authentication.SessionAuthentication, )
     permission_classes = (permissions.IsAuthenticated, )
 
     def get(self, request, slug=None, format=None):
-        # slug = self.kwargs.get("slug")
         obj = get_object_or_404(Project, slug=slug)
-        # url_ = obj.get_absolute_url()  # get the url of the project post
         user = self.request.user  # get the geba_auth
         updated = False
         liked = False
 
         if user.is_authenticated:
-
             # check if the geba_auth is authenticated
             # check if the geba_auth has already voted on this object
             if obj.votes.exists(user.id, action=UP):
@@ -739,20 +767,16 @@ class ProjectLikeToggleAjax(APIView):
 
 
 class ProjectDislikeToggleAjax(APIView):
-
     authentication_classes = (authentication.SessionAuthentication, )
     permission_classes = (permissions.IsAuthenticated, )
 
     def get(self, request, slug=None, format=None):
-        # slug = self.kwargs.get("slug")
         obj = get_object_or_404(Project, slug=slug)
-        # url_ = obj.get_absolute_url()  # get the url of the project post
         user = self.request.user  # get the geba_auth
         updated = False
         disliked = False
 
         if user.is_authenticated:
-
             # check if the geba_auth is authenticated
             # check if the geba_auth has already voted on this object
             if obj.votes.exists(user.id, action=DOWN):
@@ -772,20 +796,16 @@ class ProjectDislikeToggleAjax(APIView):
 
 
 class PublishProjectPostAjax(APIView):
-
     authentication_classes = (authentication.SessionAuthentication, )
     permission_classes = (permissions.IsAdminUser, )
 
     def get(self, request, slug=None, format=None):
-        # slug = self.kwargs.get("slug")
         obj = get_object_or_404(ProjectPost, slug=slug)
-        # url_ = obj.get_absolute_url()  # get the url of the project post
         user = self.request.user  # get the geba_auth
         updated = False
         published = False
 
         if user.is_authenticated:
-
             # check if the geba_auth is authenticated
             # check if the post is already published
             if not obj.draft:
@@ -794,7 +814,6 @@ class PublishProjectPostAjax(APIView):
                 # set the post as not a draft
                 obj.draft = False
                 obj.save()
-                obj.votes.down(user.id)
                 published = True
 
             updated = True
@@ -806,20 +825,16 @@ class PublishProjectPostAjax(APIView):
 
 
 class MakeDraftProjectPostAjax(APIView):
-
     authentication_classes = (authentication.SessionAuthentication, )
     permission_classes = (permissions.IsAdminUser, )
 
     def get(self, request, slug=None, format=None):
-        # slug = self.kwargs.get("slug")
         obj = get_object_or_404(ProjectPost, slug=slug)
-        # url_ = obj.get_absolute_url()  # get the url of the project post
         user = self.request.user  # get the geba_auth
         updated = False
         drafted = False
 
         if user.is_authenticated:
-
             # check if the geba_auth is authenticated
             # check if the post is already a draft
             if obj.draft:
@@ -839,20 +854,16 @@ class MakeDraftProjectPostAjax(APIView):
 
 
 class PublishProjectAjax(APIView):
-
     authentication_classes = (authentication.SessionAuthentication, )
     permission_classes = (permissions.IsAdminUser, )
 
     def get(self, request, slug=None, format=None):
-        # slug = self.kwargs.get("slug")
         obj = get_object_or_404(Project, slug=slug)
-        # url_ = obj.get_absolute_url()  # get the url of the project post
         user = self.request.user  # get the geba_auth
         updated = False
         published = False
 
         if user.is_authenticated:
-
             # check if the geba_auth is authenticated
             # check if the post is already published
             if not obj.draft:
@@ -861,7 +872,6 @@ class PublishProjectAjax(APIView):
                 # set the post as not a draft
                 obj.draft = False
                 obj.save()
-                obj.votes.down(user.id)
                 published = True
 
             updated = True
@@ -873,20 +883,16 @@ class PublishProjectAjax(APIView):
 
 
 class MakeDraftProjectAjax(APIView):
-
     authentication_classes = (authentication.SessionAuthentication, )
     permission_classes = (permissions.IsAdminUser, )
 
     def get(self, request, slug=None, format=None):
-        # slug = self.kwargs.get("slug")
         obj = get_object_or_404(Project, slug=slug)
-        # url_ = obj.get_absolute_url()  # get the url of the project post
         user = self.request.user  # get the geba_auth
         updated = False
         drafted = False
 
         if user.is_authenticated:
-
             # check if the geba_auth is authenticated
             # check if the post is already a draft
             if obj.draft:

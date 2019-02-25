@@ -11,9 +11,8 @@
         </div>
     </div>
 
-    <form id="header-search" class="navbar-form navbar-left" action="/search"
+    <form id="header-search" class="navbar-form navbar-left" action="/search/"
           accept-charset="UTF-8" method="get">
-        <input name="utf8" type="hidden" value="✓">
         <div class="btn_header" id="header-search-button">
             <i class="fa fa-search"></i>
         </div>
@@ -23,7 +22,7 @@
                 <span class="title">All</span>
                 <span class="caret"></span>
             </button>
-            <div class="dropdown-menu" role="menu">
+            <div class="dropdown-menu" role="menu" id="header-search-dropdown">
                 <a class="dropdown-item" data-type="all">All</a>
                 <a class="dropdown-item" data-type="blog">Blog</a>
                 <a class="dropdown-item" data-type="projects">Projects</a>
@@ -35,7 +34,6 @@
     <div id="brand-text">GEBA</div>
 
     <div class="navbar-header">
-
         {% if user.is_anonymous %}
           <a class="visible-xs-inline" id="xs-sign-in" href="{% url 'geba_auth:register' %}"><i class="fa fa-user"></i></a>
           <button class="navbar-toggle" id="mobile-nav-button" type="button">
@@ -46,11 +44,9 @@
               <div class="fa fa-bars"></div>
           </button>
         {% endif %}
-
     </div>
 
     {% if user.is_authenticated %}
-
         <ul class="nav navbar-nav navbar-right navbar-user">
             <li class="nav-item dropdown">
                 <a href="#" class="nav-link" data-toggle="dropdown" role="button"
@@ -139,5 +135,3 @@
     </div>
 
 </nav>
-
-

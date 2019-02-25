@@ -1,7 +1,7 @@
 {% with object.unvoted_net_likes as unvoted_likes %}
     <div class="row justify-content-center">
         <div class="geba_vote-col geba-medium">
-            {% include "project/project_vote_search.html" %}
+            {% include "project/projectpost_vote_search.html" %}
         </div>
 
         <div class="geba_body_index-col">
@@ -23,10 +23,6 @@
 
                             {{ object.title }}
 
-                            {% if object.pages.count == 0 %}
-                                <span class="badge-geba">No Pages</span>
-                            {% endif %}
-
                             {% if object.draft %}
                               <span class="badge-geba" id="draft-{{ object.slug }}">Draft</span>
                             {% else %}
@@ -34,7 +30,7 @@
                             {% endif %}
 
                             {% if object.is_future_publication %}
-                                <span class="badge-geba">Future Project</span>
+                                <span class="badge-geba">Future Post</span>
                             {% endif %}
                             </div>
 
@@ -48,33 +44,30 @@
                                         </a>
 
                                       <div class="dropdown-menu" aria-labelledby="DropDown{{ object.id }}">
-                                        <a class="dropdown-item"
-                                           href="{% url 'project:create_post' object.slug object.get_next_post_order %}"
-                                           role="button">New Post</a>
-                                        <a class="dropdown-item" href="{% url 'project:update' object.slug %}">Edit Project</a>
+                                        <a class="dropdown-item" href="{% url 'project:update_post' object.slug %}">Edit Post</a>
                                         {% if object.draft %}
                                             <a class="dropdown-item publish-btn"
-                                               data-href="{% url 'project:publish_project_ajax' object.slug %}"
+                                               data-href="{% url 'project:publish_post_ajax' object.slug %}"
                                                data-slug="{{ object.slug }}"
                                                id="publish_{{ object.slug }}">Publish</a>
                                             <a class="dropdown-item draft-btn hidebtn"
-                                               data-href="{% url 'project:draft_project_ajax' object.slug %}"
+                                               data-href="{% url 'project:draft_post_ajax' object.slug %}"
                                                data-slug="{{ object.slug }}"
                                                id="draft_{{ object.slug }}">Set as Draft</a>
                                         {% else %}
                                             <a class="dropdown-item draft-btn"
-                                               data-href="{% url 'project:draft_project_ajax' object.slug %}"
-                                               data-slug="{{ object.slug }}"
-                                               id="draft_{{ object.slug }}">Set as Draft</a>
+                                               data-href="{% url 'project:draft_post_ajax' object.slug %}"
+                                               data-slug="{{ project.slug }}"
+                                               id="draft_{{ project.slug }}">Set as Draft</a>
                                             <a class="dropdown-item publish-btn hidebtn"
-                                               data-href="{% url 'project:publish_project_ajax' object.slug %}"
+                                               data-href="{% url 'project:publish_post_ajax' object.slug %}"
                                                data-slug="{{ object.slug }}"
                                                id="publish_{{ object.slug }}">Publish</a>
                                         {% endif %}
-                                        <a class="dropdown-item" data-toggle="modal" data-target="#DeleteProjectModalIndex"
+                                        <a class="dropdown-item" data-toggle="modal" data-target="#DeleteProjectPostModal"
                                            data-content="{{ object.title }}"
                                            data-url="{{ object.get_delete_url }}">
-                                            Delete Project</a>
+                                            Delete Post</a>
                                       </div>
                                     </div>
                                 </div>
@@ -82,15 +75,17 @@
                         </div>
                     </h2>
 
-                    {% if object.description %}
-                        <div class="geba-medium">{{ object.description }}</div>
-                    {% else %}
-                        {% if object.get_html %}
-                            <div class="geba-medium">{{ object.get_html|truncatechars_html:500 }}</div>
+                    <p class="card-text">
+                        {% if object.description %}
+                            {{ object.description }}
                         {% else %}
-                            <span style='color:red;'> No Description! </span>
+                            {% if object.get_html %}
+                                {{ object.get_html|truncatechars_html:500 }}
+                            {% else %}
+                                <span style='color:red;'> No Body! </span>
+                            {% endif %}
                         {% endif %}
-                    {% endif %}
+                    </p>
 
                     {% if object.keywords.count > 0 %}
                         <div class="geba-medium"><p>
@@ -108,59 +103,21 @@
                         {% endfor %}
                         </p></div>
                     {% endif %}
-
-                    <div class="geba-medium">
-                        <a class="btn btn-primary" href="{{ object.get_absolute_url }}">Read More →</a>
-                    </div>
+                    <a class="btn btn-primary" href="{{ object.get_absolute_url }}">Read More →</a>
                 </div>
 
                 <div class="card-footer text-muted">
-                    <div class="row geba-medium">
-                        Published by
-                        {% if object.authors.count > 0 %}
-                            {% for author in object.authors.all %}
-                                {% if forloop.last %}
-                                    {% if forloop.first %}
-                                        <a href="?author={{ author }}">{{ author }},</a>
-                                    {% else %}
-                                        <span>and <a href="?author={{ author }}">{{ author }}</a></span>
-                                    {% endif %}
-                                {% else %}
-                                    <a href="?author={{ author }}">{{ author }}, </a>
-                                {% endif %}
-
-                            {% endfor %}{{ object.publish_date|timesince }} ago.
-                        {% else %}
-                            <span style='color:red;'> No Authors! </span>
-                        {% endif %}
-                    </div>
-
-                    <div class="row geba-small-flex">
-                        <div class="col-10">
-                            Published by
-                            {% if object.authors.count > 0 %}
-                                {% for author in object.authors.all %}
-                                    {% if forloop.last %}
-                                        {% if forloop.first %}
-                                            <a href="?author={{ author }}">{{ author }},</a>
-                                        {% else %}
-                                            <span>and <a href="?author={{ author }}">{{ author }}</a></span>
-                                        {% endif %}
-                                    {% else %}
-                                        <a href="?author={{ author }}">{{ author }}, </a>
-                                    {% endif %}
-
-                                {% endfor %}{{ object.publish_date|timesince }} ago.
-                            {% else %}
-                                <span style='color:red;'> No Authors! </span>
-                            {% endif %}
-                        </div>
-                        <div class="geba-vote-mobile-col">
-                            {% include "project/project_vote_mobile_search.html" %}
-                        </div>
-                    </div>
+                    Published by
+                    {% if object.author %}
+                        <a href="?author={{ author }}">{{ object.author }}, </a>
+                        {{ object.publish_date|timesince }} ago.
+                    {% else %}
+                        <span style='color:red;'> No Authors! </span>
+                    {% endif %}
                 </div>
             </div>
         </div>
+        <div class="col-3 ml-sm-auto geba-large"></div>
     </div>
+
 {% endwith %}

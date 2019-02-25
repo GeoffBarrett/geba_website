@@ -1,0 +1,84 @@
+{% extends "core/base.html" %}
+
+{% block title %}GEBA - Search{% endblock %}
+
+{% load vote %}
+
+{% block header %}
+    {% load staticfiles %}
+    <link rel='stylesheet' href="{% static 'apps/vote/css/vote.css' %}"/>
+    <link rel='stylesheet' href="{% static 'apps/project/css/project.css' %}"/>
+    <link rel='stylesheet' href="{% static 'apps/blog/css/blog.css' %}"/>
+{% endblock header %}
+
+{% block content %}
+
+    <header class="masthead" style="background-image: url('')">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+              <h1>Search Results</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="container-fluid">
+
+        <div class="row justify-content-center">
+            <div class="geba_body_index-col geba_vote-offset">
+                {% if messages %}
+                    {% include "project/messages.html" %}
+                    {% include "blog/messages.html" %}
+                {% endif %}
+            </div>
+        </div>
+
+        {% if object_list|length == 0 %}
+            <div class="row justify-content-center mt-3">
+                <div class="geba_body_index-col mb-3">
+                    <h5>No results found! I know, it's shocking. There is so much content on this website that there is 0.000000000000000000000001% chance that your search criteria resulted in no matches.
+                    </h5>
+                </div>
+            </div>
+
+        {% else %}
+
+            <div class="row justify-content-center mt-3">
+                <div class="col-12">
+                    {% load markdown_deux_tags %}
+                    {% load class_name %}
+
+                    {% for object in object_list %} <!-- object_list is returned from the ListView of objects.all()-->
+                        {% with object|class_name as object_class %}
+                            {% if object_class == 'Project' %}
+                                {% include "project/project_search.html" %}
+                            {% elif object_class == 'ProjectPost' %}
+                                {% include "project/projectpost_search.html" %}
+                            {% elif object_class == 'Post' %}
+                                {% include "blog/post_search.html" %}
+                            {% endif %}
+                        {% endwith %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+    {% include "blog/delete_post_modal.html" %}
+    {% include "project/delete_project_modal.html" %}
+    {% include "project/delete_projectpost_modal.html" %}
+    {% include "vote/login_vote_modal.html" %}
+
+{% endblock %}
+
+{% block javascript %}
+    <script src="{% static 'apps/core/js/csrf_cookie.js' %}"></script>
+    <script src="{% static 'apps/project/js/project.js' %}"></script>
+    <script src="{% static 'apps/blog/js/blog.js' %}"></script>
+    <script src="{% static 'apps/pages/js/pages.js' %}"></script>
+    <script src="{% static 'apps/core/js/badge.js' %}"></script>
+    <script src="{% static 'apps/vote/js/vote.js' %}"></script>
+{% endblock javascript %}

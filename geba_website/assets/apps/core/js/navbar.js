@@ -57,16 +57,51 @@ $("#header-search-button").off("click").click(function(){
                 !1
         })
         ,setTimeout(function(){
-            $("#header-search-query").focus()},isTouchDevice?250:100))
+            $("#header-search-query").focus()},100))
 })
+
 
 // this will change the search type to the chosen value from the drop-down menu
 $("#header-search-type a").click(function(){
+    var dtype = $(this).attr("data-type");
+    if(dtype.includes("all")){
+        $("#header-search").attr("action","/search/");
+    }
+    else if (dtype.includes("project")){
+        $("#header-search").attr("action","/project/search/");
+    } else {
+        $("#header-search").attr("action", "/" + dtype + "/");
+    }
     $("#header-search-type .dropdown-toggle .title").html($(this).html()+" "),
-    //$("#header-search").attr("action","/search/"+$(this).attr("data-type")),
-    $("#header-search").attr("action",$(this).attr("data-type")) + "/q=/"
     $("#header-search").hasClass("open")&&$("#header-search-query").select()
+}),
+$("#header-search").attr("action","/search/"); // this will set the action="/search"
+
+var t=$("#search-type");
+
+$("#header-search").submit(function(t){
+    var e=$(this).attr("action"),a=$(this).find("input[name=query]").val();
+    console.log(e);
+    redirect(e+"?"+$.param({
+        query:a
+    })
+    ),t.preventDefault()
 })
+
+$("#header-search-button").dblclick(function(){
+    $(this).hasClass("open")||$(this).closest("form").submit()
+})
+
+redirect=function(t){
+    window.Turbolinks&&Turbolinks.supported?Turbolinks.visit(t):window.location.href=t
+}
+
+showLoading=function(t){
+    $("#loading-bg").show(),
+    $("#loading-bg .loading-message").html(t),
+    setTimeout(function(){
+        $("#loading-bg").addClass("show")},50)
+}
 
 $("#mobile-nav-button").click(function(t){
     return t.preventDefault(),

@@ -34,8 +34,6 @@
             </div>
         </div>
 
-        <!--{% include 'project/project_search.html' %}-->
-
         {% if object_list|length == 0 %}
             <div class="row justify-content-center">
                 <div class="geba_body_index-col">
@@ -115,7 +113,6 @@
 
                                                     {% if project.is_future_publication %}
                                                         <span class="badge-geba">Future Project</span>
-                                                        <!--<span style='color:red;'>| Future Project </span>-->
                                                     {% endif %}
                                                     </div>
 
@@ -176,7 +173,7 @@
                                             {% if project.keywords.count > 0 %}
                                                 <div class="geba-medium"><p>
                                                 {% for keyword in project.keywords.all %}
-                                                    <a href="#" class="badge badge-primary badge-tag">
+                                                    <a href="?tag={{ keyword.slug }}" class="badge badge-primary badge-tag">
                                                         {% if keyword.image %}
                                                             <img src="{{ keyword.image.url }}" style="width: 20px; height: 20px;">
                                                         {{ keyword.keyword }}
@@ -202,12 +199,12 @@
                                                     {% for author in project.authors.all %}
                                                         {% if forloop.last %}
                                                             {% if forloop.first %}
-                                                                <a href="#">{{ author }},</a>
+                                                                <a href="?author={{ author }}">{{ author }},</a>
                                                             {% else %}
-                                                                <span>and <a href="#">{{ author }}</a></span>
+                                                                <span>and <a href="?author={{ author }}">{{ author }}</a></span>
                                                             {% endif %}
                                                         {% else %}
-                                                            <a href="#">{{ author }}, </a>
+                                                            <a href="?author={{ author }}">{{ author }}, </a>
                                                         {% endif %}
 
                                                     {% endfor %}{{ project.publish_date|timesince }} ago.
@@ -223,12 +220,12 @@
                                                         {% for author in project.authors.all %}
                                                             {% if forloop.last %}
                                                                 {% if forloop.first %}
-                                                                    <a href="#">{{ author }},</a>
+                                                                    <a href="?author={{ author }}">{{ author }},</a>
                                                                 {% else %}
-                                                                    <span>and <a href="#">{{ author }}</a></span>
+                                                                    <span>and <a href="?author={{ author }}">{{ author }}</a></span>
                                                                 {% endif %}
                                                             {% else %}
-                                                                <a href="#">{{ author }}, </a>
+                                                                <a href="?author={{ author }}">{{ author }}, </a>
                                                             {% endif %}
 
                                                         {% endfor %}{{ project.publish_date|timesince }} ago.
@@ -249,7 +246,6 @@
 
                 </div>
             </div>
-
         {% endif %}
     </div>
 

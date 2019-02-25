@@ -19,3 +19,9 @@ $('#DeletePostModalIndex').on('show.bs.modal', function (event) {
     '</form>')
 
 })
+
+// this will set the search option and value so that it defaults to searching with the Blog option
+$( document ).ready(function() {
+    $("#header-search").attr("action","/blog/"); // this will set the action="/search"
+    $("#header-search-type .dropdown-toggle .title").html('Blog ');
+});
