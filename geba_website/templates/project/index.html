@@ -166,7 +166,7 @@
                                                 {% if project.get_html %}
                                                     <div class="geba-medium">{{ project.get_html|truncatechars_html:500 }}</div>
                                                 {% else %}
-                                                    <span style='color:red;'> No Description! </span>
+                                                    <p class="card-text geba-medium"><span style='color:red;'> No Description! </span></p>
                                                 {% endif %}
                                             {% endif %}
 

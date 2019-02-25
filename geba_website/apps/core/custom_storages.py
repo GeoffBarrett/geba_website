@@ -1,7 +1,8 @@
 # custom_storages.py
 # from django.conf import settings
 from storages.backends.s3boto3 import S3Boto3Storage
-from filebrowser.storage import StorageMixin
+# from filebrowser.storage import StorageMixin
+from filebrowser_safe.storage import StorageMixin
 '''
 class StaticStorage(S3Boto3Storage):
     location = settings.STATICFILES_LOCATION
