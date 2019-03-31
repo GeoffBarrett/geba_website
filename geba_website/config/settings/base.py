@@ -155,7 +155,6 @@ THIRD_PARTY_APPS = (
     'formtools',
     'grappelli',
     'markdown_deux',
-    # 'markdownx'
     'pagedown',  # this is for the WYSIWYG editor
     # 'pipeline',
     'rest_framework',
