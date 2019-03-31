@@ -6,6 +6,7 @@
     {% load static %}
     <link rel='stylesheet' href="{% static 'apps/vote/css/vote.css' %}"/>
     <link rel='stylesheet' href="{% static 'apps/blog/css/blog.css' %}"/>
+    <link href="{% static 'tinymce/css/prism.css' %}" rel="stylesheet">
 {% endblock css %}
 
 {% block content %}
@@ -172,7 +173,7 @@
                                             {% endif %}
 
                                             <div class="geba-medium">
-                                            <a class="btn btn-primary" href="{{ post.get_absolute_url }}">Read More →</a>
+                                                <a class="btn btn-primary" href="{{ post.get_absolute_url }}">Read More →</a>
                                             </div>
                                         </div>
 
@@ -218,6 +219,7 @@
 {% endblock %}
 
 {% block javascript %}
+    <script src="{% static 'tinymce/js/prism.js' %}"></script>
     <script src="{% static 'apps/core/js/csrf_cookie.js' %}"></script>
     <script src="{% static 'apps/blog/js/blog.js' %}"></script>
     <script src="{% static 'apps/core/js/badge.js' %}"></script>

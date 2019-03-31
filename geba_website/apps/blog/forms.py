@@ -2,7 +2,7 @@ from .models import Post
 from django import forms
 # from django.utils import timezone
 # from pagedown.widgets import PagedownWidget
-# from django_summernote.widgets import SummernoteWidget
+from django_summernote.widgets import SummernoteWidget
 from tinymce.widgets import TinyMCE
 
 

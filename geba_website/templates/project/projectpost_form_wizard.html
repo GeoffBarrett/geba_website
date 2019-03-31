@@ -4,7 +4,8 @@
 {% load staticfiles %}
 
 {% block css %}
-<link rel='stylesheet' href="{% static 'apps/core/css/form_style.css' %}"/>
+    <link rel='stylesheet' href="{% static 'apps/core/css/form_style.css' %}"/>
+    <link href="{% static 'tinymce/css/prism.css' %}" rel="stylesheet">
 {% endblock css %}
 
 {% block title %}GEBA - Create Project Post{% endblock title %}
@@ -63,6 +64,7 @@
 {% endblock %}
 
 {% block javascript %}
+    <script src="{% static 'tinymce/js/prism.js' %}"></script>
     <!--<script src="{% static 'apps/core/js/ajax_form_errors.js' %}"></script>
     <script src="{% static 'apps/project/js/project_form.js' %}"></script>
     <script src="{% static 'apps/project/js/project.js' %}"></script>

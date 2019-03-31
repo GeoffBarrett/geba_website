@@ -3,7 +3,8 @@
 {% load staticfiles %}
 
 {% block css %}
-
+    <link href="{% static 'tinymce/css/prism.css' %}" rel="stylesheet">
+    <link href="{% static 'tinymce/js/prism.js' %}">
 {% endblock css %}
 
 {% block title %}GEBA - Update Project{% endblock title %}
@@ -53,3 +54,7 @@
     </div>
 
 {% endblock %}
+
+{% block javascript %}
+    <script src="{% static 'tinymce/js/prism.js' %}"></script>
+{% endblock javascript %}

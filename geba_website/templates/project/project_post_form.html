@@ -9,6 +9,8 @@
 
 
 {% block css %}
+    <link href="{% static 'tinymce/css/prism.css' %}" rel="stylesheet">
+
 {% endblock css %}
 
 {% block title %}GEBA - New Project Post{% endblock title %}
@@ -58,3 +60,7 @@
     </div>
 
 {% endblock %}
+
+{% block javascript %}
+    <script src="{% static 'tinymce/js/prism.js' %}"></script>
+{% endblock javascript %}

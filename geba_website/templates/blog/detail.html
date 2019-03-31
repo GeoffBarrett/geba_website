@@ -8,9 +8,11 @@
     {% load crispy_forms_tags %}
     {% load comment %}
     <link rel='stylesheet' href="{% static 'apps/core/css/sidebar.css' %}"/>
+    <link rel='stylesheet' href="{% static 'apps/core/css/sidebar.css' %}"/>
     <link rel='stylesheet' href="{% static 'apps/blog/css/blog.css' %}"/>
     <link rel='stylesheet' href="{% static 'apps/vote/css/vote.css' %}"/>
     <link rel='stylesheet' href="{% static 'apps/comments/css/comments.css' %}"/>
+    <link href="{% static 'tinymce/css/prism.css' %}" rel="stylesheet">
 
 {% endblock header %}
 
@@ -172,6 +174,7 @@
 {% endblock content %}
 
 {% block javascript %}
+    <script src="{% static 'tinymce/js/prism.js' %}"></script>
     <script src="{% static 'apps/core/js/csrf_cookie.js' %}"></script>
     <script src="{% static 'apps/comments/js/comment.js' %}"></script>
     <script src="{% static 'apps/core/js/badge.js' %}"></script>

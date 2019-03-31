@@ -8,6 +8,7 @@
     {% load staticfiles %}
     <link rel='stylesheet' href="{% static 'apps/vote/css/vote.css' %}"/>
     <link rel='stylesheet' href="{% static 'apps/project/css/project.css' %}"/>
+    <link href="{% static 'tinymce/css/prism.css' %}" rel="stylesheet">
 {% endblock header %}
 
 {% block content %}
@@ -255,6 +256,7 @@
 {% endblock %}
 
 {% block javascript %}
+    <script src="{% static 'tinymce/js/prism.js' %}"></script>
     <script src="{% static 'apps/core/js/csrf_cookie.js' %}"></script>
     <script src="{% static 'apps/project/js/project.js' %}"></script>
     <script src="{% static 'apps/core/js/badge.js' %}"></script>

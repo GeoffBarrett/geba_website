@@ -3,6 +3,10 @@
 {% load staticfiles %}
 {% load crispy_forms_tags %}
 
+{% block css %}
+    <link href="{% static 'tinymce/css/prism.css' %}" rel="stylesheet">
+{% endblock css %}
+
 {% block title %}GEBA - New Blog{% endblock title %}
 
 {% block content %}
@@ -51,3 +55,6 @@
 
 {% endblock %}
 
+{% block javascript %}
+    <script src="{% static 'tinymce/js/prism.js' %}"></script>
+{% endblock javascript %}

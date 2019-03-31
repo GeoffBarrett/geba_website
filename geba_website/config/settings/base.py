@@ -43,11 +43,6 @@ def get_secret(setting, secrets=secrets):
 
 CONFIG_ROOT = DJANGO_ROOT.child("config")
 
-# Absolute filesystem path to the django repo directory:
-# DJANGO_ROOT = os.path.dirname(CONFIG_ROOT)
-# SITE_ROOT = os.path.dirname(DJANGO_ROOT)
-# SITE_NAME = os.path.basename(DJANGO_ROOT)
-
 APPS_DIR = DJANGO_ROOT.child("apps")
 
 # Add our project to our pythonpath, this way we don't need to type our project
@@ -166,17 +161,13 @@ THIRD_PARTY_APPS = (
     'rest_framework',
     'storages',
     'tinymce',  # another WYSIWYG editor
-
 )
 
 # usually I would put these in 3rd party, but I need them in a specific order
 THREADEDCOMMENTS_APPS = (
-    # 'apps.threadedcomments',
     'django_comments',
     'django.contrib.sites',
 )
-
-# COMMENTS_APP = 'apps.threadedcomments'
 
 PROJECT_APPS = (
     'apps.blog',  # the Blog app
@@ -255,7 +246,6 @@ AUTH_PASSWORD_VALIDATORS = [
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 SUMMERNOTE_THEME = 'bs4'  # Show summernote with Bootstrap4
-
 
 FORCE_SESSION_TO_ONE = False
 FORCE_INACTIVE_USER_END_SESSION = True

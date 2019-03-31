@@ -3,9 +3,9 @@
 {% load staticfiles %}
 
 {% block css %}
-
-<link rel='stylesheet' href="{% static 'apps/core/css/form_style.css' %}"/>
-
+    <link rel='stylesheet' href="{% static 'apps/core/css/form_style.css' %}"/>
+    <link href="{% static 'tinymce/css/prism.css' %}" rel="stylesheet">
+    <link href="{% static 'tinymce/js/prism.js' %}" rel="stylesheet">
 {% endblock css %}
 
 {% block title %}GEBA - Update Post{% endblock title %}
@@ -56,3 +56,7 @@
     </div>
 
 {% endblock %}
+
+{% block javascript %}
+    <script src="{% static 'tinymce/js/prism.js' %}"></script>
+{% endblock javascript %}
