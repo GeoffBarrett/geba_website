@@ -6,6 +6,8 @@ __pycache__/
 # C extensions
 *.so
 
+.idea/
+
 media/
 secrets.json
 zappa_settings.json
