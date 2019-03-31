@@ -79,11 +79,13 @@ class Post(VoteModel, TimeStampModel):
 
     objects = PostManager()
 
-    slug = models.SlugField(unique=True)
-
     publish_date = models.DateTimeField(blank=True, null=True, default=timezone.now())
 
     title = models.CharField(max_length=200)
+
+    # we need the max_length value in the slug since we changed it for the title, if we did not have it the default
+    # max value would be 50 and there would be errors creating slug with the large title
+    slug = models.SlugField(unique=True, max_length=205)
 
     image = models.ImageField(upload_to=upload_location,
                               null=True,
