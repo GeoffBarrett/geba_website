@@ -386,10 +386,12 @@ def create_slug(instance, prepend_slug=None, new_slug=None):
 
 
 def has_image(instance):
-
-    if instance.image == '':
-        return False
-    elif instance.image is None:
+    try:
+        if instance.image == '':
+            return False
+        elif instance.image is None:
+            return False
+    except ValueError:
         return False
 
     return True
@@ -397,10 +399,12 @@ def has_image(instance):
 
 def has_image_header(instance):
 
-    print('has_img---------', instance.header_image)
-    if instance.header_image == '':
-        return False
-    elif instance.header_image is None:
+    try:
+        if instance.header_image == '':
+            return False
+        elif instance.header_image is None:
+            return False
+    except ValueError:
         return False
 
     return True
