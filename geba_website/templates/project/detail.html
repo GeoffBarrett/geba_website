@@ -12,7 +12,7 @@
     <link rel='stylesheet' href="{% static 'apps/vote/css/vote.css' %}"/>
     <link rel='stylesheet' href="{% static 'apps/comments/css/comments.css' %}"/>
     <link href="{% static 'tinymce/css/prism.css' %}" rel="stylesheet">
-    <link href="{% static 'tinymce/js/prism.js' %}">
+    <link rel='stylesheet' href="{% static 'apps/core/css/wysiwyg_override.css' %}"/>
 {% endblock header %}
 
 {% block content %}
@@ -161,7 +161,7 @@
                 {% endwith %}
 
                 <!-- this div will contain the contents of the post -->
-                <div class="geba_body-col content-markdown">
+                <div class="geba_body-col">
                     <div class="post-body">{{ project.get_html }}</div>
 
                 </div>
@@ -322,6 +322,7 @@
 {% endblock content %}
 
 {% block javascript %}
+    <script src="{% static 'tinymce/js/prism.js' %}"></script>
     <script src="{% static 'apps/core/js/csrf_cookie.js' %}"></script>
     <script src="{% static 'apps/core/js/badge.js' %}"></script>
     <script src="{% static 'apps/comments/js/comment.js' %}"></script>

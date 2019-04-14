@@ -155,7 +155,7 @@ THIRD_PARTY_APPS = (
     'formtools',
     'grappelli',
     'markdown_deux',
-    'pagedown',  # this is for the WYSIWYG editor
+    # 'pagedown',  # this is for the pagedown WYSIWYG editor
     # 'pipeline',
     'rest_framework',
     'storages',
@@ -182,6 +182,7 @@ PROJECT_APPS = (
     'apps.project',
     'apps.vote',
 )
+
 
 CSRF_USE_SESSIONS = False  # Djangos's default
 
@@ -264,7 +265,7 @@ TINYMCE_DEFAULT_CONFIG = {
             table code lists fullscreen  insertdatetime  nonbreaking
             contextmenu directionality searchreplace wordcount visualblocks
             visualchars code fullscreen autolink lists  charmap print  hr
-            anchor pagebreak
+            anchor pagebreak toc
             ''',
     'toolbar1': '''
             fullscreen preview bold italic underline | fontselect,
@@ -279,6 +280,15 @@ TINYMCE_DEFAULT_CONFIG = {
     'contextmenu': 'formats | link image',
     'menubar': True,
     'statusbar': True,
+}
+
+TINYMCE_ADDITIONAL_JS_URLS = {
+    'apps/core/js/filebrowser_s3.js',
+}
+
+TINYMCE_CALLBACKS = {
+    # 'file_browser_callback': 'myFileBrowserS3',
+    'file_picker_callback': 'customFilePicker',
 }
 
 TINYMCE_FILEBROWSER = True

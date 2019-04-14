@@ -47,16 +47,23 @@ class Page(TimeStampModel):
 
 
 def delete_image(instance):
-    if instance.image:
+    if instance.header_image:
         # if an image exists, delete it
-        img_path = instance.image.path
+        try:
+            # this only really works locally when it accepts fullpaths
+            img_path = instance.header_image.path
 
-        if os.path.isfile(img_path):
-            img_dir = os.path.dirname(img_path)
-            os.remove(img_path)
-            if len(os.listdir(img_dir)) == 0:
-                # if the directory that the image is in is empty, delete it
-                os.rmdir(img_dir)
+            if os.path.isfile(img_path):
+                img_dir = os.path.dirname(img_path)
+                os.remove(img_path)
+
+                if len(os.listdir(img_dir)) == 0:
+                    # if the directory that the image is in is empty, delete it
+                    os.rmdir(img_dir)
+        except NotImplementedError:
+            # you have to use the delete function to properly do it with S3, probably can just do this from the
+            # beginning
+            instance.header_image.delete(save=False)
 
 
 def pre_delete_page_signal_receiver(sender, instance, *args, **kwargs):

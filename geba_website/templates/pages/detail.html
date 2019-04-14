@@ -62,7 +62,7 @@
             <div class="row justify-content-center mt-3">
                 {% if user.is_superuser %}
                     {% if page.header_image %}
-                        <div class="geba_pages-body-col content-markdown">
+                        <div class="geba_pages-body-col">
                             <div class="post-body">{{ page.get_html }}</div>
                         </div>
                         <div class="col-1">
@@ -70,12 +70,12 @@
                         </div>
 
                     {% else %}
-                        <div class="geba_pages-col content-markdown">
+                        <div class="geba_pages-col">
                             <div class="post-body">{{ page.get_html }}</div>
                         </div>
                     {% endif %}
                 {% else %}
-                    <div class="geba_pages-col content-markdown">
+                    <div class="geba_pages-col">
                         <div class="post-body">{{ page.get_html }}</div>
                     </div>
                 {% endif %}

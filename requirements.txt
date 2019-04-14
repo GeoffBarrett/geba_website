@@ -1,6 +1,7 @@
 argcomplete==1.9.3
 awscli==1.16.135
 base58==1.0.0
+boto3==1.9.125
 botocore==1.12.125
 certifi==2019.3.9
 cfn-flip==1.0.3
@@ -20,9 +21,8 @@ django-filebrowser-no-grappelli==3.7.8
 django-formtools==2.1
 django-grappelli==2.12.2
 django-markdown-deux==1.0.5
-django-pagedown==1.0.5
 django-storages==1.6.6
-django-summernote==0.8.11.4
+django-summernote==0.8.8.7
 django-tinymce4-lite==1.7.4
 djangorestframework==3.8.2
 docutils==0.14

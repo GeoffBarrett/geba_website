@@ -12,6 +12,7 @@
     <link rel='stylesheet' href="{% static 'apps/vote/css/vote.css' %}"/>
     <link rel='stylesheet' href="{% static 'apps/comments/css/comments.css' %}"/>
     <link href="{% static 'tinymce/css/prism.css' %}" rel="stylesheet">
+    <link rel='stylesheet' href="{% static 'apps/core/css/wysiwyg_override.css' %}"/>
 {% endblock header %}
 
 {% block content %}
@@ -146,7 +147,7 @@
                 </div>
 
                 <!-- this div will contain the contents of the post, including comments -->
-                <div class="geba_body-col content-markdown">
+                <div class="geba_body-col">
                     <div class="post-body">{{ projectpost.get_html|safe }}</div>
                     <hr>
                     {% include "project/post_detail_comments.html" %}
