@@ -396,10 +396,13 @@ def has_image(instance):
 
 
 def has_image_header(instance):
+
+    print()
     if instance.header_image == '':
         return False
     elif instance.header_image is None:
         return False
+
     return True
 
 
@@ -429,11 +432,11 @@ def pre_save_project_signal_receiver(sender, instance, *args, **kwargs):
         if has_image_header(instance) and has_image_header(project_instance):
             if project_instance.header_image.url != instance.header_image.url:
                 # then we can delete the old image
-                delete_image(project_instance)
+                delete_image_header(project_instance)
 
         elif not has_image_header(instance) and has_image_header(project_instance):
             # then the user doesn't want an image anymore
-            delete_image(project_instance)
+            delete_image_header(project_instance)
 
 
 def pre_save_signal_projectpost_receiver(sender, instance, *args, **kwargs):
@@ -465,11 +468,11 @@ def pre_save_signal_projectpost_receiver(sender, instance, *args, **kwargs):
         if has_image_header(instance) and has_image_header(post_instance):
             if post_instance.header_image.url != instance.header_image.url:
                 # then we can delete the old image
-                delete_image(post_instance)
+                delete_image_header(post_instance)
 
         elif not has_image_header(instance) and has_image_header(post_instance):
             # then the user doesn't want an image anymore
-            delete_image(post_instance)
+            delete_image_header(post_instance)
 
 
 def pre_delete_projectpost_signal_receiver(sender, instance, *args, **kwargs):
