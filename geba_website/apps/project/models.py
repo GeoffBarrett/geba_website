@@ -391,22 +391,23 @@ def has_image(instance):
             return False
         elif instance.image is None:
             return False
+        elif len(instance.image) == 0:
+            return False
     except ValueError:
         return False
-
     return True
 
 
 def has_image_header(instance):
-
     try:
         if instance.header_image == '':
             return False
         elif instance.header_image is None:
             return False
+        elif len(instance.header_image) == 0:
+            return False
     except ValueError:
         return False
-
     return True
 
 
