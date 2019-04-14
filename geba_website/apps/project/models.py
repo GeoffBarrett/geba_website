@@ -397,7 +397,7 @@ def has_image(instance):
 
 def has_image_header(instance):
 
-    print()
+    print('has_img---------', instance.header_image)
     if instance.header_image == '':
         return False
     elif instance.header_image is None:
