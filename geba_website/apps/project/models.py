@@ -443,8 +443,6 @@ def pre_save_signal_projectpost_receiver(sender, instance, *args, **kwargs):
     instance = instance being saved,
     """
 
-    print(instance.header_image.url, '-----------------------')
-
     if not instance.slug:
         project_instance = Project.objects.filter(id=instance.object_id)[0]
 
@@ -465,7 +463,6 @@ def pre_save_signal_projectpost_receiver(sender, instance, *args, **kwargs):
             delete_image(post_instance)
 
         if has_image_header(instance) and has_image_header(post_instance):
-            print('hiiiiiiiii', post_instance.header_image.url, instance.header_image.url)
             if post_instance.header_image.url != instance.header_image.url:
                 # then we can delete the old image
                 delete_image(post_instance)
