@@ -506,6 +506,7 @@ def pre_delete_projectpost_signal_receiver(sender, instance, *args, **kwargs):
 
     # delete image of the project post
     delete_image(instance)
+    delete_image_header(instance)
 
 
 def pre_delete_project_signal_receiver(sender, instance, *args, **kwargs):
@@ -520,6 +521,7 @@ def pre_delete_project_signal_receiver(sender, instance, *args, **kwargs):
 
     # delete the image of the project
     delete_image(instance)
+    delete_image_header(instance)
 
 
 def delete_image(instance):
