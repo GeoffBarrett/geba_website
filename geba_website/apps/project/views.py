@@ -301,11 +301,14 @@ class ProjectUpdateView(ProjectActionMixin, UpdateView):
     success_msg = 'Project Updated!'
     form_class = ProjectForm
     template_name = 'project/project_form_update.html'
-    success_url = reverse_lazy('project:index')
+    # success_url = reverse_lazy('project:index')
 
     def get(self, request, slug):
         """when the geba_auth executes a get request, display blank registration form"""
         self.object = self.get_object()
+
+        self.success_url = reverse_lazy('project:detail', args=self.object.slug)
+
         form = self.form_class(request.GET or None, request.FILES or None, instance=self.object)
         return render(request, self.template_name, {'form': form})
 

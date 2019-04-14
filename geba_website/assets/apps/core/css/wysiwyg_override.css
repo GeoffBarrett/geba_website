@@ -7,8 +7,12 @@ pre[class*="language-"] {
 code {
     background: #f5f2f0;
 	border-radius: 0.25rem!important;
-	padding: 0.5em;
+	padding: 0.25em;
     margin: .5em 0;
     overflow: auto;
     color: #0b6500;
+}
+
+#tinymce .mce-content-body {
+    background-color: #868e96!important;
 }

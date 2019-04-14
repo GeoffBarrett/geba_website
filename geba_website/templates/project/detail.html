@@ -18,8 +18,8 @@
 {% block content %}
 
     <!-- Page Header -->
-    {% if project.image %}
-        <header class="masthead" style="background-image: url({{ project.image.url }})">
+    {% if project.header_image %}
+        <header class="masthead" style="background-image: url({{ project.header_image.url }})">
     {% else %}
         <header class="masthead" style="background-image: url('')">
     {% endif %}
@@ -28,46 +28,48 @@
         <div class="row">
           <div class="col-8 mx-auto">
             <div class="post-heading">
-              <h1>
-                {{ project.title }}
+                {% if project.title_in_header %}
+                      <h1>
+                        {{ project.title }}
 
-                {% if project.draft %}
-                  <span class="badge-geba" id="draft-{{ project.slug }}">Draft</span>
-                {% else %}
-                  <span class="badge-geba hidebadge" id="draft-{{ project.slug }}">Draft</span>
-                {% endif %}
-
-                {% if project.is_future_publication %}
-                    <span class="badge-geba"  id="future-{{ project.id }}">Future Post</span>
-                {% endif %}
-              </h1>
-              <span class="meta">Posted by
-                  {% if project.authors.count > 0 %}
-
-                    {% for author in project.authors.all %}
-
-                        {% if forloop.last %}
-                            {% if forloop.first %}
-                                <a href="#">{{ author }},</a>
-                            {% else %}
-                                <span>and <a href="#">{{ author }}</a></span>
-                            {% endif %}
+                        {% if project.draft %}
+                          <span class="badge-geba" id="draft-{{ project.slug }}">Draft</span>
                         {% else %}
-                            <a href="#">{{ author }}, </a>
+                          <span class="badge-geba hidebadge" id="draft-{{ project.slug }}">Draft</span>
                         {% endif %}
 
-                    {% endfor %}
-                  {% else %}
-                    <span style='color:red;'> No Authors! </span>
-                  {% endif %}</a>
+                        {% if project.is_future_publication %}
+                            <span class="badge-geba"  id="future-{{ project.id }}">Future Post</span>
+                        {% endif %}
+                      </h1>
+                      <span class="meta">Posted by
+                          {% if project.authors.count > 0 %}
 
-                {% if project.publish_date == project.modified %}
-                Published: {{ project.publish_date|timesince }} ago
-                {% else %}
-                Published: {{ project.publish_date|timesince }} ago
-                (Updated: {{ project.modified|timesince }} ago)
+                            {% for author in project.authors.all %}
+
+                                {% if forloop.last %}
+                                    {% if forloop.first %}
+                                        <a href="#">{{ author }},</a>
+                                    {% else %}
+                                        <span>and <a href="#">{{ author }}</a></span>
+                                    {% endif %}
+                                {% else %}
+                                    <a href="#">{{ author }}, </a>
+                                {% endif %}
+
+                            {% endfor %}
+                          {% else %}
+                            <span style='color:red;'> No Authors! </span>
+                          {% endif %}</a>
+
+                        {% if project.publish_date == project.modified %}
+                        Published: {{ project.publish_date|timesince }} ago
+                        {% else %}
+                        Published: {{ project.publish_date|timesince }} ago
+                        (Updated: {{ project.modified|timesince }} ago)
+                        {% endif %}
+                      </span>
                 {% endif %}
-              </span>
             </div>
           </div>
         </div>
@@ -121,6 +123,60 @@
                     </a>
                 </div>
             </div>
+
+            {% if project.title_in_header == False %}
+            <div class="row justify-content-center mt-1">
+                <div class="geba_vote-col">
+                </div>
+
+                <div class="geba_body-col">
+                    <h1>
+                        {{ project.title }}
+
+                        {% if project.draft %}
+                          <span class="badge-geba" id="draft-{{ project.slug }}">Draft</span>
+                        {% else %}
+                          <span class="badge-geba hidebadge" id="draft-{{ project.slug }}">Draft</span>
+                        {% endif %}
+
+                        {% if project.is_future_publication %}
+                            <span class="badge-geba"  id="future-{{ project.id }}">Future Post</span>
+                        {% endif %}
+                      </h1>
+                      <span class="meta">Posted by
+                          {% if project.authors.count > 0 %}
+
+                            {% for author in project.authors.all %}
+
+                                {% if forloop.last %}
+                                    {% if forloop.first %}
+                                        <a href="#">{{ author }},</a>
+                                    {% else %}
+                                        <span>and <a href="#">{{ author }}</a></span>
+                                    {% endif %}
+                                {% else %}
+                                    <a href="#">{{ author }}, </a>
+                                {% endif %}
+
+                            {% endfor %}
+                          {% else %}
+                            <span style='color:red;'> No Authors! </span>
+                          {% endif %}</a>
+
+                        {% if project.publish_date == project.modified %}
+                        Published: {{ project.publish_date|timesince }} ago
+                        {% else %}
+                        Published: {{ project.publish_date|timesince }} ago
+                        (Updated: {{ project.modified|timesince }} ago)
+                        {% endif %}
+                      </span>
+                </div>
+
+                <div class="col-3 ml-sm-auto geba-large">
+                </div>
+
+            </div>
+            {% endif %}
 
             <div class="row justify-content-center mt-3">
 

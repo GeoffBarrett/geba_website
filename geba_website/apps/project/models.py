@@ -3,17 +3,13 @@ from django.db import models
 from django.conf import settings
 from django.urls import reverse
 from django.utils import timezone
-from django.db.models.signals import pre_save, pre_delete  # , post_save  # before saving it emits this signal
+from django.db.models.signals import pre_save, pre_delete  # before saving it emits this signal
 from ..core.models import TimeStampModel
 from django.utils.safestring import mark_safe
-# from markdown_deux import markdown
 from ..comments.models import Comment
 from ..vote.models import VoteModel
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
-# from tinymce.models import HTMLField
-# from django.shortcuts import get_object_or_404
-# from django.db import transaction
 from ..keyword.models import Keyword
 from django.utils.text import slugify  # turns our title into a slug
 from django.db.models import Q
@@ -143,6 +139,8 @@ class ProjectPost(VoteModel, TimeStampModel):
 
     title = models.CharField(max_length=200)
 
+    title_in_header = models.BooleanField(default=True)
+
     # we need the max_length value in the slug since we changed it for the title, if we did not have it the default
     # max value would be 50 and there would be errors creating slug with the large title
     slug = models.SlugField(unique=True, max_length=205)
@@ -155,6 +153,15 @@ class ProjectPost(VoteModel, TimeStampModel):
 
     width_field = models.IntegerField(default=0, null=True)
     height_field = models.IntegerField(default=0, null=True)
+
+    header_image = models.ImageField(upload_to=upload_location,
+                              null=True,
+                              blank=True,
+                              width_field="header_width_field",
+                              height_field="header_height_field")
+
+    header_width_field = models.IntegerField(default=0, null=True)
+    header_height_field = models.IntegerField(default=0, null=True)
 
     image_caption = models.CharField(blank=True, null=True, max_length=200)
 
@@ -240,6 +247,8 @@ class Project(VoteModel, TimeStampModel):
 
     title = models.CharField(max_length=200)
 
+    title_in_header = models.BooleanField(default=True)
+
     # we need the max_length value in the slug since we changed it for the title, if we did not have it the default
     # max value would be 50 and there would be errors creating slug with the large title
     slug = models.SlugField(unique=True, max_length=205)
@@ -256,6 +265,15 @@ class Project(VoteModel, TimeStampModel):
     height_field = models.IntegerField(default=0, null=True)
 
     image_caption = models.CharField(blank=True, null=True, max_length=200)
+
+    header_image = models.ImageField(upload_to=upload_location,
+                                     null=True,
+                                     blank=True,
+                                     width_field="header_width_field",
+                                     height_field="header_height_field")
+
+    header_width_field = models.IntegerField(default=0, null=True)
+    header_height_field = models.IntegerField(default=0, null=True)
 
     draft = models.BooleanField(default=False)
 
@@ -320,14 +338,6 @@ class Project(VoteModel, TimeStampModel):
         """
         return int(len(ProjectPost.objects.filter(object_id=self.id)) + 1)
 
-    '''
-    @property
-    def authors(self):
-        """This is if I decide that I want to convert the authors list into a property instead of a model field"""
-        authors = [post.author for post in self.pages.all()]
-        return list(set(authors + [self.author]))
-    '''
-
     @property
     def comments(self):
         """creating a method to allow the post form to grab the post comments"""
@@ -385,12 +395,21 @@ def has_image(instance):
     return True
 
 
+def has_image_header(instance):
+    if instance.header_image == '':
+        return False
+    elif instance.header_image is None:
+        return False
+    return True
+
+
 def pre_save_project_signal_receiver(sender, instance, *args, **kwargs):
     """
     This signal is sent at the beginning of the save() method,
     sender = models class,
     instance = instance being saved,
     """
+
     if not instance.slug:
         # if there is no slug, create one
         instance.slug = create_slug(instance=instance)
@@ -401,11 +420,19 @@ def pre_save_project_signal_receiver(sender, instance, *args, **kwargs):
         if has_image(instance) and has_image(project_instance):
             if project_instance.image.url != instance.image.url:
                 # then we can delete the old image
-
                 delete_image(project_instance)
 
         elif not has_image(instance) and has_image(project_instance):
-            # then you have removed the old image
+            # then the user doesn't want an image anymore
+            delete_image(project_instance)
+
+        if has_image_header(instance) and has_image_header(project_instance):
+            if project_instance.header_image.url != instance.header_image.url:
+                # then we can delete the old image
+                delete_image(project_instance)
+
+        elif not has_image_header(instance) and has_image_header(project_instance):
+            # then the user doesn't want an image anymore
             delete_image(project_instance)
 
 
@@ -415,12 +442,15 @@ def pre_save_signal_projectpost_receiver(sender, instance, *args, **kwargs):
     sender = models class,
     instance = instance being saved,
     """
-    if not instance.slug:
 
+    print(instance.header_image.url, '-----------------------')
+
+    if not instance.slug:
         project_instance = Project.objects.filter(id=instance.object_id)[0]
 
         # if there is no slug, create one
         instance.slug = create_slug(instance=instance, prepend_slug=project_instance.slug)
+
     else:
         # then the projectpost already exists
         post_instance = ProjectPost.objects.filter(pk=instance.pk)[0]
@@ -432,6 +462,16 @@ def pre_save_signal_projectpost_receiver(sender, instance, *args, **kwargs):
 
         elif not has_image(instance) and has_image(post_instance):
             # then you have removed the old image
+            delete_image(post_instance)
+
+        if has_image_header(instance) and has_image_header(post_instance):
+            print('hiiiiiiiii', post_instance.header_image.url, instance.header_image.url)
+            if post_instance.header_image.url != instance.header_image.url:
+                # then we can delete the old image
+                delete_image(post_instance)
+
+        elif not has_image_header(instance) and has_image_header(post_instance):
+            # then the user doesn't want an image anymore
             delete_image(post_instance)
 
 
@@ -495,6 +535,26 @@ def delete_image(instance):
             # you have to use the delete function to properly do it with S3, probably can just do this from the
             # beginning
             instance.image.delete(save=False)
+
+
+def delete_image_header(instance):
+    if instance.header_image:
+        # if an image exists, delete it
+        try:
+            # this only really works locally when it accepts fullpaths
+            img_path = instance.header_image.path
+
+            if os.path.isfile(img_path):
+                img_dir = os.path.dirname(img_path)
+                os.remove(img_path)
+
+                if len(os.listdir(img_dir)) == 0:
+                    # if the directory that the image is in is empty, delete it
+                    os.rmdir(img_dir)
+        except NotImplementedError:
+            # you have to use the delete function to properly do it with S3, probably can just do this from the
+            # beginning
+            instance.header_image.delete(save=False)
 
 
 # connects the signal with the signal receiver
