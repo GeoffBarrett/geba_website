@@ -8,20 +8,97 @@ a.badge-tag {
     border: 0.5px solid black;
 }
 
+.geba-card {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #32383e;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,0.6);
+    border-radius: 0.25rem;
+    height: 100%;
+}
 
-.geba_body-col, .geba_body-col-index {
+.geba-card-body-header {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem 1.25rem 0rem 1.25rem;
+}
+
+.geba-card-body {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem;
+    padding: 0rem 1.25rem 1.25rem 1.25rem;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+
+.geba-align-col {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-bottom: 15px;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 90%;
+    flex: 0 0 90%;
+    max-width: 90%;
+}
+
+.geba_body-col-index {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-top: 15px;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-bottom: 15px;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 45%;
+    flex: 0 0 45%;
+    max-width: 45%;
+}
+
+.geba_body-col {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-top: 15px;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-bottom: 15px;
     -webkit-box-flex: 0;
     -ms-flex: 0 0 80%;
     flex: 0 0 80%;
     max-width: 80%;
 }
 
-.geba_body-col, .geba_body-col-index {
+
+.geba-flex {
+    display: flex;
+}
+
+.geba-col-outer {
     position: relative;
     width: 100%;
     min-height: 1px;
-    padding-right: 15px;
-    padding-left: 15px;
+    padding-right: 0px;
+    padding-left: 0px;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
 }
 
 .geba-caret-col {
@@ -33,7 +110,7 @@ a.badge-tag {
     padding-right: 5px;
 }
 
-.geba-large, .geba-medium {
+.geba-large, .geba-medium-large {
     display: block;
 }
 
@@ -41,7 +118,7 @@ a.badge-tag {
     display: flex;
 }
 
-.geba-mobile, .geba-small, .geba-small-flex {
+.geba-mobile, .geba-small, .geba-medium, .geba-small-flex {
     display: none;
 }
 
@@ -54,17 +131,22 @@ a.badge-tag {
         display: block;
     }
 
-    .geba_body-col, .geba_body-col-index {
+    .geba_body-col, .geba_body-col-index, .geba-align-col {
         -webkit-box-flex: 0;
         -ms-flex: 0 0 85%;
         flex: 0 0 85%;
         max-width: 85%;
     }
+
+    .geba-medium {
+        display: block;
+    }
+
 }
 
 @media (max-width: 650px) {
 
-    .geba-large, .geba-medium, .geba-large-flex {
+    .geba-large, .geba-medium-large, .geba-large-flex {
         display: none;
     }
 
@@ -75,7 +157,7 @@ a.badge-tag {
         max-width: 90%;
     }
 
-    .geba_body-col-index {
+    .geba_body-col-index, .geba-align-col {
         -webkit-box-flex: 0;
         -ms-flex: 0 0 99%;
         flex: 0 0 99%;
@@ -90,4 +172,7 @@ a.badge-tag {
         display: flex;
     }
 
+    .geba-medium {
+        display: none;
+    }
 }

@@ -1,7 +1,6 @@
  // this script is to toggle the reply comments
 $(".comment-reply-btn").click(function(event){
     event.preventDefault();
-    console.log("hi");
     $(this).parent().parent().next(".comment-reply").fadeToggle();
 })
 

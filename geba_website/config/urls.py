@@ -46,10 +46,11 @@ urlpatterns = [
     re_path(r'^forum/', include(('apps.forum.urls', "forum"))),  # Blog app
 
     # ------------ third party urls -------------------- #
+    re_path(r'^admin/', admin.site.urls),
+    re_path(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     re_path(r'^admin/filebrowser/', site.urls),
     re_path(r'^grappelli/', include('grappelli.urls')),  # grappelli URLS
-    re_path(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-    re_path(r'^admin/', admin.site.urls),
+
     re_path(r'^summernote/', include('django_summernote.urls')),
     re_path(r'^tinymce/', include('tinymce.urls')),
 

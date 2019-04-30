@@ -1,11 +1,12 @@
 {% if object.is_voted_up %}
     <div class="link" current_class="likes">
         <div class="likes-mobile mobile-link">
+
             {% if user.is_authenticated %}
                 <div class="arrow up upvote-btn-mobile login-required access-required upmod arrow-mobile"
                  data-event-action="upvote" title="upvote"
                  role="button" aria-label="upvote" data-object="{{ object }}"
-                 data-href="{% url 'blog:like_toggle_api' object.slug %}"></div>
+                 data-href="{% url 'project:post_like_toggle_api' object.slug %}"></div>
             {% else %}
                 {% include "vote/unauthenticated_upvote_mobile.html" %}
             {% endif %}
@@ -18,7 +19,7 @@
                 <div class="arrow down downvote-btn-mobile login-required access-required arrow-mobile"
                      data-event-action="downvote" role="button"
                      aria-label="downvote" title="downvote" data-object="{{ object }}"
-                     data-href="{% url 'blog:dislike_toggle_api' object.slug %}"></div>
+                     data-href="{% url 'project:post_dislike_toggle_api' object.slug %}"></div>
             {% else %}
                 {% include "vote/unauthenticated_downvote_mobile.html" %}
             {% endif %}
@@ -27,11 +28,12 @@
 {% elif  object.is_voted_down %}
     <div class="link" current_class="dislikes">
         <div class="dislikes-mobile mobile-link">
+
             {% if user.is_authenticated %}
                 <div class="arrow up upvote-btn-mobile login-required access-required arrow-mobile"
                  data-event-action="upvote" title="upvote"
                  role="button" aria-label="upvote" data-object="{{ object }}"
-                 data-href="{% url 'blog:like_toggle_api' object.slug %}"></div>
+                 data-href="{% url 'project:post_like_toggle_api' object.slug %}"></div>
             {% else %}
                 {% include "vote/unauthenticated_upvote_mobile.html" %}
             {% endif %}
@@ -44,7 +46,7 @@
                 <div class="arrow down downvote-btn-mobile login-required access-required downmod arrow-mobile"
                      data-event-action="downvote" role="button"
                      aria-label="downvote" title="downvote" data-object="{{ object }}"
-                     data-href="{% url 'blog:dislike_toggle_api' object.slug %}"></div>
+                     data-href="{% url 'project:post_dislike_toggle_api' object.slug %}"></div>
             {% else %}
                 {% include "vote/unauthenticated_downvote_mobile.html" %}
             {% endif %}
@@ -54,11 +56,12 @@
 {% else %}
     <div class="link" current_class="unvoted">
         <div class="unvoted-mobile mobile-link">
+
             {% if user.is_authenticated %}
                 <div class="arrow up upvote-btn-mobile login-required access-required arrow-mobile"
                  data-event-action="upvote" title="upvote"
                  role="button" aria-label="upvote" data-object="{{ object }}"
-                 data-href="{% url 'blog:like_toggle_api' object.slug %}"></div>
+                 data-href="{% url 'project:post_like_toggle_api' object.slug %}"></div>
             {% else %}
                 {% include "vote/unauthenticated_upvote_mobile.html" %}
             {% endif %}
@@ -71,7 +74,7 @@
                 <div class="arrow down downvote-btn-mobile login-required access-required arrow-mobile"
                      data-event-action="downvote" role="button"
                      aria-label="downvote" title="downvote" data-object="{{ object }}"
-                     data-href="{% url 'blog:dislike_toggle_api' object.slug %}"></div>
+                     data-href="{% url 'project:post_dislike_toggle_api' object.slug %}"></div>
             {% else %}
                 {% include "vote/unauthenticated_downvote_mobile.html" %}
             {% endif %}

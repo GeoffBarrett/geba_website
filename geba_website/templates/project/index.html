@@ -27,175 +27,170 @@
     </header>
 
     <div class="container-fluid">
-
-        <div class="row justify-content-center">
-            <div class="geba_body_index-col geba_vote-offset">
-                {% if messages %}
-                    {% include "project/messages.html" %}
-                {% endif %}
-            </div>
-        </div>
-
-        {% if object_list|length == 0 %}
-            <div class="row justify-content-center">
-                <div class="geba_body_index-col">
-                    {% if user.is_staff or user.is_superuser %}
-                        <a class="btn btn-primary" href="{% url 'project:create' %}" role="button">New Project</a>
-                    {% endif %}
+        <div class="geba-col-outer">
+            {% if messages %}
+                <div class="row justify-content-center">
+                    <div class="geba-align-col">
+                        {% include "project/messages.html" %}
+                    </div>
                 </div>
-            </div>
+            {% endif %}
 
-            <div class="row justify-content-center mt-3">
-                <div class="geba_body_index-col mb-3">
-                    <h5>There are currently no active projects, thanks for your interest! Below is a video of
-                    me working hard on these projects.</h5>
+            {% if object_list|length == 0 %}
+                <div class="row justify-content-center">
+                    <div class="geba-align-col">
+                        {% if user.is_staff or user.is_superuser %}
+                            <a class="btn btn-primary" href="{% url 'project:create' %}" role="button">New Project</a>
+                        {% endif %}
+                    </div>
                 </div>
-            </div>
 
-            <div class="row justify-content-center">
-                <img src="https://media.giphy.com/media/pFwRzOLfuGHok/giphy.gif" width="480" height="300">
-            </div>
-        {% else %}
-
-            <div class="row justify-content-center">
-                <div class="geba_body_index-col geba_vote-offset geba-medium">
-                    {% if user.is_staff or user.is_superuser %}
-                        <a class="btn btn-primary" href="{% url 'project:create' %}" role="button">New Project</a>
-                    {% endif %}
+                <div class="row justify-content-center mt-3">
+                    <div class="geba-align-col mb-3">
+                        <h5>There are currently no active projects, thanks for your interest! Below is a video of
+                        me working hard on these projects.</h5>
+                    </div>
                 </div>
-                <div class="geba_body_index-col geba-small">
-                    {% if user.is_staff or user.is_superuser %}
-                        <a class="btn btn-primary" href="{% url 'project:create' %}" role="button">New Project</a>
-                    {% endif %}
-                </div>
-            </div>
 
-            <div class="row justify-content-center mt-3">
-                <div class="col-12">
+                <div class="row justify-content-center">
+                    <img src="https://media.giphy.com/media/pFwRzOLfuGHok/giphy.gif" width="480" height="300">
+                </div>
+            {% else %}
+
+                <div class="row justify-content-center">
+                    <div class="geba-align-col">
+                        {% if user.is_staff or user.is_superuser %}
+                            <a class="btn btn-primary" href="{% url 'project:create' %}" role="button">New Project</a>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
                     {% load markdown_deux_tags %}
 
                     {% for project in object_list %} <!-- object_list is returned from the ListView of objects.all()-->
                         {% with project.unvoted_net_likes as unvoted_likes %}
-                            <div class="row justify-content-center">
-                                <div class="geba_vote-col geba-medium">
-                                    {% include "project/project_vote.html" %}
-                                </div>
+                            {% if not forloop.counter|divisibleby:2 and forloop.last %}
+                            <div class="geba-align-col" style="padding-top:15px;">
+                            {% else %}
+                            <div class="geba_body_index-col">
+                            {% endif%}
+                                <div class="geba-card mb-1">
+                                     {% if project.image %}
+                                        <img class="card-img-top" src="{{ project.image.url }}"  style="width:100%; height:auto;">
+                                     {% else %}
+                                        <img class="card-img-top no_img">
+                                     {% endif %}
 
-                                <div class="geba_body_index-col">
-
-                                    <div class="card mb-4">
-                                         {% if project.image %}
-                                            <img class="card-img-top" src="{{ project.image.url }}"  style="width:100%; height:auto;">
-                                         {% else %}
-                                            <img class="card-img-top no_img">
-                                         {% endif %}
-
-                                        <div class="card-body">
-
-                                            <h2 class="card-title">
-
-                                                <div class="row">
-                                                    {% if request.user == project.author or request.user.is_superuser %}
-                                                        <div class="col-10">
-                                                    {% else %}
-                                                        <div class="col-12">
-                                                    {% endif %}
-
-                                                    {{ project.title }}
-
-                                                    {% if project.pages.count == 0 %}
-                                                        <span class="badge-geba">No Pages</span>
-                                                    {% endif %}
-
-                                                    {% if project.draft %}
-                                                      <span class="badge-geba" id="draft-{{ project.slug }}">Draft</span>
-                                                    {% else %}
-                                                      <span class="badge-geba hidebadge" id="draft-{{ project.slug }}">Draft</span>
-                                                    {% endif %}
-
-                                                    {% if project.is_future_publication %}
-                                                        <span class="badge-geba">Future Project</span>
-                                                    {% endif %}
-                                                    </div>
-
-                                                    {% if request.user == project.author or request.user.is_superuser %}
-                                                        <div class="geba-caret-col">
-                                                            <div class="btn-group float-right">
-                                                                <a href="#" class="nav-link nav-link-geba dropdown-toggle pt-0 dropdown-toggle-top"
-                                                                   data-toggle="dropdown" role="button" aria-haspopup="true"
-                                                                   aria-expanded="false" id="DropDown{{ project.id }}">
-                                                                  <span class="caret"></span>
-                                                                </a>
-
-                                                              <div class="dropdown-menu" aria-labelledby="DropDown{{ project.id }}">
-                                                                <a class="dropdown-item"
-                                                                   href="{% url 'project:create_post' project.slug project.get_next_post_order %}"
-                                                                   role="button">New Post</a>
-                                                                <a class="dropdown-item" href="{% url 'project:update' project.slug %}">Edit Project</a>
-                                                                {% if project.draft %}
-                                                                    <a class="dropdown-item publish-btn"
-                                                                       data-href="{% url 'project:publish_project_ajax' project.slug %}"
-                                                                       data-slug="{{ project.slug }}"
-                                                                       id="publish_{{ project.slug }}">Publish</a>
-                                                                    <a class="dropdown-item draft-btn hidebtn"
-                                                                       data-href="{% url 'project:draft_project_ajax' project.slug %}"
-                                                                       data-slug="{{ project.slug }}"
-                                                                       id="draft_{{ project.slug }}">Set as Draft</a>
-                                                                {% else %}
-                                                                    <a class="dropdown-item draft-btn"
-                                                                       data-href="{% url 'project:draft_project_ajax' project.slug %}"
-                                                                       data-slug="{{ project.slug }}"
-                                                                       id="draft_{{ project.slug }}">Set as Draft</a>
-                                                                    <a class="dropdown-item publish-btn hidebtn"
-                                                                       data-href="{% url 'project:publish_project_ajax' project.slug %}"
-                                                                       data-slug="{{ project.slug }}"
-                                                                       id="publish_{{ project.slug }}">Publish</a>
-                                                                {% endif %}
-                                                                <a class="dropdown-item" data-toggle="modal" data-target="#DeleteProjectModalIndex"
-                                                                   data-content="{{ project.title }}"
-                                                                   data-url="{{ project.get_delete_url }}">
-                                                                    Delete Project</a>
-                                                              </div>
-                                                            </div>
-                                                        </div>
-                                                    {% endif %}
-                                                </div>
-                                            </h2>
-
-                                            {% if project.description %}
-                                                <div class="geba-medium">{{ project.description }}</div>
-                                            {% else %}
-                                                {% if project.get_html %}
-                                                    <div class="geba-medium">{{ project.get_html|truncatechars_html:500 }}</div>
+                                    <div class="geba-card-body-header">
+                                        <h2 class="card-title">
+                                            <div class="row">
+                                                {% if request.user == project.author or request.user.is_superuser %}
+                                                    <div class="col-10">
                                                 {% else %}
-                                                    <p class="card-text geba-medium"><span style='color:red;'> No Description! </span></p>
+                                                    <div class="col-12">
                                                 {% endif %}
-                                            {% endif %}
 
-                                            {% if project.keywords.count > 0 %}
-                                                <div class="geba-medium"><p>
-                                                {% for keyword in project.keywords.all %}
-                                                    <a href="?tag={{ keyword.slug }}" class="badge badge-primary badge-tag">
-                                                        {% if keyword.image %}
-                                                            <img src="{{ keyword.image.url }}" style="width: 20px; height: 20px;">
-                                                        {{ keyword.keyword }}
-                                                        {% else %}
-                                                            <img src="" style="width: 0px; height: 20px;">
-                                                        {{ keyword.keyword }}
-                                                        <img src="" style="width: 0px; height: 20px;">
-                                                        {% endif %}
-                                                        </a>
-                                                {% endfor %}
-                                                </p></div>
-                                            {% endif %}
+                                                {{ project.title }}
 
-                                            <div class="geba-medium">
-                                                <a class="btn btn-primary" href="{{ project.get_absolute_url }}">Read More →</a>
+                                                {% if project.pages.count == 0 %}
+                                                    <span class="badge-geba">No Pages</span>
+                                                {% endif %}
+
+                                                {% if project.draft %}
+                                                  <span class="badge-geba" id="draft-{{ project.slug }}">Draft</span>
+                                                {% else %}
+                                                  <span class="badge-geba hidebadge" id="draft-{{ project.slug }}">Draft</span>
+                                                {% endif %}
+
+                                                {% if project.is_future_publication %}
+                                                    <span class="badge-geba">Future Project</span>
+                                                {% endif %}
+                                                </div>
+
+                                                {% if request.user == project.author or request.user.is_superuser %}
+                                                    <div class="geba-caret-col">
+                                                        <div class="btn-group float-right">
+                                                            <a href="#" class="nav-link nav-link-geba dropdown-toggle pt-0 dropdown-toggle-top"
+                                                               data-toggle="dropdown" role="button" aria-haspopup="true"
+                                                               aria-expanded="false" id="DropDown{{ project.id }}">
+                                                              <span class="caret"></span>
+                                                            </a>
+
+                                                          <div class="dropdown-menu" aria-labelledby="DropDown{{ project.id }}">
+                                                            <a class="dropdown-item"
+                                                               href="{% url 'project:create_post' project.slug project.get_next_post_order %}"
+                                                               role="button">New Post</a>
+                                                            <a class="dropdown-item" href="{% url 'project:update' project.slug %}">Edit Project</a>
+                                                            {% if project.draft %}
+                                                                <a class="dropdown-item publish-btn"
+                                                                   data-href="{% url 'project:publish_project_ajax' project.slug %}"
+                                                                   data-slug="{{ project.slug }}"
+                                                                   id="publish_{{ project.slug }}">Publish</a>
+                                                                <a class="dropdown-item draft-btn hidebtn"
+                                                                   data-href="{% url 'project:draft_project_ajax' project.slug %}"
+                                                                   data-slug="{{ project.slug }}"
+                                                                   id="draft_{{ project.slug }}">Set as Draft</a>
+                                                            {% else %}
+                                                                <a class="dropdown-item draft-btn"
+                                                                   data-href="{% url 'project:draft_project_ajax' project.slug %}"
+                                                                   data-slug="{{ project.slug }}"
+                                                                   id="draft_{{ project.slug }}">Set as Draft</a>
+                                                                <a class="dropdown-item publish-btn hidebtn"
+                                                                   data-href="{% url 'project:publish_project_ajax' project.slug %}"
+                                                                   data-slug="{{ project.slug }}"
+                                                                   id="publish_{{ project.slug }}">Publish</a>
+                                                            {% endif %}
+                                                            <a class="dropdown-item" data-toggle="modal" data-target="#DeleteProjectModalIndex"
+                                                               data-content="{{ project.title }}"
+                                                               data-url="{{ project.get_delete_url }}">
+                                                                Delete Project</a>
+                                                          </div>
+                                                        </div>
+                                                    </div>
+                                                {% endif %}
                                             </div>
-                                        </div>
+                                        </h2>
 
-                                        <div class="card-footer text-muted">
-                                            <div class="row geba-medium">
+                                        {% if project.description %}
+                                            <div class="geba-medium-large">{{ project.description }}</div>
+                                        {% else %}
+                                            {% if project.get_html %}
+                                                <div class="geba-medium-large">{{ project.get_html|truncatechars_html:150 }}</div>
+                                            {% else %}
+                                                <p class="card-text geba-medium-large"><span style='color:red;'> No Description! </span></p>
+                                            {% endif %}
+                                        {% endif %}
+                                    </div>
+
+                                    <div class="geba-card-body">
+                                        {% if project.keywords.count > 0 %}
+                                            <div class="geba-medium-large">
+                                                <p>
+                                                    {% for keyword in project.keywords.all %}
+                                                        <a href="?tag={{ keyword.slug }}" class="badge badge-primary badge-tag">
+                                                            {% if keyword.image %}
+                                                                <img src="{{ keyword.image.url }}" style="width: 20px; height: 20px;">
+                                                            {{ keyword.keyword }}
+                                                            {% else %}
+                                                                <img src="" style="width: 0px; height: 20px;">
+                                                            {{ keyword.keyword }}
+                                                            <img src="" style="width: 0px; height: 20px;">
+                                                            {% endif %}
+                                                            </a>
+                                                    {% endfor %}
+                                                </p>
+                                            </div>
+                                        {% endif %}
+
+                                        <div class="geba-medium-large">
+                                            <a class="btn btn-primary" href="{{ project.get_absolute_url }}">Read More →</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="card-footer text-muted">
+                                        <div class="row geba-flex">
+                                            <div class="col-10">
                                                 Published by
                                                 {% if project.authors.count > 0 %}
                                                     {% for author in project.authors.all %}
@@ -214,30 +209,8 @@
                                                     <span style='color:red;'> No Authors! </span>
                                                 {% endif %}
                                             </div>
-
-                                            <div class="row geba-small-flex">
-                                                <div class="col-10">
-                                                    Published by
-                                                    {% if project.authors.count > 0 %}
-                                                        {% for author in project.authors.all %}
-                                                            {% if forloop.last %}
-                                                                {% if forloop.first %}
-                                                                    <a href="?author={{ author }}">{{ author }},</a>
-                                                                {% else %}
-                                                                    <span>and <a href="?author={{ author }}">{{ author }}</a></span>
-                                                                {% endif %}
-                                                            {% else %}
-                                                                <a href="?author={{ author }}">{{ author }}, </a>
-                                                            {% endif %}
-
-                                                        {% endfor %}{{ project.publish_date|timesince }} ago.
-                                                    {% else %}
-                                                        <span style='color:red;'> No Authors! </span>
-                                                    {% endif %}
-                                                </div>
-                                                <div class="geba-vote-mobile-col">
-                                                    {% include "project/project_vote_mobile.html" %}
-                                                </div>
+                                            <div class="geba-vote-mobile-col">
+                                                {% include "project/project_vote_mobile.html" %}
                                             </div>
                                         </div>
                                     </div>
@@ -245,10 +218,9 @@
                             </div>
                         {% endwith %}
                     {% endfor %}
-
                 </div>
-            </div>
-        {% endif %}
+            {% endif %}
+        </div>
     </div>
 
     {% include "project/delete_project_modal.html" %}

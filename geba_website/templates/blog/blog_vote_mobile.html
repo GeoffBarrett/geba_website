@@ -2,7 +2,7 @@
     <div class="link" current_class="likes">
         <div class="likes-mobile mobile-link">
             {% if user.is_authenticated %}
-                <div class="arrow up upvote-btn login-required access-required upmod arrow-mobile"
+                <div class="arrow up upvote-btn-mobile login-required access-required upmod arrow-mobile"
                  data-event-action="upvote" title="upvote"
                  role="button" aria-label="upvote" data-object="{{ post }}"
                  data-href="{% url 'blog:like_toggle_api' post.slug %}"></div>
@@ -15,7 +15,7 @@
             <div class="score likes" title="{{ unvoted_likes|add:'1' }}">{{ unvoted_likes|add:"1" }}</div>
 
             {% if user.is_authenticated %}
-                <div class="arrow down downvote-btn login-required access-required arrow-mobile"
+                <div class="arrow down downvote-btn-mobile login-required access-required arrow-mobile"
                      data-event-action="downvote" role="button"
                      aria-label="downvote" title="downvote" data-object="{{ post }}"
                      data-href="{% url 'blog:dislike_toggle_api' post.slug %}"></div>
@@ -28,7 +28,7 @@
     <div class="link" current_class="dislikes">
         <div class="dislikes-mobile mobile-link">
             {% if user.is_authenticated %}
-                <div class="arrow up upvote-btn login-required access-required arrow-mobile"
+                <div class="arrow up upvote-btn-mobile login-required access-required arrow-mobile"
                  data-event-action="upvote" title="upvote"
                  role="button" aria-label="upvote" data-object="{{ post }}"
                  data-href="{% url 'blog:like_toggle_api' post.slug %}"></div>
@@ -41,7 +41,7 @@
             <div class="score likes" title="{{ unvoted_likes|add:'1' }}">{{ unvoted_likes|add:"1" }}</div>
 
             {% if user.is_authenticated %}
-                <div class="arrow down downvote-btn login-required access-required downmod arrow-mobile"
+                <div class="arrow down downvote-btn-mobile login-required access-required downmod arrow-mobile"
                      data-event-action="downvote" role="button"
                      aria-label="downvote" title="downvote" data-object="{{ post }}"
                      data-href="{% url 'blog:dislike_toggle_api' post.slug %}"></div>
@@ -55,7 +55,7 @@
     <div class="link" current_class="unvoted">
         <div class="unvoted-mobile mobile-link">
             {% if user.is_authenticated %}
-                <div class="arrow up upvote-btn login-required access-required arrow-mobile"
+                <div class="arrow up upvote-btn-mobile login-required access-required arrow-mobile"
                  data-event-action="upvote" title="upvote"
                  role="button" aria-label="upvote" data-object="{{ post }}"
                  data-href="{% url 'blog:like_toggle_api' post.slug %}"></div>
@@ -68,7 +68,7 @@
             <div class="score likes" title="{{ unvoted_likes|add:'1' }}">{{ unvoted_likes|add:"1" }}</div>
 
             {% if user.is_authenticated %}
-                <div class="arrow down downvote-btn login-required access-required arrow-mobile"
+                <div class="arrow down downvote-btn-mobile login-required access-required arrow-mobile"
                      data-event-action="downvote" role="button"
                      aria-label="downvote" title="downvote" data-object="{{ post }}"
                      data-href="{% url 'blog:dislike_toggle_api' post.slug %}"></div>

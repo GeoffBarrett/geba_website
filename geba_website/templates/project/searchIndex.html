@@ -27,51 +27,45 @@
     </header>
 
     <div class="container-fluid">
-
-        <div class="row justify-content-center">
-            <div class="geba_body_index-col geba_vote-offset">
-                {% if messages %}
+        <div class="geba-col-outer">
+            {% if messages %}
+            <div class="row justify-content-center">
+                <div class="geba-align-col">
                     {% include "project/messages.html" %}
-                {% endif %}
-            </div>
-        </div>
-
-        {% if object_list|length == 0 %}
-            <div class="row justify-content-center">
-                <div class="geba_body_index-col">
-                    {% if user.is_staff or user.is_superuser %}
-                        <a class="btn btn-primary" href="{% url 'project:create' %}" role="button">New Project</a>
-                    {% endif %}
                 </div>
             </div>
+            {% endif %}
 
-            <div class="row justify-content-center mt-3">
-                <div class="geba_body_index-col mb-3">
-                    <h5>There are currently no active projects, thanks for your interest! Below is a video of
-                    me working hard on these projects.</h5>
+            {% if object_list|length == 0 %}
+                <div class="row justify-content-center">
+                    <div class="geba-align-col">
+                        {% if user.is_staff or user.is_superuser %}
+                            <a class="btn btn-primary" href="{% url 'project:create' %}" role="button">New Project</a>
+                        {% endif %}
+                    </div>
                 </div>
-            </div>
 
-            <div class="row justify-content-center">
-                <img src="https://media.giphy.com/media/pFwRzOLfuGHok/giphy.gif" width="480" height="300">
-            </div>
-        {% else %}
-
-            <div class="row justify-content-center">
-                <div class="geba_body_index-col geba_vote-offset geba-medium">
-                    {% if user.is_staff or user.is_superuser %}
-                        <a class="btn btn-primary" href="{% url 'project:create' %}" role="button">New Project</a>
-                    {% endif %}
+                <div class="row justify-content-center mt-3">
+                    <div class="geba-align-col mb-3">
+                        <h5>There are currently no active projects, thanks for your interest! Below is a video of
+                        me working hard on these projects.</h5>
+                    </div>
                 </div>
-                <div class="geba_body_index-col geba-small">
-                    {% if user.is_staff or user.is_superuser %}
-                        <a class="btn btn-primary" href="{% url 'project:create' %}" role="button">New Project</a>
-                    {% endif %}
-                </div>
-            </div>
 
-            <div class="row justify-content-center mt-3">
-                <div class="col-12">
+                <div class="row justify-content-center">
+                    <img src="https://media.giphy.com/media/pFwRzOLfuGHok/giphy.gif" width="480" height="300">
+                </div>
+            {% else %}
+
+                <div class="row justify-content-center">
+                    <div class="geba-align-col">
+                        {% if user.is_staff or user.is_superuser %}
+                            <a class="btn btn-primary" href="{% url 'project:create' %}" role="button">New Project</a>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
                     {% load markdown_deux_tags %}
                     {% load class_name %}
 
@@ -85,8 +79,8 @@
                         {% endwith %}
                     {% endfor %}
                 </div>
-            </div>
-        {% endif %}
+            {% endif %}
+        </div>
     </div>
 
     {% include "project/delete_project_modal.html" %}

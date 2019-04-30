@@ -138,7 +138,7 @@
 }
 
 .likes-mobile .score.dislikes, .likes-mobile .score.unvoted, .unvoted-mobile .score.likes, .unvoted-mobile .score.dislikes,
-.dislikes .score.unvoted, .dislikes .score.likes {
+.dislikes-mobile .score.unvoted, .dislikes-mobile .score.likes {
     display: none;
 }
 

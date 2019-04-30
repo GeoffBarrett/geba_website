@@ -287,7 +287,6 @@ TINYMCE_ADDITIONAL_JS_URLS = {
 }
 
 TINYMCE_CALLBACKS = {
-    # 'file_browser_callback': 'myFileBrowserS3',
     'file_picker_callback': 'customFilePicker',
 }
 
