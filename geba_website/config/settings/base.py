@@ -280,6 +280,8 @@ TINYMCE_DEFAULT_CONFIG = {
     'contextmenu': 'formats | link image',
     'menubar': True,
     'statusbar': True,
+    # 'images_reuse_filename': True,
+    # 'images_upload_url': True,
 }
 
 TINYMCE_ADDITIONAL_JS_URLS = {
@@ -287,6 +289,8 @@ TINYMCE_ADDITIONAL_JS_URLS = {
 }
 
 TINYMCE_CALLBACKS = {
+    # 'file_browser_callback': 'myFileBrowser',
+    # 'images_upload_handler': 'customHandler',
     'file_picker_callback': 'customFilePicker',
 }
 

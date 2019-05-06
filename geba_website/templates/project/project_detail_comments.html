@@ -13,8 +13,16 @@
 <form method="POST" action="{% url 'project:detail' project.slug %}">
     {% csrf_token %}
     {{ comment_form|crispy }}
-    <input type="submit" value="Post Comment" class="btn btn-primary">
+
+    {% if user.is_authenticated %}
+        <input type="submit" value="Post Comment" class="btn btn-primary">
+    {% endif %}
 </form>
+
+{% if not user.is_authenticated %}
+    {% include "comments/unauthenticated_comment.html" %}
+<a data-toggle="modal" data-href="#" data-target="#UnauthCommentModal" class="btn btn-primary">Post Comment</a>
+{% endif %}
 
 
 <div class="Comments-All-Container fRaBQc">
@@ -120,7 +128,7 @@
                                         </div>
                                         <div>
                                             <div class="Comment-Buttons bMNdIG">
-                                                <!--<a class="comment-reply-btn comment-btn" href="#"><i class="fa fa-comment jeSweH"> Reply</i></a>-->
+
                                                 <a class="comment-btn" href="{{ child_comment.get_absolute_url }}">
                                                     <i class="fa fa-archive jeSweH"> Thread</i>
                                                 </a>

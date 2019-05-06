@@ -78,16 +78,15 @@
 
     <article>
         <div class="container-fluid" id="page-content-wrapper">
-
+            {% if messages %}
             <div class="row">
                 <div class="geba_body-col geba_vote-offset">
-                    {% if messages %}
-                        {% include "project/messages.html" %}
-                    {% endif %}
-                    {% load markdown_deux_tags %}
+                    {% include "project/messages.html" %}
                 </div>
             </div>
+            {% endif %}
 
+            {% load markdown_deux_tags %}
             <div class="row geba-large">
                 <!-- all the buttons for the projects -->
                 <div class="geba_body-col geba_vote-offset">
@@ -98,9 +97,9 @@
                         <a class="btn btn-primary btn-project" href="{% url 'project:update' project.slug %}" role="button">Edit Project</a>
 
                         {% if project.draft %}
-                            <a class="btn btn-primary publish-btn btn-project" data-href="{% url 'project:publish_post_ajax' project.slug %}"
+                            <a class="btn btn-primary publish-btn btn-project" data-href="{% url 'project:publish_project_ajax' project.slug %}"
                                data-slug="{{ project.slug }}" id="publish_{{ project.slug }}" href="#" role="button">Publish</a>
-                            <a class="btn btn-primary draft-btn hidebtn btn-project" data-href="{% url 'project:draft_post_ajax' project.slug %}"
+                            <a class="btn btn-primary draft-btn hidebtn btn-project" data-href="{% url 'project:draft_project_ajax' project.slug %}"
                                data-slug="{{ project.slug }}" id="draft_{{ project.slug }}" href="#" role="button">Set as Draft</a>
                         {% else %}
                             <a class="btn btn-primary draft-btn btn-project" data-href="{% url 'project:draft_project_ajax' project.slug %}"
@@ -339,8 +338,8 @@
                     {% endfor %}
                 {% endif %}
             {% endwith %}
-            <!-- project comments -->
 
+            <!-- project comments -->
             <div class="row justify-content-center">
                  <div class="geba_body-col geba_vote-offset">
                      {% include "project/project_detail_comments.html" %}

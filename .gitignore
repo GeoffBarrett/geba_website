@@ -12,6 +12,8 @@ media/
 secrets.json
 zappa_settings.json
 
+migrations/
+
 # Distribution / packaging
 .Python
 env/
