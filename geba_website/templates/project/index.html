@@ -93,7 +93,7 @@
 
                                                 {{ project.title }}
 
-                                                {% if project.pages.count == 0 %}
+                                                {% if project.get_project_posts.count == 0 and project.get_html|length == 0 %}
                                                     <span class="badge-geba">No Pages</span>
                                                 {% endif %}
 
