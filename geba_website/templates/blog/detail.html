@@ -60,38 +60,40 @@
     <article>
         <div class="container-fluid" id="page-content-wrapper">
 
-            <div class="row justify-content-center">
-                <div class="geba_body-col geba_vote-offset">
-                    {% if messages %}
+            {% if messages %}
+                <div class="row justify-content-center">
+                    <div class="geba_body-col geba_vote-offset">
                         {% include "blog/messages.html" %}
-                    {% endif %}
-                    {% load markdown_deux_tags %}
+                    </div>
                 </div>
-            </div>
+            {% endif %}
 
-            <div class="row justify-content-center geba-large-flex">
-                <div class="geba_body-col geba_vote-offset">
-                    {% if user.is_staff or user.is_superuser %}
-                        <a class="btn btn-primary" href="{% url 'blog:create' %}" role="button">New Blog</a>
-                        <a class="btn btn-primary" href="{% url 'blog:update' post.slug %}" role="button">Edit Blog</a>
+            {% load markdown_deux_tags %}
 
-                        {% if post.draft %}
-                            <a class="btn btn-primary publish-btn" data-href="{% url 'blog:publish_ajax' post.slug %}"
-                               data-slug="{{ post.slug }}" id="publish_{{ post.slug }}" href="#" role="button">Publish</a>
-                            <a class="btn btn-primary draft-btn hidebtn" data-href="{% url 'blog:draft_ajax' post.slug %}"
-                               data-slug="{{ post.slug }}" id="draft_{{ post.slug }}" href="#" role="button">Set as Draft</a>
-                        {% else %}
-                            <a class="btn btn-primary draft-btn" data-href="{% url 'blog:draft_ajax' post.slug %}"
-                               data-slug="{{ post.slug }}" id="draft_{{ post.slug }}" href="#" role="button">Set as Draft</a>
-                            <a class="btn btn-primary publish-btn hidebtn" data-href="{% url 'blog:publish_ajax' post.slug %}"
-                               data-slug="{{ post.slug }}" id="publish_{{ post.slug }}" href="#" role="button">Publish</a>
-                        {% endif %}
+            {% if user.is_staff or user.is_superuser %}
+                <div class="row justify-content-center geba-large-flex">
+                    <div class="geba_body-col geba_vote-offset">
 
-                        <a class="btn btn-primary" href='' data-toggle="modal" data-target="#DeletePostModal">Delete Blog</a>
+                            <a class="btn btn-primary" href="{% url 'blog:create' %}" role="button">New Blog</a>
+                            <a class="btn btn-primary" href="{% url 'blog:update' post.slug %}" role="button">Edit Blog</a>
 
-                    {% endif %}
+                            {% if post.draft %}
+                                <a class="btn btn-primary publish-btn" data-href="{% url 'blog:publish_ajax' post.slug %}"
+                                   data-slug="{{ post.slug }}" id="publish_{{ post.slug }}" href="#" role="button">Publish</a>
+                                <a class="btn btn-primary draft-btn hidebtn" data-href="{% url 'blog:draft_ajax' post.slug %}"
+                                   data-slug="{{ post.slug }}" id="draft_{{ post.slug }}" href="#" role="button">Set as Draft</a>
+                            {% else %}
+                                <a class="btn btn-primary draft-btn" data-href="{% url 'blog:draft_ajax' post.slug %}"
+                                   data-slug="{{ post.slug }}" id="draft_{{ post.slug }}" href="#" role="button">Set as Draft</a>
+                                <a class="btn btn-primary publish-btn hidebtn" data-href="{% url 'blog:publish_ajax' post.slug %}"
+                                   data-slug="{{ post.slug }}" id="publish_{{ post.slug }}" href="#" role="button">Publish</a>
+                            {% endif %}
+
+                            <a class="btn btn-primary" href='' data-toggle="modal" data-target="#DeletePostModal">Delete Blog</a>
+
+                    </div>
                 </div>
-            </div>
+            {% endif %}
 
             {% if user.is_staff or user.is_superuser %}
                 <div class="row justify-content-center">
