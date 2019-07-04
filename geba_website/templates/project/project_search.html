@@ -120,9 +120,19 @@
                 <div class="row geba-flex">
                     <div class="col-10">
                         Published by
-                        {% if object.author %}
-                            <a href="?author={{ author }}">{{ object.author }}, </a>
-                            {{ object.publish_date|timesince }} ago.
+                        {% if object.authors.count > 0 %}
+                            {% for author in object.authors.all %}
+                                {% if forloop.last %}
+                                    {% if forloop.first %}
+                                        <a href="?author={{ author }}">{{ author }},</a>
+                                    {% else %}
+                                        <span>and <a href="?author={{ author }}">{{ author }}</a></span>
+                                    {% endif %}
+                                {% else %}
+                                    <a href="?author={{ author }}">{{ author }}, </a>
+                                {% endif %}
+
+                            {% endfor %}{{ object.publish_date|timesince }} ago.
                         {% else %}
                             <span style='color:red;'> No Authors! </span>
                         {% endif %}

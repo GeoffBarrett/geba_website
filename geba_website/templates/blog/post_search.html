@@ -109,13 +109,13 @@
             <div class="card-footer text-muted">
                 <div class="row geba-flex">
                     <div class="col-10">
-                    Published by
-                    {% if object.author %}
-                        <a href="#">{{ object.author }}, </a>
-                        {{ object.publish_date|timesince }} ago.
-                    {% else %}
-                        <span style='color:red;'> No Authors! </span>
-                    {% endif %}
+                        Published by
+                        {% if object.author %}
+                            <a href="#">{{ object.author }}, </a>
+                            {{ object.publish_date|timesince }} ago.
+                        {% else %}
+                            <span style='color:red;'> No Authors! </span>
+                        {% endif %}
                     </div>
                     <div class="geba-vote-mobile-col">
                     {% include "blog/blog_vote_mobile_search.html" %}

@@ -119,8 +119,8 @@ class HomeView(ObjectViewMixin, DetailView):
     template_name = 'pages/home.html'  # tells the view to use this template instead of it's default
     # latest_models = {'LatestBlog': Post, 'LatestProject': Project, 'LatestProjectPost': ProjectPost}
 
-    latest_models = [Post, Project, ProjectPost]
-    latest_models_list = ['Latest Blog', 'Latest Project', 'Latest Project Post']
+    latest_models = [Project, ProjectPost, Post]
+    latest_models_list = ['Latest Project', 'Latest Project Post', 'Latest Blog']
 
     def get_object(self):
         # make it so only the admin can see items in the future or that are drafts
