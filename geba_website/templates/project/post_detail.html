@@ -5,6 +5,7 @@
 {% block header %}
 
     {% load staticfiles %}
+    {% load active_posts %}
     {% load crispy_forms_tags %}
     {% load comment %}
     <link rel='stylesheet' href="{% static 'apps/core/css/sidebar.css' %}"/>
@@ -159,7 +160,7 @@
                             <a href="{% url 'project:detail' project.slug %}" class="list-group-item">{{ project.title }}</a>
                         {% endwith %}
 
-                        {% for post in projectpost.get_project_posts %}
+                        {% for post in projectpost.get_project_posts|active_posts:user.is_superuser %}
                             {% if projectpost.slug == post.slug %}
                                 <a href="#" class="list-group-item active">{{ post.title }}</a>
                             {% else %}

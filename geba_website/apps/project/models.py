@@ -13,7 +13,9 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from ..keyword.models import Keyword
 from django.utils.text import slugify  # turns our title into a slug
 from django.db.models import Q
+from django import template
 
+register = template.Library()
 # Create your models here.
 
 
@@ -176,7 +178,8 @@ class ProjectPost(VoteModel, TimeStampModel):
 
     def get_project_posts(self):
         """This method will be used in post_detail.html to have a list of related posts"""
-        return ProjectPost.objects.filter(object_id=self.object_id)
+        objs = ProjectPost.objects.filter(object_id=self.object_id)
+        return objs
 
     def get_delete_url(self):
         return reverse("project:delete_post", kwargs={"slug": self.slug})
