@@ -151,16 +151,18 @@ class ProjectPost(VoteModel, TimeStampModel):
                               null=True,
                               blank=True,
                               width_field="width_field",
-                              height_field="height_field")
+                              height_field="height_field",
+                              max_length=205)
 
     width_field = models.IntegerField(default=0, null=True)
     height_field = models.IntegerField(default=0, null=True)
 
     header_image = models.ImageField(upload_to=upload_location,
-                              null=True,
-                              blank=True,
-                              width_field="header_width_field",
-                              height_field="header_height_field")
+                                     null=True,
+                                     blank=True,
+                                     width_field="header_width_field",
+                                     height_field="header_height_field",
+                                     max_length=205)
 
     header_width_field = models.IntegerField(default=0, null=True)
     header_height_field = models.IntegerField(default=0, null=True)
@@ -429,8 +431,9 @@ def pre_save_project_signal_receiver(sender, instance, *args, **kwargs):
         project_instance = Project.objects.filter(pk=instance.pk)[0]
 
         if has_image(instance) and has_image(project_instance):
+            # then the old instance has an image, and you are providing a new one, delete the old one first
             if project_instance.image.url != instance.image.url:
-                # then we can delete the old image
+                # then we can delete the old image (if the new one is not the same)
                 delete_image(project_instance)
 
         elif not has_image(instance) and has_image(project_instance):
@@ -461,18 +464,26 @@ def pre_save_signal_projectpost_receiver(sender, instance, *args, **kwargs):
         instance.slug = create_slug(instance=instance, prepend_slug=project_instance.slug)
 
     else:
+
+        # the instance object represents the new submitted post, and the post_instance represents
+        # the previous post.
+
         # then the projectpost already exists
         post_instance = ProjectPost.objects.filter(pk=instance.pk)[0]
 
         if has_image(instance) and has_image(post_instance):
+            # then the old version had an image, and the new version has an image, so we need to delete the old
+            # and replace with the new
+
             if post_instance.image.url != instance.image.url:
                 # then we can delete the old image
                 delete_image(post_instance)
 
         elif not has_image(instance) and has_image(post_instance):
-            # then you have removed the old image
+            # then the user does not want an image anymore, delete the old one
             delete_image(post_instance)
 
+        # now we deal with headers
         if has_image_header(instance) and has_image_header(post_instance):
             if post_instance.header_image.url != instance.header_image.url:
                 # then we can delete the old image
@@ -528,7 +539,7 @@ def pre_delete_project_signal_receiver(sender, instance, *args, **kwargs):
 
 
 def delete_image(instance):
-    if instance.image:
+    if instance.image.path:
         # if an image exists, delete it
         try:
             # this only really works locally when it accepts fullpaths

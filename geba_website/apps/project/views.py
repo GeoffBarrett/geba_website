@@ -1,7 +1,7 @@
 from django.utils import timezone
 # from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from collections import OrderedDict
-from django.db.models import Q
+# from django.db.models import Q
 from django.views.generic import CreateView, UpdateView, DetailView, ListView, DeleteView, FormView, View
 from django.core.exceptions import SuspiciousOperation
 from django.utils.translation import ugettext as _
@@ -45,10 +45,15 @@ TRANSFER_TEMPLATES = {
 
 
 class ProjectWizard(SessionWizardView):
+    """
+    Since we have multiple pages, I decided ot go with a Session Wizard View. This will handle the pages for us.
+    """
+
     form_list = [ProjectForm, ProjectPostForm]
     file_storage = FileSystemStorage(location=settings.MEDIA_ROOT)
 
     def get_template_names(self):
+        """determines the template names for the next page to visualize"""
         return [TRANSFER_TEMPLATES[self.steps.current]]
 
     def post(self, *args, **kwargs):
@@ -138,7 +143,7 @@ class ProjectWizard(SessionWizardView):
         return done_response
 
     def done(self, form_list, **kwargs):
-
+        """Called whenever a form is submitted."""
         for form_key in self.get_form_list():
 
             if 'project_form' in form_key:
@@ -581,7 +586,9 @@ class ProjectPostUpdateView(ProjectActionMixin, UpdateView):
     def get(self, request, slug):
         """when the geba_auth executes a get request, display blank registration form"""
         self.object = self.get_object()
+
         self.success_url = reverse_lazy('project:detail', args=self.object.slug)
+
         form = self.form_class(request.GET or None, request.FILES or None, instance=self.object)
         return render(request, self.template_name, {'form': form})
 
