@@ -1,3 +1,57 @@
+var browser = function() {
+    // Return cached result if available, else get result then cache it.
+    if (browser.prototype._cachedResult) {
+        return browser.prototype._cachedResult;
+    }
+
+    // Opera 8.0+
+    var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+
+    // Firefox 1.0+
+    var isFirefox = typeof InstallTrigger !== 'undefined';
+
+    // Safari 3.0+ "[object HTMLElementConstructor]"
+    var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
+
+    // Internet Explorer 6-11
+    var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+    // Edge 20+
+    var isEdge = !isIE && !!window.StyleMedia;
+
+    // Chrome 1 - 71
+    //var isChrome = !!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime); // this worked on stackOF but not locally...
+    //var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor); // this is not specific to chrome
+    var isChrome = ((navigator.userAgent.toLowerCase().indexOf('chrome') > -1) &&(navigator.vendor.toLowerCase().indexOf("google") > -1));
+
+    // Blink engine detection
+    var isBlink = (isChrome || isOpera) && !!window.CSS;
+
+    return browser.prototype._cachedResult =
+        isOpera ? 'Opera' :
+        isFirefox ? 'Firefox' :
+        isSafari ? 'Safari' :
+        isChrome ? 'Chrome' :
+        isIE ? 'IE' :
+        isEdge ? 'Edge' :
+        isBlink ? 'Blink':
+        'Unknown'
+};
+
+
+$( document ).ready(function() {
+
+    var currentBrowser = browser();
+
+    if (currentBrowser == 'IE') {
+        $('#mainNav').addClass('NoBrand');
+        $('#mobile-nav').addClass('NoBrand');
+    }
+
+});
+
+
+
 (function($) {
   "use strict"; // Start of use strict
 

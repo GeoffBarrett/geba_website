@@ -48,6 +48,10 @@ a {
   border-bottom-left-radius: 5px;
 }
 
+#mainNav.NoBrand #navBrand  {
+  display: None;!important
+}
+
 #mainNav #navBrand .bottom-wrapper{
   position:absolute;
   height:22px;
@@ -779,12 +783,21 @@ a {
   top: 5px;
 }
 
+#mainNav.NoBrand .navbar-nav.brand-left {
+  margin-right: 0px;!important
+}
+
 #mainNav .navbar-nav.brand-right {
   position: absolute;
   left: 50%;
   margin-left: 40px;
   top: 5px;
 }
+
+#mainNav.NoBrand .navbar-nav.brand-right {
+  margin-left: 0px;!important
+}
+
 
 #mainNav .navbar-nav.navbar-right .btn_header {
   /*margin-top: 8px;*/
