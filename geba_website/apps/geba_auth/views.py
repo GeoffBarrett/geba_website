@@ -1,6 +1,6 @@
 # from django.shortcuts import render
-from .forms import UserCreationForm, LoginForm
-from django.contrib.auth import authenticate, login, logout
+from .forms import UserCreationForm, LoginForm, ResendEmailForm
+from django.contrib.auth import login, logout
 from django.shortcuts import render, redirect
 from django.views.generic import FormView
 from .tokens import account_activation_token
@@ -11,7 +11,7 @@ from django.template.loader import render_to_string
 from django.utils.encoding import force_text
 from ..geba_auth.models import User
 from django.utils.http import urlsafe_base64_decode
-from django.urls import reverse_lazy
+# from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
 # Create your views here.
 from .signals import user_logged_in
@@ -53,7 +53,6 @@ class RegisterFormView(FormView):
 
     form_class = UserCreationForm
     template_name = 'geba_auth/register_form.html'
-    success_url = reverse_lazy('geba_auth:account_activation_sent')
 
     def post(self, request, *args, **kwargs):
 
@@ -78,14 +77,75 @@ class RegisterFormView(FormView):
             message = render_to_string('geba_auth/account_activation_email.html', {
                 'user': user,
                 'domain': current_site.domain,
-                'uid': urlsafe_base64_encode(force_bytes(user.pk)).decode(),
+                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
                 'token': account_activation_token.make_token(user),
             })
 
             user.email_user(subject, message)
 
+            previous_url = request.META.get('HTTP_REFERER')
+
+            if previous_url:
+                url_split = previous_url.split('/')
+
+                if url_split[-2] == 'register' and url_split[-3] == 'auth':
+                    # then we were on the registration page, route back to the home page
+                    previous_url = '/'
+
+                self.success_url = previous_url + '#activation_sent'
+            else:
+                pass
+
             return HttpResponseRedirect(self.success_url)
-            # return super(RegisterFormView, self).form_valid(form)
+
+        else:
+            return render(request, self.template_name, {'form': form})
+
+
+class ResendActivationFormView(FormView):
+
+    form_class = ResendEmailForm
+    template_name = 'geba_auth/resend_email_form.html'
+
+    def post(self, request, *args, **kwargs):
+
+        # login_form = LoginForm()
+        form = self.form_class(request.POST)
+        # print(form)
+        if form.is_valid():
+
+            email = form.cleaned_data['email']
+
+            user = User.objects.get(email=email)
+
+            if user:
+                current_site = get_current_site(self.request)
+                subject = 'Activate Your GEBA Account!'
+                message = render_to_string('geba_auth/account_activation_email.html', {
+                    'user': user,
+                    'domain': current_site.domain,
+                    'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                    'token': account_activation_token.make_token(user),
+                })
+
+                user.email_user(subject, message)
+
+                previous_url = request.META.get('HTTP_REFERER')
+
+                if previous_url:
+                    url_split = previous_url.split('/')
+
+                    if url_split[-2] == 'register' and url_split[-3] == 'auth':
+                        # then we were on the registration page, route back to the home page
+                        previous_url = '/'
+
+                    self.success_url = previous_url + '#activation_sent'
+                else:
+                    pass
+            else:
+                self.success_url = self.request
+
+            return HttpResponseRedirect(self.success_url)
 
         else:
             return render(request, self.template_name, {'form': form})

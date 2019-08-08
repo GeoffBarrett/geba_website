@@ -5,7 +5,7 @@
 {% block header %}
 
     {% load staticfiles %}
-    {% load active_posts %}
+    {% load project_tags %}
     {% load crispy_forms_tags %}
     {% load comment %}
     <link rel='stylesheet' href="{% static 'apps/core/css/sidebar.css' %}"/>
@@ -150,6 +150,22 @@
                 <!-- this div will contain the contents of the post, including comments -->
                 <div class="geba_body-col">
                     <div class="post-body">{{ projectpost.get_html|safe }}</div>
+
+                    <div class="row justify-content-center" style="margin-left:0px;">
+                        {% if projectpost.get_prev_post_slugs|get_adj_slug:user.is_superuser %}
+                            <a class="btn btn-primary" href="{{ projectpost.get_prev_post_slugs|get_adj_slug:user.is_superuser }}">Previous Page</a>
+                        {% else %}
+                            <!-- then there are no more previous, the previous page should then be the project page -->
+                            {% if projectpost.get_project|active_project:user.is_superuser %}
+                                <a class="btn btn-primary" href="{{ projectpost.get_project|active_project:user.is_superuser }}">Previous Page</a>
+                            {% endif %}
+                        {% endif %}
+
+                        {% if projectpost.get_next_post_slugs|get_adj_slug:user.is_superuser %}
+                            <a class="btn btn-primary" href="{{ projectpost.get_next_post_slugs|get_adj_slug:user.is_superuser }}">Next Page</a>
+                        {% endif %}
+                    </div>
+
                     <hr>
                     {% include "project/post_detail_comments.html" %}
                 </div>

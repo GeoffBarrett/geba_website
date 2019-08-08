@@ -192,7 +192,7 @@ def post_save_user_changed_receiver(sender, instance, created, *args, **kwargs):
 
 
 if FORCE_INACTIVE_USER_END_SESSION:
-    post_save.connect(post_save_user_changed_receiver, sender=settings.AUTH_USER_MODEL)
+    post_save.connect(post_save_user_changed_receiver, sender=UserSession)
 
 if FORCE_SESSION_TO_ONE:
     post_save.connect(post_save_session_receiver, sender=UserSession)

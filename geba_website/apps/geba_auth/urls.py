@@ -8,6 +8,8 @@ urlpatterns = [
 
     re_path(r'^register/$', views.RegisterFormView.as_view(), name='register'),
 
+    re_path(r'^resend_activation/$', views.ResendActivationFormView.as_view(), name='resend_act'),
+
     re_path(r'^login/$', views.LoginFormView.as_view(success_url="/"), name='login'),
 
     re_path(r'^logout/$', views.logout_view, name='logout'),

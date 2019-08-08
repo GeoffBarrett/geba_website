@@ -26,6 +26,9 @@
             {% include "core/navbar.html" %}
             {% block header %}{% endblock header %}
             {% block content %}{% endblock content %}
+
+            {% include "geba_auth/account_activation_sent2.html" %}
+
         </div>
         <hr>
         <footer>
@@ -118,6 +121,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 
         <script src="{% static 'apps/core/js/navbar.js' %}"></script>
+
+        <script src="{% static 'apps/geba_auth/js/geba_auth.js' %}"></script>
 
         {% block javascript %}
         {% endblock javascript %}

@@ -3,6 +3,8 @@ from .models import User
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth import authenticate
+from django.utils.safestring import mark_safe
+from django.urls import reverse_lazy
 
 
 class UserCreationForm(forms.ModelForm):
@@ -68,6 +70,9 @@ class LoginForm(forms.Form):
         username = self.cleaned_data.get('username')
         try:
             existing_user = User.objects.get(username=username)
+            if not existing_user.email_confirmed and not existing_user.is_superuser:
+                raise forms.ValidationError(mark_safe("E-mail not confirmed, <a href='%s'>Resend Activation</a>!" % (reverse_lazy('geba_auth:resend_act'))))
+
         except User.DoesNotExist:
             raise forms.ValidationError("Username does not exist!")
         return username
@@ -75,9 +80,21 @@ class LoginForm(forms.Form):
     def clean_password(self):
         username = self.cleaned_data.get('username')
         password = self.cleaned_data.get('password')
+
+        try:
+            existing_user = User.objects.get(username=username)
+            if not existing_user.email_confirmed:
+                return password
+        except User.DoesNotExist:
+            return password
+
         user = authenticate(username=username, password=password)
-        if not user or not user.is_active:
-            raise forms.ValidationError("Invalid Username/Password!")
+
+        if not user:
+            raise forms.ValidationError("Invalid Password!")
+        elif not user.is_active:
+            raise forms.ValidationError("User not active!")
+
         return password
 
     def login(self, request):
@@ -86,3 +103,18 @@ class LoginForm(forms.Form):
         user = authenticate(username=username, password=password)
 
         return user
+
+
+class ResendEmailForm(forms.Form):
+
+    email = forms.EmailField(max_length=254, help_text='Required. Use a valid email address.')
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+
+        try:
+            existing_user = User.objects.get(email=email)
+
+        except User.DoesNotExist:
+            raise forms.ValidationError("This e-mail does not belong to a user!")
+        return email

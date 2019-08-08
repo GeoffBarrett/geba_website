@@ -74,9 +74,9 @@
                             {% endif%}
                                 <div class="geba-card mb-1">
                                      {% if post.image %}
-                                        <img class="card-img-top" src="{{ post.image.url }}" style="width:100%; height:auto;">
+                                        <a href="{{ post.get_absolute_url }}"><img class="card-img-top" src="{{ post.image.url }}" style="width:100%; height:auto;"></a>
                                      {% else %}
-                                        <img class="card-img-top no_img">
+                                        <a href="{{ post.get_absolute_url }}"><img class="card-img-top no_img"></a>
                                      {% endif %}
 
                                     <div class="geba-card-body-header">

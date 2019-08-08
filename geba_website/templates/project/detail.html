@@ -5,7 +5,7 @@
 {% block header %}
 
     {% load staticfiles %}
-    {% load active_posts %}
+    {% load project_tags %}
     {% load crispy_forms_tags %}
     {% load comment %}
     <link rel='stylesheet' href="{% static 'apps/core/css/sidebar.css' %}"/>
@@ -125,61 +125,60 @@
             </div>
 
             {% if project.title_in_header == False %}
-            <div class="row justify-content-center mt-1">
-                <div class="geba_vote-col">
-                </div>
+                <div class="row justify-content-center mt-1">
+                    <div class="geba_vote-col">
+                    </div>
 
-                <div class="geba_body-col">
-                    <h1>
-                        {{ project.title }}
+                    <div class="geba_body-col">
+                        <h1>
+                            {{ project.title }}
 
-                        {% if project.draft %}
-                          <span class="badge-geba" id="draft-{{ project.slug }}">Draft</span>
-                        {% else %}
-                          <span class="badge-geba hidebadge" id="draft-{{ project.slug }}">Draft</span>
-                        {% endif %}
+                            {% if project.draft %}
+                              <span class="badge-geba" id="draft-{{ project.slug }}">Draft</span>
+                            {% else %}
+                              <span class="badge-geba hidebadge" id="draft-{{ project.slug }}">Draft</span>
+                            {% endif %}
 
-                        {% if project.is_future_publication %}
-                            <span class="badge-geba"  id="future-{{ project.id }}">Future Post</span>
-                        {% endif %}
-                      </h1>
-                      <span class="meta">Posted by
-                          {% if project.authors.count > 0 %}
+                            {% if project.is_future_publication %}
+                                <span class="badge-geba"  id="future-{{ project.id }}">Future Post</span>
+                            {% endif %}
+                          </h1>
+                          <span class="meta">Posted by
+                              {% if project.authors.count > 0 %}
 
-                            {% for author in project.authors.all %}
+                                {% for author in project.authors.all %}
 
-                                {% if forloop.last %}
-                                    {% if forloop.first %}
-                                        <a href="#">{{ author }},</a>
+                                    {% if forloop.last %}
+                                        {% if forloop.first %}
+                                            <a href="#">{{ author }},</a>
+                                        {% else %}
+                                            <span>and <a href="#">{{ author }}</a></span>
+                                        {% endif %}
                                     {% else %}
-                                        <span>and <a href="#">{{ author }}</a></span>
+                                        <a href="#">{{ author }}, </a>
                                     {% endif %}
-                                {% else %}
-                                    <a href="#">{{ author }}, </a>
-                                {% endif %}
 
-                            {% endfor %}
-                          {% else %}
-                            <span style='color:red;'> No Authors! </span>
-                          {% endif %}</a>
+                                {% endfor %}
+                              {% else %}
+                                <span style='color:red;'> No Authors! </span>
+                              {% endif %}</a>
 
-                        {% if project.publish_date == project.modified %}
-                        Published: {{ project.publish_date|timesince }} ago
-                        {% else %}
-                        Published: {{ project.publish_date|timesince }} ago
-                        (Updated: {{ project.modified|timesince }} ago)
-                        {% endif %}
-                      </span>
+                            {% if project.publish_date == project.modified %}
+                            Published: {{ project.publish_date|timesince }} ago
+                            {% else %}
+                            Published: {{ project.publish_date|timesince }} ago
+                            (Updated: {{ project.modified|timesince }} ago)
+                            {% endif %}
+                          </span>
+                    </div>
+
+                    <div class="col-3 ml-sm-auto geba-large">
+                    </div>
+
                 </div>
-
-                <div class="col-3 ml-sm-auto geba-large">
-                </div>
-
-            </div>
             {% endif %}
 
             <div class="row justify-content-center mt-3">
-
                 <div id="sidebar-wrapper">
                     <ul class="list-group sidebar-nav">
                         {% if user.is_staff or user.is_superuser %}
@@ -219,7 +218,6 @@
                 <!-- this div will contain the contents of the post -->
                 <div class="geba_body-col">
                     <div class="post-body">{{ project.get_html }}</div>
-
                 </div>
 
                 <!-- sidebar -->
@@ -231,7 +229,19 @@
                         {% endfor %}
                     </div>
                 </div>
+
             </div>
+
+            <div class="geba_body-col geba_vote-offset">
+                <div class="row justify-content-center">
+                    {% if project.get_next_post_slugs|get_adj_slug:user.is_superuser %}
+                        <a class="btn btn-primary" href="{{ project.get_next_post_slugs|get_adj_slug:user.is_superuser }}">Next Page</a>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="col-3 ml-sm-auto geba-large"></div>
+
 
             <!-- header before the project post index -->
             {% with project.get_project_posts|active_posts:user.is_superuser as posts %}
@@ -251,9 +261,9 @@
                             <div class="geba_body-col geba_vote-offset">
                                 <div class="card mb-4">
                                      {% if post.image %}
-                                        <img class="card-img-top" src="{{ post.image.url }}"  style="width:100%; height:auto;">
+                                        <a href="{{ post.get_absolute_url }}"><img class="card-img-top" src="{{ post.image.url }}"  style="width:100%; height:auto;"></a>
                                      {% else %}
-                                        <img class="card-img-top no_img">
+                                        <a href="{{ post.get_absolute_url }}"><img class="card-img-top no_img"></a>
                                      {% endif %}
 
                                     <div class="card-body">

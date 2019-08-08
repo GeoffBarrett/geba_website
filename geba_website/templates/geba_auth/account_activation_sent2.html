@@ -1,0 +1,22 @@
+{% load staticfiles %}
+
+<div class="modal fade" id="activation_sent" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Email Activation Sent!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <p>An e-mail has been sent to your account, please activate so you can do all the cool things on this website.
+              If you do not see the e-mail, be sure to check the spam folder.</p>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-primary" href="{% url 'geba_auth:resend_act' %}">Resend E-mail</a>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

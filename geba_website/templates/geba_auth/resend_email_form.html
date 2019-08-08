@@ -1,12 +1,12 @@
 {% extends "core/base.html" %} <!--  extends path starting from templates directory, concatenates all contents of templates -->
 
-{% block title %}GEBA - Sign In{% endblock %}
+{% block title %}GEBA - Resend Activation{% endblock %}
 
 {% load staticfiles %}
 {% load crispy_forms_tags %}
 
 {% block css %}
-    <link rel='stylesheet' href="{% static 'apps/core/css/form_style.css' %}"/>
+    <link rel='stylesheet' href="{% static 'apps/geba_auth/css/geba_auth.css' %}"/>
 {% endblock css %}
 
 {% block header %}
@@ -16,7 +16,7 @@
     <div class="row">
       <div class="col-8 mx-auto">
         <div class="site-heading">
-          <h1>Sign In!</h1>
+          <h1>Register</h1>
         </div>
       </div>
     </div>
@@ -29,16 +29,24 @@
 {% block content %}
 <!-- Top content -->
 <article>
-
     <div class="container-fluid">
 
         <div class="row justify-content-center">
-            <div class="col-5">
-                <h3>Email Activation Sent!</h3>
-                <p>An e-mail has been sent to your account, please activate so you can do all the cool things on this website. If you do not see the e-mail, be sure
-                to check the spam folder.</p>
+            <div class="geba_reg-col">
+                <h3>Resend Activation E-mail!</h3>
+                <p>Fill in the form below to activate your account:</p>
+
+                <form role="form" action="{% url 'geba_auth:resend_act' %}" method="post">
+                    {% csrf_token %}
+
+                    {{ form|crispy }}
+
+                    <button type="submit" class="btn btn-primary">Resend Activation Email!</button>
+                </form>
+
             </div>
         </div>
+
     </div>
 
 </article>

@@ -111,7 +111,6 @@ class ProjectManager(models.Manager):
 
     def active(self, *args, **kwargs):
         """overwriting Post.objects.all()"""
-        # return super(ProjectManager, self).filter(draft=False).filter(publish_date__lte=timezone.now())
         return super(ProjectManager, self).filter(draft=False, publish_date__lte=timezone.now(),
                                                   authors__isnull=False).exclude(body__exact='')
 
@@ -190,6 +189,16 @@ class ProjectPost(VoteModel, TimeStampModel):
         """This method will return the post order when a new post is being created, it will default as the
         immediate next post"""
         return int(len(ProjectPost.objects.filter(object_id=self.object_id)) + 1)
+
+    def get_next_post_slugs(self):
+        # slugs = ProjectPost.objects.filter(object_id=self.object_id, post_order__gt=self.post_order)[0].slug
+        objs = ProjectPost.objects.filter(object_id=self.object_id, post_order__gt=self.post_order)
+        return objs
+
+    def get_prev_post_slugs(self):
+        # negative indexing is not allowed, so we will reverse and 0
+        objs = ProjectPost.objects.filter(object_id=self.object_id, post_order__lt=self.post_order).reverse()
+        return objs
 
     def get_project_slug(self):
         return Project.objects.filter(id=self.object_id)[0].slug
@@ -342,6 +351,10 @@ class Project(VoteModel, TimeStampModel):
         immediate next post
         """
         return int(len(ProjectPost.objects.filter(object_id=self.id)) + 1)
+
+    def get_next_post_slugs(self):
+        objs = ProjectPost.objects.filter(object_id=self.id)
+        return objs
 
     @property
     def comments(self):
@@ -539,7 +552,7 @@ def pre_delete_project_signal_receiver(sender, instance, *args, **kwargs):
 
 
 def delete_image(instance):
-    if instance.image.path:
+    if instance.image:
         # if an image exists, delete it
         try:
             # this only really works locally when it accepts fullpaths

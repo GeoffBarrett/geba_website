@@ -5,7 +5,15 @@ from .models import User
 
 
 class UserAdminCustom(UserAdmin):
-    list_display = ('username', 'email', 'first_name', 'last_name', 'is_staff', 'id', 'email_confirmed')
+    def __init__(self, *args, **kwargs):
+        super(UserAdmin, self).__init__(*args, **kwargs)
+        # UserAdmin.list_display = list(UserAdmin.list_display) + ['date_joined', 'some_function']
+        # UserAdmin.fieldsets += list(UserAdmin.fieldsets) + ('email_confirmed')_
+
+    list_display = ('username', 'id', 'email', 'first_name', 'last_name', 'is_staff', 'email_confirmed', 'date_joined',
+                    'last_login')
+
+    fieldsets = UserAdmin.fieldsets + ((None, {'fields': ('email_confirmed',)}), )
 
 
 admin.site.register(User, UserAdminCustom)
