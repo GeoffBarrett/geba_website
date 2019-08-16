@@ -152,6 +152,7 @@ class ContactView(DetailView):
     model = Page  # generic views need to know which model to act upon
     template_name = 'pages/contact.html'  # tells the view to use this template instead of it's default
     form_class = ContactForm
+    success_url = reverse_lazy('pages:contact')
 
     def get_object(self):
         # make it so only the admin can see items in the future or that are drafts
@@ -196,7 +197,20 @@ class ContactView(DetailView):
             to_mail = ['geoff@geba.technology']
             send_mail(subject, content, from_mail, to_mail, fail_silently=False)
 
-            return HttpResponseRedirect(reverse_lazy('pages:contact'))
+            previous_url = request.META.get('HTTP_REFERER')
+
+            if previous_url:
+                url_split = previous_url.split('/')
+
+                if url_split[-2] == 'register' and url_split[-3] == 'auth':
+                    # then we were on the registration page, route back to the home page
+                    previous_url = '/'
+
+                self.success_url = previous_url + '#contact_sent'
+            else:
+                pass
+
+            return HttpResponseRedirect(self.success_url)
 
         else:
             return render_to_response(self.template_name, {'form': form, 'page': self.object})

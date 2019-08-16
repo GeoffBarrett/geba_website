@@ -31,6 +31,9 @@
     {% endif %}
 
     <article>
+
+        {% include "pages/contact_sent.html" %}
+
         <div class="container-fluid">
             {% if page.header_image == '' %}
                 <div class="row no-header justify-content-center">
@@ -88,9 +91,10 @@
             </div>
 
         </div>
+
     </article>
 {% endblock content %}
 
 {% block javascript %}
-
+    <script src="{% static 'apps/pages/js/pages.js' %}"></script>
 {% endblock javascript %}
