@@ -4,4 +4,8 @@ $(document).ready(function() {
     $('#activation_sent').modal('show');
   }
 
+  if(window.location.href.indexOf('#reset_sent') != -1) {
+    $('#reset_sent').modal('show');
+  }
+
 });

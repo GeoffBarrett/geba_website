@@ -91,7 +91,7 @@ class LoginForm(forms.Form):
         user = authenticate(username=username, password=password)
 
         if not user:
-            raise forms.ValidationError("Invalid Password!")
+            raise forms.ValidationError(mark_safe("Invalid Password!, <a href='%s'>Forgot Password</a>?" % (reverse_lazy('geba_auth:forgot_password'))))
         elif not user.is_active:
             raise forms.ValidationError("User not active!")
 
@@ -106,6 +106,50 @@ class LoginForm(forms.Form):
 
 
 class ResendEmailForm(forms.Form):
+
+    email = forms.EmailField(max_length=254, help_text='Required. Use a valid email address.')
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+
+        try:
+            existing_user = User.objects.get(email=email)
+
+        except User.DoesNotExist:
+            raise forms.ValidationError("This e-mail does not belong to a user!")
+        return email
+
+
+class ResetPasswordForm(forms.ModelForm):
+    password1 = forms.CharField(widget=forms.PasswordInput, label=_('Password'),
+                                help_text='Required. Passwords must have at least 8 characters!')
+    password2 = forms.CharField(widget=forms.PasswordInput, label=_('Re-Type Password'))
+
+    class Meta:
+        model = User
+        fields = ('password1', 'password2')
+
+    def clean_password1(self):
+        password1 = self.cleaned_data.get("password1")
+        if len(password1) < 8:
+            raise forms.ValidationError("Password must have at least 8 characters!")
+
+        return password1
+
+    def clean_password2(self):
+        # Check that the two password entries match
+        password1 = self.cleaned_data.get("password1")
+        password2 = self.cleaned_data.get("password2")
+        if password1 and password2 and password1 != password2:
+            raise forms.ValidationError("Passwords don't match!")
+
+        if len(password2) < 8:
+            raise forms.ValidationError("Password must have at least 8 characters!")
+
+        return password2
+
+
+class ForgotPasswordForm(forms.Form):
 
     email = forms.EmailField(max_length=254, help_text='Required. Use a valid email address.')
 

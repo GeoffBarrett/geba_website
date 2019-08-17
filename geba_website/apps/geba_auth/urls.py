@@ -4,11 +4,12 @@ from django.urls import re_path
 from . import views  # import the views module from the directory of this file
 
 urlpatterns = [
-    # re_path(r'^signin/$', views.LoginRegisterFormView.as_view(), name='signin'),
 
     re_path(r'^register/$', views.RegisterFormView.as_view(), name='register'),
 
     re_path(r'^resend_activation/$', views.ResendActivationFormView.as_view(), name='resend_act'),
+
+    re_path(r'^forgot_password/$', views.ForgotPasswordFormView.as_view(), name='forgot_password'),
 
     re_path(r'^login/$', views.LoginFormView.as_view(success_url="/"), name='login'),
 
@@ -20,6 +21,9 @@ urlpatterns = [
 
     re_path(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
             views.activate, name='activate'),
+
+    re_path(r'^reset_password/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+                views.reset_password.as_view(), name='reset_password'),
 
 
 ]
