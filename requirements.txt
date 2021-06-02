@@ -35,7 +35,7 @@ ipaddress==1.0.22
 jmespath==0.9.3
 jsmin==2.2.2
 Markdown==3.0.1
-markdown2==2.3.7
+markdown2==2.4.0
 olefile==0.44
 Pillow==4.0.0
 placebo==0.8.2
